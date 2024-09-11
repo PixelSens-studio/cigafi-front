@@ -1,11 +1,525 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('./partials/head') %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <main class="w-full overflow-x-hidden">
+      <div class="w-full px-[4vw] py-[5vh]">
+        <div class="w-full">
+          <form class="flex flex-row gap-[calc(5%/4)] justify-between">
+            <div class="min-w-[19%]">
+              <div class="text-[#171717] mb-5"><p>Ville</p></div>
+              <div class="w-full">
+                <select
+                  name="title"
+                  class="w-full hover:bg-slate-100 rounded-xl text-gray-500 px-5 py-2"
+                  id="ville"
+                >
+                  <option value="ville1">Ville 1</option>
+                  <option value="ville2">Ville 2</option>
+                  <option value="ville3">Ville 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="min-w-[19%]">
+              <div class="text-[#171717] mb-5"><p>Type de biens</p></div>
+              <div class="w-full">
+                <select
+                  name="title"
+                  class="w-full hover:bg-slate-100 rounded-xl text-gray-500 px-5 py-2"
+                  id="ville"
+                >
+                  <option value="ville1">1 chambre salon</option>
+                  <option value="ville2">2 chambre salon</option>
+                  <option value="ville3">3 chambre salon</option>
+                </select>
+              </div>
+            </div>
+            <div class="min-w-[19%]">
+              <div class="text-[#171717] mb-5"><p>Budget</p></div>
+              <div class="w-full">
+                <select
+                  name="title"
+                  class="w-full hover:bg-slate-100 rounded-xl text-gray-500 px-5 py-2"
+                  id="ville"
+                >
+                  <option value="ville1">0-50k</option>
+                  <option value="ville2">50-100k</option>
+                  <option value="ville3">100k-200k</option>
+                </select>
+              </div>
+            </div>
+            <div class="min-w-[19%]">
+              <div class="text-[#171717] mb-5"><p>Date de publication</p></div>
+              <div class="w-full">
+                <select
+                  name="title"
+                  class="w-full hover:bg-slate-100 rounded-xl text-gray-500 px-5 py-2"
+                  id="ville"
+                >
+                  <option value="ville1">Depuis une semaine</option>
+                  <option value="ville2">Depuis un mois</option>
+                  <option value="ville3">Depuis 3 mois</option>
+                </select>
+              </div>
+            </div>
+            <div class="min-w-fit">
+              <button
+                class="px-6 py-3 mx-[auto] bg-[#1D1D1D] hover:bg-opacity-75 cursor-pointer text-white rounded-xl"
+              >
+                Rechercher
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="flex flex-row">
+          <div
+            class="flex flex-row gap-6 w-full overflow-x-scroll noscrollbar pl-[4vw] pr-3"
+          >
+            <div
+              class="min-w-fit max-w-fit bg-black text-white border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Agoe</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Agbalepedo</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Adidogomé</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Adétikope</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Amadahome</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Agoe</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Agbalepedo</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Adidogomé</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Adétikope</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Amadahome</span>
+            </div>
+            <div
+              class="min-w-fit max-w-fit border-[0.25px] border-[#000000a0] px-5 py-3 rounded-full"
+            >
+              <span>Agoe</span>
+            </div>
+          </div>
+          <div class="min-w-[100px]">
+            <button
+              class="py-3 px-5 rounded-full bg-black text-white cursor-pointer"
+            >
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full px-[4vw] py-[5vh]">
+        <div
+          class="w-full flex gap-x-[calc(4%/3)] gap-y-[calc(4%/3)] flex-wrap"
+        >
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="max-w-[24%] min-w-[24%] mb-6 border-[3px] border-[#F2F2F2] rounded-xl overflow-hidden"
+          >
+            <div class="-mb-4 w-full h-[300px] overflow-hidden">
+              <img
+                src="/images/villa1.png"
+                alt="villa"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <div class="py-3 px-3 mt-8">
+              <div class="text-xl font-bold text-black">
+                1 Chambre salon - Agoè Assiyéyé
+              </div>
+              <div class="text-gray-500 mb-8">
+                Location de chambre salon WC douche + cuisine interne
+              </div>
+              <div class="flex justify-between items-center">
+                <p>
+                  <span class="text-black text-xl font-semibold">120.000</span>
+                  <span class="text-gray-500">/Mois</span>
+                </p>
+                <div class="text-black">
+                  <button
+                    class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full min-h-[120vh] flex flex-col justify-between bg-[url('/images/assist.png')] bg-[#0000005e] bg-cover bg-center bg-no-repeat rounded-b-3xl overflow-hidden relative z-[2] pb-5"
+      >
+        <div class="w-full px-[4vw] py-[8vh]">
+          <div class="text-white text-center mx-[auto] max-w-[850px]">
+            <p class="text-6xl font-bold">
+              Besoin d’assistance pour trouver un bien?
+            </p>
+            <p class="mb-16 mt-6">
+              Nous sommes toujours à votre ecoute n’hésitez pas à nous contacter
+            </p>
+            <button
+              class="flex gap-3 px-6 py-3 rounded-full bg-[#41B064] mx-[auto] items-center max-w-fit"
+            >
+              <span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.62 10.79C8.06 13.62 10.38 15.93 13.21 17.38L15.41 15.18C15.68 14.91 16.08 14.82 16.43 14.94C17.55 15.31 18.76 15.51 20 15.51C20.55 15.51 21 15.96 21 16.51V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
+              <span>+228 90 74 55 22</span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="marquee text-white flex gap-16 flex-nowrap font-semibold items-center leading-normal text-9xl w-fit"
+        >
+          <span>contact@cigafi.com</span>
+          <span
+            ><svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-full"
+            >
+              <circle cx="20" cy="20" r="17" stroke="white" stroke-width="6" />
+            </svg>
+          </span>
+          <span>contact@cigafi.com</span>
+          <span
+            ><svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="20" cy="20" r="17" stroke="white" stroke-width="6" />
+            </svg>
+          </span>
+          <span>contact@cigafi.com</span>
+        </div>
+      </div>
+      <div
+        class="bg-[#181818] text-white -mt-8 w-full px-[4vw] pt-[16vh]"
+      >
+        <div class="flex gap-[calc(4%/3)]">
+          <div class="max-w-[24%] min-w-[24%]">
+            <p class="mb-3"><a href="#">Location immobilière</a></p>
+            <p class="mb-3"><a href="#">Vente et achat immobilière</a></p>
+          </div>
+          <div class="max-w-[24%] min-w-[24%]">
+            <p class="mb-3"><a href="#">Bibliothèque numérique</a></p>
+            <p class="mb-3"><a href="#">A propos</a></p>
+            <p class="mb-3"><a href="#">Nous contacter</a></p>
+          </div>
+          <div class="max-w-[24%] min-w-[24%]">
+            <p class="mb-3"><a href="#">Instagram</a></p>
+            <p class="mb-3"><a href="#">Facebook</a></p>
+            <p class="mb-3"><a href="#">Linkedin</a></p>
+          </div>
+          <div class="max-w-[24%] min-w-[24%]">
+            <p class="mb-3">Abonnez-vous à nos actualités</p>
+            <form
+              class="mb-3 w-full flex flex-nowrap rounded-lg overflow-hidden"
+            >
+              <input
+                type="text"
+                placeholder="johndoe@cigafi.com"
+                class="px-5 py-3 text-black w-full"
+              />
+              <input
+                type="submit"
+                value="S'inscrire"
+                class="px-5 py-3 max-w-fit bg-black text-white"
+              />
+            </form>
+          </div>
+        </div>
+        <div class="mt-16">
+          <svg
+            width="1394"
+            height="268"
+            viewBox="0 0 1394 268"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M270.278 108.125H214.364C212.769 98.9551 209.829 90.8321 205.543 83.7557C201.258 76.5795 195.925 70.4998 189.547 65.5163C183.168 60.5329 175.892 56.7953 167.719 54.3036C159.646 51.7122 150.925 50.4166 141.556 50.4166C124.911 50.4166 110.161 54.6026 97.3033 62.9748C84.446 71.2473 74.3795 83.4068 67.1037 99.4535C59.8279 115.4 56.19 134.886 56.19 157.909C56.19 181.331 59.8279 201.066 67.1037 217.112C74.4792 233.059 84.5457 245.119 97.3033 253.292C110.161 261.365 124.862 265.402 141.407 265.402C150.576 265.402 159.148 264.206 167.121 261.814C175.194 259.322 182.42 255.684 188.799 250.9C195.277 246.116 200.709 240.235 205.095 233.259C209.58 226.282 212.67 218.308 214.364 209.338L270.278 209.637C268.185 224.189 263.65 237.843 256.673 250.601C249.796 263.358 240.776 274.621 229.613 284.388C218.45 294.056 205.394 301.631 190.444 307.113C175.493 312.495 158.898 315.186 140.659 315.186C113.749 315.186 89.7285 308.957 68.5987 296.498C47.469 284.04 30.8243 266.049 18.6648 242.528C6.50521 219.006 0.425427 190.8 0.425427 157.909C0.425427 124.919 6.55504 96.7126 18.8143 73.2905C31.0735 49.7687 47.768 31.7785 68.8977 19.3199C90.0275 6.86137 113.948 0.632091 140.659 0.632091C157.702 0.632091 173.55 3.02413 188.201 7.80822C202.852 12.5923 215.909 19.619 227.371 28.8881C238.833 38.0576 248.251 49.3202 255.627 62.6758C263.102 75.9317 267.986 91.0813 270.278 108.125ZM384.957 4.81817V311H329.492V4.81817H384.957ZM658.558 102.593C656.066 94.5199 652.628 87.2939 648.242 80.9151C643.956 74.4367 638.774 68.9051 632.694 64.3203C626.714 59.7356 619.837 56.297 612.062 54.0046C604.288 51.6126 595.817 50.4166 586.647 50.4166C570.202 50.4166 555.55 54.5528 542.693 62.8253C529.836 71.0978 519.72 83.2573 512.344 99.304C505.068 115.251 501.43 134.686 501.43 157.61C501.43 180.733 505.068 200.318 512.344 216.365C519.62 232.411 529.736 244.621 542.693 252.993C555.65 261.265 570.7 265.402 587.843 265.402C603.391 265.402 616.847 262.412 628.209 256.431C639.671 250.451 648.491 241.98 654.671 231.016C660.85 219.953 663.94 206.996 663.94 192.145L676.498 194.089H593.375V150.733H717.611V187.511C717.611 213.723 712.03 236.398 700.867 255.534C689.704 274.671 674.355 289.422 654.82 299.787C635.285 310.053 612.86 315.186 587.544 315.186C559.338 315.186 534.57 308.857 513.241 296.199C492.012 283.442 475.417 265.352 463.457 241.93C451.596 218.408 445.666 190.501 445.666 158.208C445.666 133.49 449.154 111.414 456.131 91.9783C463.207 72.543 473.075 56.0478 485.733 42.4929C498.39 28.8383 513.241 18.4728 530.284 11.3963C547.328 4.22016 565.866 0.632091 585.899 0.632091C602.843 0.632091 618.641 3.12381 633.292 8.10724C647.943 12.991 660.95 19.9678 672.312 29.0376C683.774 38.1075 693.193 48.8717 700.568 61.3302C707.944 73.7888 712.778 87.5431 715.07 102.593H658.558ZM809.529 311H750.326L858.117 4.81817H926.59L1034.53 311H975.327L893.549 67.6094H891.157L809.529 311ZM811.472 190.949H972.935V235.501H811.472V190.949ZM1083.28 311V4.81817H1279.43V51.3136H1138.74V134.437H1265.97V180.933H1138.74V311H1083.28ZM1393.84 4.81817V311H1338.38V4.81817H1393.84Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

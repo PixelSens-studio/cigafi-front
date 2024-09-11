@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: "poppins", sans-serif;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.noscrollbar {
+    scrollbar-width: none;
+}
+
+/* The animation */
+@keyframes marquee{
+    0%{transform: translateX(100%);}
+    100%{transform: translateX(-100%);}
+}
+
+/* media query to enable animation for only those who want it */
+@media (prefers-reduced-motion: no-preference) {
+    .marquee {
+        animation: marquee 15s linear infinite;
+    }
+}
