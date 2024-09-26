@@ -1,0 +1,241 @@
+<%- include('./partials/head') %>
+  <!-- Page -->
+  <!-- Main -->
+  <div class="flex grow flex-col [[data-sticky-header=on]_&amp;]:pt-[--tw-header-height-default]">
+   <!-- Header -->
+   <%- include('./partials/navbar') %>
+   <!-- End of Header -->
+   <!-- Toolbar -->
+   <div class="">
+    <!-- Container -->
+    <div class="container-fixed">
+     <div class="border-t border-gray-200 dark:border-coal-100">
+     </div>
+     <div class="flex items-center justify-between flex-wrap gap-5 my-5">
+      <div class="flex flex-col gap-1">
+       <h1 class="font-medium text-lg text-gray-900">
+       </h1>
+       <div class="flex items-center gap-1 text-2sm">
+        <a class="text-gray-700 hover:text-primary" href="html/demo7.html">
+        Liste de mes réservations
+        </a>
+       </div>
+      </div>
+      <div class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
+       <a class="btn btn-sm btn-light" href="html/demo7/account/home/get-started.html">
+        <i class="ki-filled ki-exit-down !text-base">
+        </i>
+        Export
+       </a>
+    
+      </div>
+     </div>
+     <div class="border-b border-gray-200 dark:border-coal-100 mb-5 lg:mb-7.5">
+     </div>
+    </div>
+    <!-- End of Container -->
+   </div>
+   <!-- End of Toolbar -->
+   <!-- Content -->
+   <main class="grow" id="content" role="content">
+    <!-- Container -->
+    <div class="container-fixed" id="content_container">
+    </div>
+    <!-- End of Container -->
+    <!-- Container -->
+    <div class="container-fixed">
+     <div class="grid gap-5 lg:gap-7.5">
+      <!-- begin: grid -->
+     
+	  <div class="card">
+		<div class="card-body lg:py-7.5">
+		  <div class="flex flex-wrap gap-7.5">
+			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\villa2.png">
+			</div>
+			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
+			  <div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-col gap-1">
+				  <div class="flex items-center gap-2.5">
+					<h2 class="text-2xl font-semibold text-gray-900">
+					 Apprtement meublé - Résidence Amadeuse
+					</h2>
+				  </div>
+				  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+					Effectué le <span class="text-gray-800"> 12 Sep 2024</span>
+				  </p>
+				</div>
+				<div class="flex items-center gap-2.5">
+				  <button class="btn btn-md bg-kr-secondary text-white" data-modal-toggle="#modaBookingCancel">
+					Annuler la réservation
+				  </button>
+				  <a class="btn btn-md bg-kr-primary text-white" href="#">
+					<i class="ki-filled ki-arrow-down"></i>
+					Facture
+				  </a>
+				</div>
+			  </div>
+			  <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+		
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-calendar text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Période de réservation</span>
+					<span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-time text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Montant</span>
+					<span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-people text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Personnes attendu</span>
+					<span class="text-sm font-medium text-gray-800"> Personne(s)</span>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body lg:py-7.5">
+		  <div class="flex flex-wrap gap-7.5">
+			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\villa1.png">
+			</div>
+			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
+			  <div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-col gap-1">
+				  <div class="flex items-center gap-2.5">
+					<h2 class="text-2xl font-semibold text-gray-900">
+					 Apprtement meublé - Résidence Amadeuse
+					</h2>
+				  </div>
+				  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+					Effectué le <span class="text-gray-800"> 12 Sep 2024</span>
+				  </p>
+				</div>
+				<div class="flex items-center gap-2.5">
+				  <button class="btn btn-md bg-kr-secondary text-white" data-modal-toggle="#modaBookingCancel">
+					Annuler la réservation
+				  </button>
+				  <a class="btn btn-md bg-kr-primary text-white" href="#">
+					<i class="ki-filled ki-arrow-down"></i>
+					Facture
+				  </a>
+				</div>
+			  </div>
+			  <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+		
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-calendar text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Période de réservation</span>
+					<span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-time text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Montant</span>
+					<span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-people text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Personnes attendu</span>
+					<span class="text-sm font-medium text-gray-800"> Personne(s)</span>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body lg:py-7.5">
+		  <div class="flex flex-wrap gap-7.5">
+			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\villa3.png">
+			</div>
+			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
+			  <div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-col gap-1">
+				  <div class="flex items-center gap-2.5">
+					<h2 class="text-2xl font-semibold text-gray-900">
+					 Apprtement meublé - Résidence Amadeuse
+					</h2>
+				  </div>
+				  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+					Effectué le <span class="text-gray-800"> 12 Sep 2024</span>
+				  </p>
+				</div>
+				<div class="flex items-center gap-2.5">
+				  <button class="btn btn-md bg-kr-secondary text-white" data-modal-toggle="#modaBookingCancel">
+					Annuler la réservation
+				  </button>
+				  <a class="btn btn-md bg-kr-primary text-white" href="#">
+					<i class="ki-filled ki-arrow-down"></i>
+					Facture
+				  </a>
+				</div>
+			  </div>
+			  <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+		
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-calendar text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Période de réservation</span>
+					<span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-time text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Montant</span>
+					<span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-people text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Personnes attendu</span>
+					<span class="text-sm font-medium text-gray-800"> Personne(s)</span>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+     </div>
+    </div>
+    <!-- End of Container -->
+   </main>
+   <!-- End of Content -->
+   <%- include('./partials/footer') %>

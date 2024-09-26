@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --yellow-cg: #FFA200;
+    --green-cg: #005340;
+    --gray-dark: #858585;
+    --gray-light: #cfcece;
+    --gray-light-100: #e7e7e7;
+    --clay: #f5f5f5;
+    --dark-700: #4b4b5a;
+    --light-blue: #b8c0ff;
+    --brown: #7b684b;
+    --light-white: #fdfdfd;
+    --bg-dark-light: #0d0f11;
+    --light-violet: #b565ce;
+    --standard-blue: #6464ff;
+  }
+
+* {
+    font-family: "poppins", sans-serif;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.noscrollbar {
+    scrollbar-width: none;
+}
+
+/* The animation */
+@keyframes marquee{
+    0%{transform: translateX(100%);}
+    100%{transform: translateX(-100%);}
+}
+
+/* media query to enable animation for only those who want it */
+@media (prefers-reduced-motion: no-preference) {
+    .marquee {
+        animation: marquee 15s linear infinite;
+    }
+}
+
+.text-kr-primary{
+    color: #2C3482;
+  }
+  
+  .bg-kr-primary{
+  background-color: #2C3482;
+  }
+  
+  .bg-kr-secondary{
+    background-color: #EF0100;
+    }
+  
+  .text-kr-secondary{
+    color: #EF0100;
+  }
+
+.bg-green-cg{
+    background-color: var(--green-cg);
+}
+  

@@ -1,6 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./views/*.ejs","./views/partials/*.ejs"],
+  content: [
+    "./views/mainPages/*.ejs",
+    "./views/mainPages/partials/*.ejs",
+
+    "./views/userDashboard/*.ejs", 
+    "./views/userDashboard/*.ejs",
+
+    "./views/agentDashboard/*.ejs", 
+    "./views/agentDashboard/*.ejs",
+
+    "./views/adminDashboard/*.ejs",
+    "./views/adminDashboard/partials/*.ejs"],
   theme: {
     extend: {},
   },
