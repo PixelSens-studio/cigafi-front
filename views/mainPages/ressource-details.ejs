@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+    <div class="w-full overflow-x-hidden">
+      <div
+        class="bg-[url('/assets/images/31.png')] bg-cover bg-center bg-no-repeat min-h-[90vh]"
+      >
+        <%- include('./partials/main_nav_bar') %>
+        <div class="px-10 mt-[45vh] mb-20">
+          <div class="grid grid-cols-4 text-white">
+            <div class="col-span-2 col-start-2">
+              <div class="mb-8">
+                <h1 class="text-6xl font-bold">
+                  When Is The Best Time of Year To Visit Japan?
+                </h1>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="min-w-fit">
+                  <span class="font-bold">Author:</span>
+                  <span class=""> Neil Gibson </span>
+                </div>
+                <div class="bg-white h-[28px] block w-[1px]"></div>
+                <div class="min-w-fit">
+                  <span class="font-bold">Date:</span>
+                  <span class=""> Novembre 2022 </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-10 py-24">
+        <div class="grid grid-cols-4 gap-6">
+          <div class="col-span-1">
+            <div>
+              <div class="mb-5">
+                <p class="font-black text-xl">Share:</p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <a href="" class="flex gap-3 items-center">
+                  <div class="p-2 border border-black rounded-full">
+                    <svg
+                      width="23"
+                      height="23"
+                      viewBox="0 0 23 23"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14.9753 3.29539C14.9753 3.18417 14.9311 3.07751 14.8525 2.99887C14.7739 2.92023 14.6672 2.87605 14.556 2.87605H12.4593C11.4035 2.82346 10.3699 3.19088 9.58414 3.89803C8.79842 4.60519 8.32452 5.59458 8.266 6.65005V8.91444H6.16933C6.05812 8.91444 5.95146 8.95862 5.87282 9.03726C5.79418 9.1159 5.75 9.22256 5.75 9.33378V11.5143C5.75 11.6255 5.79418 11.7322 5.87282 11.8108C5.95146 11.8895 6.05812 11.9336 6.16933 11.9336H8.266V17.5527C8.266 17.6639 8.31017 17.7706 8.38882 17.8492C8.46746 17.9278 8.57411 17.972 8.68533 17.972H11.2013C11.3125 17.972 11.4192 17.9278 11.4978 17.8492C11.5765 17.7706 11.6207 17.6639 11.6207 17.5527V11.9336H13.818C13.9112 11.935 14.0022 11.9052 14.0767 11.849C14.1511 11.7928 14.2047 11.7134 14.2289 11.6233L14.8327 9.4428C14.8494 9.38084 14.8517 9.31588 14.8393 9.25292C14.8269 9.18996 14.8003 9.13068 14.7614 9.07964C14.7225 9.0286 14.6724 8.98716 14.615 8.95852C14.5576 8.92988 14.4944 8.9148 14.4302 8.91444H11.6207V6.65005C11.6415 6.44246 11.739 6.2501 11.8941 6.11053C12.0492 5.97096 12.2507 5.8942 12.4593 5.89525H14.556C14.6672 5.89525 14.7739 5.85107 14.8525 5.77243C14.9311 5.69379 14.9753 5.58713 14.9753 5.47592V3.29539Z"
+                        fill="black"
+                      />
+                    </svg>
+                  </div>
+                  <div>Facebook</div>
+                </a>
+                <a href="" class="flex gap-3 items-center">
+                  <div class="p-3 border border-black rounded-full">
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_610_303)">
+                        <path
+                          d="M10.935 8.98922C10.747 8.89406 9.83156 8.44734 9.66047 8.38359C9.48938 8.32266 9.36516 8.29078 9.24047 8.47875C9.11859 8.66203 8.75953 9.08156 8.64984 9.20391C8.54016 9.32625 8.43234 9.33562 8.24719 9.25266C8.05922 9.1575 7.45875 8.96203 6.74578 8.32266C6.18891 7.82719 5.81813 7.21688 5.70797 7.02891C5.59828 6.84328 5.69578 6.73828 5.78859 6.64547C5.87391 6.56016 5.97656 6.43078 6.07172 6.31828C6.16219 6.20578 6.19125 6.13031 6.25734 6.00844C6.31828 5.87672 6.28687 5.77406 6.24047 5.68125C6.19406 5.58844 5.82047 4.66828 5.66437 4.30172C5.51531 3.93797 5.35922 3.98438 5.24437 3.98438C5.13703 3.97453 5.01234 3.97453 4.88813 3.97453C4.76391 3.97453 4.56094 4.02094 4.38984 4.19906C4.21875 4.38703 3.73547 4.83609 3.73547 5.74453C3.73547 6.65531 4.40438 7.53656 4.49719 7.66828C4.59234 7.79016 5.81297 9.66516 7.68563 10.4709C8.13234 10.6589 8.47922 10.7714 8.75016 10.8642C9.19687 11.0058 9.60469 10.9861 9.92672 10.9397C10.283 10.8811 11.0302 10.4878 11.1867 10.0486C11.3456 9.60656 11.3456 9.24047 11.2992 9.1575C11.2528 9.07219 11.1309 9.02578 10.943 8.94281L10.935 8.98922ZM7.53891 13.5938H7.52906C6.42047 13.5938 5.32453 13.2933 4.36734 12.7317L4.14281 12.5977L1.79906 13.208L2.42906 10.9275L2.27766 10.6931C1.65865 9.70892 1.33026 8.56987 1.33031 7.40719C1.33031 4.00406 4.11609 1.22812 7.54359 1.22812C9.20391 1.22812 10.7616 1.875 11.9334 3.04688C12.5115 3.61809 12.9701 4.29871 13.2824 5.04903C13.5946 5.79934 13.7543 6.60433 13.7522 7.41703C13.7475 10.8178 10.9641 13.5938 7.54125 13.5938H7.53891ZM12.8245 2.15578C11.3986 0.778594 9.52359 0 7.52906 0C3.41531 0 0.065625 3.33516 0.0632813 7.43391C0.0632813 8.74266 0.405 10.0195 1.05938 11.1497L0 15L3.96 13.9673C5.05702 14.5588 6.28323 14.8699 7.52953 14.873H7.53188C11.648 14.873 14.9977 11.5378 15 7.43625C15 5.45156 14.2261 3.58359 12.8152 2.17969L12.8245 2.15578Z"
+                          fill="black"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_610_303">
+                          <rect width="15" height="15" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>Whatsapp</div>
+                </a>
+                <a href="" class="flex gap-3 items-center">
+                  <div class="p-3 border border-black rounded-full">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_610_307)">
+                        <path
+                          d="M14.7011 1.41869L0.525853 6.91325C-0.0445851 7.16913 -0.237523 7.68153 0.387978 7.95963L4.02454 9.12129L12.8173 3.65909C13.2974 3.31619 13.7889 3.40763 13.366 3.78484L5.81417 10.6578L5.57695 13.5664C5.79667 14.0155 6.19898 14.0176 6.45561 13.7944L8.54492 11.8073L12.1232 14.5006C12.9543 14.9952 13.4065 14.676 13.5853 13.7695L15.9324 2.59859C16.176 1.48281 15.7605 0.991187 14.7011 1.41869Z"
+                          fill="black"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_610_307">
+                          <rect width="16" height="16" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>Telegram</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2">
+            <div>
+              <div class="mb-5">
+                <p class="text-4xl font-bold mb-5">
+                  The good news for travelers is that there is no single best
+                  time of year to travel to Japan
+                </p>
+              </div>
+              <div class="mb-5">
+                <p class="mb-5">
+                  Japan is truly a year-round destination, and Japanese culture
+                  is remarkable in its profound appreciation of the changing of
+                  the seasons. As you’ll see when you visit, each season — and
+                  even sub-season! — is celebrated with seasonal foods, and
+                  often matsuri (festivals). Because of this, we typically
+                  recommend taking advantage of any chance to visit Japan.
+                </p>
+                <p class="mb-5">
+                  On the other hand, if your dates are flexible it’s worth
+                  thinking about which time of year you might enjoy most. After
+                  all, some travelers hate the cold — or the heat and humidity
+                  of summer — while others will do whatever it takes to avoid
+                  crowds! (When planning a trip to Japan, a key question to ask
+                  yourself is: would you rather have better weather, or fewer
+                  tourists around?)
+                </p>
+                <p class="mb-5">
+                  Because there is so much to consider, we’ve put together this
+                  comprehensive guide on the best time to travel to Japan,
+                  including information on the seasons, weather, national
+                  holidays to look out for, and more.
+                </p>
+              </div>
+              <div class="my-16">
+                <img src="/assets/images/32.png" alt="Ressources" />
+              </div>
+              <div class="mb-5">
+                <p class="text-5xl font-bold mb-5">
+                  Japanese Seasons 101: The Basics
+                </p>
+              </div>
+              <div class="mb-5">
+                <p class="mb-5">
+                  Japan is truly a year-round destination, and Japanese culture
+                  is remarkable in its profound appreciation of the changing
+                </p>
+                <p class="mb-5">
+                  On the other hand, if your dates are flexible it’s worth
+                  thinking about which time of year you might enjoy most. After
+                  all, some travelers hate the cold — or the heat and humidity
+                  of summer — while others will do whatever it takes to avoid
+                  crowds! (When planning a trip to Japan, a key question to ask
+                  yourself is: would you rather have better weather, or fewer
+                  tourists around?)
+                </p>
+                <p class="mb-5">
+                  Because there is so much to consider, we’ve put together this
+                  comprehensive guide.
+                </p>
+              </div>
+              <div class="mb-5">
+                <p class="text-5xl font-bold mb-5">
+                  Japanese Seasons 101: The Basics
+                </p>
+              </div>
+              <div class="mb-5">
+                <p class="mb-5">
+                  On the other hand, if your dates are flexible it’s worth
+                  thinking about which time of year you might enjoy most. After
+                  all, some travelers hate the cold — or the heat and humidity
+                  of summer — while others will do whatever it takes to avoid
+                  crowds! (When planning a trip to Japan, a key question to ask
+                  yourself is: would you rather have better weather, or fewer
+                  tourists around?)
+                </p>
+                <p class="mb-5">
+                  Because there is so much to consider, we’ve put together this
+                  comprehensive guide.
+                </p>
+                <p class="mb-5">
+                  Japan is truly a year-round destination, and Japanese culture
+                  is remarkable in its profound appreciation of the changing
+                </p>
+                <div class="mb-5">
+                  <ul class="list-item">
+                    <li>Smoke alarm</li>
+                    <li>Carbon monoxid alarm</li>
+                    <li>First aid Kit</li>
+                    <li>Self checked with lockbox</li>
+                    <li>Security camera</li>
+                  </ul>
+                </div>
+                <p class="mb-5">
+                  Because there is so much to consider, we’ve put together this
+                  comprehensive guide.
+                </p>
+              </div>
+              <div class="flex gap-9 my-16">
+                <img src="/assets/images/33.png" alt="Ressources" />
+                <img src="/assets/images/33.png" alt="Ressources" />
+              </div>
+              <div class="mb-5">
+                <p class="text-5xl font-bold mb-5">
+                  Japanese Seasons 101: The Basics
+                </p>
+              </div>
+              <div class="mb-5">
+                <p class="mb-5">
+                  On the other hand, if your dates are flexible it’s worth
+                  thinking about which time of year you might enjoy most. After
+                  all, some travelers hate the cold — or the heat and humidity
+                  of summer — while others will do whatever it takes to avoid
+                  crowds! (When planning a trip to Japan, a key question to ask
+                  yourself is: would you rather have better weather, or fewer
+                  tourists around?)
+                </p>
+              </div>
+              <div class="flex gap-9 my-16">
+                <img src="/assets/images/34.png" alt="Ressources" />
+              </div>
+              <div class="mb-5">
+                <p class="mb-5">
+                  On the other hand, if your dates are flexible it’s worth
+                  thinking about which time of year you might enjoy most. After
+                  all, some travelers hate the cold — or the heat and humidity
+                  of summer — while others will do whatever it takes to avoid
+                  crowds! (When planning a trip to Japan, a key question to ask
+                  yourself is: would you rather have better weather, or fewer
+                  tourists around?)
+                </p>
+                <p class="mb-5">
+                  On others will do whatever it takes to avoid crowds! (When
+                  planning a trip to Japan, a key question to ask yourself is:
+                  would you rather have better weather, or fewer tourists
+                  around?)
+                </p>
+              </div>
+            </div>
+            <div class="mt-24">
+              <div class="mb-5">
+                <p class="font-black text-xl">Share the article</p>
+              </div>
+              <div class="flex gap-2 items-center">
+                <a href="" class="">
+                  <svg
+                    width="58"
+                    height="58"
+                    viewBox="0 0 58 58"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="28.6084"
+                      cy="28.6084"
+                      r="28.1084"
+                      stroke="#131415"
+                    />
+                    <path
+                      d="M35.7028 15.9699C35.7028 15.7761 35.6258 15.5902 35.4888 15.4531C35.3517 15.3161 35.1658 15.2391 34.972 15.2391H31.3182C29.4784 15.1475 27.677 15.7878 26.3078 17.0201C24.9385 18.2524 24.1126 19.9766 24.0107 21.8159V25.762H20.3569C20.163 25.762 19.9772 25.839 19.8401 25.9761C19.7031 26.1131 19.6261 26.299 19.6261 26.4928V30.2927C19.6261 30.4866 19.7031 30.6724 19.8401 30.8095C19.9772 30.9465 20.163 31.0235 20.3569 31.0235H24.0107V40.8157C24.0107 41.0095 24.0876 41.1954 24.2247 41.3324C24.3617 41.4694 24.5476 41.5464 24.7414 41.5464H29.126C29.3198 41.5464 29.5056 41.4694 29.6427 41.3324C29.7797 41.1954 29.8567 41.0095 29.8567 40.8157V31.0235H33.6859C33.8484 31.0258 34.0071 30.9739 34.1368 30.876C34.2665 30.7781 34.3598 30.6397 34.402 30.4827L35.4543 26.6828C35.4834 26.5748 35.4873 26.4616 35.4658 26.3519C35.4442 26.2422 35.3978 26.1389 35.33 26.0499C35.2622 25.961 35.1749 25.8888 35.0749 25.8389C34.9748 25.7889 34.8646 25.7627 34.7528 25.762H29.8567V21.8159C29.8931 21.4542 30.063 21.119 30.3332 20.8757C30.6035 20.6325 30.9547 20.4988 31.3182 20.5006H34.972C35.1658 20.5006 35.3517 20.4236 35.4888 20.2865C35.6258 20.1495 35.7028 19.9636 35.7028 19.7698V15.9699Z"
+                      fill="#131415"
+                    />
+                  </svg>
+                </a>
+                <a href="" class="">
+                  <svg
+                    width="58"
+                    height="58"
+                    viewBox="0 0 58 58"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="29.1759"
+                      cy="28.6084"
+                      r="28.1084"
+                      stroke="#131415"
+                    />
+                    <g clip-path="url(#clip0_610_267)">
+                      <path
+                        d="M23.0097 41.125H17.3862V23.0152H23.0097V41.125ZM20.1946 20.5449C18.3966 20.5449 16.9376 19.0549 16.9376 17.2569C16.9376 16.3931 17.2808 15.5647 17.8916 14.9539C18.5024 14.3431 19.3308 14 20.1946 14C21.0584 14 21.8868 14.3431 22.4976 14.9539C23.1084 15.5647 23.4515 16.3931 23.4515 17.2569C23.4515 19.0549 21.9926 20.5449 20.1946 20.5449ZM44.0568 41.125H38.4458V32.3094C38.4458 30.2082 38.4032 27.5141 35.5221 27.5141C32.5984 27.5141 32.1499 29.7964 32.1499 32.1582V41.125H26.5321V23.0152H31.9252V25.4855H32.0036C32.7544 24.0624 34.5882 22.5608 37.324 22.5608C43.0154 22.5608 44.0617 26.3089 44.0617 31.1769V41.125H44.0568Z"
+                        fill="black"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_610_267">
+                        <rect
+                          width="31"
+                          height="31"
+                          fill="white"
+                          transform="translate(15.0001 14)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+                <a href="" class="">
+                  <svg
+                    width="58"
+                    height="58"
+                    viewBox="0 0 58 58"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="28.7434"
+                      cy="28.6084"
+                      r="28.1084"
+                      stroke="#131415"
+                    />
+                    <path
+                      d="M33.2714 28.3939C33.2714 25.7631 31.1669 23.6585 28.5361 23.6585C25.9054 23.6585 23.8008 25.7631 23.8008 28.3939C23.8008 31.0246 25.9054 33.1292 28.5361 33.1292C31.1669 33.1292 33.2714 31.0246 33.2714 28.3939ZM35.7268 28.3939C35.7268 32.4276 32.5699 35.5845 28.5361 35.5845C24.5023 35.5845 21.3455 32.4276 21.3455 28.3939C21.3455 24.3601 24.5023 21.2032 28.5361 21.2032C32.5699 21.2032 35.7268 24.3601 35.7268 28.3939ZM37.656 20.8524C37.656 21.9047 36.9545 22.6062 35.9022 22.6062C34.8499 22.6062 34.1484 21.9047 34.1484 20.8524C34.1484 19.8001 34.8499 19.0986 35.9022 19.0986C36.9545 19.0986 37.656 19.9755 37.656 20.8524ZM28.5361 16.8186C26.4315 16.8186 22.047 16.6432 20.2932 17.3448C19.0655 17.8709 18.0132 18.9232 17.6624 20.1509C16.9609 21.9047 17.1363 26.2893 17.1363 28.3939C17.1363 30.4984 16.9609 34.883 17.6624 36.6368C18.0132 37.8645 19.0655 38.9168 20.2932 39.2676C22.047 39.9691 26.6069 39.7937 28.5361 39.7937C30.4653 39.7937 35.0253 39.9691 36.7791 39.2676C38.0068 38.7414 38.8837 37.8645 39.4098 36.6368C40.1114 34.7076 39.936 30.3231 39.936 28.3939C39.936 26.4647 40.1114 21.9047 39.4098 20.1509C39.0591 18.9232 38.0068 17.8709 36.7791 17.5202C35.0253 16.6432 30.6407 16.8186 28.5361 16.8186ZM42.5667 28.3939V34.1815C42.5667 36.2861 41.8652 38.3906 40.2867 40.1445C38.7083 41.7229 36.6037 42.4244 34.3237 42.4244H22.7485C20.6439 42.4244 18.5393 41.7229 16.7855 40.1445C15.3825 38.566 14.5056 36.4614 14.5056 34.1815V22.6062C14.5056 20.3263 15.3825 18.2217 16.7855 16.6432C18.5393 15.2402 20.6439 14.3633 22.7485 14.3633H34.3237C36.4283 14.3633 38.5329 15.0648 40.2867 16.6432C41.6898 18.2217 42.5667 20.3263 42.5667 22.6062V28.3939Z"
+                      fill="#131415"
+                    />
+                  </svg>
+                </a>
+                <a href="" class="">
+                  <svg
+                    width="58"
+                    height="58"
+                    viewBox="0 0 58 58"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="28.9022"
+                      cy="28.6084"
+                      r="28.1084"
+                      stroke="#131415"
+                    />
+                    <g clip-path="url(#clip0_610_259)">
+                      <path
+                        d="M32.3074 30.5673V33.9107C32.3074 34.6185 32.1024 34.9724 31.6925 34.9724C31.4507 34.9724 31.2142 34.8562 30.9829 34.6238V29.8543C31.2142 29.6219 31.4507 29.5057 31.6925 29.5057C32.1024 29.5057 32.3074 29.8596 32.3074 30.5673ZM37.637 30.5832V31.3121H36.2178V30.5832C36.2178 29.8648 36.4544 29.5057 36.9274 29.5057C37.4004 29.5057 37.637 29.8648 37.637 30.5832ZM22.4052 27.1288H24.0924V25.6394H19.1728V27.1288H20.8284V36.145H22.4052V27.1288ZM26.9463 36.145H28.3497V28.3173H26.9463V34.3069C26.631 34.7505 26.3314 34.9724 26.0476 34.9724C25.8584 34.9724 25.748 34.8615 25.7164 34.6396C25.7059 34.6079 25.7007 34.4231 25.7007 34.085V28.3173H24.2973V34.5129C24.2973 35.0305 24.3394 35.4161 24.4235 35.6696C24.5496 36.0604 24.8545 36.2559 25.338 36.2559C25.8426 36.2559 26.3787 35.9337 26.9463 35.2893V36.145ZM33.7108 33.7998V30.6782C33.7108 29.9071 33.6634 29.3842 33.5688 29.1095C33.3901 28.518 33.017 28.2222 32.4493 28.2222C31.9237 28.2222 31.4349 28.5074 30.9829 29.0778V25.6394H29.5796V36.145H30.9829V35.3844C31.4559 35.9654 31.9448 36.2559 32.4493 36.2559C33.017 36.2559 33.3901 35.9654 33.5688 35.3844C33.6634 35.0991 33.7108 34.571 33.7108 33.7998ZM39.0403 33.6414V33.4354H37.6054C37.6054 33.9741 37.5949 34.2963 37.5739 34.4019C37.5003 34.7822 37.2901 34.9724 36.9432 34.9724C36.4596 34.9724 36.2178 34.6079 36.2178 33.879V32.5005H39.0403V30.8684C39.0403 30.0339 38.8984 29.4212 38.6146 29.0303C38.2046 28.4916 37.6475 28.2222 36.9432 28.2222C36.2284 28.2222 35.666 28.4916 35.256 29.0303C34.9617 29.4212 34.8145 30.0339 34.8145 30.8684V33.6097C34.8145 34.4442 34.9669 35.0569 35.2718 35.4477C35.6817 35.9865 36.2494 36.2559 36.9747 36.2559C37.7316 36.2559 38.2992 35.9759 38.6776 35.4161C38.8668 35.1308 38.9772 34.8456 39.0088 34.5604C39.0298 34.4653 39.0403 34.159 39.0403 33.6414ZM29.4534 19.1744V15.8468C29.4534 15.1179 29.2274 14.7535 28.7754 14.7535C28.3234 14.7535 28.0974 15.1179 28.0974 15.8468V19.1744C28.0974 19.9138 28.3234 20.2836 28.7754 20.2836C29.2274 20.2836 29.4534 19.9138 29.4534 19.1744ZM40.7905 31.0744C40.7905 33.5463 40.6539 35.3949 40.3806 36.6203C40.2334 37.2436 39.9285 37.7665 39.466 38.189C39.0035 38.6116 38.4674 38.8545 37.8577 38.9179C35.9235 39.1398 33.0065 39.2507 29.1065 39.2507C25.2066 39.2507 22.2896 39.1398 20.3554 38.9179C19.7457 38.8545 19.2069 38.6116 18.7392 38.189C18.2714 37.7665 17.9692 37.2436 17.8325 36.6203C17.5592 35.4372 17.4225 33.5885 17.4225 31.0744C17.4225 28.6025 17.5592 26.7538 17.8325 25.5284C17.9797 24.9052 18.2845 24.3823 18.747 23.9597C19.2096 23.5372 19.7509 23.2889 20.3711 23.215C22.2948 23.0037 25.2066 22.8981 29.1065 22.8981C33.0065 22.8981 35.9235 23.0037 37.8577 23.215C38.4674 23.2889 39.0061 23.5372 39.4739 23.9597C39.9417 24.3823 40.2439 24.9052 40.3806 25.5284C40.6539 26.7116 40.7905 28.5602 40.7905 31.0744ZM25.0542 10.8555H26.6625L24.7546 17.1778V21.472H23.1778V17.1778C23.0307 16.3961 22.71 15.2764 22.216 13.8186C21.827 12.7305 21.4854 11.7428 21.1911 10.8555H22.8625L23.982 15.0228L25.0542 10.8555ZM30.8883 16.132V18.905C30.8883 19.7607 30.7411 20.3839 30.4468 20.7748C30.0474 21.3135 29.4902 21.5829 28.7754 21.5829C28.0711 21.5829 27.5192 21.3135 27.1198 20.7748C26.8255 20.3734 26.6783 19.7501 26.6783 18.905V16.132C26.6783 15.2869 26.8255 14.669 27.1198 14.2781C27.5192 13.7394 28.0711 13.47 28.7754 13.47C29.4902 13.47 30.0474 13.7394 30.4468 14.2781C30.7411 14.669 30.8883 15.2869 30.8883 16.132ZM36.1705 13.5651V21.472H34.7357V20.6005C34.1785 21.2554 33.6372 21.5829 33.1116 21.5829C32.628 21.5829 32.3179 21.3875 32.1813 20.9966C32.0972 20.7431 32.0551 20.3469 32.0551 19.8082V13.5651H33.49V19.3804C33.49 19.729 33.4953 19.9138 33.5058 19.935C33.5373 20.1674 33.6477 20.2836 33.8369 20.2836C34.1207 20.2836 34.4203 20.0564 34.7357 19.6022V13.5651H36.1705Z"
+                        fill="#131415"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_610_259">
+                        <rect
+                          width="24.2194"
+                          height="28.3952"
+                          fill="white"
+                          transform="translate(16.9968 10.8555)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-10 py-32 bg-[#F2F3F7]">
+        <div class="flex justify-between items-center mb-28">
+          <div>
+            <p class="text-6xl font-bold">Sur le même sujet</p>
+          </div>
+          <div>
+            <a
+              href="#"
+              class="flex flex-row px-16 py-1 items-center border-black border rounded-full"
+            >
+              <span>Contacter l'agent</span>
+              <span>
+                <svg
+                  width="37"
+                  height="37"
+                  viewBox="0 0 37 37"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.1236 18.9537L24.1236 12.0611M24.1236 12.0611L17.2061 12.0361M24.1236 12.0611L12.9232 23.2616"
+                    stroke="#204B42"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-6">
+          <div class="col-span-1">
+            <div class="relative rounded-3xl overflow-hidden">
+              <img
+                src="/assets/images/24.png"
+                alt="images"
+                class="w-full h-full object-cover object-center"
+              />
+              <div
+                class="px-6 py-2 absolute bottom-0 right-9 overflow-hidden bg-white rounded-t-xl text-center"
+              >
+                <p class="text-[#FFA200]">Sep</p>
+                <p class="text-black text-2xl font-bold">28</p>
+              </div>
+            </div>
+            <div class="mt-6 mb-2">
+              <p class="text-sm text-[#204B42]">Ressources</p>
+            </div>
+            <div>
+              <p class="font-medium">
+                Crafting a virtual presence that stands out in the bustling
+                online requires not only...
+              </p>
+            </div>
+          </div>
+          <div class="col-span-1">
+            <div class="relative rounded-3xl overflow-hidden">
+              <img
+                src="/assets/images/24.png"
+                alt="images"
+                class="w-full h-full object-cover object-center"
+              />
+              <div
+                class="px-6 py-2 absolute bottom-0 right-9 overflow-hidden bg-white rounded-t-xl text-center"
+              >
+                <p class="text-[#FFA200]">Sep</p>
+                <p class="text-black text-2xl font-bold">28</p>
+              </div>
+            </div>
+            <div class="mt-6 mb-2">
+              <p class="text-sm text-[#204B42]">Ressources</p>
+            </div>
+            <div>
+              <p class="font-medium">
+                Crafting a virtual presence that stands out in the bustling
+                online requires not only...
+              </p>
+            </div>
+          </div>
+          <div class="col-span-1">
+            <div class="relative rounded-3xl overflow-hidden">
+              <img
+                src="/assets/images/24.png"
+                alt="images"
+                class="w-full h-full object-cover object-center"
+              />
+              <div
+                class="px-6 py-2 absolute bottom-0 right-9 overflow-hidden bg-white rounded-t-xl text-center"
+              >
+                <p class="text-[#FFA200]">Sep</p>
+                <p class="text-black text-2xl font-bold">28</p>
+              </div>
+            </div>
+            <div class="mt-6 mb-2">
+              <p class="text-sm text-[#204B42]">Ressources</p>
+            </div>
+            <div>
+              <p class="font-medium">
+                Crafting a virtual presence that stands out in the bustling
+                online requires not only...
+              </p>
+            </div>
+          </div>
+          <div class="col-span-1">
+            <div class="relative rounded-3xl overflow-hidden">
+              <img
+                src="/assets/images/24.png"
+                alt="images"
+                class="w-full h-full object-cover object-center"
+              />
+              <div
+                class="px-6 py-2 absolute bottom-0 right-9 overflow-hidden bg-white rounded-t-xl text-center"
+              >
+                <p class="text-[#FFA200]">Sep</p>
+                <p class="text-black text-2xl font-bold">28</p>
+              </div>
+            </div>
+            <div class="mt-6 mb-2">
+              <p class="text-sm text-[#204B42]">Ressources</p>
+            </div>
+            <div>
+              <p class="font-medium">
+                Crafting a virtual presence that stands out in the bustling
+                online requires not only...
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include('./partials/footer') %>
+    </div>
+  </body>
+</html>
