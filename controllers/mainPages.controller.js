@@ -1,74 +1,312 @@
-function homeGet(req, res) {
-  console.log(req.body)
-  res.render('mainPages/index', { title: "CIGAFI - Nos productions" });
-}
+import dotenv from 'dotenv';
 
-function servicesGet(req, res) {
+dotenv.config();
+const Backend_API = process.env.BACKEND_API_ROOT;
+
+export const homeGet = (req, res) => {
+  const { category } = req.params;
+  const sampleProperties = [
+    {
+      title: "Luxury Villa",
+      price: 500000,
+      address: "123 Palm Street, Beverly Hills",
+      typeBien: "Villa",
+      coverImage: "villa2.png",
+      intro: "Spacious luxury villa with a private pool and garden.",
+    },
+    {
+      title: "Modern Apartment",
+      price: 300000,
+      address: "456 Elm Avenue, New York",
+      typeBien: "Apartment",
+      coverImage: "villa3.png",
+      intro: "Modern apartment with stunning city views and amenities.",
+    },
+    {
+      title: "Cozy Cottage",
+      price: 150000,
+      address: "789 Maple Lane, Vermont",
+      typeBien: "Cottage",
+      coverImage: "villa4.png",
+      intro: "Charming cottage surrounded.",
+    },
+    {
+      title: "Cozy Cottage",
+      price: 150000,
+      address: "789 Maple Lane, Vermont",
+      typeBien: "Cottage",
+      coverImage: "villa4.png",
+      intro: "Charming cottage surrounded by nature and tranquility.",
+    },
+  ];
+
+  res.render('mainPages/index', { 
+    title: "CIGAFI - Nos productions", 
+    properties: sampleProperties,
+    category,
+  });
+};
+
+
+export const locationsGet = async (req, res) => {
+  const { category } = req.params;
+  const listingCategory = category || "habitations-bureaux";
+  const page = parseInt(req.query.page) || 1;
+  const listingType = "/locations/annonces";
+
+  // Extract filter data with defaults
+  const filters = {
+    type: req.query.type || "All",
+    ville: req.query.ville || "All",
+    quartier: req.query.quartier || "All",
+    minBudget: parseInt(req.query.minBudget) || 0,
+    maxBudget: req.query.maxBudget ? parseInt(req.query.maxBudget) : null,
+    publicationDate: req.query.publicationDate || "All"
+  }; 
+
+  // Get the base URL without query parameters
+  const baseUrl = `/locations/${listingCategory}`;
+  
+  // Create URLSearchParams from current query
+  const searchParams = new URLSearchParams(req.query);
+  // Remove page parameter if it exists
+  searchParams.delete('page');
+  // Get the query string
+  const queryString = searchParams.toString();
+
+  try {
+    const response = await fetch(`${Backend_API}/api/locations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        listingCategory,
+        page,
+        filters
+      })
+    });
+
+    const result = await response.json();
+    const properties = result?.data || [];
+    const currentPage = result?.currentPage || 1;
+    const totalPages = result?.totalPages || 1;
+
+    // Fetch metadata
+    const [propertiesType, villes, quartiers] = await Promise.all([
+      fetch(`${Backend_API}/api/listing-metadata/type-de-biens`).then(res => res.json()),
+      fetch(`${Backend_API}/api/listing-metadata/villes`).then(res => res.json()),
+      fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
+    ]);
+
+    res.render('mainPages/index', {
+      title: "CIGAFI - Nos productions",
+      properties,
+      listingCategory,
+      baseUrl,
+      searchParams: searchParams.toString(),
+      currentPage,
+      totalPages,
+      listingType,
+      listingMetadata: {
+        propertiesType,
+        villes,
+        quartiers
+      },
+      // Pass the selected values
+      selectedType: filters.type,
+      selectedVille: filters.ville,
+      selectedQuartier: filters.quartier,
+      minBudget: filters.minBudget,
+      maxBudget: filters.maxBudget,
+      publicationDate: filters.publicationDate,
+      queryString,
+    });
+
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    res.render('mainPages/index', {
+      title: "CIGAFI - Nos productions",
+      properties: [],
+      listingCategory,
+      listingType,
+      error: "Impossible de récupérer les annonces.",
+      listingMetadata: {
+        propertiesType: { success: false, data: [] },
+        villes: { success: false, data: [] },
+        quartiers: { success: false, data: [] }
+      },
+      // Add default values for error state
+      selectedType: 'All',
+      selectedVille: 'All',
+      selectedQuartier: 'All',
+      minBudget: 0,
+      maxBudget: null,
+      publicationDate: 'All'
+    });
+  }
+};
+
+
+export const locationsByIdGet = async (req, res) => {
+  try {
+    // Get both listingCategory and slug from URL
+    const { slug } = req.params;
+
+    // Extract the ID from the slug (last part after the last dash)
+    const propertyId = slug.split('-').pop();
+    console.log("Property ID:", propertyId);
+
+    // Fetch property details
+    const propertyResponse = await fetch(`${Backend_API}/api/locations/${propertyId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!propertyResponse.ok) {
+      throw new Error(`Erreur API: ${propertyResponse.statusText}`);
+    }
+
+    const propertyResult = await propertyResponse.json();
+    const property = propertyResult?.data || null;
+    console.log("Property Details:", property);
+
+    
+
+    res.render('mainPages/details-propriete', {
+      title: "CIGAFI - Détail propriété",
+      property,
+     
+    });
+
+  } catch (error) {
+    console.error('Erreur lors du chargement des détails de la propriété:', error.message);
+    res.status(500).render('error', {
+      message: 'Erreur serveur. Veuillez réessayer plus tard.',
+      error: { status: 500 }
+    });
+  }
+};
+
+
+export const servicesGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/services', { title: "CIGAFI - Nos productions" });
-}
+};
 
-
-function ressourcesGet(req, res) {
+export const ressourcesGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/ressources', { title: "CIGAFI - Nos productions" });
-}
+};
 
-function aboutGet(req, res) {
+export const aboutGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/a-propos', { title: "CIGAFI - Nos productions" });
-}
+};
 
-function loginGet(req, res) {
-  console.log(req.body)
-  res.render('mainPages/login', { title: "CIGAFI - Nos productions" });
-}
+export const signInGet = async (req, res) => {
+  try {
+    const token = req.cookies.access_token;
 
-function detailsProprieteGet(req, res) {
-  console.log(req.body)
-  res.render('mainPages/details-propriete', { title: "CIGAFI - Nos productions" });
-}
+    // If no token, render the sign-in page
+    if (!token) {
+      return res.render('mainPages/sign-in', { title: "CIGAFI - Nos productions" });
+    }
 
-function requeteGet(req, res) {
+    // Fetch user data from the backend
+    const response = await fetch(`${Backend_API}/api/auth/refresh-user`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    // If the fetch fails or response is not okay, clear cookie and render sign-in page
+    if (!response.ok) {
+      res.clearCookie('access_token', { path: '/' });
+      return res.render('mainPages/sign-in', { title: "CIGAFI - Nos productions" });
+    }
+
+    const userData = await response.json();
+
+    // If user data is not valid or user is not verified
+    if (!userData.success) {
+      res.clearCookie('access_token', { path: '/' });
+      return res.render('mainPages/sign-in', { title: "CIGAFI - Nos productions" });
+    }
+
+    // If user is verified, redirect to reservations page
+    return res.redirect('/user/reservations');
+
+  } catch (err) {
+    console.error("Error in signInGet:", err);
+    return res.render('mainPages/sign-in', { title: "CIGAFI - Nos productions" });
+  }
+};
+
+export const signUpGet = async (req, res) => {
+  try {
+    const token = req.cookies.access_token;
+
+    // If no token, render the sign-up page
+    if (!token) {
+      return res.render('mainPages/sign-up', { title: "CIGAFI - Nos productions" });
+    }
+
+    // Fetch user data from the backend
+    const response = await fetch(`${Backend_API}/api/auth/refresh-user`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    // If the fetch fails or response is not okay, clear cookie and render sign-up page
+    if (!response.ok) {
+      res.clearCookie('access_token', { path: '/' });
+      return res.render('mainPages/sign-up', { title: "CIGAFI - Nos productions" });
+    }
+
+    const userData = await response.json();
+
+    // If user data is invalid or user is not verified
+    if (!userData.success || !userData.user || !userData.user.isVerified) {
+      res.clearCookie('access_token', { path: '/' });
+      return res.render('mainPages/sign-up', { title: "CIGAFI - Nos productions" });
+    }
+
+    // If user is verified, redirect to reservations page
+    return res.redirect('/user/reservations');
+
+  } catch (err) {
+    console.error("Error in signUpGet:", err);
+    return res.render('mainPages/sign-up', { title: "CIGAFI - Nos productions" });
+  }
+};
+
+
+
+export const requeteGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/requete', { title: "CIGAFI - Nos productions" });
-}
+};
 
-function reservationInfoGet(req, res) {
+export const reservationInfoGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/reservation-info', { title: "CIGAFI - Nos productions" });
-}
+};
 
-function reservationPayGet(req, res) {
+export const reservationPayGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/reservation-pay-mm', { title: "CIGAFI - Nos productions" });
-}
+};
 
-function ressourceDetailsGet(req, res) {
+export const ressourceDetailsGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/ressource-details', { title: "CIGAFI - Nos productions" });
-}
-
-
-
-
-
-
-
-
-
-
-
- module.exports = {
-        homeGet,
-        servicesGet,
-        ressourcesGet,
-        aboutGet,
-        loginGet,
-        detailsProprieteGet,
-        requeteGet,
-        reservationInfoGet,
-        ressourceDetailsGet,
-        reservationPayGet
-    };
+};
 

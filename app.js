@@ -1,16 +1,25 @@
-require("dotenv").config();
-const createError = require("http-errors");
-const express = require("express");
-const session = require("express-session");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const cors = require("cors");
+import dotenv from "dotenv";
+import createError from "http-errors";
+import express from "express";
+import session from "express-session";
+import path from "path";
+import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import cors from "cors";
+import fs from 'fs';
 
-const mainRoutes = require("./routes/main.routes");
-const userDashboardRoutes = require("./routes/userDashboard.routes");
-const agentDashboardRoutes = require("./routes/agentDashboard.routes");
-const adminDashboardRoutes = require("./routes/adminDashboard.routes");
+import mainRoutes from "./routes/main.routes.js";
+import userDashboardRoutes from "./routes/userDashboard.routes.js";
+import agentDashboardRoutes from "./routes/agentDashboard.routes.js";
+import adminDashboardRoutes from "./routes/adminDashboard.routes.js";
+import userAuthRoutes from "./routes/userAuth.routes.js";
+import adminAuthRoutes from "./routes/adminAuth.routes.js";
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // initiate app
 const app = express();
@@ -33,39 +42,21 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-// google and passport middlewares
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
 
+
+ 
+ 
 // app routes
 app.use("/", mainRoutes);
+app.use("/auth", userAuthRoutes); // for user authentication
 
 app.use("/user", userDashboardRoutes); // for user dashboard pages
 app.use("/agent", agentDashboardRoutes); // for user dashboard pages
 //app.use("/user", userAccessRoutes); // for user dashboard pages
 //
 //
+app.use("/admin", adminAuthRoutes); // for admin authentication
 app.use("/admin", adminDashboardRoutes); // for user dashboard pages
 
-// // catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   next(createError(404));
-// });
 
-// // error handler
-// app.use(function (err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get("env") === "development" ? err : {};
-
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
-
-module.exports = app;
+export default app;

@@ -1,0 +1,505 @@
+<%- include('./partials/head') %>
+   <!-- End of Header -->
+   <!-- Wrapper -->
+   <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
+   
+    <!-- End of Sidebar -->
+    <!-- Main -->
+    <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+     <!-- Toolbar -->
+     <div class="pb-5">
+      <!-- Container -->
+      <%- include('./partials/content_header') %>
+    
+      <!-- End of Container -->
+     </div>
+     <!-- End of Toolbar -->
+     <!-- Container -->
+     <div class="container-fixed">
+      
+<!-- 
+        <div class="container-fixed">
+
+          <div class="flex items-center justify-between flex-wrap gap-5 mb-5">
+            <div class="flex gap-4 mb-5" data-tabs="true">
+              <a class="btn btn-outline btn-primary active" data-tab-toggle="true" href="#tab_7_1">
+                <i class="ki-duotone ki-calendar-tick">
+                </i>
+                Actives
+              </a>
+              <a class="btn btn-outline btn-primary" data-tab-toggle="true" href="#tab_7_2">
+                <i class="ki-duotone ki-archive">
+                </i>
+                Archivés
+              </a>
+             
+              
+            </div>
+           
+           </div> 
+          
+            <div class="" id="tab_7_1">
+              <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+                <div class="card hidden">
+                  <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
+                    <div class="flex justify-center p-7.5 py-9">
+                      <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
+                      <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
+                    </div>
+                    <div class="flex flex-col gap-5 lg:gap-7.5">
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Vous n'avez aucune réservation pour l'instant
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                          A streamlined process to welcome and integrate new members into the team,
+                          <br>
+                          ensuring a smooth and efficient start.
+                        </p>
+                      </div>
+                      <div class="flex justify-center mb-5">
+                        <a class="btn bg-kr-primary text-white" href="/booking">
+                          Réserver une session
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="grid gap-5 lg:gap-7.5">
+        
+                  <div class="card">
+                    <div class="card-body lg:py-7.5">
+                     <div class="flex flex-wrap gap-7.5">
+                      <div class="flex items-center justify-center uppercase rounded-2xl size-[140px] shrink-0 bg-primary-light text-primary">
+                        <i class="ki-filled ki-tab-tablet text-2xl">
+                        </i>
+                       </div>
+                      <div class="flex flex-col justify-between gap-5 lg:gap-7.5 grow">
+                       <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex flex-col gap-1">
+                         <div class="flex items-center flex-wrap sm:flex-nowrap gap-2.5">
+
+                          <h2 class="text-2xl font-semibold text-gray-900">
+                            Gestion d'explotation
+                            </h2>
+                            <span class="badge badge-sm badge-success badge-outline shrink-0">
+                             Terrain agricole
+                             </span> 
+                           </div>
+                           <p class="text-2sm text-gray-700">
+                            Mini description
+                           </p>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                        
+                         <button class="btn btn-primary" data-modal-toggle="#addProjectModal">
+                          Ajouter un rapport
+                         </button>
+
+                        
+                         <div class="menu" data-menu="true">
+                          <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                            <button class="menu-toggle btn btn-light btn-icon-xs">
+                            Options
+                            <i class="ki-outline ki-down dropdown-open:hidden">
+                            </i>
+                            <i class="ki-outline ki-up hidden dropdown-open:block">
+                            </i>
+                          </button>
+                            <div class="menu-dropdown menu-default max-w-[300px]" data-menu-dismiss="true">
+                            <div class="menu-item">
+                              <span class="menu-link" data-drawer-toggle="cbooking_details">
+                              <span class="menu-icon">
+                                <i class="ki-duotone ki-folder-added">
+                                </i>
+                              </span>
+                              <span class="menu-title">
+                                Détails complète
+                              </span>
+                            </span>
+                            </div>
+                             
+                             
+                            <div class="menu-item">
+                              <a class="menu-link" href="html/demo2/account/activity.html">
+                              <span class="menu-icon">
+                                <i class="ki-duotone ki-user">
+                                </i>
+                              </span>
+                              <span class="menu-title">
+                              Archiver 
+                              </span>
+                              </a>
+                            </div>
+
+                            <div class="menu-item">
+                              <button class="menu-link" data-modal-toggle="#delete_confirmation">
+                              <span class="menu-icon">
+                                <i class="ki-duotone ki-trash-square">
+                                </i>
+                              </span>
+                              <span class="menu-title">
+                                Suppimer
+                              </span>
+                            </button>
+                            </div>
+                            </div>
+                          </div>
+                          </div>
+                          
+                        </div>
+                       </div>
+                      
+                       <div class="flex flex-wrap gap-6 lg:gap-12 justify-between">
+                        
+                        <div class="flex flex-col gap-2.5 lg:min-w-24 shrink-0 -mt-3 max-w-auto">
+                      
+                         <div class="flex items-center gap-2.5">
+                          <div class="inline-flex items-center justify-center w-12 h-12 text-xl text-white bg-indigo-500 rounded-full">
+                               TW
+                           </div>
+                          <div class="flex flex-col">
+                           <a class="text-sm font-medium text-gray-900 hover:text-primary-active mb-px" href="#">
+                           Ted Watt
+                           </a>
+                           <a class="text-2sm text-gray-700 font-normal hover:text-primary-active" href="#">
+                            charlotte.young@gmail.com
+                           </a>
+                          </div>
+                         </div>
+                        </div>
+
+                        <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+                          <div class="flex align-start gap-3.5 items-center">
+                            <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                            <i class="ki-filled ki-calendar text-base text-gray-600"></i>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                            <span class="text-xs font-medium text-gray-500">Date de création</span>
+                            <span class="text-sm font-medium text-gray-800">29 Sep 2024 </span>
+                            </div>
+                          </div>
+                          <div class="flex align-start gap-3.5 items-center">
+                            <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                            <i class="ki-filled ki-time text-base text-gray-600"></i>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                            <span class="text-xs font-medium text-gray-500">Nbr de rapport</span>
+                            <span class="text-sm font-medium text-gray-800"> 2 </span>
+                            </div>
+                          </div>
+                          <div class="flex align-start gap-3.5 items-center">
+                            <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                            <i class="ki-filled ki-time text-base text-gray-600"></i>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                            <span class="text-xs font-medium text-gray-500">Dernier rapport</span>
+                            <span class="text-sm font-medium text-gray-800"> 12 Janv 2025</span>
+                            </div>
+                          </div>
+                        </div>
+                       </div>
+                      </div>
+                     </div>
+                    </div>
+                   </div>
+ 
+                </div>
+
+                <div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
+                  
+                  <div class="flex items-center gap-4 order-1 md:order-2">
+                   <span data-datatable-info="true">1-3 of 3</span>
+                   <div class="pagination">
+                    <button class="btn nav-arrow">
+                      <i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+                    </button>
+                    <button class="btn">1</button>
+                    <button class="btn">2</button>
+                    <button class="btn active disabled" disabled="">3</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn nav-arrow"><i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i></button>
+                  </div>
+                  </div>
+                 </div>
+              </div>
+            </div>
+
+            <div class="hidden" id="tab_7_2">
+              <div class="card">
+                <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
+                  <div class="flex justify-center p-7.5 py-9">
+                    <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
+                    <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
+                  </div>
+                  <div class="flex flex-col gap-5 lg:gap-7.5">
+                    <div class="flex flex-col gap-3 text-center">
+                      <h2 class="text-1.5xl font-semibold text-gray-900">
+                        Aucune ressource disponible ici pour l'instant
+                      </h2>
+                      <p class="text-sm text-gray-800">
+                        A streamlined process to welcome and integrate new members into the team,
+                      </p>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+   
+     </div> -->
+     <div class="container-fixed">
+
+      <div class="flex flex-wrap items-center gap-5 justify-between mb-6">
+        <h3 class="text-md text-gray-900 font-medium">
+         Résultats: 9 profiles
+        </h3>
+        <div class="flex items-center flex-wrap gap-5">
+        
+         <button class="btn btn-primary" data-modal-toggle="#addReportModal">
+           Ajouter un rapport
+         </button>
+        </div>
+       </div>
+
+ 
+          <div class="col-span-1">
+            <div class="grid gap-5 lg:gap-7.5">
+              
+              <div class="card">
+                <div class="card-body lg:py-7.5">
+                <div class="flex flex-wrap gap-7.5">
+                  <div class="flex flex-col gap-3 items-center justify-center size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+                  <img alt="" class="size-[70px]" src="assets/media/brand-logos/cloud-one.svg">
+                    <span class="text-sm font-semibold text-gray-900">
+                    Cloud One
+                    </span>
+                  </img>
+                  </div>
+                  <div class="flex flex-col gap-5 lg:gap-7.5 grow">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-col gap-1">
+                    <div class="flex items-center flex-wrap sm:flex-nowrap gap-2.5">
+                      <h2 class="text-2xl font-semibold text-gray-900">
+                      Cloud One Enterprise
+                      </h2>
+                      <span class="badge badge-sm badge-success badge-outline shrink-0">
+                      Monthly Plan
+                      </span>
+                    </div>
+                    <p class="text-2sm text-gray-700">
+                      Essential Features for Startups and Individuals
+                    </p>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                    <a class="btn btn-sm btn-light" href="#">
+                      Cancel Plan
+                    </a>
+                    <a class="btn btn-sm btn-primary" href="#">
+                      Upgrade Plan
+                    </a>
+                    </div>
+                  </div>
+                 
+                  <div class="flex flex-wrap gap-6 lg:gap-12">
+                    <div class="flex flex-col gap-3.5 grow">
+                      <div class="flex items-center flex-wrap gap-3 lg:gap-5">
+                        <div class="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md">
+                        <span class="text-gray-900 text-sm leading-none font-medium">
+                          Trial
+                        </span>
+                        <span class="text-gray-700 text-xs">
+                          Status
+                        </span>
+                        </div>
+                        <div class="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md">
+                        <span class="text-gray-900 text-sm leading-none font-medium">
+                          10,000
+                        </span>
+                        <span class="text-gray-700 text-xs">
+                          Query runs
+                        </span>
+                        </div>
+                        <div class="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md">
+                        <span class="text-gray-900 text-sm leading-none font-medium">
+                          Unlimited
+                        </span>
+                        <span class="text-gray-700 text-xs">
+                          API calls
+                        </span>
+                        </div>
+                        
+                        <div class="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md">
+                        <span class="text-gray-900 text-sm leading-none font-medium">
+                          17 Aug, 2024
+                        </span>
+                        <span class="text-gray-700 text-xs">
+                          Next bill date
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2.5 lg:min-w-24 shrink-0 -mt-3 max-w-auto">
+                    <div class="text-2sm font-medium text-gray-600">
+                      Seats:
+                      <span class="text-2sm font-semibold text-gray-800">
+                      29 of 120 used
+                      </span>
+                    </div>
+                    <div class="flex -space-x-2">
+                      <div class="flex">
+                      <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-4.png"/>
+                      </div>
+                      <div class="flex">
+                      <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-1.png"/>
+                      </div>
+                      <div class="flex">
+                      <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-2.png"/>
+                      </div>
+                      <div class="flex">
+                      <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-primary-inverse size-6 ring-success-light bg-success">
+                        +16
+                      </span>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                </div>
+              </div> 
+              
+            </div>
+          </div> 
+        </div> 
+     </div>
+     <!-- End of Container -->
+     <%- include('./partials/footer') %>
+    </main>
+    <!-- End of Main -->
+   </div>
+   <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+  <div class="modal" data-modal="true" id="delete_confirmation">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+ 
+ 
+   <div class="modal" data-modal="true" id="addReportModal">
+    <div class="modal-content modal-center max-w-[600px] py-3 px-8">
+     <div class="modal-header">
+      <h3 class="text-lg font-semibold leading-none text-kr-primary">
+       Ajouter un rapport de gestion
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+       <div class=" flex gap-6 flex-col  mb-8 mt-5">
+                 <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Nom & Prénom
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+ 
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Email
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Confirmez le mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+ 
+               </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Soumettre le rapport
+       </button>
+ 
+      </div>
+     </div>
+    </div>
+   </div>
+  <!-- End of Page -->
+  <!-- Scripts -->
+  <script src="assets/js/core.bundle.js">
+  </script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+   <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+ </body>
+</html>

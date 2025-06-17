@@ -1,0 +1,647 @@
+<%- include('./partials/head') %>
+   <!-- End of Header -->
+   <!-- Wrapper -->
+   <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
+   
+    <!-- End of Sidebar -->
+    <!-- Main -->
+    <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+     <!-- Toolbar -->
+     <div class="pb-5">
+      <!-- Container -->
+      <%- include('./partials/content_header') %>
+    
+      <!-- End of Container -->
+     </div>
+     <!-- End of Toolbar -->
+     <!-- Container -->
+     <div class="container-fixed">
+      
+
+        <div class="container-fixed">
+
+          <div class="flex items-center justify-between flex-wrap gap-5 mb-5">
+            <div class="flex gap-4 mb-5" data-tabs="true">
+              <a class="btn btn-primary btn-clear active" data-tab-toggle="true" href="#tab_7_1">
+                <i class="ki-duotone ki-calendar-tick">
+                </i>
+                Réservations actives
+              </a>
+              <a class="btn btn-primary btn-clear" data-tab-toggle="true" href="#tab_7_2">
+                <i class="ki-duotone ki-archive">
+                </i>
+                Réservations annulés
+              </a>
+              <a class="btn btn-primary btn-clear" data-tab-toggle="true" href="#tab_7_3">
+                <i class="ki-duotone ki-archive">
+                </i>
+               Reservations archivées
+              </a>
+              
+            </div>
+           
+           </div> 
+          
+            <div class="" id="tab_7_1">
+              <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+                <div class="card hidden">
+                  <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
+                    <div class="flex justify-center p-7.5 py-9">
+                      <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
+                      <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
+                    </div>
+                    <div class="flex flex-col gap-5 lg:gap-7.5">
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Vous n'avez aucune réservation pour l'instant
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                          A streamlined process to welcome and integrate new members into the team,
+                          <br>
+                          ensuring a smooth and efficient start.
+                        </p>
+                      </div>
+                      <div class="flex justify-center mb-5">
+                        <a class="btn bg-kr-primary text-white" href="/booking">
+                          Réserver une session
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="grid gap-5 lg:gap-7.5">
+        
+                  <div class="card">
+                    <div class="card-body lg:py-7.5">
+                      <div class="flex  gap-7.5">
+                      <div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+                        <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets/media/images/villa1.png">
+                      </div>
+                      <div class="flex flex-col gap-5 lg:gap-7.5 grow">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                              <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-2.5">
+                                  <h2 class="text-2xl font-semibold text-gray-900">
+                                    Apprtement meublé - Résidence Amadeuse
+                                  </h2>
+                                </div>
+                                  <div class="flex items-center gap-2.5">
+          
+                                <span class="badge menu-icon badge-pill badge-outline badge-primary">
+                                #ID : 54355678899
+                                <i class="ki-filled ki-copy">
+                                </i>
+                                </span>
+          
+                                <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+                                Effectué le <span class="text-gray-700">09 Septembre 2024 à 05h:22 </span>
+                              </p>
+                              </div>
+          
+                              </div>
+                              <div class="flex items-center gap-2.5">
+                             
+                            
+                              <div class="menu" data-menu="true">
+                                <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                                  <button class="menu-toggle btn btn-light btn-icon-xs">
+                                  Options
+                                  <i class="ki-outline ki-down dropdown-open:hidden">
+                                  </i>
+                                  <i class="ki-outline ki-up hidden dropdown-open:block">
+                                  </i>
+                                </button>
+                                  <div class="menu-dropdown menu-default max-w-[300px]" data-menu-dismiss="true">
+                                  <div class="menu-item">
+                                    <span class="menu-link" data-drawer-toggle="#booking_details">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-folder-added">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                      Détails complète de la réservation
+                                    </span>
+                                  </span>
+                                  </div>
+                                  <div class="menu-item">
+                                    <a class="menu-link" href="html/demo2/account/home/settings-enterprise.html">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-folder-added">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                      Voir la transaction
+                                    </span>
+                                    </a>
+                                  </div>
+                                  <div class="menu-item">
+                                    <a class="menu-link" href="html/demo2/account/members/import-members.html">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-tablet-text-down">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                      Voir l'annonces
+                                    </span>
+                                    </a>
+                                  </div>
+                                  <div class="menu-item">
+                                    <a class="menu-link" href="html/demo2/account/activity.html">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-user">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                    Profil du client
+                                    </span>
+                                    </a>
+                                  </div>
+
+                                  <div class="menu-item">
+                                    <button class="menu-link " data-modal-toggle="#delete_confirmation">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-trash-square">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                      Annuler la réservation
+                                    </span>
+                                  </button>
+                                  </div>
+                                  </div>
+                                </div>
+                                </div>
+          
+                              </div>
+                            </div>
+                            <div class="flex items-center justify-between gap-2.5">
+          
+          
+                            <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+                              <div class="flex align-start gap-3.5 items-center">
+                                <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                                <i class="ki-filled ki-calendar text-base text-gray-600"></i>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                <span class="text-xs font-medium text-gray-500">Période de réservation</span>
+                                <span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+                                </div>
+                              </div>
+                              <div class="flex align-start gap-3.5 items-center">
+                                <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                                <i class="ki-filled ki-time text-base text-gray-600"></i>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                <span class="text-xs font-medium text-gray-500">Montant</span>
+                                <span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+                                </div>
+                              </div>
+                            </div>
+          
+                            <div class="menu" data-menu="true">
+                              <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                                <button class="menu-toggle btn btn-md badge-danger badge-outline">
+                                  Demande d'annulation effectuée
+                                  <i class="ki-outline ki-down dropdown-open:hidden">
+                                  </i>
+                                  <i class="ki-outline ki-up hidden dropdown-open:block">
+                                  </i>
+                                  </button>
+                              
+                                <div class="menu-dropdown menu-default max-w-[300px]" data-menu-dismiss="true">
+                                <div class="menu-item">
+                                  <span class="menu-link" data-modal-toggle="#cancelation_approuve">
+                                  <span class="menu-icon">
+                                    <i class="ki-duotone ki-folder-added"> 
+                                    </i>
+                                  </span>
+                                  <span class="menu-title">
+                                   Approuver l'annulation
+                                  </span>
+                                </span>
+                                </div>
+                                <div class="menu-item">
+                                  <span class="menu-link" data-modal-toggle="#cancelation_reject">
+                                  <span class="menu-icon">
+                                    <i class="ki-duotone ki-tablet-text-down">
+                                    </i>
+                                  </span>
+                                  <span class="menu-title">
+                                    Rejeter la demande d'annulation
+                                  </span>
+                                </span>
+                                </div>
+                              
+                                </div>
+                              </div>
+                              </div> 
+                          </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body lg:py-7.5">
+                        <div class="flex  gap-7.5">
+                        <div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+                          <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets/media/images/villa1.png">
+                        </div>
+                        <div class="flex flex-col gap-5 lg:gap-7.5 grow">
+                              <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div class="flex flex-col gap-1">
+                                  <div class="flex items-center gap-2.5">
+                                    <h2 class="text-2xl font-semibold text-gray-900">
+                                      Apprtement meublé - Résidence Amadeuse
+                                    </h2>
+                                  </div>
+                                    <div class="flex items-center gap-2.5">
+            
+                                  <span class="badge badge-pill badge-outline badge-primary">
+                                  #ID : 54355678899
+                                  </span>
+            
+                                  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+                                  Effectué le <span class="text-gray-700">09 Septembre 2024 à 05h:22 </span>
+                                </p>
+                                </div>
+            
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                               
+                              
+                                <div class="menu" data-menu="true">
+                                  <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                                    <button class="menu-toggle btn btn-light btn-icon-xs">
+                                    Options
+                                    <i class="ki-outline ki-down dropdown-open:hidden">
+                                    </i>
+                                    <i class="ki-outline ki-up hidden dropdown-open:block">
+                                    </i>
+                                  </button>
+                                    <div class="menu-dropdown menu-default max-w-[300px]" data-menu-dismiss="true">
+                                    <div class="menu-item">
+                                      <a class="menu-link" href="html/demo2/account/home/settings-enterprise.html">
+                                      <span class="menu-icon">
+                                        <i class="ki-duotone ki-folder-added">
+                                        </i>
+                                      </span>
+                                      <span class="menu-title">
+                                        Détails complète de la réservation
+                                      </span>
+                                      </a>
+                                    </div>
+                                    <div class="menu-item">
+                                      <a class="menu-link" href="html/demo2/account/home/settings-enterprise.html">
+                                      <span class="menu-icon">
+                                        <i class="ki-duotone ki-folder-added">
+                                        </i>
+                                      </span>
+                                      <span class="menu-title">
+                                        Voir la transaction
+                                      </span>
+                                      </a>
+                                    </div>
+                                    <div class="menu-item">
+                                      <a class="menu-link" href="html/demo2/account/members/import-members.html">
+                                      <span class="menu-icon">
+                                        <i class="ki-duotone ki-tablet-text-down">
+                                        </i>
+                                      </span>
+                                      <span class="menu-title">
+                                        Voir l'annonces
+                                      </span>
+                                      </a>
+                                    </div>
+                                    <div class="menu-item">
+                                      <a class="menu-link" href="html/demo2/account/activity.html">
+                                      <span class="menu-icon">
+                                        <i class="ki-duotone ki-user">
+                                        </i>
+                                      </span>
+                                      <span class="menu-title">
+                                      Profil du client
+                                      </span>
+                                      </a>
+                                    </div>
+                                    <div class="menu-item">
+                                      <a class="menu-link " data-modal-toggle="#modal_6_1">
+                                      <span class="menu-icon">
+                                        <i class="ki-duotone ki-trash-square">
+                                        </i>
+                                      </span>
+                                      <span class="menu-title">
+                                        Annuler la réservation
+                                      </span>
+                                      </a>
+                                    </div>
+                                    </div>
+                                  </div>
+                                  </div>
+            
+                                </div>
+                              </div>
+                              <div class="flex items-center justify-between gap-2.5">
+            
+            
+                              <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+                                <div class="flex align-start gap-3.5 items-center">
+                                  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                                  <i class="ki-filled ki-calendar text-base text-gray-600"></i>
+                                  </div>
+                                  <div class="flex flex-col gap-1">
+                                  <span class="text-xs font-medium text-gray-500">Période de réservation</span>
+                                  <span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+                                  </div>
+                                </div>
+                                <div class="flex align-start gap-3.5 items-center">
+                                  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+                                  <i class="ki-filled ki-time text-base text-gray-600"></i>
+                                  </div>
+                                  <div class="flex flex-col gap-1">
+                                  <span class="text-xs font-medium text-gray-500">Montant</span>
+                                  <span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+                                  </div>
+                                </div>
+                              </div>
+            
+                              <div class="menu" data-menu="true">
+                                <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                                  <button class="menu-toggle btn btn-md badge-danger badge-outline">
+                                    Demande d'annulation effectuée
+                                    <i class="ki-outline ki-down dropdown-open:hidden">
+                                    </i>
+                                    <i class="ki-outline ki-up hidden dropdown-open:block">
+                                    </i>
+                                    </button>
+                                
+                                  <div class="menu-dropdown menu-default max-w-[300px]" data-menu-dismiss="true">
+                                  <div class="menu-item">
+                                    <a class="menu-link" href="html/demo2/account/home/settings-enterprise.html">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-folder-added">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                     Approuver l'annulation
+                                    </span>
+                                    </a>
+                                  </div>
+                                  <div class="menu-item">
+                                    <a class="menu-link" href="html/demo2/account/members/import-members.html">
+                                    <span class="menu-icon">
+                                      <i class="ki-duotone ki-tablet-text-down">
+                                      </i>
+                                    </span>
+                                    <span class="menu-title">
+                                      Rejeter la demande d'annulation
+                                    </span>
+                                    </a>
+                                  </div>
+                                
+                                  </div>
+                                </div>
+                                </div> 
+                            </div>
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+                </div>
+
+                <div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
+                  
+                  <div class="flex items-center gap-4 order-1 md:order-2">
+                   <span data-datatable-info="true">1-3 of 3</span>
+                   <div class="pagination">
+                    <button class="btn  active ">
+                      <i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+                    </button>
+                    <button class="btn">2</button>
+                    <button class="btn">2</button>
+                    <button class="btn active disabled" disabled="">3</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn  active "><i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i></button>
+                  </div>
+                  </div>
+                 </div>
+              </div>
+            </div>
+
+            <div class="hidden" id="tab_7_2">
+              <div class="card">
+                <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
+                  <div class="flex justify-center p-7.5 py-9">
+                    <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
+                    <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
+                  </div>
+                  <div class="flex flex-col gap-5 lg:gap-7.5">
+                    <div class="flex flex-col gap-3 text-center">
+                      <h2 class="text-1.5xl font-semibold text-gray-900">
+                        Aucune ressource disponible ici pour l'instant
+                      </h2>
+                      <p class="text-sm text-gray-800">
+                        A streamlined process to welcome and integrate new members into the team,
+                      </p>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hidden" id="tab_7_3">
+              <div class="card">
+                <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
+                  <div class="flex justify-center p-7.5 py-9">
+                    <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
+                    <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
+                  </div>
+                  <div class="flex flex-col gap-5 lg:gap-7.5">
+                    <div class="flex flex-col gap-3 text-center">
+                      <h2 class="text-1.5xl font-semibold text-gray-900">
+                        Aucune ressource disponible ici pour l'instant
+                      </h2>
+                      <p class="text-sm text-gray-800">
+                        A streamlined process to welcome and integrate new members into the team,
+                      </p>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+   
+     </div>
+
+     </div>
+     <!-- End of Container -->
+     <%- include('./partials/footer') %>
+    </main>
+    <!-- End of Main -->
+   </div>
+   <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+  <div class="modal" data-modal="true" id="delete_confirmation">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+
+<div class="modal" data-modal="true" id="cancelation_approuve">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer la validation de l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+           Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+</div>
+
+
+   <div class="modal" data-modal="true" id="cancelation_reject">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer le rejet de l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      <div class="flex flex-col">
+        <h3 class="card-title mb-3">
+          Motif du rejet de la demande de l'annulation
+         </h3>
+         <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+             <span class="text-2sm text-gray-700">
+                 I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+
+                 I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+            </span>
+         </div>
+    </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Valider le refus d'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="drawer drawer-bottom kr-md-drawer-bottom flex flex-col max-h-[90%] h-[65vh]" data-drawer="true" id="booking_details">
+    <div class="flex items-center justify-between p-5 border-b">
+     <h3 class="text-base font-semibold text-gray-900">
+      Demande d'annulation de la réservation
+     </h3>
+ 
+     <button class="btn btn-xs btn-icon btn-icon-xl btn-light" data-drawer-dismiss="true">
+      <i class="ki-outline ki-cross">
+      </i>
+     </button>
+    </div>
+    <div class="p-5">
+ 
+               <div class="flex flex-col lg:px-7.5 px-5 mb-4.5">
+                    <h3 class="card-title mb-3">
+                      Motif
+                     </h3>
+                     <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+                         <span class="text-2sm text-gray-700">
+                         Pursuing opportunities, earning zero
+                        </span>
+                     </div>
+                </div>
+ 
+                <div class="flex flex-col lg:px-7.5 p-5">
+                    <h3 class="card-title mb-3">
+                      Message
+                     </h3>
+                     <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+                         <span class="text-2sm text-gray-700">
+                             I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+ 
+                             I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+                        </span>
+                     </div>
+                </div>
+ 
+               <div class="modal-footer justify-end">
+                  <div class="flex gap-4">
+                   <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+                    Approver l'annulation
+                   </button>
+                   <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+                      Rejeter l'annulation
+                       </button>
+                      </div>
+         </div>
+ 
+    </div>
+   </div>
+ 
+  <!-- End of Page -->
+  <!-- Scripts -->
+  <script src="assets/js/core.bundle.js">
+  </script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+   <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+ </body>
+</html>

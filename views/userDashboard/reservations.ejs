@@ -236,6 +236,61 @@
      </div>
     </div>
     <!-- End of Container -->
+	<div class="modal open " data-modal="true" id="modaBookingCancel">
+		<div class="modal-content max-w-[600px] top-[20%]  p-6">
+		 <div class="modal-header mb-7">
+		  <h2 class="text-lg font-semibold leading-none text-kr-secondary">
+			   Demander une anulation de la réservation
+		  </h2>
+		  <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+			   <i class="ki-outline ki-cross">
+			   </i>
+		  </button>
+		 </div>
+		 <div class="modal-body  p-6">
+		  <div class=" flex gap-10 flex-col  mb-8">
+			<div class="w-full">
+			  <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+			   <label class="form-label">
+			   Motif de l'annulation
+			   </label>
+			   <select class="select" name="select">
+				<option value="1">
+				 Sélectionnez un motif
+				</option>
+				<option value="2">
+				 Option 2
+				</option>
+				<option value="3">
+				 Option 3
+				</option>
+			   </select>
+			  </div>
+			 </div>
+
+			 <div class="w-full">
+			  <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+			   <label class="form-label">
+				Expliquez la raison de votre annulation
+			   </label>
+			   <textarea class="textarea" name="memo" placeholder="Votre message" rows="6"></textarea>
+			  </div>
+			 </div>
+		  </div>
+
+		   <div class="modal-footer border-t-0 justify-end">
+			<div class="flex gap-4">
+			 <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+			  Abandonner
+			 </button>
+			 <button class="btn bg-kr-secondary text-white">
+			  Soummettre l'annulation
+			 </button>
+			</div>
+		   </div>
+		 </div>
+		</div>
+	   </div>
    </main>
    <!-- End of Content -->
    <%- include('./partials/footer') %>

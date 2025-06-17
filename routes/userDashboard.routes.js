@@ -1,14 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const { reservationsGet, favorisGet } = require("../controllers/userDashboard.controller");
-const auth = require("../utils/auth");
+import express from "express";
+import { reservationsGet } from "../controllers/userDashboard.controller.js";
+import auth from "../utils/auth.js";
 
-//
-router.route('/reservations').get(reservationsGet);
-router.route('/favoris').get(favorisGet);
-//router.route('/parametres').get(auth, parametresGet);
-//router.route('/mes-projets').get(auth, mesProjetsGet);
-//router.route('/ressources').get(auth, ressourcesGet);
-//
-//
-module.exports = router;
+const router = express.Router();
+
+// Define routes
+router.route('/reservations').get(auth, reservationsGet);
+
+// Export the router using ES module syntax
+export default router;

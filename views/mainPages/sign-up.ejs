@@ -9,7 +9,7 @@
         <div class="col-span-1">
           <div class="flex items-center justify-center w-full h-full">
             <div
-              class="p-10 max-w-lg text-gray-500 border rounded-3xl text-center text-sm"
+              class="p-10 w-[65%] max-h-[85vh] overflow-y-auto  text-gray-500 border rounded-3xl text-center text-sm"
             >
               <div class="mb-2">
                 <div class="mb-2">
@@ -18,7 +18,7 @@
                 <div class="mb-2">
                   <p class="">
                     Vous avez déjà un compte?
-                    <a href="#" class="text-sky-400 ml-1">Connectez-vous</a>
+                    <a href="/sign-in" class="text-sky-400 ml-1">Connectez-vous</a>
                   </p>
                 </div>
               </div>
@@ -71,40 +71,50 @@
                 </div>
               </div>
               <div class="mb-4">
-                <form action="#" class="text-left">
+                <form id="signup-form" class="text-left">
+                  <!-- First Name -->
                   <div class="mb-5">
-                    <p class="mb-3 text-black">Email</p>
-                    <input
-                      type="email"
-                      class="w-full px-3 py-3 border border-gray-100 rounded-lg"
-                      placeholder="email@cigafi.com"
-                    />
+                      <input type="text" id="firstName" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Prénom" />
+                      <p class="error-message hidden text-red-500 text-sm mt-2"></p>
                   </div>
+          
+                  <!-- Last Name -->
                   <div class="mb-5">
-                    <p class="mb-3 text-black">Mot de passe</p>
-                    <input
-                      type="password"
-                      class="w-full px-3 py-3 border border-gray-100 rounded-lg"
-                      placeholder="Mot de passe"
-                    />
+                      <input type="text" id="lastName" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Nom" />
+                      <p class="error-message hidden text-red-500 text-sm mt-2"></p>
                   </div>
+          
+                  <!-- Phone Number -->
                   <div class="mb-5">
-                    <p class="mb-3 text-black">Confirmez le mot de passe</p>
-                    <input
-                      type="password"
-                      class="w-full px-3 py-3 border border-gray-100 rounded-lg"
-                      placeholder="Confirmez le mot de passe"
-                    />
+                      <input type="tel" id="phone" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Numéro de téléphone" />
+                      <p class="error-message hidden text-red-500 text-sm mt-2"></p>
                   </div>
+          
+                  <!-- Email -->
+                  <div class="mb-5">
+                      <input type="email" id="email" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Email (ex: email@cigafi.com)" />
+                      <p class="error-message hidden text-red-500 text-sm mt-2"></p>
+                  </div>
+          
+                  <!-- Password -->
+                  <div class="mb-5">
+                      <input type="password" id="password" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Mot de passe" />
+                      <p class="error-message hidden text-red-500 text-sm mt-2"></p>
+                  </div>
+          
+                  <!-- Confirm Password -->
+                  <div class="mb-5">
+                      <input type="password" id="confirmPassword" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Confirmez le mot de passe" />
+                      <p class="error-message hidden text-red-500 text-sm mt-2"></p>
+                  </div>
+                  <div id="server-error" class="hidden text-red-500 text-sm mb-4"></div>
+                  <!-- Submit Button -->
                   <div class="my-5">
-                    <a
-                      href="/user/reservations"
-                      class="flex gap-2 items-center justify-center w-full py-4 border rounded-full bg-[#204B42] text-white"
-                    >
-                      <span>S'enrégistrer</span>
-                    </a>
+                      <button type="submit" id="submit_btn" class="flex gap-2 items-center justify-center w-full py-4 border rounded-full bg-[#204B42] text-white">
+                          <span>S'enregistrer</span>
+                      </button>
                   </div>
-                </form>
+              </form>
               </div>
             </div>
           </div>
@@ -153,4 +163,5 @@
       </div>
     </div>
   </body>
+  <script src="/assets/js/app/auth.js"></script>
 </html>

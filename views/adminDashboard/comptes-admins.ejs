@@ -1,0 +1,576 @@
+<%- include('./partials/head') %>
+   <!-- End of Header -->
+   <!-- Wrapper -->
+   <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
+   
+    <!-- End of Sidebar -->
+    <!-- Main -->
+    <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+     <!-- Toolbar -->
+     <div class="pb-5">
+      <!-- Container -->
+      <%- include('./partials/content_header') %>
+    
+      <!-- End of Container -->
+     </div>
+     <!-- End of Toolbar -->
+     <!-- Container -->
+     <div class="container-fixed" id="content_container">
+      <div class="container-fixed">
+         <!-- begin: works -->
+         <div class="flex flex-col items-stretch gap-5 lg:gap-7.5">
+          <div class="flex flex-wrap items-center gap-5 justify-between">
+           <h3 class="text-md text-gray-900 font-medium">
+            Résultats: 9 profiles
+           </h3>
+           <div class="flex items-center flex-wrap gap-5">
+           
+            <button class="btn btn-primary" data-modal-toggle="#addAdminModal">
+              Ajouter un compte
+            </button>
+           </div>
+          </div>
+          <!-- begin: cards -->
+          <div id="network_cards">
+           <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
+
+            <div class="card">
+             <div class="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]" style="background-image: url('assets/media/images/2600x1200/bg-12.png')">
+              <div class="menu mt-2.5 mr-2.5" data-menu="true">
+               <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800">
+                 <i class="ki-filled ki-setting-2">
+                 </i>
+                </button>
+                <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
+                 <div class="menu-item">
+                  <span class="menu-link"  data-modal-toggle="#editAdminModal">
+                   <span class="menu-icon">
+                   <i class="ki-duotone ki-lock-2"></i>
+                   </span>
+                   <span class="menu-title">
+                    Editer
+                   </span>
+                  </span>
+                 </div>
+                 <div class="menu-item">
+                  <a class="menu-link" href="#">
+                   <span class="menu-icon">
+                   <i class="ki-duotone ki-lock-2"></i>
+                   </span>
+                   <span class="menu-title">
+                    Réactiver
+                   </span>
+                  </a>
+                 </div>
+                 <div class="menu-item">
+                  <span class="menu-link" data-modal-toggle="#delete_confirmation">
+                   <span class="menu-icon">
+                    <i class="ki-duotone ki-trash"></i>
+                   </span>
+                   <span class="menu-title">
+                    Supprimer
+                   </span>
+                  </span>
+                 </div>
+
+                </div>
+               </div>
+              </div>
+             </div>
+             <div class="card-body pt-0">
+              <div class="flex justify-center transform -translate-y-1/2">
+               <div class="flex items-center justify-center relative text-2.5xl text-white size-20 font-semibold bg-orange-500 rounded-full">
+                KW
+                <div class="flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2">
+                </div>
+               </div>
+
+              </div>
+              <div class="flex items-center justify-center gap-1.5 mb-px -mt-7.5">
+               <span class=" text-base leading-5 font-medium text-gray-900">
+                Kevin Warren
+               </span>
+
+              </div>
+              <div class="flex flex-wrap justify-center items-center gap-3.5 mb-7">
+               <span class="text-xs text-gray-600" href="#">
+               mrcdoe@gmail.com
+               </span>
+
+              </div>
+
+              <div class="flex flex-col items-center justify-center flex-wrap gap-1 lg:gap-2">
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl py-1 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Rôle
+                  </span>
+                  <span class="py-1.5 text-primary font-normal">
+                   Adminstateur
+                  </span>
+
+             </div>
+
+
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl  py-2 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Status
+                  </span>
+
+                  <span class="badge badge-pill badge-warning">
+                   Suspendu
+                  </span>
+             </div>
+
+              </div>
+             </div>
+
+            </div>
+              <div class="card">
+             <div class="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]" style="background-image: url('assets/media/images/2600x1200/bg-12.png')">
+              <div class="menu mt-2.5 mr-2.5" data-menu="true">
+               <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800">
+                 <i class="ki-filled ki-setting-2">
+                 </i>
+                </button>
+                <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
+                 <div class="menu-item">
+                  <a class="menu-link" href="#">
+                   <span class="menu-icon">
+                   <i class="ki-duotone ki-lock-2"></i>
+                   </span>
+                   <span class="menu-title">
+                    Suspendre
+                   </span>
+                  </a>
+                 </div>
+                 <div class="menu-item">
+                  <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#">
+                   <span class="menu-icon">
+                    <i class="ki-duotone ki-trash"></i>
+                   </span>
+                   <span class="menu-title">
+                    Supprimer
+                   </span>
+                  </a>
+                 </div>
+
+                </div>
+               </div>
+              </div>
+             </div>
+             <div class="card-body pt-0">
+              <div class="flex justify-center transform -translate-y-1/2">
+               <div class="flex items-center justify-center relative text-2.5xl text-white size-20 font-semibold bg-neutral-950 rounded-full">
+                KW
+                <div class="flex size-2.5 bg-success  rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2">
+                </div>
+               </div>
+
+              </div>
+              <div class="flex items-center justify-center gap-1.5 mb-px -mt-7.5">
+               <span class="text-base leading-5 font-medium text-gray-900">
+                Kevin Warren
+               </span>
+
+              </div>
+              <div class="flex flex-wrap justify-center items-center gap-3.5 mb-7">
+               <span class="text-xs text-gray-600" href="#">
+               marcdoe@gmail.com
+               </span>
+
+              </div>
+              <div class="flex flex-col items-center justify-center flex-wrap gap-1 lg:gap-3">
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl py-1 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Rôle
+                  </span>
+                  <span class="py-3 text-primary font-normal">
+                   Adminstateur
+                  </span>
+
+             </div>
+
+
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl  py-3 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Status
+                  </span>
+
+                  <span class="badge badge-pill badge-success">
+                   Actif
+                  </span>
+             </div>
+
+              </div>
+             </div>
+
+            </div>
+            <div class="card">
+             <div class="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]" style="background-image: url('assets/media/images/2600x1200/bg-12.png')">
+              <div class="menu mt-2.5 mr-2.5" data-menu="true">
+               <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800">
+                 <i class="ki-filled ki-setting-2">
+                 </i>
+                </button>
+                <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
+                 <div class="menu-item">
+                  <a class="menu-link" href="#">
+                   <span class="menu-icon">
+                   <i class="ki-duotone ki-lock-2"></i>
+                   </span>
+                   <span class="menu-title">
+                    Suspendre
+                   </span>
+                  </a>
+                 </div>
+                 <div class="menu-item">
+                  <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#">
+                   <span class="menu-icon">
+                    <i class="ki-duotone ki-trash"></i>
+                   </span>
+                   <span class="menu-title">
+                    Supprimer
+                   </span>
+                  </a>
+                 </div>
+
+                </div>
+               </div>
+              </div>
+             </div>
+             <div class="card-body pt-0">
+              <div class="flex justify-center transform -translate-y-1/2">
+               <div class="flex items-center justify-center relative text-2.5xl text-white size-20 font-semibold bg-violet-600 rounded-full">
+                KW
+                <div class="flex size-2.5 bg-success  rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2">
+                </div>
+               </div>
+
+              </div>
+              <div class="flex items-center justify-center gap-1.5 mb-px -mt-7.5">
+               <span class="text-base leading-5 font-medium text-gray-900">
+                Kevin Warren
+               </span>
+
+              </div>
+              <div class="flex flex-wrap justify-center items-center gap-3.5 mb-7">
+               <span class="text-xs text-gray-600" href="#">
+               marcdoe@gmail.com
+               </span>
+
+              </div>
+              <div class="flex flex-col items-center justify-center flex-wrap gap-1 lg:gap-3">
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl py-1 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Rôle
+                  </span>
+                  <span class="py-3 text-primary font-normal">
+                   Adminstateur
+                  </span>
+
+             </div>
+
+
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl  py-3 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Status
+                  </span>
+
+                  <span class="badge badge-pill badge-success">
+                   Actif
+                  </span>
+             </div>
+
+              </div>
+             </div>
+
+            </div>
+
+            <div class="card">
+             <div class="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]" style="background-image: url('assets/media/images/2600x1200/bg-12.png')">
+              <div class="menu mt-2.5 mr-2.5" data-menu="true">
+               <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800">
+                 <i class="ki-filled ki-setting-2">
+                 </i>
+                </button>
+                <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
+                 <div class="menu-item">
+                  <a class="menu-link" href="#">
+                   <span class="menu-icon">
+                   <i class="ki-duotone ki-lock-2"></i>
+                   </span>
+                   <span class="menu-title">
+                    Suspendre
+                   </span>
+                  </a>
+                 </div>
+                 <div class="menu-item">
+                  <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#">
+                   <span class="menu-icon">
+                    <i class="ki-duotone ki-trash"></i>
+                   </span>
+                   <span class="menu-title">
+                    Supprimer
+                   </span>
+                  </a>
+                 </div>
+
+                </div>
+               </div>
+              </div>
+             </div>
+             <div class="card-body pt-0">
+              <div class="flex justify-center transform -translate-y-1/2">
+               <div class="flex items-center justify-center relative text-2.5xl text-white size-20 font-semibold bg-danger rounded-full">
+                KW
+                <div class="flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2">
+                </div>
+               </div>
+
+              </div>
+              <div class="flex items-center justify-center gap-1.5 mb-px -mt-7.5">
+               <span class="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+                Kevin Warren
+               </span>
+
+              </div>
+              <div class="flex flex-wrap justify-center items-center gap-3.5 mb-7">
+               <span class="text-xs text-gray-600 hover:text-primary-active" href="#">
+               marcdoe@gmail.com
+               </span>
+
+              </div>
+              <div class="flex flex-col items-center justify-center flex-wrap gap-1 lg:gap-3">
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl py-1 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Rôle
+                  </span>
+                  <span class="py-3 text-primary font-normal">
+                   Adminstateur
+                  </span>
+
+             </div>
+
+
+               <div class="flex items-center justify-between flex-wrap gap-2 lg:gap-5 bg-slate-100 rounded-xl  py-3 px-4 w-full">
+
+                  <span class="text-sm font-medium text-gray-900">
+                   Status
+                  </span>
+
+                  <span class="badge badge-pill badge-success">
+                   Actif
+                  </span>
+             </div>
+
+              </div>
+             </div>
+
+            </div>
+           </div>
+
+          </div>
+          <!-- end: cards -->
+
+         </div>
+         <!-- end: works -->
+        </div>
+  </div>
+     <!-- End of Container -->
+     <%- include('./partials/footer') %>
+    </main>
+    <!-- End of Main -->
+   </div>
+   <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+
+  
+  <div class="modal" data-modal="true" id="editAdminModal">
+    <div class="modal-content modal-center max-w-[600px] py-3 px-8">
+     <div class="modal-header">
+      <h3 class="text-lg font-semibold leading-none text-kr-primary">
+      Mettre à jour le profil
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+       <div class=" flex gap-6 flex-col  mb-8 mt-5">
+                 <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Nom & Prénom
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+ 
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Email
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+                
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Nouveau mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+ 
+               </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Mettre à jour le profil
+       </button>
+ 
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="modal" data-modal="true" id="addAdminModal">
+    <div class="modal-content modal-center max-w-[600px] py-3 px-8">
+     <div class="modal-header">
+      <h3 class="text-lg font-semibold leading-none text-kr-primary">
+       Créer un compte admin
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+       <div class=" flex gap-6 flex-col  mb-8 mt-5">
+                 <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Nom & Prénom
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+ 
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Email
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Confirmez le mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+ 
+               </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Créer le compte
+       </button>
+ 
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="modal" data-modal="true" id="delete_confirmation">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  <!-- End of Page -->
+  <!-- Scripts -->
+  <script src="assets/js/core.bundle.js">
+  </script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+   <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+ </body>
+</html>

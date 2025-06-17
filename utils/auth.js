@@ -1,33 +1,42 @@
-const jwt = require ("jsonwebtoken");
-const JWTSecret = process.env.JWT_SECRET
+import dotenv from 'dotenv';
 
-const auth = async (req, res, next) => {
+dotenv.config();
+const Backend_API = process.env.BACKEND_API_ROOT;
 
-        try {
-          const token = req.cookies.access_token;
+
+export default async function auth(req, res, next) {
+    try {
+        const token = req.cookies.access_token;
 
         if (!token) {
-          return res.status(401).redirect('/user/login');
+            return res.status(401).redirect('/sign-in');
         }
-        const apiRoot = process.env.API_ROOT;
-        const response = await fetch(`${apiRoot}/api/auth/refresh-user`,{
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization':token
-          }
-        })
-        
-        const userData = await response.json()
-        // console.log(userData)
+
+        const response = await fetch(`${Backend_API}/api/auth/refresh-user`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch user data");
+        }
+
+        const userData = await response.json();
         if (!userData.success) {
-          return res.status(401).redirect('/user/login');
+            return res.status(401).redirect('/sign-in');
         }
+
+        if (!userData.user.isVerified) {
+            return res.status(401).redirect('/auth/registration-validation');
+        }
+
         req.user = userData;
         next();
-
-      } catch (err) {
-          return res.status(401).redirect('/user/login');
-      }
-  };
-  module.exports = auth;
+    } catch (err) {
+        console.error("Authentication error:", err);
+        return res.status(401).redirect('/sign-in');
+    }
+}

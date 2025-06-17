@@ -1,13 +1,14 @@
 {
-  "name": "krypton_website",
+  "name": "CIGAFI APP",
   "version": "1.0.0",
-  "description": "Krypton website",
+  "description": "CIGAFI",
   "main": "app.js",
   "license": "Apache-2.0 license",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "postcss public/assets/stylesheets/tailwind.css -o public/assets/stylesheets/style.css && node --watch ./bin/www",
-    "dev": "nodemon ./bin/www && postcss public/assets/stylesheets/tailwind.css -o public/assets/stylesheets/style.css",
+    "start": "npm run css && node --watch ./bin/www",
+    "dev": "npm run css --watch & node --watch ./bin/www",
     "css": "postcss public/assets/stylesheets/tailwind.css -o public/assets/stylesheets/style.css"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.2",
     "morgan": "~1.9.1",
+    "multer": "^2.0.1",
     "node-mailjet": "^6.0.5",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",

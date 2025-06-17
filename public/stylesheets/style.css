@@ -1688,4 +1688,9 @@ video {
     color: rgb(156 163 175 / var(--tw-text-opacity));
   }
 }
-  
+
+.border-blue-700 {
+  border-color: var(--color-blue-700);
+  border-width: 2px;
+  border-style: solid;
+}

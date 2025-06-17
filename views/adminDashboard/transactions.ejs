@@ -1,0 +1,437 @@
+<%- include('./partials/head') %>
+   <!-- End of Header -->
+   <!-- Wrapper -->
+   <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
+   
+    <!-- End of Sidebar -->
+    <!-- Main -->
+    <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+     <!-- Toolbar -->
+     <div class="pb-5">
+      <!-- Container -->
+      <%- include('./partials/content_header') %>
+    
+      <!-- End of Container -->
+     </div>
+     <!-- End of Toolbar -->
+     <!-- Container -->
+     <div class="container-fixed" id="content_container">
+      <div class="container-fixed">
+        <div class="grid gap-5 lg:gap-7.5 mb-12">
+            <div class="card card-grid min-w-full">
+              <div class="card-header py-5 flex-wrap">
+                <h3 class="card-title font-medium text-sm">
+                 Résultats: 342 Trnsactions
+                </h3>
+                <button class="btn btn-sm btn-outline btn-danger" data-modal-toggle="#addAdminModal"> 
+                <i class="ki-duotone ki-trash">
+                </i>
+                Supprimer la sélection
+               </button>
+              </div>
+              <div class="card-body">
+               <div data-datatable="true" data-datatable-page-size="10">
+                <div class="scrollable-x-auto">
+                 <table class="table table-auto table-border" data-datatable-table="true" id="security_log_table">
+                  <thead>
+                   <tr>
+                    <th class="w-[60px]">
+                     <input class="checkbox checkbox-sm" data-datatable-check="true" type="checkbox"/>
+                    </th>
+                    <th class="min-w-[250px]">
+                     <span class="sort-label">
+                       ID de transaction
+                      </span>
+                    </th>
+                    <th class="min-w-[280px]">
+                      <span class="sort-label">
+                       Client
+                      </span>
+                    </th>
+                    <th class="min-w-[200px]">
+                     <span class="sort-label">
+                       Montant
+                      </span>
+                    </th>
+                  
+                    <th class="min-w-[180px]">
+                    <span class="sort-label">
+                       Service
+                      </span>
+                    </th>
+                    <th class="min-w-[130px]">
+                     <span class="sort">
+                      <span class="sort-label">
+                       Date
+                      </span>
+                      <span class="sort-icon">
+                      </span>
+                     </span>
+                    </th>
+                    <th class="min-w-[110px]">
+                      <span class="sort-label">
+                      Statuts
+                      </span>
+                    </th>
+                    <th class="w-[80px]">
+                      <span class="sort-label">
+                       Facture
+                        </span>
+                    </th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                   <tr>
+                    <td>
+                     <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox" value="1"/>
+                    </td>
+                    <td>
+                      <div class="flex items-center gap-1.5">
+                        <i class="ki-duotone ki-files text-lg text-gray-600">
+                        </i>
+                        <span class="leading-none font-semibold text-gray-700">
+                          TXN-2024-01-04T23:59:59Z
+                        </span>
+                       </div>
+                    
+                    </td>
+                    <td>
+                      <a  class="flex items-center gap-2.5 " href="#">
+                       <div class="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-indigo-500 rounded-full">
+                        TW
+                      </div>
+                      <div class="flex flex-col">
+                       <span class="text-sm font-medium   text-gray-900 mb-px">
+                        Tyler Hero
+                       </span>
+                       <span class="text-2sm text-gray-700  font-normal">
+                        tyler.hero@gmail.com
+                       </span>
+                      </div>
+                      </a>
+                  </td>
+                    <td>
+                     <div class="flex items-center gap-1.5">
+                      <div class="flex items-center gap-2.5">
+
+                       <div class="flex flex-col">
+                         <span class="leading-none font-semibold text-gray-700">
+                          25000 FCFA
+                         </span>
+                        <span class="text-2sm text-violet-600 font-normal py-1">
+                         Enrégistrement podcast
+                        </span>
+                       </div>
+                      </div>
+                     </div>
+                    </td>
+                   
+                     <td>
+                     <div class="flex items-center gap-1.5 class=" text-gray-800="">
+                      <img alt="" class="rounded-lg size-8 shrink-0 object-cover" src="assets\media\logos\tmoney.png">
+                      <div class="flex flex-col">
+                       <span class="text-2sm text-gray-600 font-normal hover:text-primary-active" href="#">
+                        Tmoney
+                       </span>
+                       <span>
+                        +2287854321
+                       </span>
+                      </div>
+                     </div>
+                    </td>
+                    <td>
+                     10-Mar-2024
+                    </td>
+                    <td>
+                     <span class="badge badge-success badge-pill badge-outline gap-1.5">
+                      <span class="badge badge-dot badge-success size-1.5">
+                      </span>
+                      Succes
+                     </span>
+                    </td>
+                    <td>
+                     <a class="btn btn-icon btn-light btn-clear btn-sm" href="#">
+                      <i class="ki-filled ki-notepad">
+                      </i>
+                     </a>
+                    </td>
+                   </tr>
+                   <tr>
+                    <td>
+                     <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox" value="1"/>
+                    </td>
+                    <td>
+                      <div class="flex items-center gap-1.5">
+                        <i class="ki-duotone ki-files text-lg text-gray-600">
+                        </i>
+                        <span class="leading-none font-semibold text-gray-700">
+                          TXN-2024-01-04T23:59:59Z
+                        </span>
+                       </div>
+                    
+                    </td>
+                    <td>
+                      <a  class="flex items-center gap-2.5 " href="#">
+                       <div class="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-indigo-500 rounded-full">
+                        TW
+                      </div>
+                      <div class="flex flex-col">
+                       <span class="text-sm font-medium hover:text-primary-active text-gray-900 mb-px">
+                        Tyler Hero
+                       </span>
+                       <span class="text-2sm text-gray-700 hover:text-primary-active font-normal">
+                        tyler.hero@gmail.com
+                       </span>
+                      </div>
+                      </a>
+                  </td>
+                    <td>
+                     <div class="flex items-center gap-1.5">
+                      <div class="flex items-center gap-2.5">
+
+                       <div class="flex flex-col">
+                         <span class="leading-none font-semibold text-gray-700">
+                          25000 FCFA
+                         </span>
+                        <span class="text-2sm text-violet-600 font-normal py-1">
+                         Emission web
+                        </span>
+                       </div>
+                      </div>
+                     </div>
+                    </td>
+                    
+                     <td>
+                     <div class="flex items-center gap-1.5 class=" text-gray-800="">
+                      <img alt="" class="rounded-lg size-8 shrink-0 object-cover" src="assets\media\logos\tmoney.png">
+                      <div class="flex flex-col">
+                       <span class="text-2sm text-gray-600 font-normal hover:text-primary-active" href="#">
+                        Tmoney
+                       </span>
+                       <span>
+                        +2287854321
+                       </span>
+                      </div>
+                     </div>
+                    </td>
+                    <td>
+                     10-Mar-2024
+                    </td>
+                    <td>
+                      <span class="badge badge-danger badge-outline rounded-[30px]">
+                        <span class="size-1.5 rounded-full bg-danger me-1.5">
+                        </span>
+                        Echec
+                       </span>
+                    </td>
+                    <td>
+                     <a class="btn btn-icon btn-light btn-clear btn-sm" href="#">
+                      <i class="ki-filled ki-notepad">
+                      </i>
+                     </a>
+                    </td>
+                   </tr>
+                   <tr>
+                    <td>
+                     <input class="checkbox checkbox-sm" data-datatable-row-check="true" type="checkbox" value="1"/>
+                    </td>
+                    <td>
+                      <div class="flex items-center gap-1.5">
+                        <i class="ki-duotone ki-files text-lg text-gray-600">
+                        </i>
+                        <span class="leading-none font-semibold text-gray-700">
+                          TXN-2024-01-04T23:59:59Z
+                        </span>
+                       </div>
+                    
+                    </td>
+                    <td>
+                      <a  class="flex items-center gap-2.5 " href="#">
+                       <div class="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-indigo-500 rounded-full">
+                        TW
+                      </div>
+                      <div class="flex flex-col">
+                       <span class="text-sm font-medium  text-gray-900 mb-px">
+                        Tyler Hero
+                       </span>
+                       <span class="text-2sm text-gray-700  font-normal">
+                        tyler.hero@gmail.com
+                       </span>
+                      </div>
+                      </a>
+                  </td>
+                    <td>
+                     <div class="flex items-center gap-1.5">
+                      <div class="flex items-center gap-2.5">
+
+                       <div class="flex flex-col">
+                         <span class="leading-none font-semibold text-gray-700">
+                          25000 FCFA
+                         </span>
+                        <span class="text-2sm text-violet-600 font-normal py-1">
+                         Enrégistrement podcast
+                        </span>
+                       </div>
+                      </div>
+                     </div>
+                    </td>
+                 
+                     <td>
+                     <div class="flex items-center gap-1.5 class=" text-gray-800="">
+                      <img alt="" class="rounded-lg size-8 shrink-0 object-cover" src="assets\media\logos\moov-money.png">
+                      <div class="flex flex-col">
+                       <span class="text-2sm text-gray-600 font-normal hover:text-primary-active" href="#">
+                        Moov-money
+                       </span>
+                       <span>
+                        +2287854321
+                       </span>
+                      </div>
+                     </div>
+                    </td>
+                    <td>
+                     10-Mar-2024
+                    </td>
+                    <td>
+                     <span class="badge badge-success badge-pill badge-outline gap-1.5">
+                      <span class="badge badge-dot badge-success size-1.5">
+                      </span>
+                      Succes
+                     </span>
+                    </td>
+                    <td>
+                     <a class="btn btn-icon btn-light btn-clear btn-sm" href="#">
+                      <i class="ki-filled ki-notepad">
+                      </i>
+                     </a>
+                    </td>
+                   </tr>
+
+                  </tbody>
+                 </table>
+                </div>
+                 
+               </div>
+              </div>
+           </div>
+           <div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
+                
+            <div class="flex items-center gap-4 order-1 md:order-2">
+             <span data-datatable-info="true">1-3 of 3</span>
+             <div class="pagination">
+              <button class="btn  active ">
+                <i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+              </button>
+              <button class="btn">2</button>
+              <button class="btn">2</button>
+              <button class="btn active disabled" disabled="">3</button>
+              <button class="btn">4</button>
+              <button class="btn">5</button>
+              <button class="btn  active "><i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i></button>
+            </div>
+            </div>
+           </div>
+       </div>
+
+       </div>
+  </div>
+     <!-- End of Container -->
+     <%- include('./partials/footer') %>
+    </main>
+    <!-- End of Main -->
+   </div>
+   <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+
+  
+  <div class="modal" data-modal="true" id="addAdminModal">
+    <div class="modal-content modal-center max-w-[600px] py-3 px-8">
+     <div class="modal-header">
+      <h3 class="text-lg font-semibold leading-none text-kr-primary">
+       Créer un compte admin
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+       <div class=" flex gap-6 flex-col  mb-8 mt-5">
+                 <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Nom & Prénom
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+ 
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Email
+                    </label>
+                    <input class="input" placeholder="" type="text" value=""/>
+                   </div>
+                  </div>
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+                  <div class="w-full">
+                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+                    <label class="form-label">
+                    Confirmez le mot de pass
+                    </label>
+                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
+                     <input placeholder="" type="password"/>
+                     <div class="btn btn-icon" data-toggle-password-trigger="true">
+                      <i class="ki-outline ki-eye toggle-password-active:hidden">
+                      </i>
+                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
+                      </i>
+                     </div>
+                    </div>
+                   </div>
+                  </div>
+ 
+               </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Créer le compte
+       </button>
+ 
+      </div>
+     </div>
+    </div>
+   </div>
+*
+  <!-- End of Page -->
+  <!-- Scripts -->
+  <script src="assets/js/core.bundle.js">
+  </script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+   <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+ </body>
+</html>

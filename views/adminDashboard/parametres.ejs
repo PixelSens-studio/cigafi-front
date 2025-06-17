@@ -1,0 +1,151 @@
+<%- include('./partials/head') %>
+   <!-- End of Header -->
+   <!-- Wrapper -->
+   <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
+   
+    <!-- End of Sidebar -->
+    <!-- Main -->
+    <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+     <!-- Toolbar -->
+     <div class="pb-5">
+      <!-- Container -->
+      <%- include('./partials/content_header') %>
+    
+      <!-- End of Container -->
+     </div>
+     <!-- End of Toolbar -->
+     <!-- Container -->
+     <div class="container-fixed">
+      
+      <div class="container-fixed">
+        <div class="flex grow gap-5 lg:gap-7.5"> 
+         <div class="flex flex-col items-stretch grow gap-5 lg:gap-7.5">
+          <div class="card pb-2.5">
+           <div class="card-header" id="basic_settings">
+            <h3 class="card-title">
+            Informations personelles
+            </h3>
+           </div>
+           <div class="card-body grid gap-5">
+            <div class="flex items-center flex-wrap gap-2.5">
+             <label class="form-label max-w-56">
+              Profile
+             </label>
+             <div class="flex items-center justify-between flex-wrap grow gap-2.5">
+              <span class="text-2sm text-gray-700">
+               
+              </span>
+              <div class="flex justify-center transform -translate-y-1/2">
+                <div class="flex items-center justify-center relative text-2.5xl text-white size-14 font-semibold bg-orange-500 rounded-full">
+                 KW
+                 <div class="flex size-2.5 bg-green-500 rounded-full ring-2 ring-light absolute bottom-0.5 left-14 transform -translate-y-1/2">
+                 </div>
+                </div>
+ 
+               </div>
+             </div>
+            </div>
+            <div class="w-full">
+             <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+              <label class="form-label flex items-center gap-1 max-w-56">
+               Nom
+              </label>
+              <input class="input" type="text" value="Jason Tatum">
+             </div>
+            </div>
+            <div class="w-full">
+             <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+              <label class="form-label flex items-center gap-1 max-w-56">
+              Numéro de telephone
+              </label>
+              <input class="input" type="text" value="KeenThemes">
+             </div>
+            </div>
+            <div class="w-full">
+             <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+              <label class="form-label flex items-center gap-1 max-w-56">
+               Email
+              </label>
+              <input class="input" type="text" value="KeenThemes">
+             </div>
+            </div>
+         
+            
+            <div class="flex justify-end pt-2.5">
+             <button class="btn btn-primary">
+              Enregistrer les modifications
+             </button>
+            </div>
+           </div>
+          </div>
+           
+             
+          <div class="card">
+            <div class="card-header" id="auth_password">
+             <h3 class="card-title">
+              Mot de pass
+             </h3>
+            </div>
+            <div class="card-body grid gap-5">
+             <div class="w-full">
+              <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+               <label class="form-label max-w-56">
+                Mot de pass actuel
+               </label>
+               <input class="input" placeholder="Your current password" type="password" value="">
+               
+              </div>
+             </div>
+             <div class="w-full">
+              <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+               <label class="form-label max-w-56">
+                Nouveau mot de pass
+               </label>
+               <input class="input" placeholder="New password" type="password" value="">
+               
+              </div>
+             </div>
+             <div class="w-full">
+              <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+               <label class="form-label max-w-56">
+                Confirmer le nouveau mot de pass
+               </label>
+               <input class="input" placeholder="Confirm new password" type="password" value="">
+               
+              </div>
+             </div>
+             <div class="flex justify-end pt-2.5">
+              <button class="btn btn-primary">
+              Mettre à jour le mot de pass
+              </button>
+             </div>
+            </div>
+           </div>
+         </div>
+        </div>
+       </div>
+
+     </div>
+     <!-- End of Container -->
+     <%- include('./partials/footer') %>
+    </main>
+    <!-- End of Main -->
+   </div>
+   <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+*
+  <!-- End of Page -->
+  <!-- Scripts -->
+  <script src="assets/js/core.bundle.js">
+  </script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+   <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+ </body>
+</html>

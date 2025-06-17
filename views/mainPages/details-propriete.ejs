@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+     <base href="/">
     <%- include('./partials/head') %>
   </head>
   <body>
@@ -10,7 +11,21 @@
         <div class="flex justify-between">
           <div>
             <div class="flex gap-6 items-center mb-8">
-              <div class="text-3xl font-bold text-black">2 CHAMBRES SALON</div>
+              <div class="text-3xl font-bold text-black"> 
+                <% if (property.listingCategory === 'habitations-bureaux') { %>
+                <% if (property.summary.city === 'Lomé') { %>
+                  <%= property.summary.propertyType %> - <%= property.summary.area %>
+                <% } else { %>
+                  <%= property.summary.propertyType %> - <%= property.summary.city %>
+                <% } %>
+              <% } else if (property.listingCategory === 'terrains-ruraux' || property.listingCategory === 'terrains-urbain') { %>
+                <% if (property.summary.city === 'Lomé') { %>
+                 Baille de terrain - <%= property.summary.surface %> - <%= property.summary.area %>
+                <% } else { %>
+                 Baille de terrain - <%= property.summary.surface %> - <%= property.summary.city %>
+                <% } %>
+              <% } %>
+            </div>
               <div class="text-[#FFA200] items-center flex gap-4 pl-6 border-l border-gray-500">
                 <span>
                   <svg
@@ -36,15 +51,46 @@
                     />
                   </svg>
                 </span>
-                <span>Publiée le 22 Sep 2024</span>
+                <span>Publiée <span class="font-bold">
+                  <%
+                    const createdDate = new Date(property.metadata.created_at);
+                    const now = new Date();
+                    const diffInSeconds = Math.floor((now - createdDate) / 1000);
+                
+                    let timeAgo;
+                
+                    if (diffInSeconds < 60) {
+                      timeAgo = 'Il y\'a quelques secondes';
+                    } else if (diffInSeconds < 3600) {
+                      const minutes = Math.floor(diffInSeconds / 60);
+                      timeAgo = `Il y'a ${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
+                    } else if (diffInSeconds < 86400) {
+                      const hours = Math.floor(diffInSeconds / 3600);
+                      timeAgo = `Il y'a ${hours} ${hours === 1 ? 'heure' : 'heures'}`;
+                    } else if (diffInSeconds < 259200) { // 3 days in seconds
+                      const days = Math.floor(diffInSeconds / 86400);
+                      timeAgo = `Il y'a ${days} ${days === 1 ? 'jour' : 'jours'}`;
+                    } else {
+                      timeAgo = `le ${createdDate.toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                      })}`;
+                    }
+                  %>
+                  <%= timeAgo %>
+                </span></span>
               </div>
             </div>
-            <div class="flex gap-16 text-gray-500">
+            
+            <div class="flex <%= (  property.listingCategory  === 'habitations-bureaux' ) ? 'gap-16' : '' %> text-gray-500">
+
               <div>
-                <span class="font-bold">Avance & caution</span>
-                <div class="flex mt-3 items-center gap-3">
-                  <span>
-                    <svg
+                <% if (property.usageType === 'Appartement meublé') { %>
+                  <span class="font-bold">Caution</span>
+                  <div class="flex mt-3 items-center gap-3">
+                    <span>
+                      <svg
                       width="22"
                       height="22"
                       viewBox="0 0 22 22"
@@ -56,9 +102,29 @@
                         fill="#6D7280"
                       />
                     </svg>
-                  </span>
-                  <span>6 Mois + 4 Mois de caution</span>
-                </div>
+                    </span>
+                    <span><%= property.financial.caution.toLocaleString('fr-FR') %> FCFA</span>
+                  </div>
+                <% } else if (property.usageType === 'Habitation' || property.usageType === 'Bureaux ou Magasin') { %>
+                  <span class="font-bold">Avance & caution</span>
+                  <div class="flex mt-3 items-center gap-3">
+                    <span>
+                      <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14.4375 2.75C13.2048 2.75 12.0876 2.981 11.2145 3.41619C10.3414 3.85137 9.625 4.56019 9.625 5.5V8.25C9.625 8.33869 9.65456 8.42462 9.66831 8.50781C8.98012 8.33309 8.27252 8.24646 7.5625 8.25C6.32981 8.25 5.21262 8.481 4.3395 8.91619C3.46637 9.35138 2.75 10.0602 2.75 11V16.5C2.75 17.4398 3.46706 18.1486 4.34019 18.5838C5.21263 19.019 6.32981 19.25 7.5625 19.25C8.79519 19.25 9.91237 19.019 10.7855 18.5838C11.6572 18.1486 12.375 17.4398 12.375 16.5V16.2209C13.0475 16.4028 13.7408 16.4967 14.4375 16.5C15.6702 16.5 16.7874 16.269 17.6605 15.8338C18.5322 15.3986 19.25 14.6898 19.25 13.75V5.5C19.25 4.56019 18.5329 3.85137 17.6598 3.41619C16.7881 2.981 15.6709 2.75 14.4375 2.75ZM14.4375 4.125C15.4846 4.125 16.4168 4.3505 17.0369 4.66194C17.6571 4.97338 17.875 5.30131 17.875 5.5C17.875 5.69869 17.6578 6.02662 17.0369 6.33806C16.4175 6.6495 15.4846 6.875 14.4375 6.875C13.3904 6.875 12.4582 6.6495 11.8381 6.33806C11.2179 6.02662 11 5.69869 11 5.5C11 5.30131 11.2172 4.97338 11.8381 4.66194C12.4575 4.3505 13.3904 4.125 14.4375 4.125ZM11 7.45525C11.0722 7.49512 11.1396 7.54669 11.2152 7.58381C12.0876 8.019 13.2048 8.25 14.4375 8.25C15.6702 8.25 16.7874 8.019 17.6605 7.58381C17.7354 7.54669 17.8028 7.49512 17.875 7.45525V8.25C17.875 8.44938 17.6578 8.77662 17.0369 9.08806C16.4168 9.3995 15.4846 9.625 14.4375 9.625C13.3904 9.625 12.4582 9.3995 11.8381 9.08806C11.2179 8.77662 11 8.44869 11 8.25V7.45525ZM7.5625 9.625C8.60956 9.625 9.54181 9.8505 10.1619 10.1619C10.7821 10.4734 11 10.8013 11 11C11 11.1987 10.7828 11.5266 10.1619 11.8381C9.54181 12.1495 8.60956 12.375 7.5625 12.375C6.51544 12.375 5.58319 12.1495 4.96306 11.8381C4.34294 11.5266 4.125 11.1987 4.125 11C4.125 10.8013 4.34225 10.4734 4.96306 10.1619C5.5825 9.8505 6.51544 9.625 7.5625 9.625ZM17.875 10.2052V11C17.875 11.1994 17.6578 11.5266 17.0369 11.8381C16.4168 12.1495 15.4846 12.375 14.4375 12.375C13.7372 12.3788 13.0408 12.2699 12.375 12.0526V11C12.375 10.9113 12.3454 10.8254 12.3317 10.7422C12.9711 10.9086 13.6799 11 14.4375 11C15.6702 11 16.7874 10.769 17.6605 10.3338C17.7354 10.2967 17.8028 10.2451 17.875 10.2052ZM4.125 12.9552C4.19719 12.9951 4.26456 13.0467 4.34019 13.0838C5.21263 13.519 6.32981 13.75 7.5625 13.75C8.79519 13.75 9.91237 13.519 10.7855 13.0838C10.8604 13.0467 10.9278 12.9951 11 12.9552V13.75C11 13.9494 10.7828 14.2766 10.1619 14.5881C9.54181 14.8995 8.60956 15.125 7.5625 15.125C6.51544 15.125 5.58319 14.8995 4.96306 14.5881C4.34294 14.2766 4.125 13.9487 4.125 13.75V12.9552ZM17.875 12.9552V13.75C17.875 13.9494 17.6578 14.2766 17.0369 14.5881C16.4168 14.8995 15.4846 15.125 14.4375 15.125C13.6558 15.125 12.9497 15.015 12.375 14.8239V13.4922C13.0061 13.6586 13.6936 13.75 14.4375 13.75C15.6702 13.75 16.7874 13.519 17.6605 13.0838C17.7354 13.0467 17.8028 12.9951 17.875 12.9552ZM4.125 15.7052C4.19719 15.7451 4.26456 15.7967 4.34019 15.8338C5.21263 16.269 6.32981 16.5 7.5625 16.5C8.79519 16.5 9.91237 16.269 10.7855 15.8338C10.8604 15.7967 10.9278 15.7451 11 15.7052V16.5C11 16.6994 10.7828 17.0266 10.1619 17.3381C9.54181 17.6495 8.60956 17.875 7.5625 17.875C6.51544 17.875 5.58319 17.6495 4.96306 17.3381C4.34294 17.0266 4.125 16.6987 4.125 16.5V15.7052Z"
+                        fill="#6D7280"
+                      />
+                    </svg>
+                    </span>
+                    <span><%= property.financial.deposit %> Mois d'avance + <%= property.financial.caution %> Mois de caution</span>
+                  </div>
+                <% } %>
               </div>
               <div>
                 <span class="font-bold">Emplacement</span>
@@ -77,10 +143,11 @@
                       />
                     </svg>
                   </span>
-                  <span>Kégué non loin de l’échangeur</span>
+                  <span><%= property.locationText %></span>
                 </div>
               </div>
             </div>
+
           </div>
           <div>
             <div class="flex gap-8 items-center text-gray-500">
@@ -121,162 +188,160 @@
                 <span>Enrégistrer</span>
               </a>
             </div>
-            <div class="mt-10">
-              <span class="text-black font-bold text-4xl">75000 F CFA</span>
-              <span class="text-gray-500 ">/Mois</span>
-            </div>
+            <% if (property.summary.price === 0) { %>
+              <div class="mt-10">
+                <span class="text-black font-bold text-4xl">Prix à discuter</span>
+              </div>
+            <% } else if (property.listingCategory === 'habitations-bureaux') { %>
+              <% if (property.usageType === 'Appartement meublé') { %>
+                <div class="flex flex-row gap-3 items-center">
+                  <div class="mt-10">
+                    <span class="text-black font-bold text-4xl"><%= property.summary.price.daily.toLocaleString('de-DE') %> F</span>
+                    <span class="text-gray-500">/Jour</span>
+                  </div>
+                  <div class="mt-10 pl-6 border-l border-gray-500">
+                    <span class="text-black font-bold text-4xl"><%= property.summary.price.Monthly.toLocaleString('de-DE') %> F</span>
+                    <span class="text-gray-500">/Mois</span>
+                  </div>
+                </div>
+              <% } else if (property.usageType === 'Habitation' || property.usageType === 'Bureaux ou Magasin') { %>
+                <div class="mt-10">
+                  <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> F</span>
+                  <span class="text-gray-500">/Mois</span>
+                </div>
+              <% } %>
+            <% } else if (property.listingCategory === 'terrains-ruraux' || property.listingCategory === 'terrains-urbain') { %>
+              <div class="mt-10">
+                <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> F</span>
+              </div>
+            <% } %>
+            
           </div>
         </div>
-        <div class="grid grid-cols-4 grid-rows-2 gap-5 my-12">
-          <img
-            src="/assets/images/16.png"
-            class="col-span-2 row-span-2 w-full h-full"
-          />
-          <img src="/assets/images/17.png" class="col-span-1 row-span-1" />
-          <img src="/assets/images/18.png" class="col-span-1 row-span-1" />
-          <img src="/assets/images/19.png" class="col-span-1 row-span-1" />
-          <div class="col-span-1 row-span-1 relative overflow-hidden rounded-xl">
-            <img src="/assets/images/20.png" />
-            <div class="absolute top-0 left-0 w-full h-full bg-[#0000008c] flex items-center justify-center">
-              <span class="p-5 bg-[#FFA200] text-white rounded-full">+12</span>
+     
+        <% if (property.media.photos && property.media.photos.length >= 2) { %>
+          <div class="grid grid-cols-4 grid-rows-2 gap-5 my-12 max-h-[50vh]">
+            <% if (property.media.photos.length === 2) { %>
+              <!-- 2 Images Layout -->
+              <div class="col-span-3 row-span-2 h-full">
+                <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
+              </div>
+              <div class="col-start-4 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
+              </div>
+              <div class="col-start-4 row-start-2 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
+              </div>
+        
+            <% } else if (property.media.photos.length === 3) { %>
+              <!-- 3 Images Layout -->
+              <div class="col-span-2 row-span-2 h-full">
+                <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
+              </div>
+              <div class="col-start-3 row-span-2 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
+              </div>
+              <div class="col-start-4 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
+              </div>
+              <div class="col-start-4 row-start-2 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[2] %>" class="w-full h-full object-cover rounded-md" alt="Image 3" />
+              </div>
+        
+            <% } else if (property.media.photos.length === 4) { %>
+              <!-- 4 Images Layout -->
+              <div class="col-span-2 row-span-2 h-full">
+                <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
+              </div>
+              <div class="col-start-3 row-start-1 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
+              </div>
+              <div class="col-start-3 row-start-2 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
+              </div>
+              <div class="col-start-4 row-start-1 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[2] %>" class="w-full h-full object-cover rounded-md" alt="Image 3" />
+              </div>
+              <div class="col-start-4 row-start-2 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[3] %>" class="w-full h-full object-cover rounded-md" alt="Image 4" />
+              </div>
+        
+            <% } else if (property.media.photos.length > 4) { %>
+              <!-- More than 4 Images Layout (Show first 4 + Overlay) -->
+              <div class="col-span-2 row-span-2 h-full">
+                <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
+              </div>
+              <div class="col-start-3 row-start-1 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
+              </div>
+              <div class="col-start-3 row-start-2 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
+              </div>
+              <div class="col-start-4 row-start-1 row-span-1 h-full">
+                <img src="assets/media/uploads/<%= property.media.photos[2] %>" class="w-full h-full object-cover rounded-md" alt="Image 3" />
+              </div>
+              <div class="col-start-4 row-start-2 row-span-1 h-full relative overflow-hidden">
+                <img src="assets/media/uploads/<%= property.media.photos[3] %>" class="w-full h-full object-cover rounded-md" alt="Image 4" />
+                <div class="absolute top-0 left-0 w-full h-full bg-[#0000008c] flex items-center justify-center">
+                  <span class="p-5 bg-[#FFA200] text-white rounded-full">
+                    <%= property.media.photos.length - 4 %>
+                  </span>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        <% } else { %>
+          <!-- Fallback for less than 2 images -->
+          <div class="grid grid-cols-4 grid-rows-2 gap-5 my-12 max-h-[50vh]">
+            <div class="col-span-4 row-span-2 h-full">
+              <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
             </div>
           </div>
-        </div>
+        <% } %>
+        
       </div>
-      <div class="px-10 py-6 mt-12 mb-24">
+      <div class="px-10 py-6 mb-24">
         <div class="grid grid-cols-4 gap-9 px-40">
           <div class="col-span-3">
             <div class="my-7 border-b pb-10">
               <div class="text-2xl font-bold mb-6">
                 Caractéristiques du bien
               </div>
-              <div class="grid grid-cols-3 grid-rows-2 gap-10">
-                <div class="col-span-1 row-span-1 flex gap-5 items-center">
-                  <div class="p-6 rounded-2xl border">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 22.5V16.25C3.75 15.88 3.85667 15.4858 4.07 15.0675C4.28333 14.6492 4.59333 14.335 5 14.125V11.25C5 10.545 5.24042 9.95208 5.72125 9.47125C6.20208 8.99042 6.795 8.75 7.5 8.75H13.125C13.5558 8.75 13.9238 8.83875 14.2288 9.01625C14.5329 9.19292 14.79 9.4375 15 9.75C15.21 9.4375 15.4671 9.19292 15.7712 9.01625C16.0762 8.83875 16.4442 8.75 16.875 8.75H22.5C23.205 8.75 23.7979 8.99042 24.2788 9.47125C24.7596 9.95208 25 10.545 25 11.25V14.125C25.4075 14.335 25.7175 14.6492 25.93 15.0675C26.1433 15.4858 26.25 15.88 26.25 16.25V22.5H25V20H5V22.5H3.75ZM15.625 13.75H23.75V11.25C23.75 10.8958 23.63 10.5992 23.39 10.36C23.15 10.1208 22.8533 10.0008 22.5 10H16.875C16.5208 10 16.2242 10.12 15.985 10.36C15.7458 10.6 15.6258 10.8967 15.625 11.25V13.75ZM6.25 13.75H14.375V11.25C14.375 10.8958 14.255 10.5992 14.015 10.36C13.775 10.1208 13.4783 10.0008 13.125 10H7.5C7.14583 10 6.84917 10.12 6.61 10.36C6.37083 10.6 6.25083 10.8967 6.25 11.25V13.75Z"
-                        fill="#434343"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-gray-500 mb-4">Chambre à coucher</div>
-                    <div class="text-xl font-bold">3</div>
-                  </div>
-                </div>
-                <div class="col-span-1 row-span-1 flex gap-5 items-center">
-                  <div class="p-6 rounded-2xl border">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 22.5V16.25C3.75 15.88 3.85667 15.4858 4.07 15.0675C4.28333 14.6492 4.59333 14.335 5 14.125V11.25C5 10.545 5.24042 9.95208 5.72125 9.47125C6.20208 8.99042 6.795 8.75 7.5 8.75H13.125C13.5558 8.75 13.9238 8.83875 14.2288 9.01625C14.5329 9.19292 14.79 9.4375 15 9.75C15.21 9.4375 15.4671 9.19292 15.7712 9.01625C16.0762 8.83875 16.4442 8.75 16.875 8.75H22.5C23.205 8.75 23.7979 8.99042 24.2788 9.47125C24.7596 9.95208 25 10.545 25 11.25V14.125C25.4075 14.335 25.7175 14.6492 25.93 15.0675C26.1433 15.4858 26.25 15.88 26.25 16.25V22.5H25V20H5V22.5H3.75ZM15.625 13.75H23.75V11.25C23.75 10.8958 23.63 10.5992 23.39 10.36C23.15 10.1208 22.8533 10.0008 22.5 10H16.875C16.5208 10 16.2242 10.12 15.985 10.36C15.7458 10.6 15.6258 10.8967 15.625 11.25V13.75ZM6.25 13.75H14.375V11.25C14.375 10.8958 14.255 10.5992 14.015 10.36C13.775 10.1208 13.4783 10.0008 13.125 10H7.5C7.14583 10 6.84917 10.12 6.61 10.36C6.37083 10.6 6.25083 10.8967 6.25 11.25V13.75Z"
-                        fill="#434343"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-gray-500 mb-4">Toilets</div>
-                    <div class="text-xl font-bold">2</div>
-                  </div>
-                </div>
-                <div class="col-span-1 row-span-1 flex gap-5 items-center">
-                  <div class="p-6 rounded-2xl border">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 22.5V16.25C3.75 15.88 3.85667 15.4858 4.07 15.0675C4.28333 14.6492 4.59333 14.335 5 14.125V11.25C5 10.545 5.24042 9.95208 5.72125 9.47125C6.20208 8.99042 6.795 8.75 7.5 8.75H13.125C13.5558 8.75 13.9238 8.83875 14.2288 9.01625C14.5329 9.19292 14.79 9.4375 15 9.75C15.21 9.4375 15.4671 9.19292 15.7712 9.01625C16.0762 8.83875 16.4442 8.75 16.875 8.75H22.5C23.205 8.75 23.7979 8.99042 24.2788 9.47125C24.7596 9.95208 25 10.545 25 11.25V14.125C25.4075 14.335 25.7175 14.6492 25.93 15.0675C26.1433 15.4858 26.25 15.88 26.25 16.25V22.5H25V20H5V22.5H3.75ZM15.625 13.75H23.75V11.25C23.75 10.8958 23.63 10.5992 23.39 10.36C23.15 10.1208 22.8533 10.0008 22.5 10H16.875C16.5208 10 16.2242 10.12 15.985 10.36C15.7458 10.6 15.6258 10.8967 15.625 11.25V13.75ZM6.25 13.75H14.375V11.25C14.375 10.8958 14.255 10.5992 14.015 10.36C13.775 10.1208 13.4783 10.0008 13.125 10H7.5C7.14583 10 6.84917 10.12 6.61 10.36C6.37083 10.6 6.25083 10.8967 6.25 11.25V13.75Z"
-                        fill="#434343"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-gray-500 mb-4">Cuisine</div>
-                    <div class="text-xl font-bold">Oui</div>
-                  </div>
-                </div>
-                <div class="col-span-1 row-span-1 flex gap-5 items-center">
-                  <div class="p-6 rounded-2xl border">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 22.5V16.25C3.75 15.88 3.85667 15.4858 4.07 15.0675C4.28333 14.6492 4.59333 14.335 5 14.125V11.25C5 10.545 5.24042 9.95208 5.72125 9.47125C6.20208 8.99042 6.795 8.75 7.5 8.75H13.125C13.5558 8.75 13.9238 8.83875 14.2288 9.01625C14.5329 9.19292 14.79 9.4375 15 9.75C15.21 9.4375 15.4671 9.19292 15.7712 9.01625C16.0762 8.83875 16.4442 8.75 16.875 8.75H22.5C23.205 8.75 23.7979 8.99042 24.2788 9.47125C24.7596 9.95208 25 10.545 25 11.25V14.125C25.4075 14.335 25.7175 14.6492 25.93 15.0675C26.1433 15.4858 26.25 15.88 26.25 16.25V22.5H25V20H5V22.5H3.75ZM15.625 13.75H23.75V11.25C23.75 10.8958 23.63 10.5992 23.39 10.36C23.15 10.1208 22.8533 10.0008 22.5 10H16.875C16.5208 10 16.2242 10.12 15.985 10.36C15.7458 10.6 15.6258 10.8967 15.625 11.25V13.75ZM6.25 13.75H14.375V11.25C14.375 10.8958 14.255 10.5992 14.015 10.36C13.775 10.1208 13.4783 10.0008 13.125 10H7.5C7.14583 10 6.84917 10.12 6.61 10.36C6.37083 10.6 6.25083 10.8967 6.25 11.25V13.75Z"
-                        fill="#434343"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-gray-500 mb-4">Garage </div>
-                    <div class="text-xl font-bold">Non</div>
-                  </div>
-                </div>
-                <div class="col-span-1 row-span-1 flex gap-5 items-center">
-                  <div class="p-6 rounded-2xl border">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 22.5V16.25C3.75 15.88 3.85667 15.4858 4.07 15.0675C4.28333 14.6492 4.59333 14.335 5 14.125V11.25C5 10.545 5.24042 9.95208 5.72125 9.47125C6.20208 8.99042 6.795 8.75 7.5 8.75H13.125C13.5558 8.75 13.9238 8.83875 14.2288 9.01625C14.5329 9.19292 14.79 9.4375 15 9.75C15.21 9.4375 15.4671 9.19292 15.7712 9.01625C16.0762 8.83875 16.4442 8.75 16.875 8.75H22.5C23.205 8.75 23.7979 8.99042 24.2788 9.47125C24.7596 9.95208 25 10.545 25 11.25V14.125C25.4075 14.335 25.7175 14.6492 25.93 15.0675C26.1433 15.4858 26.25 15.88 26.25 16.25V22.5H25V20H5V22.5H3.75ZM15.625 13.75H23.75V11.25C23.75 10.8958 23.63 10.5992 23.39 10.36C23.15 10.1208 22.8533 10.0008 22.5 10H16.875C16.5208 10 16.2242 10.12 15.985 10.36C15.7458 10.6 15.6258 10.8967 15.625 11.25V13.75ZM6.25 13.75H14.375V11.25C14.375 10.8958 14.255 10.5992 14.015 10.36C13.775 10.1208 13.4783 10.0008 13.125 10H7.5C7.14583 10 6.84917 10.12 6.61 10.36C6.37083 10.6 6.25083 10.8967 6.25 11.25V13.75Z"
-                        fill="#434343"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-gray-500 mb-4">Camera de sécurité</div>
-                    <div class="text-xl font-bold">Oui</div>
-                  </div>
-                </div>
-                <div class="col-span-1 row-span-1 flex gap-5 items-center">
-                  <div class="p-6 rounded-2xl border">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.75 22.5V16.25C3.75 15.88 3.85667 15.4858 4.07 15.0675C4.28333 14.6492 4.59333 14.335 5 14.125V11.25C5 10.545 5.24042 9.95208 5.72125 9.47125C6.20208 8.99042 6.795 8.75 7.5 8.75H13.125C13.5558 8.75 13.9238 8.83875 14.2288 9.01625C14.5329 9.19292 14.79 9.4375 15 9.75C15.21 9.4375 15.4671 9.19292 15.7712 9.01625C16.0762 8.83875 16.4442 8.75 16.875 8.75H22.5C23.205 8.75 23.7979 8.99042 24.2788 9.47125C24.7596 9.95208 25 10.545 25 11.25V14.125C25.4075 14.335 25.7175 14.6492 25.93 15.0675C26.1433 15.4858 26.25 15.88 26.25 16.25V22.5H25V20H5V22.5H3.75ZM15.625 13.75H23.75V11.25C23.75 10.8958 23.63 10.5992 23.39 10.36C23.15 10.1208 22.8533 10.0008 22.5 10H16.875C16.5208 10 16.2242 10.12 15.985 10.36C15.7458 10.6 15.6258 10.8967 15.625 11.25V13.75ZM6.25 13.75H14.375V11.25C14.375 10.8958 14.255 10.5992 14.015 10.36C13.775 10.1208 13.4783 10.0008 13.125 10H7.5C7.14583 10 6.84917 10.12 6.61 10.36C6.37083 10.6 6.25083 10.8967 6.25 11.25V13.75Z"
-                        fill="#434343"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-gray-500 mb-4">Dépendances </div>
-                    <div class="text-xl font-bold">Aucun</div>
-                  </div>
-                </div>
-              </div>
+              
+              <div class="grid grid-cols-3 grid-rows-1 gap-8">
+
+
+                <% function normalizeIconName(str) { 
+                        return str
+                          .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove diacritics
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")
+                          .replace(/[^a-z0-9\-]/g, ""); // remove special chars if needed
+                      } %>
+
+                      <% property.characteristics.forEach(function(characteristic) { 
+                          const iconName = normalizeIconName(characteristic.nom); 
+                      %>
+                        <div class="col-span-1 row-span-1 flex gap-3 items-center">
+                          <div class="p-4 rounded-2xl border">
+                            <img class="size-[30px]" src="assets/images/icons/<%= iconName %>.svg" alt="<%= characteristic.nom %>">
+                          </div>
+                          <div>
+                            <div class="text-gray-500 mb-2"><%= characteristic.nom %></div>
+                            <div class="text-xl font-bold"><%= characteristic.valeur %></div>
+                          </div>
+                        </div>
+                      <% }); %>
+
+
+             
+              </div> 
+                
             </div>
             <div class="my-7 border-b py-10">
               <div class="text-2xl font-bold mb-6">Description du bien</div>
               <p class="text-gray-500 leading-[35px]">
-                Découvrez notre maison d'hôtes indépendante, nichée au cœur d'un jardin luxuriant, à seulement 2,9 km du rond-point du Monument à Baguida. En empruntant la route de sable vers Devego, vous rejoindrez notre havre de paix. Profitez d'un espace de vie entièrement privatif, comprenant une chambre confortable, un salon cosy, une cuisine équipée et une salle de bain moderne. Après une journée de visites ou de détente au bord de la piscine, savourez un moment de tranquillité sur notre terrasse ombragée. Idéal pour les amoureux de la nature et les voyageurs en quête d'authenticité."
+                <%= property.description %>
               </p>
             </div>
             
@@ -285,168 +350,22 @@
                 Commodités
               </div>
               <div class="grid grid-cols-3 gap-4 text-gray-400">
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
+                <% property.amenities.forEach(commodity => { 
+                  // Transform the text: lowercase, remove diacritics, replace spaces with dashes
+                  const transformedText = commodity
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/['']/g, ''); 
+                %>
+                  <div class="col-span-1 flex gap-2 items-center">
+                    <div class="flex items-center justify-center uppercase rounded-full size-[50px] shrink-0 bg-[#F2F3F7] text-primary">
+                      <img class="size-[22px]" src="assets/images/icons/<%= transformedText %>.svg" alt="<%= commodity %>" srcset="">
+                    </div>
+                    <div><%= commodity %></div>
                   </div>
-                  <div>Agent de sécurité</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Buanderie</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Camera de sécurité</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Cusine équipé</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Balcon</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Piscine</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Wifi</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Ascenseur</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                      <path
-                        d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                        fill="#929393"
-                      />
-                    </svg>
-                  </div>
-                  <div>Agent d'entretien</div>
-                </div>
+                <% }); %>
               </div>
             </div>
             <div class="my-7 border-b py-10">
@@ -482,96 +401,29 @@
                 </div>
               </div>
             </div>
-            <div class="my-7 py-10">
-              <div class="text-2xl font-bold mb-6">Règles de la proprieté</div>
-              <div class="grid grid-cols-3 gap-4 text-gray-400">
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="8" height="8" rx="4" fill="#FFA200" />
-                    </svg>
-                  </div>
-                  <div>Pas d’animaux</div>
+            <% if (property.listingCategory !== 'terrains-ruraux' && property.listingCategory !== 'terrains-urbain') { %>
+              <div class="my-7 py-10">
+                <div class="text-2xl font-bold mb-6">Règles de la proprieté</div>
+                <div class="grid grid-cols-3 gap-4 text-gray-400">
+                  <% property.rules.forEach(rule => { %>
+                    <div class="col-span-1 flex gap-2 items-center">
+                      <div>
+                        <svg
+                          width="8"
+                          height="8"
+                          viewBox="0 0 8 8"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width="8" height="8" rx="4" fill="#FFA200" />
+                        </svg>
+                      </div>
+                      <div><%= rule %></div>
+                    </div>
+                  <% }); %>
                 </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="8" height="8" rx="4" fill="#FFA200" />
-                    </svg>
-                  </div>
-                  <div>Pas de fête ou d’évènement</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="8" height="8" rx="4" fill="#FFA200" />
-                    </svg>
-                  </div>
-                  <div>Age minimum légale</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="8" height="8" rx="4" fill="#FFA200" />
-                    </svg>
-                  </div>
-                  <div>Pas de cigarette</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="8" height="8" rx="4" fill="#FFA200" />
-                    </svg>
-                  </div>
-                  <div>Annulation minimum 3 Jours avant la date</div>
-                </div>
-                <div class="col-span-1 flex gap-2 items-center">
-                  <div>
-                    <svg
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect width="8" height="8" rx="4" fill="#FFA200" />
-                    </svg>
-                  </div>
-                  <div>Interdiction de poser des affiches ou des objets sur les murs.</div>
-                </div>
-               
               </div>
-            </div>
+            <% } %>
           </div>
           <div class="col-span-1">
             <div class="border bg-[#F7F9FF] px-3 py-6 rounded-xl">

@@ -1,30 +1,19 @@
-const express = require('express');
+import express from "express";
+import * as mainController from "../controllers/mainPages.controller.js";
+
 const router = express.Router();
-const { homeGet,
-    servicesGet,
-    ressourcesGet,
-    aboutGet,
-    loginGet,
-    detailsProprieteGet,
-    requeteGet,
-    reservationInfoGet,
-    reservationPayGet,
-    ressourceDetailsGet
-} = require('../controllers/mainPages.controller');
 
-/* GET home page. */
-router.get('/', homeGet);
-/* GET home page. */
-router.get('/home', homeGet);
-router.get('/nos-services', servicesGet);
-router.get('/ressources', ressourcesGet);
-router.get('/a-propos', aboutGet);
-router.get('/login', loginGet);
-router.get('/details-propriete', detailsProprieteGet);
-router.get('/requete', requeteGet);
-router.get('/ressource-details', ressourceDetailsGet);
-router.get('/reservation-infos', reservationInfoGet);
-router.get('/reservation-payment', reservationPayGet);
+router.get('/', mainController.homeGet);
+router.get("/locations/:category?", mainController.locationsGet); 
+router.get('/services', mainController.servicesGet);
+router.get('/ressources', mainController.ressourcesGet); 
+router.get('/a-propos', mainController.aboutGet);
+router.get('/sign-in', mainController.signInGet);
+router.get('/sign-up', mainController.signUpGet);
+router.get('/locations/annonces/:slug', mainController.locationsByIdGet); 
+router.get('/requete', mainController.requeteGet);
+router.get('/reservation-info', mainController.reservationInfoGet);
+router.get('/ressource-details', mainController.ressourceDetailsGet);
+router.get('/reservation-pay', mainController.reservationPayGet);
 
-
-module.exports = router;
+export default router;

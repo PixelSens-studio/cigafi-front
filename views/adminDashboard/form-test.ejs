@@ -1,0 +1,93 @@
+ 
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulaire d’upload</title>
+</head>
+<body>
+  <h1>Formulaire d’upload</h1>
+
+  
+</body>
+
+</html>
+
+
+<%- include('./partials/head') %>
+  <!-- Wrapper -->
+  <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0"></div>
+  <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
+
+      <!-- End of Sidebar -->
+      <!-- Main -->
+      <main
+        class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]"
+        data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+        <!-- Toolbar -->
+        <div class="pb-5">
+          <!-- Container -->
+          <%- include('./partials/content_header') %>
+
+            <!-- End of Container -->
+        </div>
+        <!-- End of Toolbar -->
+        <!-- Container -->
+        <div class="container-fixed">
+          <form action="" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="title">Titre :</label>
+      <input type="text" name="title" id="title"/>
+    </div>
+
+    <div>
+      <label for="price">Prix :</label>
+      <input type="text" name="price" id="price"  />
+    </div>
+
+    <div>
+      <label for="place">Lieu :</label>
+      <input type="text" name="place" id="place"/>
+    </div>
+
+    <div>
+      <label for="mainImage">Image principale :</label>
+      <input type="file" name="mainImage" id="mainImage" accept="image/*" />
+    </div>
+
+    <div>
+      <label for="otherImage1">Autre image 1 :</label>
+      <input type="file" name="otherImage" id="otherImage1" accept="image/*" />
+    </div>
+
+    <div>
+      <label for="otherImage2">Autre image 2 :</label>
+      <input type="file" name="otherImage" id="otherImage2" accept="image/*" />
+    </div>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+          <%- include('./partials/footer') %>
+      </main>
+      <!-- End of Main -->
+  </div>
+  <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+
+  <!-- End of Page -->
+  <!-- Scripts -->
+   <script src="assets/js/app/form-test.js"></script>
+  <script src="assets/js/core.bundle.js">
+  </script>
+  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+  <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+  </body>
+
+  </html>
