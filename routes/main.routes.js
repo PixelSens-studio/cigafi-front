@@ -16,4 +16,9 @@ router.get('/reservation-info', mainController.reservationInfoGet);
 router.get('/ressource-details', mainController.ressourceDetailsGet);
 router.get('/reservation-pay', mainController.reservationPayGet);
 
+router.get('/admin', (req, res) => {
+  res.redirect('/admin/dashboard');
+});
+
+
 export default router;
