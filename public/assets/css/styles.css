@@ -4295,10 +4295,23 @@ video {
   padding-right: 1.25rem;
 }
 
+    
+
+    .modal-backdrop {
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        transition-property: all;
+        transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));
+        transition-duration: var(--tw-duration,var(--default-transition-duration));
+        --tw-duration: .3s;
+        transition-duration: .3s
+    }
+    
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: var(--tw-backdrop-background-color);
+ background-color: rgba(0, 0, 0, 0.3);
+;
 }
 
 .modal-center {
@@ -5404,6 +5417,10 @@ pagination .btn.nav-arrow:focus i, .pagination .btn.nav-arrow:active i, .paginat
 .card-header + .card-body table th:first-child, .card-header + .card-body table th:last-child, .card-header + .card-table table th:first-child, .card-header + .card-table table th:last-child {
   border-radius: 0;
 }
+
+ .card-body-g-100{
+  background-color: var(--tw-gray-100);
+ }
 
 .card-grid .card-header, .card-grid .card-footer {
   padding-left: 1.25rem;

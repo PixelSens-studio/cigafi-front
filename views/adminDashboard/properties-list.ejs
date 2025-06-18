@@ -1,506 +1,647 @@
 <%- include('./partials/head') %>
-<!-- End of Header -->
-<!-- Wrapper -->
-<div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
-  <!-- Sidebar -->
-  <%- include('./partials/navbar') %>
+  <!-- End of Header -->
+  <!-- Wrapper -->
+  <div class="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+    <!-- Sidebar -->
+    <%- include('./partials/navbar') %>
 
-  <!-- End of Sidebar -->
-  <!-- Main -->
-  <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
-    <!-- Toolbar -->
-    <div class="pb-5">
-      <!-- Container -->
-      <%- include('./partials/content_header') %>
+      <!-- End of Sidebar -->
+      <!-- Main -->
+      <main
+        class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]"
+        data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
+        <!-- Toolbar -->
+        <div class="pb-5">
+          <!-- Container -->
+          <div class="container-fixed mb-10">
+            <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
 
-      <!-- End of Container -->
-    </div>
-    <!-- End of Toolbar -->
-    <!-- Container -->
-    <div class="container-fixed" id="content_container">
-      <div class="container-fixed">
-        <div class="flex items-center flex-wrap md:flex-nowrap lg:items-end justify-between border-b border-b-gray-200 dark:border-b-coal-100 gap-3 lg:gap-6 mb-5 lg:mb-10">
-         <div class="grid">
-          <div class="scrollable-x-auto">
-           <div class="menu gap-3" data-menu="true">
-          
-            <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary <%= currentQuery.createdBy === 'Admin' || !currentQuery.createdBy ? 'active' : '' %>">
-             <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="/admin/liste-annonces?createdBy=Admin">
-              <span class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-               Mes annonces
-              </span>
-             </a>
-            </div>
-            <div class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary <%= currentQuery.createdBy === 'User' || !currentQuery.createdBy ? 'active' : '' %>">
-             <a class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" href="/admin/liste-annonces?createdBy=User">
-              <span class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
-               Annonces utilisateurs
-              </span>
-             </a>
-            </div>
-          
-           </div>
-          </div>
-         </div>
-         
-         <div class="flex items-center justify-end grow lg:grow-0 gap-2.5 mb-3 lg:mb-0">
-                <div class="dropdown inline-block relative w- lg:w-auto">
-                  <button class="bg-primary text-white w-full font-medium text-sm py-3 px-4 rounded-lg inline-flex items-center">
-                    <span class="mr-2">Créer une annonce</span>
-                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0.4375 1.25L7 7.8125L13.5625 1.25" stroke="white"/>
-                  </svg>
+               <%- include('./partials/content_header') %>
+              <div class="flex items-center flex-wrap">
 
+                <div class="dropdown inline-block relative w-full lg:w-auto">
+                  <button
+                    class="bg-primary text-white w-full font-medium text-sm py-3 px-4 rounded-lg inline-flex items-center">
+                    <i class="ki-filled ki-plus mr-2"> </i>
+                    Créer une annonce
                   </button>
                   <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
-                    <li class=""><a class="rounded-t text-md bg-primary-50 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap hover:font-bold hover:text-primary" href="/admin/add-new-property">Annonce location</a></li>
-                    <li class=""><a class="bg-primary-50 text-md rounded-b  py-2 px-4 block whitespace-no-wrap hover:text-primary hover:font-bold" href="#">Annonce vente</a></li>
+                    <li class=""><a
+                        class="rounded-t text-md bg-primary-50 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap hover:font-bold hover:text-primary"
+                        href="/admin/add-new-property">Annonce location</a></li>
+                    <li class=""><a
+                        class="bg-primary-50 text-md rounded-b  py-2 px-4 block whitespace-no-wrap hover:text-primary hover:font-bold"
+                        href="#">Annonce vente</a></li>
                   </ul>
-                </div> 
-         </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- End of Container -->
         </div>
-       </div>
-
-      <div class="container-fixed" >
-        <div class="flex items-center justify-between flex-wrap gap-5 mb-5">
-          <div class="flex gap-4 mb-5" data-tabs="true">
-            <a 
-              class="btn btn-primary btn-outline btn-primary <%= currentQuery.listingGroup === 'location' || !currentQuery.listingGroup ? 'active' : '' %>"  href=" /admin/liste-annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=location"
+        <!-- End of Toolbar -->
+        <!-- Container -->
+  <div class="container-fixed" id="content_container">
+  <div class="container-fixed">
+    <div
+      class="flex items-center flex-wrap md:flex-nowrap lg:items-end justify-between border-b border-b-gray-200 dark:border-b-coal-100 gap-3 lg:gap-6 mb-5 lg:mb-10"
+    >
+      <div class="grid">
+        <div class="scrollable-x-auto">
+          <div class="menu gap-3" data-menu="true">
+            <div
+              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary <%= currentQuery.createdBy === 'Admin' || !currentQuery.createdBy ? 'active' : '' %>"
             >
-              <i class="ki-duotone ki-calendar-tick"></i>
-              Annonces locations
-            </a>
-            <a  class="btn btn-primary btn-outline btn-primary <%= currentQuery.listingGroup === 'vente' ? 'active' : '' %>" 
-             href="/admin/liste-annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=vente"
-            >
-              <i class="ki-duotone ki-archive"></i>
-              Annonces ventes
-            </a>
-          </div>
-          <div class="flex items-center gap-1">
-            <div class="input-group">
-                  
-                 <form action="/admin/liste-annonces" method="GET" id="stateFilterForm" class="inline-block">
-  <select class="select select-lg w-40 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" name="state" onchange="this.form.submit()">
-    <option value="active" <%= currentQuery.state === 'active' ? 'selected' : '' %>>Active</option>
-    <option value="pending" <%= currentQuery.state === 'pending' ? 'selected' : '' %>>En attente</option>
-    <option value="archived" <%= currentQuery.state === 'archived' ? 'selected' : '' %>>Archivée</option>
-  </select>
-
-  <%
-    // Dynamically add hidden input fields for all other query parameters
-    // except 'state' (which is handled by the select) and 'page' (which will be reset).
-    // This ensures existing filters like 'listingGroup' are carried over.
-    for (const key in currentQuery) {
-      if (key !== 'state' && key !== 'page') {
-  %>
-        <input type="hidden" name="<%= key %>" value="<%= currentQuery[key] %>">
-  <%
-      }
-    }
-  %>
-  </form>
-</div>
-          </div>
-          </div>
-        
-          <div class="" id="tab_7_1">
-            <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
-              <div class="card hidden">
-                <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
-                  <div class="flex justify-center p-7.5 py-9">
-                    <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
-                    <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
-                  </div>
-                  <div class="flex flex-col gap-5 lg:gap-7.5">
-                    <div class="flex flex-col gap-3 text-center">
-                      <h2 class="text-1.5xl font-semibold text-gray-900">
-                        Vous n'avez aucune réservation pour l'instant
-                      </h2>
-                      <p class="text-sm text-gray-800">
-                        A streamlined process to welcome and integrate new members into the team,
-                        <br>
-                        ensuring a smooth and efficient start.
-                      </p>
-                    </div>
-                    <div class="flex justify-center mb-5">
-                      <a class="btn bg-kr-primary text-white" href="/booking">
-                        Réserver une session
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
-                <div class="col-span-2" data-dropdown="true" data-dropdown-trigger="click">
-                  <div class="grid grid-cols-3 gap-6">
-                  <% if (properties && properties.length > 0) { %>
-    <% properties.forEach(property => { %>
-      <div class="col-span-1">
-        <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
-          <!-- Property Image and Action Menu -->
-          <div class="-mb-4 w-full h-[200px] overflow-hidden">
-            <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0" data-menu="true">
-              <div class="menu-item" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
-                <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white">
-                  <i class="ki-filled ki-dots-vertical"></i>
-                </button>
-                <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
-                  <div class="menu-item">
-                    <a class="menu-link" href="#">
-                      <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
-                      <span class="menu-title">Modifier</span>
-                    </a>
-                  </div>
-                  <div class="menu-item">
-                    <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#">
-                      <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
-                      <span class="menu-title">Archiver</span>
-                    </a>
-                  </div>
-                  <div class="menu-item">
-                    <a class="menu-link" data-modal-toggle="#addAdminModal">
-                      <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
-                      <span class="menu-title">Supprimer</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <img 
-              src="assets/media/uploads/<%= property.summary.thumbnail %>" 
-              alt="<%= property.summary.propertyType %>" 
-              class="w-full h-full object-cover object-center" 
-            />
-          </div>
-         
-          <!-- Property Details -->
-          <div class="py-3 px-3 mt-8">
-            <div class="text-base font-bold text-black mb-2">
-  <% if (property.summary?.surface) { %>
-    <% if (property.summary.city === 'Lomé') { %>
-      <%= property.summary.surface %> - <%= property.summary.area %>
-    <% } else { %>
-      <%= property.summary.surface %> - <%= property.summary.city %>
-    <% } %>
-  <% } else { %>
-    <% if (property.summary.city === 'Lomé') { %>
-      <%= property.summary.propertyType %> - <%= property.summary.area %>
-    <% } else { %>
-      <%= property.summary.propertyType %> - <%= property.summary.city %>
-    <% } %>
-  <% } %>
-</div>
-            <div class="text-gray-500 mb-6 text-sm">
-              <% 
-    let shortDescription = '';
-    if (currentQuery.listingGroup === 'vente') {
-      if (property.summary?.surface) {
-        if (property.summary.city === 'Lomé') {
-          shortDescription = `Vente terrain de ${property.summary.surface} à ${property.summary.area}`;
-        } else {
-          shortDescription = `Vente terrain de ${property.summary.surface} à ${property.summary.city}`;
-        }
-      } else {
-        if (property.summary.city === 'Lomé') {
-          shortDescription = `Vente ${property.summary.propertyType} à ${property.summary.area}`;
-        } else {
-          shortDescription = `Vente ${property.summary.propertyType} à ${property.summary.city}`;
-        }
-      }
-    } else {
-      // Default to location
-      if (property.summary?.surface) {
-        if (property.summary.city === 'Lomé') {
-          shortDescription = `Location terrain ${property.summary.surface} à ${property.summary.area}`;
-        } else {
-          shortDescription = `Location terrain ${property.summary.surface} à ${property.summary.city}`;
-        }
-      } else {
-        if (property.summary.city === 'Lomé') {
-          shortDescription = `Location ${property.summary.propertyType} à ${property.summary.area}`;
-        } else {
-          shortDescription = `Location ${property.summary.propertyType} à ${property.summary.city}`;
-        }
-      }
-    }
-  %>
-  <%= shortDescription %>
-            </div>
-            <div class="flex justify-between items-center">
-              <p>
-                <span class="text-black text-xl font-semibold">
-                  <% if (!property.summary?.price || property.summary.price === 0) { %>
-                    Prix à discuter
-                  <% } else if (property.summary?.propertyType?.toLowerCase().includes('meublé')) { %>
-                    <% if (!property.summary.price?.daily || property.summary.price.daily === 0) { %>
-                      Prix à discuter
-                    <% } else { %>
-                      <%= property.summary.price.daily.toLocaleString('fr-FR') %> F
-                      <span class="text-gray-500">/Jour</span>
-                    <% } %>
-                  <% } else { %>
-                    <%= property.summary.price.toLocaleString('fr-FR') %> F
-                    <span class="text-gray-500">/Mois</span>
-                  <% } %>
+              <a
+                class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
+                href="/admin/liste-annonces?createdBy=Admin"
+              >
+                <span
+                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
+                >
+                  Mes annonces
                 </span>
-              </p>
-              <div class="text-black">
-                <%
-  const removeAccents = str => str && str.normalize ?
-                              str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : str || '';
-  const slugify = str => removeAccents(str).toLowerCase().replace(/\s+/g,
-                              "-").replace(/[^\w\-]+/g, "").replace(/\-\-+/g, "-");
-
-  let propertySlug = '';
-
-  // Determine if it's a 'terrains' property by checking for property.summary.surface
-  if (property.summary.surface) { // This property exists only for terrains
-    // It's a 'terrains' property (ruraux or urbain)
-    if (property.summary.city === 'Lomé') {
-      propertySlug =
-        `${slugify(property.summary.surface)}-${slugify(property.summary.area)}-${property.id}`;
-    } else {
-      propertySlug =
-        `${slugify(property.summary.surface)}-${slugify(property.summary.city)}-${property.id}`;
-    }
-  } else {
-    // It's a 'habitations-bureaux' property
-    if (property.summary.city === 'Lomé') {
-      propertySlug =
-        `${slugify(property.summary.propertyType)}-${slugify(property.summary.area)}-${property.id}`;
-    } else {
-      propertySlug =
-        `${slugify(property.summary.propertyType)}-${slugify(property.summary.city)}-${property.id}`;
-    }
-  }
-
-  // Determine the base path for the property details link based on listingGroup
-  let basePath = '';
-  if (currentQuery.listingGroup === 'location') {
-    basePath = '/locations/annonces';
-  } else if (currentQuery.listingGroup === 'vente') {
-    basePath = '/ventes/annonces';
-  }
-%>
-<a href="<%= basePath %>/<%= propertySlug %>"
-  class="text-black px-5 py-2 border border-gray-200 rounded-full"
-  target="_blank" rel="noopener noreferrer">
-  Details
-</a>
-              </div>
+              </a>
+            </div>
+            <div
+              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary <%= currentQuery.createdBy === 'User' ? 'active' : '' %>"
+              <% // Removed || !currentQuery.createdBy here as the first link handles the default %>
+            >
+              <a
+                class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
+                href="/admin/liste-annonces?createdBy=User"
+              >
+                <span
+                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
+                >
+                  Annonces utilisateurs
+                </span>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    <% }); %>
-  <% } else { %>
-    <div class="col-span-3">
-      <div class="card">
-        <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
-          <div class="flex justify-center p-7.5 py-9">
-            <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
+
+      <div class="flex items-center justify-end grow lg:grow-0 gap-2.5 mb-2">
+<div class="input-group">
+          <form action="/admin/liste-annonces" method="GET" id="stateFilterForm" class="inline-block">
+            <select
+              class="select select-lg w-40 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              name="state"
+              onchange="this.form.submit()"
+            >
+              <option value="active" <%= currentQuery.state === 'active' ? 'selected' : '' %>>Active</option>
+              <option value="pending" <%= currentQuery.state === 'pending' ? 'selected' : '' %>>En attente</option>
+              <option value="archived" <%= currentQuery.state === 'archived' ? 'selected' : '' %>>Archivée</option>
+            </select>
+
+            <%
+              for (const key in currentQuery) {
+                // Ensure currentQuery[key] is not null or undefined before adding
+                if (key !== 'state' && key !== 'page' && currentQuery[key] !== undefined && currentQuery[key] !== null) {
+            %>
+            <input type="hidden" name="<%= key %>" value="<%= currentQuery[key] %>" />
+            <%
+                }
+              }
+            %>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fixed">
+    <div class="flex items-center justify-between flex-wrap gap-5 mb-5">
+      <div class="flex gap-4 mb-5" data-tabs="true">
+        <a
+          class="btn btn-primary btn-outline btn-primary <%= currentQuery.listingGroup === 'location' || !currentQuery.listingGroup ? 'active' : '' %>"
+          href="/admin/liste-annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=location"
+        >
+          <i class="ki-duotone ki-calendar-tick"></i>
+          Annonces locations
+        </a>
+        <a
+          class="btn btn-primary btn-outline btn-primary <%= currentQuery.listingGroup === 'vente' ? 'active' : '' %>"
+          href="/admin/liste-annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=vente"
+        >
+          <i class="ki-duotone ki-archive"></i>
+          Annonces ventes
+        </a>
+      </div>
+     
+    </div>
+
+    <div class="" id="tab_7_1">
+      <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+        <div class="card hidden">
+          <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
+            <div class="flex justify-center p-7.5 py-9">
+              <img
+                alt="Illustration of no reservations"
+                class="max-h-[230px] dark:hidden"
+                src="assets/media/illustrations/22.svg"
+              />
+              <img
+                alt="Illustration of no reservations (dark mode)"
+                class="hidden dark:block max-h-[230px]"
+                src="assets/media/illustrations/22-dark.svg"
+              />
+            </div>
+            <div class="flex flex-col gap-3 text-center">
+              <h2 class="text-1.5xl font-semibold text-gray-900">
+                Vous n'avez aucune réservation pour l'instant
+              </h2>
+              <p class="text-sm text-gray-800">
+                A streamlined process to welcome and integrate new members into the team, <br />
+                ensuring a smooth and efficient start.
+              </p>
+            </div>
+            <div class="flex justify-center mb-5">
+              <a class="btn bg-kr-primary text-white" href="/booking"> Réserver une session </a>
+            </div>
           </div>
+        </div>
+        <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
+          <div class="col-span-2" data-dropdown="true" data-dropdown-trigger="click">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <% if (properties && properties.length > 0) { %>
+              <% properties.forEach(property => { %>
+              <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div
+                        class="menu-item"
+                        data-menu-item-offset="0, 10px"
+                        data-menu-item-placement="bottom-end"
+                        data-menu-item-toggle="dropdown"
+                        data-menu-item-trigger="click|lg:click"
+                      >
+                        <button
+                          class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white"
+                          aria-label="Property actions"
+                        >
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div
+                          class="menu-dropdown menu-default w-full max-w-[175px]"
+                          data-menu-dismiss="true"
+                          role="menu"
+                        >
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a
+                              class="menu-link"
+                              data-modal-toggle="#share_profile_modal"
+                              href="#"
+                              role="menuitem"
+                            >
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a
+                              class="menu-link"
+                              data-modal-toggle="#addAdminModal"
+                              href="#"
+                              role="menuitem"
+                            >
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img
+                      src="assets/media/uploads/<%= property.summary.thumbnail %>"
+                      alt="Thumbnail for <%= property.summary.propertyType %> - <%= property.summary.city %>"
+                      class="w-full h-full object-cover object-center"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                      <% if (property.summary?.surface) { %> <% if (property.summary.city === 'Lomé') { %>
+                      <%= property.summary.surface %> - <%= property.summary.area %> <% } else { %>
+                      <%= property.summary.surface %> - <%= property.summary.city %> <% } %> <% } else { %> <% if
+                      (property.summary.city === 'Lomé') { %> <%= property.summary.propertyType %> -
+                      <%= property.summary.area %> <% } else { %> <%= property.summary.propertyType %> -
+                      <%= property.summary.city %> <% } %> <% } %>
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      <%
+                      let shortDescription = '';
+                      if (currentQuery.listingGroup === 'vente') {
+                        if (property.summary?.surface) {
+                          if (property.summary.city === 'Lomé') {
+                            shortDescription = `Vente terrain de ${property.summary.surface} à ${property.summary.area}`;
+                          } else {
+                            shortDescription = `Vente terrain de ${property.summary.surface} à ${property.summary.city}`;
+                          }
+                        } else {
+                          if (property.summary.city === 'Lomé') {
+                            shortDescription = `Vente ${property.summary.propertyType} à ${property.summary.area}`;
+                          } else {
+                            shortDescription = `Vente ${property.summary.propertyType} à ${property.summary.city}`;
+                          }
+                        }
+                      } else {
+                        // Default to location
+                        if (property.summary?.surface) {
+                          if (property.summary.city === 'Lomé') {
+                            shortDescription = `Location terrain ${property.summary.surface} à ${property.summary.area}`;
+                          } else {
+                            shortDescription = `Location terrain ${property.summary.surface} à ${property.summary.city}`;
+                          }
+                        } else {
+                          if (property.summary.city === 'Lomé') {
+                            shortDescription = `Location ${property.summary.propertyType} à ${property.summary.area}`;
+                          } else {
+                            shortDescription = `Location ${property.summary.propertyType} à ${property.summary.city}`;
+                          }
+                        }
+                      }
+                    %>
+                      <%= shortDescription %>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                          <% if (!property.summary?.price || property.summary.price === 0) { %> Prix à discuter <% }
+                          else if (property.summary?.propertyType?.toLowerCase().includes('meublé')) { %> <% if
+                          (!property.summary.price?.daily || property.summary.price.daily === 0) { %> Prix à discuter
+                          <% } else { %> <%= property.summary.price.daily.toLocaleString('fr-FR') %> F
+                          <span class="text-gray-500">/Jour</span> <% } %> <% } else { %>
+                          <%= property.summary.price.toLocaleString('fr-FR') %> F
+                          <span class="text-gray-500">/Mois</span> <% } %>
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        <%
+                          const removeAccents = str => str && str.normalize ?
+                                                      str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : str || '';
+                          const slugify = str => removeAccents(str).toLowerCase().replace(/\s+/g,
+                                                      "-").replace(/[^\w\-]+/g, "").replace(/\-\-+/g, "-");
+
+                          let propertySlug = '';
+
+                          // Determine if it's a 'terrains' property by checking for property.summary.surface
+                          if (property.summary.surface) { // This property exists only for terrains
+                            // It's a 'terrains' property (ruraux or urbain)
+                            if (property.summary.city === 'Lomé') {
+                              propertySlug =
+                                `${slugify(property.summary.surface)}-${slugify(property.summary.area)}-${property.id}`;
+                            } else {
+                              propertySlug =
+                                `${slugify(property.summary.surface)}-${slugify(property.summary.city)}-${property.id}`;
+                            }
+                          } else {
+                            // It's a 'habitations-bureaux' property
+                            if (property.summary.city === 'Lomé') {
+                              propertySlug =
+                                `${slugify(property.summary.propertyType)}-${slugify(property.summary.area)}-${property.id}`;
+                            } else {
+                              propertySlug =
+                                `${slugify(property.summary.propertyType)}-${slugify(property.summary.city)}-${property.id}`;
+                            }
+                          }
+
+                          // Determine the base path for the property details link based on listingGroup
+                          let basePath = '';
+                          if (currentQuery.listingGroup === 'location') {
+                            basePath = '/locations/annonces';
+                          } else if (currentQuery.listingGroup === 'vente') {
+                            basePath = '/ventes/annonces';
+                          } else {
+                            // Default or fallback path if listingGroup is not set
+                            basePath = '/annonces';
+                          }
+                        %>
+                        <a
+                          href="<%= basePath %>/<%= propertySlug %>"
+                          class="text-black px-5 py-2 border border-gray-200 rounded-full"
+                          target="_blank"
+                          rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %> <% } else { %>
+              <div class="col-span-3">
+                  <div class="card">
+                    <div class="card-body card-body-g-100 flex flex-col items-center gap-2.5 py-7.5">
+                      <div class="flex justify-center pb-7.5 py-9">
+                        <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/33.svg">
+                      </div>
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Aucune annonce disponible
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                          Aucune annonce n'a été trouvée avec les filtres sélectionnés
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% if (pagination && pagination.totalPages > 1) { %>
+      <div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
+        <div class="flex items-center gap-4 order-1 md:order-2">
+          <div class="pagination">
+            <%
+              // Create a new object that excludes the 'page' property from currentQuery
+              // This ensures that URLSearchParams doesn't add 'page=undefined'
+              const queryParamsWithoutPage = { ...currentQuery };
+              delete queryParamsWithoutPage.page;
+              const queryStringWithoutPage = new URLSearchParams(queryParamsWithoutPage).toString();
+            %>
+
+            <a
+              href="/admin/liste-annonces?page=<%= pagination.currentPage - 1 %>&<%= queryStringWithoutPage %>"
+              class="btn nav-arrow <%= pagination.currentPage === 1 ? 'disabled' : '' %>"
+              <%= pagination.currentPage === 1 ? 'aria-disabled="true"' : '' %>
+            >
+              <i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+            </a>
+
+            <% for(let i = 1; i <= pagination.totalPages; i++) { %>
+            <a
+              href="/admin/liste-annonces?page=<%= i %>&<%= queryStringWithoutPage %>"
+              class="btn <%= pagination.currentPage === i ? 'active disabled' : '' %>"
+              <%= pagination.currentPage === i ? 'aria-current="page" aria-disabled="true"' : '' %>
+            >
+              <%= i %>
+            </a>
+            <% } %>
+
+            <a
+              href="/admin/liste-annonces?page=<%= pagination.currentPage + 1 %>&<%= queryStringWithoutPage %>"
+              class="btn nav-arrow <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>"
+              <%= pagination.currentPage === pagination.totalPages ? 'aria-disabled="true"' : '' %>
+            >
+              <i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+ 
+     <!-- End of Container -->
+     <%- include('./partials/footer') %>
+    </main>
+    <!-- End of Main -->
+   </div>
+   <!-- End of Wrapper -->
+  </div>
+  <!-- End of Base -->
+  <div class="modal" data-modal="true" id="delete_confirmation">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+
+<div class="modal" data-modal="true" id="cancelation_approuve">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer la validation de l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+           Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+</div>
+
+
+   <div class="modal" data-modal="true" id="cancelation_reject">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer le rejet de l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      <div class="flex flex-col">
+        <h3 class="card-title mb-3">
+          Motif du rejet de la demande de l'annulation
+         </h3>
+         <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+             <span class="text-2sm text-gray-700">
+                 I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+
+                 I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+            </span>
+         </div>
+    </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Valider le refus d'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="drawer drawer-bottom kr-md-drawer-bottom flex flex-col max-h-[90%] h-[65vh]" data-drawer="true" id="booking_details">
+    <div class="flex items-center justify-between p-5 border-b">
+     <h3 class="text-base font-semibold text-gray-900">
+      Demande d'annulation de la réservation
+     </h3>
+ 
+     <button class="btn btn-xs btn-icon btn-icon-xl btn-light" data-drawer-dismiss="true">
+      <i class="ki-outline ki-cross">
+      </i>
+     </button>
+    </div>
+    <div class="p-5">
+ 
+               <div class="flex flex-col lg:px-7.5 px-5 mb-4.5">
+                    <h3 class="card-title mb-3">
+                      Motif
+                     </h3>
+                     <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+                         <span class="text-2sm text-gray-700">
+                         Pursuing opportunities, earning zero
+                        </span>
+                     </div>
+                </div>
+ 
+                <div class="flex flex-col lg:px-7.5 p-5">
+                    <h3 class="card-title mb-3">
+                      Message
+                     </h3>
+                     <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+                         <span class="text-2sm text-gray-700">
+                             I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+ 
+                             I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+                        </span>
+                     </div>
+                </div>
+ 
+               <div class="modal-footer justify-end">
+                  <div class="flex gap-4">
+                   <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+                    Approver l'annulation
+                   </button>
+                   <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+                      Rejeter l'annulation
+                       </button>
+                      </div>
+         </div>
+ 
+    </div>
+   </div>
+ 
+ <button type="button" data-modal-toggle="#submission_succes" style="display:none" id="open-success-modal"></button>
+  <button type="button" data-modal-toggle="#submission_error" style="display:none" id="open-error-modal"></button>
+  <!-- End of Base -->
+  <div class="modal" data-modal="true" id="submission_succes">
+    <div class="modal-content modal-center max-w-[400px] p-4">
+
+      <div class="modal-body  flex flex-col items-center gap-2.5">
+        <div class="flex justify-center pt-5">
+          <svg width="101" height="100" viewBox="0 0 101 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" width="100" height="100" rx="50" fill="#00D095" fill-opacity="0.12" />
+            <rect x="11.7422" y="11.2422" width="77.5148" height="77.5148" rx="38.7574" fill="#00D095"
+              fill-opacity="0.13" />
+            <rect x="24.7598" y="24.2578" width="51.4793" height="51.4793" rx="25.7396" fill="#00D095" />
+            <path
+              d="M58.7101 45.4386L47.7634 56.3853L42.7461 51.3681L44.0323 50.0818L47.7634 53.8037L57.4239 44.1523L58.7101 45.4386Z"
+              fill="white" />
+          </svg>
+
+
+        </div>
+        <div class="flex flex-col gap-5 lg:gap-7.5">
           <div class="flex flex-col gap-3 text-center">
             <h2 class="text-1.5xl font-semibold text-gray-900">
-              Aucune annonce disponible
+              Succès
             </h2>
             <p class="text-sm text-gray-800">
-              Aucune annonce n'a été trouvée avec les filtres sélectionnés
+              Votre annonce a été créée avec succès. Vous pouvez la consulter dans votre tableau de bord.
             </p>
           </div>
+          <div class="flex justify-center mb-5 gap-2.5">
+              <button class="btn bg-kr-primary justify-center btn-lg text-white w-1/2 grow close-modal" data-modal-dismiss="true">Fermer</button>
+               <button class="btn bg-danger justify-center btn-lg text-white w-1/2 grow redirect-modal" data-modal-dismiss="true">Voir l'annonce</button>
+          </div>
         </div>
-      </div>
-    </div>
-  <% } %>
-</div>
-              </div>
-           
-
-              </div>
- 
-<% if (pagination && pagination.totalPages > 1) { %>
-  <div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
-    <div class="flex items-center gap-4 order-1 md:order-2">
-      <div class="pagination"> 
-        <%
-          // Create a new object that excludes the 'page' property from currentQuery
-          // This ensures that URLSearchParams doesn't add 'page=undefined'
-          const queryParamsWithoutPage = { ...currentQuery };
-          delete queryParamsWithoutPage.page;
-          const queryStringWithoutPage = new URLSearchParams(queryParamsWithoutPage).toString();
-        %>
-
-        <a 
-          href="/admin/liste-annonces?page=<%= pagination.currentPage - 1 %>&<%= queryStringWithoutPage %>"
-          class="btn nav-arrow <%= pagination.currentPage === 1 ? 'disabled' : '' %>"
-          <%= pagination.currentPage === 1 ? 'aria-disabled="true"' : '' %>
-        >
-          <i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
-        </a>
- 
-        <% for(let i = 1; i <= pagination.totalPages; i++) { %>
-          <a 
-            href="/admin/liste-annonces?page=<%= i %>&<%= queryStringWithoutPage %>"
-            class="btn <%= pagination.currentPage === i ? 'active disabled' : '' %>"
-            <%= pagination.currentPage === i ? 'aria-current="page" aria-disabled="true"' : '' %>
-          >
-            <%= i %>
-          </a>
-        <% } %>
- 
-        <a 
-          href="/admin/liste-annonces?page=<%= pagination.currentPage + 1 %>&<%= queryStringWithoutPage %>"
-          class="btn nav-arrow <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>"
-          <%= pagination.currentPage === pagination.totalPages ? 'aria-disabled="true"' : '' %>
-        >
-          <i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i>
-        </a>
       </div>
     </div>
   </div>
-<% } %>
-          <div class="hidden" id="tab_7_2">
-            <div class="card">
-              <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
-                <div class="flex justify-center p-7.5 py-9">
-                  <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
-                  <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
-                </div>
-                <div class="flex flex-col gap-5 lg:gap-7.5">
-                  <div class="flex flex-col gap-3 text-center">
-                    <h2 class="text-1.5xl font-semibold text-gray-900">
-                      Aucune ressource disponible ici pour l'instant
-                    </h2>
-                    <p class="text-sm text-gray-800">
-                      A streamlined process to welcome and integrate new members into the team,
-                    </p>
-                  </div>
 
-                </div>
-              </div>
-            </div>
+  <div class="modal" data-modal="true" id="submission_error">
+    <div class="modal-content modal-center max-w-[400px] p-4">
+
+      <div class="modal-body  flex flex-col items-center gap-2.5">
+        <div class="flex justify-center pt-5">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="50" fill="#DF3004" fill-opacity="0.12" />
+            <rect x="11.2441" y="11.2422" width="77.5148" height="77.5148" rx="38.7574" fill="#DF3004"
+              fill-opacity="0.13" />
+            <rect x="24.2598" y="24.2617" width="51.4793" height="51.4793" rx="25.7396" fill="#DF3004" />
+            <path
+              d="M56.0659 57.3064L50.5009 51.7327L44.9359 57.3064L43.6934 56.0639L49.2671 50.4989L43.6934 44.9339L44.9359 43.6914L50.5009 49.2652L56.0659 43.7002L57.2996 44.9339L51.7346 50.4989L57.2996 56.0639L56.0659 57.3064Z"
+              fill="white" />
+          </svg>
+
+        </div>
+        <div class="flex flex-col gap-5 lg:gap-7.5">
+          <div class="flex flex-col gap-3 text-center">
+            <h2 class="text-1.5xl font-semibold text-gray-900">
+              Echec
+            </h2>
+            <p class="text-sm text-gray-800">
+              La création de l'annonce a échoué. Veuillez vérifier les informations saisies et réessayer.
+            </p>
           </div>
-          <div class="hidden" id="tab_7_3">
-            <div class="card">
-              <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
-                <div class="flex justify-center p-7.5 py-9">
-                  <img alt="image" class="max-h-[230px]" src="assets/media/illustrations/22.svg">
-                  <img alt="image" class="light:hidden max-h-[230px]" src="assets/media/illustrations/22-dark.svg">
-                </div>
-                <div class="flex flex-col gap-5 lg:gap-7.5">
-                  <div class="flex flex-col gap-3 text-center">
-                    <h2 class="text-1.5xl font-semibold text-gray-900">
-                      Aucune ressource disponible dans cette section pour l'instant
-                    </h2>
-                    <p class="text-sm text-gray-800">
-                      A streamlined process to welcome and integrate new members into the team
-                    </p>
-                  </div>
-
-                </div>
-              </div>
-            </div>
+          <div class="flex justify-center mb-5">
+            <button class="btn bg-danger justify-center btn-lg text-white grow" data-modal-dismiss="true">
+              Fermer
+            </button>
           </div>
         </div>
-
       </div>
-
-
     </div>
-    <!-- End of Container -->
-    <%- include('./partials/footer') %>
-  </main>
-  <!-- End of Main -->
-</div>
-<!-- End of Wrapper -->
-</div>
-<!-- End of Base -->
-<div class="modal" id="addAdminModal">
-  <div class="modal-content modal-center max-w-[600px] py-3 px-8">
-   <div class="modal-header">
-    <h3 class="text-lg font-semibold leading-none text-kr-primary">
-     Créer un compte admin
-    </h3>
-    <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
-     <i class="ki-outline ki-cross">
-     </i>
-    </button>
-   </div>
-   <div class="modal-body">
-     <div class=" flex gap-6 flex-col  mb-8 mt-5">
-               <div class="w-full">
-                 <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                  <label class="form-label">
-                  Nom & Prénom
-                  </label>
-                  <input class="input" placeholder="" type="text" value=""/>
-                 </div>
-                </div>
-
-                <div class="w-full">
-                 <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                  <label class="form-label">
-                  Email
-                  </label>
-                  <input class="input" placeholder="" type="text" value=""/>
-                 </div>
-                </div>
-                <div class="w-full">
-                 <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                  <label class="form-label">
-                  Mot de pass
-                  </label>
-                 <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
-                   <input placeholder="" type="password"/>
-                   <div class="btn btn-icon" data-toggle-password-trigger="true">
-                    <i class="ki-outline ki-eye toggle-password-active:hidden">
-                    </i>
-                    <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
-                    </i>
-                   </div>
-                  </div>
-                 </div>
-                </div>
-                <div class="w-full">
-                 <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                  <label class="form-label">
-                  Confirmez le mot de pass
-                  </label>
-                 <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
-                   <input placeholder="" type="password"/>
-                   <div class="btn btn-icon" data-toggle-password-trigger="true">
-                    <i class="ki-outline ki-eye toggle-password-active:hidden">
-                    </i>
-                    <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
-                    </i>
-                   </div>
-                 </div>
-                 </div>
-                </div>
-
-             </div>
-   </div>
-   <div class="modal-footer justify-end">
-    <div class="flex gap-4">
-     <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
-      Créer le compte
-     </button>
-
-    </div>
-   </div>
   </div>
- </div>
-<!-- End of Page -->
-<!-- Scripts -->
-<script src="assets/js/core.bundle.js">
-</script>
-<script src="assets/vendors/apexcharts/apexcharts.min.js">
-</script>
-<script src="assets/js/widgets/general.js">
-</script>
-<script src="/assets/js/app/admin_session.js"></script>
-<!-- End of Scripts -->
-</body>
-
+  <!-- End of Page -->
+  <!-- Scripts --> 
+  <script src="assets/js/core.bundle.js">
+  </script> 
+  </script>
+  <script src="assets/js/widgets/general.js">
+  </script>
+  <script src="/assets/js/app/admin_session.js"></script>
+  <!-- End of Scripts -->
+  </body>
 </html>
+
+

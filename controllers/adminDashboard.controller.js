@@ -7,11 +7,15 @@ const Backend_API = process.env.BACKEND_API_ROOT;
  * @param {Object} res - The response object used to render the view.
  */
 export const dashboardGet = (req, res) => {
+  const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Tableau de bord",
+    pageSubtitle: "Bienvenue dans votre tableau de bord administrateur",
+  };
   const userData = req.user || {};
   const user = userData ? userData.user : null;
-  res.render('adminDashboard/dashboard', { title: "Krypton - S'enrégistrer", user });
+  res.render('adminDashboard/dashboard', { metadata, user });
 };
-
 
 
 export const testform = (req, res) => {
@@ -24,7 +28,13 @@ export const testform = (req, res) => {
 
 export const addNewPropertyGet = async (req, res) => {
 
-  
+    const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Création d'annonce",
+    pageSubtitle: "Créez une nouvelle annonce",
+  };
+
+
   const userData = req.user;
   const user = userData.user;
   console.log(user);
@@ -35,7 +45,7 @@ export const addNewPropertyGet = async (req, res) => {
       quartiers: await fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
     };
 
-  res.render('adminDashboard/addNewProperty', { title: "Krypton - S'enrégistrer", user, listingMetadata });
+  res.render('adminDashboard/addNewProperty', { title: "Krypton - S'enrégistrer", user, listingMetadata, metadata  });
 };
 
 
@@ -212,6 +222,11 @@ export const usersListGet = (req, res) => {
 
 
 export const propertiesListGet = async (req, res) => {
+    const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Liste des annonces",
+    pageSubtitle: "Visualisez et gérez les annonces",
+  };
   try {
     const userData = req.user;
     const user = userData.user;
@@ -267,7 +282,7 @@ export const propertiesListGet = async (req, res) => {
 
     // Render the view with all necessary data
     res.render('adminDashboard/properties-list', {
-      title: "Krypton - Liste des propriétés",
+      metadata,
       user,
       properties,
       pagination: {

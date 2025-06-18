@@ -10,35 +10,12 @@
     <!-- Main -->
     <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
      <!-- Toolbar -->
-       <div class="pb-5">
-          <!-- Container -->
-          <div class="container-fixed mb-10">
-            <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
-
-               <%- include('./partials/content_header') %>
-              <div class="flex items-center flex-wrap">
-
-                <div class="dropdown inline-block relative w-full lg:w-auto">
-                  <button
-                    class="bg-primary text-white w-full font-medium text-sm py-3 px-4 rounded-lg inline-flex items-center">
-                    <i class="ki-filled ki-plus mr-2"> </i>
-                    Créer une annonce
-                  </button>
-                  <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
-                    <li class=""><a
-                        class="rounded-t text-md bg-primary-50 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap hover:font-bold hover:text-primary"
-                        href="/admin/add-new-property">Annonce location</a></li>
-                    <li class=""><a
-                        class="bg-primary-50 text-md rounded-b  py-2 px-4 block whitespace-no-wrap hover:text-primary hover:font-bold"
-                        href="#">Annonce vente</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- End of Container -->
-        </div>
+     <div class="pb-5">
+      <!-- Container -->
+      <%- include('./partials/content_header') %>
+    
+      <!-- End of Container -->
+     </div>
      <!-- End of Toolbar -->
      <!-- Container -->
      <div class="container-fixed">
