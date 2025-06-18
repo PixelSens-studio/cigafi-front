@@ -17,13 +17,7 @@ export const dashboardGet = (req, res) => {
   res.render('adminDashboard/dashboard', { metadata, user });
 };
 
-
-export const testform = (req, res) => {
-  const userData = req.user || {};
-  const user = userData ? userData.user : null;
-  res.render('adminDashboard/form-test', { title: "Krypton - S'enrégistrer", user });
-};
-
+ 
 
 
 export const addNewPropertyGet = async (req, res) => {

@@ -36,8 +36,7 @@ router.post(
   adminDashboardController.addNewPropertyPost
 );
 
-router.get('/dashboard', authAdmin, adminDashboardController.dashboardGet);
-router.get('/testform', authAdmin, adminDashboardController.testform);
+router.get('/dashboard', authAdmin, adminDashboardController.dashboardGet); 
 router.get('/add-new-property', authAdmin, adminDashboardController.addNewPropertyGet); 
 
 router.get('/utilisateurs', authAdmin, adminDashboardController.usersListGet);

@@ -26,12 +26,22 @@ export const signUpPost = async (req, res) => {
 };
 
 export const signInGet = async (req, res) => {
+    const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Création d'annonce",
+    pageSubtitle: "Créez une nouvelle annonce",
+  };
+
   try {
+
+
+  console.log('Metadata:', metadata);
+  
     const token = req.cookies.admin_access_token;
 
     // If no token, render the admin login page
     if (!token) {
-      return res.render('adminDashboard/signin', { title: "CIGAFI - Authentification" });
+      return res.render('adminDashboard/signin', {metadataI. } );
     }
 
     // Fetch the admin user data
@@ -46,22 +56,22 @@ export const signInGet = async (req, res) => {
     // If the fetch fails or response is not okay
     if (!response.ok) {
       res.clearCookie('admin_access_token', { path: '/' }); // Clear the cookie
-      return res.render('adminDashboard/signin', { title: "CIGAFI - Authentification" });
+      return res.render('adminDashboard/signin', {metadata});
     }
 
     const userData = await response.json();
 
     // If admin data is not valid or user is not verified
-    if (!userData.success || userData.user.isBlocked) {
+    if (!userData.success ) {
       res.clearCookie('access_token', { path: '/' }); // Clear the cookie if not verified
-      return res.render('adminDashboard/signin', { title: "CIGAFI - Authentification" });
+      return res.render('adminDashboard/signin', {metadata});
     }
 
     // If admin is verified, redirect to the admin dashboard
     return res.redirect('/admin/dashboard');
 
   } catch (err) {
-    return res.render('adminDashboard/signin', { title: "CIGAFI - Authentification" });
+    return res.render('adminDashboard/signin', {metadata});
   }
 };
 
