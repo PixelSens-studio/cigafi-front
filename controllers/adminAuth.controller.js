@@ -41,7 +41,7 @@ export const signInGet = async (req, res) => {
 
     // If no token, render the admin login page
     if (!token) {
-      return res.render('adminDashboard/signin', {metadataI. } );
+      return res.render('adminDashboard/signin', {metadata} );
     }
 
     // Fetch the admin user data
