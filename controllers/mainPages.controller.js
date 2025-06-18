@@ -3,54 +3,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 const Backend_API = process.env.BACKEND_API_ROOT;
 
-export const homeGet = (req, res) => {
-  const { category } = req.params;
-  const sampleProperties = [
-    {
-      title: "Luxury Villa",
-      price: 500000,
-      address: "123 Palm Street, Beverly Hills",
-      typeBien: "Villa",
-      coverImage: "villa2.png",
-      intro: "Spacious luxury villa with a private pool and garden.",
-    },
-    {
-      title: "Modern Apartment",
-      price: 300000,
-      address: "456 Elm Avenue, New York",
-      typeBien: "Apartment",
-      coverImage: "villa3.png",
-      intro: "Modern apartment with stunning city views and amenities.",
-    },
-    {
-      title: "Cozy Cottage",
-      price: 150000,
-      address: "789 Maple Lane, Vermont",
-      typeBien: "Cottage",
-      coverImage: "villa4.png",
-      intro: "Charming cottage surrounded.",
-    },
-    {
-      title: "Cozy Cottage",
-      price: 150000,
-      address: "789 Maple Lane, Vermont",
-      typeBien: "Cottage",
-      coverImage: "villa4.png",
-      intro: "Charming cottage surrounded by nature and tranquility.",
-    },
-  ];
-
-  res.render('mainPages/index', { 
-    title: "CIGAFI - Nos productions", 
-    properties: sampleProperties,
-    category,
-  });
-};
-
-
-export const locationsGet = async (req, res) => {
-  const { category } = req.params;
-  const listingCategory = category || "habitations-bureaux";
+export const homeGet = async (req, res) => { 
+  const listingCategory = "habitations-bureaux";
   const page = parseInt(req.query.page) || 1;
   const listingType = "/locations/annonces";
 
@@ -130,7 +84,107 @@ export const locationsGet = async (req, res) => {
       properties: [],
       listingCategory,
       listingType,
-      error: "Impossible de récupérer les annonces.",
+      error: "Une erreur est survenue lors de la récupération des annonces.",
+      listingMetadata: {
+        propertiesType: { success: false, data: [] },
+        villes: { success: false, data: [] },
+        quartiers: { success: false, data: [] }
+      },
+      // Add default values for error state
+      selectedType: 'All',
+      selectedVille: 'All',
+      selectedQuartier: 'All',
+      minBudget: 0,
+      maxBudget: null,
+      publicationDate: 'All'
+    });
+  }
+};
+
+
+export const locationsGet = async (req, res) => {
+  const { category } = req.params;
+  const listingCategory = category || "habitations-bureaux";
+  const page = parseInt(req.query.page) || 1;
+  const listingType = "/a-louer/annonces";
+
+  // Extract filter data with defaults
+  const filters = {
+    type: req.query.type || "All",
+    ville: req.query.ville || "All",
+    quartier: req.query.quartier || "All",
+    minBudget: parseInt(req.query.minBudget) || 0,
+    maxBudget: req.query.maxBudget ? parseInt(req.query.maxBudget) : null,
+    publicationDate: req.query.publicationDate || "All"
+  }; 
+
+  // Get the base URL without query parameters
+  const baseUrl = `/a-louer/${listingCategory}`;
+  
+  // Create URLSearchParams from current query
+  const searchParams = new URLSearchParams(req.query);
+  // Remove page parameter if it exists
+  searchParams.delete('page');
+  // Get the query string
+  const queryString = searchParams.toString();
+
+  try {
+    const response = await fetch(`${Backend_API}/api/locations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        listingCategory,
+        page,
+        filters
+      })
+    });
+
+    const result = await response.json();
+    const properties = result?.data || [];
+    const currentPage = result?.currentPage || 1;
+    const totalPages = result?.totalPages || 1;
+
+    // Fetch metadata
+    const [propertiesType, villes, quartiers] = await Promise.all([
+      fetch(`${Backend_API}/api/listing-metadata/type-de-biens`).then(res => res.json()),
+      fetch(`${Backend_API}/api/listing-metadata/villes`).then(res => res.json()),
+      fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
+    ]);
+
+    res.render('mainPages/index', {
+      title: "CIGAFI - Nos productions",
+      properties,
+      listingCategory,
+      baseUrl,
+      searchParams: searchParams.toString(),
+      currentPage,
+      totalPages,
+      listingType,
+      listingMetadata: {
+        propertiesType,
+        villes,
+        quartiers
+      },
+      // Pass the selected values
+      selectedType: filters.type,
+      selectedVille: filters.ville,
+      selectedQuartier: filters.quartier,
+      minBudget: filters.minBudget,
+      maxBudget: filters.maxBudget,
+      publicationDate: filters.publicationDate,
+      queryString,
+    });
+
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    res.render('mainPages/index', {
+      title: "CIGAFI - Nos productions",
+      properties: [],
+      listingCategory,
+      listingType,
+      error: "Une erreur est survenue lors de la récupération des annonces.",
       listingMetadata: {
         propertiesType: { success: false, data: [] },
         villes: { success: false, data: [] },
