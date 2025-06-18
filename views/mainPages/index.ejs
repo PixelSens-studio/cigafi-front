@@ -21,15 +21,15 @@
         <div class="">
           <div class="max-w-fit mx-[auto] flex bg-black rounded-full p-3 text-white">
             <a class="category-nav py-3 px-6 <%= (!listingCategory || listingCategory === 'habitations-bureaux') ? 'active' : '' %>"
-              href="/locations/habitations-bureaux">
+              href="/a-louer/habitations-bureaux">
               <p>Habibation et bureaux</p>
             </a>
             <a class="category-nav py-3 px-6 <%= listingCategory === 'terrains-urbain' ? 'active' : '' %>"
-              href="/locations/terrains-urbain">
+              href="/a-louer/terrains-urbain">
               <p>Terrain urbain</p>
             </a>
             <a class="category-nav py-3 px-6 <%= listingCategory === 'terrains-ruraux' ? 'active' : '' %>"
-              href="/locations/terrains-ruraux">
+              href="/a-louer/terrains-ruraux">
               <p>Terrain ruraux</p>
             </a>
           </div>
@@ -38,7 +38,7 @@
       <div class="w-full px-10 py-10">
         <div class="w-full">
           <form class="grid grid-cols-18 gap-2 py-4 border rounded-2xl bg-[#F9F9F9] px-4" method="GET"
-            action="/locations/<%= listingCategory %>" id="searchForm">
+            action="/a-louer/<%= listingCategory %>" id="searchForm">
             <% if (listingCategory==='habitations-bureaux' ) { %>
               <!-- Type de propriété -->
               <div class="col-span-3">

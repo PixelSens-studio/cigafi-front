@@ -6,7 +6,7 @@ const Backend_API = process.env.BACKEND_API_ROOT;
 export const homeGet = async (req, res) => { 
   const listingCategory = "habitations-bureaux";
   const page = parseInt(req.query.page) || 1;
-  const listingType = "/locations/annonces";
+  const listingType = "/a-louer/annonces";
 
   // Extract filter data with defaults
   const filters = {
@@ -19,7 +19,7 @@ export const homeGet = async (req, res) => {
   }; 
 
   // Get the base URL without query parameters
-  const baseUrl = `/locations/${listingCategory}`;
+  const baseUrl = `/a-louer/${listingCategory}`;
   
   // Create URLSearchParams from current query
   const searchParams = new URLSearchParams(req.query);
