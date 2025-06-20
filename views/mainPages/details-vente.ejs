@@ -12,18 +12,10 @@
           <div>
             <div class="flex gap-6 items-center mb-8">
               <div class="text-3xl font-bold text-black"> 
-                <% if (property.listingCategory === 'habitations-bureaux') { %>
-                <% if (property.summary.city === 'Lomé') { %>
-                  <%= property.summary.propertyType %> - <%= property.summary.area %>
-                <% } else { %>
-                  <%= property.summary.propertyType %> - <%= property.summary.city %>
-                <% } %>
-              <% } else if (property.listingCategory === 'terrains-ruraux' || property.listingCategory === 'terrains-urbain') { %>
-                <% if (property.summary.city === 'Lomé') { %>
-                 Baille de terrain - <%= property.summary.surface %> - <%= property.summary.area %>
-                <% } else { %>
-                 Baille de terrain - <%= property.summary.surface %> - <%= property.summary.city %>
-                <% } %>
+                 <% if (property.summary.surface) { %>
+                Vente de <%= property.summary.surface %> - <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
+              <% } else { %>
+                Vente de <%= property.summary.propertyType %> - <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
               <% } %>
             </div>
               <div class="text-[#FFA200] items-center flex gap-4 pl-6 border-l border-gray-500">
@@ -192,30 +184,12 @@
               <div class="mt-10">
                 <span class="text-black font-bold text-4xl">Prix à discuter</span>
               </div>
-            <% } else if (property.listingCategory === 'habitations-bureaux') { %>
-              <% if (property.usageType === 'Appartement meublé') { %>
-                <div class="flex flex-row gap-3 items-center">
-                  <div class="mt-10">
-                    <span class="text-black font-bold text-4xl"><%= property.summary.price.daily.toLocaleString('de-DE') %> F</span>
-                    <span class="text-gray-500">/Jour</span>
-                  </div>
-                  <div class="mt-10 pl-6 border-l border-gray-500">
-                    <span class="text-black font-bold text-4xl"><%= property.summary.price.Monthly.toLocaleString('de-DE') %> F</span>
-                    <span class="text-gray-500">/Mois</span>
-                  </div>
-                </div>
-              <% } else if (property.usageType === 'Habitation' || property.usageType === 'Bureaux ou Magasin') { %>
-                <div class="mt-10">
-                  <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> F</span>
-                  <span class="text-gray-500">/Mois</span>
-                </div>
-              <% } %>
-            <% } else if (property.listingCategory === 'terrains-ruraux' || property.listingCategory === 'terrains-urbain') { %>
+           
+           <% } else { %>
               <div class="mt-10">
-                <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> F</span>
+                <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> FCFA</span>
               </div>
-            <% } %>
-            
+           <% } %>
           </div>
         </div>
      
@@ -332,9 +306,6 @@
                           </div>
                         </div>
                       <% }); %>
-
-
-             
               </div> 
                 
             </div>
@@ -369,29 +340,6 @@
               </div>
             </div>
            
-            <% if (property.listingCategory !== 'terrains-ruraux' && property.listingCategory !== 'terrains-urbain') { %>
-              <div class="my-7 py-10">
-                <div class="text-2xl font-bold mb-6">Règles de la proprieté</div>
-                <div class="grid grid-cols-3 gap-4 text-gray-400">
-                  <% property.rules.forEach(rule => { %>
-                    <div class="col-span-1 flex gap-2 items-center">
-                      <div>
-                        <svg
-                          width="8"
-                          height="8"
-                          viewBox="0 0 8 8"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect width="8" height="8" rx="4" fill="#FFA200" />
-                        </svg>
-                      </div>
-                      <div><%= rule %></div>
-                    </div>
-                  <% }); %>
-                </div>
-              </div>
-            <% } %>
           </div>
           <div class="col-span-1">
             <div class="border bg-[#F7F9FF] px-3 py-6 rounded-xl">

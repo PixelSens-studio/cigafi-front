@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   // --- Elements ---
   const form = document.getElementById('add-property-form');
   const elements = {
@@ -9,16 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSubmit: document.getElementById('submit'),
     typeBienDiv: document.getElementById('type_bien'),
     typeBienSelect: document.getElementById('type_bien_select'),
-    prixNonMeuble: document.getElementById('prix_nonMeuble'),
-    prixBienMeuble: document.getElementById('prix_bienMeuble'),
-    prixTerrain: document.getElementById('prix_terrain'),
+    prix: document.getElementById('prix'),
     caracteristiquesHabitations: document.getElementById('caracteristiques_habitations'),
     caracteristiquesTerrain: document.getElementById('caracteristiques_terrain'),
     commoditesHabitations: document.getElementById('commodites_habitations'),
     commoditesTerrain: document.getElementById('commodites_terrain'),
-    rules: document.getElementById('rules'),
     categorieSelect: document.getElementById('categorie_annonce_select'),
-    usageType: document.getElementById('usage_type'),
     villeSelect: document.getElementById('ville_select'),
     quartierWrapper: document.getElementById('quartier'),
   };
@@ -26,54 +23,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 1. Dynamic Inputs Display ---
   const updateDynamicFields = () => {
     const { 
-      categorieSelect, 
-      typeBienSelect, 
-      typeBienDiv, 
-      prixNonMeuble, 
-      prixBienMeuble, 
-      prixTerrain, 
+      categorieSelect,  
       caracteristiquesHabitations, 
       caracteristiquesTerrain, 
       commoditesHabitations, 
       commoditesTerrain, 
-      rules, 
     } = elements;
     
     const cat = categorieSelect.value;
-    const typeBien = typeBienSelect.value.toLowerCase();
 
     // Default visibility
-    const visibility = {
-      typeBienDiv: true,
-      prixNonMeuble: true,
-      prixBienMeuble: false,
-      prixTerrain: false,
+    const visibility = {   
       caracteristiquesHabitations: true,
       caracteristiquesTerrain: false,
       commoditesHabitations: true,
       commoditesTerrain: false,
-      rules: true, 
     };
 
-    if (cat === 'habitations-bureaux') {
-      visibility.prixBienMeuble = typeBien.includes('meubl');
-      visibility.prixNonMeuble = !typeBien.includes('meubl'); 
-    } else if (cat === 'terrains-urbain' || cat === 'terrains-ruraux') {
-      Object.assign(visibility, {
-        typeBienDiv: false,
-        prixNonMeuble: false,
-        prixBienMeuble: false,
-        prixTerrain: true,
+    if (cat === 'Terrain rural' || cat === 'Terrain urbain') {
+      Object.assign(visibility, {  
         caracteristiquesHabitations: false,
         commoditesHabitations: false,
-        rules: false,
         caracteristiquesTerrain: true,
         commoditesTerrain: true, 
       });
-    } else {
-      visibility.commoditesTerrain = false;
-      visibility.caracteristiquesTerrain = false;
-      visibility.prixTerrain = false; 
     }
 
     Object.entries(visibility).forEach(([key, isVisible]) => {
@@ -90,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2. Step 1 Validation ---
   const showError = (input, message, groupWrap = false) => {
     const inCaracteristiques = input.closest('#caracteristiques_terrain, #caracteristiques_habitations');
-    const inPrixGroup = input.closest('#prix_terrain, #prix_bienMeuble, #prix_nonMeuble');
+    const inPrixGroup = input.closest('#prix');
     const inCommoditesGroup = input.closest('#commodites_terrain, #commodites_habitations');
 
     if (inCommoditesGroup) {
@@ -128,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let valid = true;
 
     elements.step1.querySelectorAll('input, select, textarea').forEach(input => {
-      if (!isVisible(input) || input.closest('#rules') || (input.type === 'checkbox' && input.closest('#commodites_terrain, #commodites_habitations'))) return;
+      if (!isVisible(input) || (input.type === 'checkbox' && input.closest('#commodites_terrain, #commodites_habitations'))) return;
       if ((input.type === 'checkbox' && !input.checked) || (input.type !== 'checkbox' && !input.value.trim())) {
         showError(input, 'Ce champ est requis');
         valid = false;
@@ -145,33 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return valid;
   };
 
-  // --- 3. Rules Input Group ---
-  const rulesGrid = elements.rules?.querySelector('.grid');
-  if (rulesGrid) {
-    elements.rules.querySelector('button').addEventListener('click', e => {
-      e.preventDefault();
-      let allFilled = true;
-      const inputs = Array.from(rulesGrid.querySelectorAll('input'));
-      inputs.forEach(input => {
-        input.parentElement.querySelector('.error-message')?.remove();
-        input.classList.remove('border-red-500');
-        if (!input.value.trim()) {
-          showError(input, 'Veuillez remplir cette règle avant d\'en ajouter une nouvelle');
-          allFilled = false;
-        }
-      });
-      if (allFilled) {
-        // Insert new input just after the last input (not after the button)
-        const lastInputDiv = inputs[inputs.length - 1].parentElement;
-        const newDiv = document.createElement('div');
-        newDiv.className = 'flex flex-col w-full';
-        newDiv.innerHTML = `<input class="input w-full" name="regle_propriete[]" placeholder="Ex: Animaux interdits" type="text" />`;
-        lastInputDiv.insertAdjacentElement('afterend', newDiv);
-      }
-    });
-  }
-
-  // --- 4. Step Navigation ---
+  // --- 3. Step Navigation ---
   elements.btnNext.addEventListener('click', e => {
     e.preventDefault();
     if (validateStep1()) {
@@ -188,8 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // --- 5. Step 2 Image Upload Logic ---
-  // Elements for step 2
+  // --- 4. Step 2 Image Upload Logic ---
   const mainImageInput = document.getElementById('mainImage');
   const otherImagesInput = document.getElementById('otherImages');
   const mainImageInputState = mainImageInput?.closest('.input-group')?.querySelector('.input-state');
@@ -338,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. Form Submission (with image validation) ---
+  // --- 5. Form Submission (with image validation) ---
   form.addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -396,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('/admin/add-new-location', { method: 'POST', body: formData });
+      const res = await fetch('/admin/add-new-vente', { method: 'POST', body: formData });
       const data = await res.json().catch(() => null);
       console.log('Server response:', data);
 
@@ -416,14 +362,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const redirectBtn = modal.querySelector('.redirect-modal');
 
         if (closeBtn) {
-            closeBtn.onclick = () => {
+          closeBtn.onclick = () => {
             window.location.reload();
-            };
+          };
         }
 
         if (redirectBtn) {
           redirectBtn.onclick = () => {
-            window.location.href = '/admin/liste-annonces';
+            window.location.href = '/admin/liste-annonces?createdBy=Admin&listingGroup=vente';
           };
         }
       } else if (modal) {

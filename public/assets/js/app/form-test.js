@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const res = await fetch('/admin/add-new-property', {
+      const res = await fetch('/admin/add-new-location', {
         method: 'POST',
         body: formData
       });

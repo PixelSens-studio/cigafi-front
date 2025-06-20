@@ -28,10 +28,10 @@
                   <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
                     <li class=""><a
                         class="rounded-t text-md bg-primary-50 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap hover:font-bold hover:text-primary"
-                        href="/admin/add-new-property">Annonce location</a></li>
+                        href="/admin/add-new-location">Annonce location</a></li>
                     <li class=""><a
                         class="bg-primary-50 text-md rounded-b  py-2 px-4 block whitespace-no-wrap hover:text-primary hover:font-bold"
-                        href="#">Annonce vente</a></li>
+                        href="/admin/add-new-vente">Annonce vente</a></li>
                   </ul>
                 </div>
               </div>
@@ -135,34 +135,7 @@
 
     <div class="" id="tab_7_1">
       <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
-        <div class="card hidden">
-          <div class="card-body flex flex-col items-center gap-2.5 py-7.5">
-            <div class="flex justify-center p-7.5 py-9">
-              <img
-                alt="Illustration of no reservations"
-                class="max-h-[230px] dark:hidden"
-                src="assets/media/illustrations/22.svg"
-              />
-              <img
-                alt="Illustration of no reservations (dark mode)"
-                class="hidden dark:block max-h-[230px]"
-                src="assets/media/illustrations/22-dark.svg"
-              />
-            </div>
-            <div class="flex flex-col gap-3 text-center">
-              <h2 class="text-1.5xl font-semibold text-gray-900">
-                Vous n'avez aucune réservation pour l'instant
-              </h2>
-              <p class="text-sm text-gray-800">
-                A streamlined process to welcome and integrate new members into the team, <br />
-                ensuring a smooth and efficient start.
-              </p>
-            </div>
-            <div class="flex justify-center mb-5">
-              <a class="btn bg-kr-primary text-white" href="/booking"> Réserver une session </a>
-            </div>
-          </div>
-        </div>
+       
         <div class="grid grid-cols-1 gap-5 lg:gap-7.5">
           <div class="col-span-2" data-dropdown="true" data-dropdown-trigger="click">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -321,7 +294,7 @@
                           if (currentQuery.listingGroup === 'location') {
                             basePath = '/a-louer/annonces';
                           } else if (currentQuery.listingGroup === 'vente') {
-                            basePath = '/ventes/annonces';
+                            basePath = '/a-vendre/annonces';
                           } else {
                             // Default or fallback path if listingGroup is not set
                             basePath = '/annonces';

@@ -1,0 +1,336 @@
+<!-- Add this inside the search form, before the search button -->
+<div class="col-span-3 pl-4"></div>
+
+<head>
+  <base href="/">
+  <%- include('./partials/head') %>
+</head>
+
+<body>
+  <div class="w-full overflow-x-hidden">
+    <%- include('./partials/main_nav_bar') %>
+      <div class="px-10 mt-24 mb-2 text-center">
+        <div class="mb-4">
+          <p class="text-[#204B42] font-semibold text-4xl">
+            Annonces de vente près de chez vous
+          </p>
+        </div>
+        <div class="mb-6">
+          <p class="text-gray-500">Acceuil / Liste des annonces</p>
+        </div>
+        <div class="">
+          <div class="max-w-fit mx-[auto] flex bg-black rounded-full p-3 text-white">
+            <a class="category-nav py-3 px-6 <%= (!listingCategory || listingCategory === 'Villas et autres constructions') ? 'active' : '' %>"
+              href="/a-vendre/maison-et-immeuble">
+              <p>Villas et autres constructions</p>
+            </a>
+            <a class="category-nav py-3 px-6 <%= listingCategory === 'Terrain urbain' ? 'active' : '' %>"
+              href="/a-vendre/terrain-urbain">
+              <p>Terrain urbain</p>
+            </a>
+            <a class="category-nav py-3 px-6 <%= listingCategory === 'Terrain rural' ? 'active' : '' %>"
+              href="/a-vendre/terrain-rural">
+              <p>Terrain rural</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="w-full px-10 py-10">
+        <div class="w-full">
+          <form class="grid grid-cols-18 gap-2 py-4 border rounded-2xl bg-[#F9F9F9] px-4" method="GET"
+            action="/a-louer/<%= listingCategory %>" id="searchForm">
+            <% if (listingCategory==='habitations-bureaux' ) { %>
+              <!-- Type de propriété -->
+              <div class="col-span-3">
+                <label for="type" class="block text-sm text-gray-500">Type de propriété</label>
+                <!-- Type de propriété select -->
+                <select id="type" name="type"
+                  class="w-full mt-2 py-2 text-gray-700 bg-[#F9F9F9] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <option value="All" <%=selectedType==='All' ? 'selected' : '' %>>Tous les types</option>
+                  <% if (listingMetadata.propertiesType && listingMetadata.propertiesType.success) { %>
+                    <% listingMetadata.propertiesType.data.forEach(type=> { %>
+                      <option value="<%= type %>" <%=type===selectedType ? 'selected' : '' %>><%= type %>
+                      </option>
+                      <% }); %>
+                        <% } %>
+                </select>
+              </div>
+              <!-- Ville -->
+              <div class="col-span-2">
+                <% } else { %>
+                  <!-- Ville with increased col-span -->
+                  <div class="col-span-3">
+                    <% } %>
+                      <label for="ville" class="block text-sm text-gray-500">Ville</label>
+                      <!-- Ville select -->
+                      <select id="ville" name="ville"
+                        class="w-full mt-2 py-2 text-gray-700 bg-[#F9F9F9] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="All" <%=selectedVille==='All' ? 'selected' : '' %>>Toutes les villes</option>
+                        <% if (listingMetadata.villes && listingMetadata.villes.success) { %>
+                          <% listingMetadata.villes.data.forEach(ville=> { %>
+                            <option value="<%= ville %>" <%=ville===selectedVille ? 'selected' : '' %>><%= ville %>
+                            </option>
+                            <% }); %>
+                              <% } %>
+                      </select>
+                  </div>
+
+                  <% if (listingCategory==='habitations-bureaux' ) { %>
+                    <div class="col-span-3 pl-4">
+                      <% } else { %>
+                        <!-- Quartier with increased col-span -->
+                        <div class="col-span-4 pl-4">
+                          <% } %>
+                            <label for="quartier" class="block text-sm text-gray-500">Quartier</label>
+                            <!-- Quartier select -->
+                            <select id="quartier" name="quartier"
+                              class="w-full mt-2 py-2 text-gray-700 bg-[#F9F9F9] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                              <option value="All" <%=selectedQuartier==='All' ? 'selected' : '' %>>Tous les quartiers
+                              </option>
+                              <% if (listingMetadata.quartiers && listingMetadata.quartiers.success) { %>
+                                <% listingMetadata.quartiers.data.forEach(quartier=> { %>
+                                  <option value="<%= quartier %>" <%=quartier===selectedQuartier ? 'selected' : '' %>>
+                                    <%= quartier %>
+                                  </option>
+                                  <% }); %>
+                                    <% } %>
+                            </select>
+                        </div>
+
+                        <% if (listingCategory==='habitations-bureaux' ) { %>
+                          <div class="col-span-4 pl-4">
+                            <% } else { %>
+                              <!-- Budget with increased col-span -->
+                              <div class="col-span-5 pl-4">
+                                <% } %>
+                                  <label class="block text-sm text-gray-500">Budget</label>
+                                  <!-- Budget inputs -->
+                                  <div class="flex space-x-2 py-2">
+                                    <div class="flex items-center bg-gray-200 rounded-xl overflow-hidden px-2">
+                                      <input type="number" name="minBudget" placeholder="Min"
+                                        value="<%= typeof minBudget !== 'undefined' ? minBudget : 0 %>"
+                                        class="w-full bg-transparent px-3 py-2 text-sm placeholder-gray-500 text-gray-700 focus:outline-none">
+                                      <span class="text-black text-sm font-medium">FCFA</span>
+                                    </div>
+                                    <div class="flex items-center bg-gray-200 rounded-xl overflow-hidden px-2">
+                                      <input type="number" name="maxBudget" placeholder="Max"
+                                        value="<%= typeof maxBudget !== 'undefined' ? maxBudget : '' %>"
+                                        class="w-full bg-transparent px-3 py-2 text-sm placeholder-gray-500 text-gray-700 focus:outline-none">
+                                      <span class="text-black text-sm font-medium">FCFA</span>
+                                    </div>
+                                  </div>
+                              </div>
+
+                              <!-- Date de publication -->
+                              <div class="col-span-3 pl-4">
+                                <label for="publicationDate" class="block text-sm text-gray-500">Date de
+                                  publication</label>
+                                <!-- Date de publication select -->
+                                <select id="publicationDate" name="publicationDate"
+                                  class="w-full mt-2 py-2 text-gray-700 bg-[#F9F9F9] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                                  <option value="All" <%=publicationDate==='All' ? 'selected' : '' %>>Toutes les dates
+                                  </option>
+                                  <option value="24h" <%=publicationDate==='24h' ? 'selected' : '' %>>Dernières 24h
+                                  </option>
+                                  <option value="7j" <%=publicationDate==='7j' ? 'selected' : '' %>>7 derniers jours
+                                  </option>
+                                  <option value="30j" <%=publicationDate==='30j' ? 'selected' : '' %>>30 derniers jours
+                                  </option>
+                                </select>
+                              </div>
+
+                              <!-- Button -->
+                              <div class="col-span-3 flex items-end justify-end">
+                                <button type="submit"
+                                  class="px-6 py-4 bg-[#204B42] hover:bg-opacity-75 text-white rounded-xl">
+                                  Rechercher
+                                </button>
+                              </div>
+          </form> 
+        </div>
+      </div>
+   
+      <div class="px-10 py-9">
+      <div class="grid grid-cols-4 gap-6">
+  <% if (properties.length > 0) { %>
+    <% properties.forEach(property => { %>
+      <div class="col-span-1">
+        <div class="border-[3px] h-full border-[#F2F2F2] rounded-xl overflow-hidden">
+          <div class="-mb-4 w-full h-[200px] overflow-hidden">
+            <img src="assets/media/uploads/<%= property.summary.thumbnail %>"
+              alt="<%= property.summary.propertyType %>" class="w-full h-full object-cover object-center" />
+          </div>
+          <div class="py-3 px-3 mt-8">
+            <div class="text-base font-bold text-black mb-2">
+              <% if (property.summary.surface) { %>
+                <%= property.summary.surface %> - <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
+              <% } else { %>
+                <%= property.summary.propertyType %> - <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
+              <% } %>
+            </div>
+            <div class="text-gray-500 mb-6 text-sm">
+              Vente de  <%= property.summary.propertyType %> à <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
+            </div>
+            <div class="flex justify-between items-center">
+              <p>
+                <span class="text-black text-xl font-semibold">
+                  <% if (property.summary.price === 0) { %>
+                    Prix à discuter
+                  <% } else { %>
+                    <%= property.summary.price.toLocaleString('de-DE') %> FCFA
+                  <% } %>
+                </span>
+              </p>
+              <div class="text-black">
+                <% 
+                  const removeAccents = str => str && str.normalize ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : str || '';
+                  const slugify = str => removeAccents(str).toLowerCase().replace(/\s+/g, "-").replace(/[^\w\-]+/g, "").replace(/\-\-+/g, "-");
+                  let propertySlug = '';
+                  if (property.summary.surface) {
+                    propertySlug = `${slugify(property.summary.surface)}-${slugify(property.summary.city === 'Lomé' ? property.summary.area : property.summary.city)}-${property.id}`;
+                  } else {
+                    propertySlug = `${slugify(property.summary.propertyType)}-${slugify(property.summary.city === 'Lomé' ? property.summary.area : property.summary.city)}-${property.id}`;
+                  }
+                %>
+                <a href="<%= listingType %>/<%= propertySlug %>"
+                  class="text-black px-5 py-2 border border-gray-200 rounded-full">
+                  Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <div class="col-span-4 text-center text-gray-500 text-lg">
+      <div class="col-span-3">
+        <div class="card">
+          <div class="card-body card-body-g-100 flex flex-col items-center gap-2.5 py-7.5">
+            <div class="flex justify-center pb-5">
+              <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/33.svg">
+            </div>
+            <div class="flex flex-col gap-3 text-center">
+              <h2 class="text-1.5xl font-semibold text-gray-900">
+                Aucune annonce disponible
+              </h2>
+              <p class="text-sm text-gray-800">
+                Aucune annonce n'a été trouvée avec les filtres sélectionnés
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>
+
+        <% if (properties.length> 0) { %>
+          <div class="flex justify-end py-10">
+            <div class="flex gap-2 flex-row">
+              <!-- First page -->
+              <a href="<%= baseUrl %>?<%= queryString ? queryString + '&' : '' %>page=1"
+                class="p-2 rounded-full border <%= currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100' %>"
+                <%=currentPage===1 ? 'aria-disabled="true"' : '' %>>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12.1306 19.0012C11.8683 19.0001 11.6169 18.896 11.4306 18.7112L5.43059 12.7112C5.25435 12.5177 5.161 12.2628 5.17059 12.0012C5.16983 11.8696 5.19506 11.7392 5.24482 11.6173C5.29459 11.4955 5.36791 11.3847 5.46059 11.2912L11.4606 5.29124C11.6519 5.12741 11.898 5.04181 12.1496 5.05153C12.4013 5.06125 12.6401 5.16558 12.8182 5.34368C12.9963 5.52177 13.1006 5.76051 13.1103 6.01219C13.12 6.26386 13.0344 6.50994 12.8706 6.70124L7.58059 12.0012L12.8406 17.2612C13.0268 17.4486 13.1314 17.7021 13.1314 17.9662C13.1314 18.2304 13.0268 18.4839 12.8406 18.6712C12.7505 18.7712 12.6412 18.8519 12.5192 18.9086C12.3972 18.9653 12.2651 18.9968 12.1306 19.0012Z"
+                    fill="#78829D" />
+                  <path opacity="0.3"
+                    d="M17.4998 19.0009C17.2374 18.9998 16.986 18.8957 16.7998 18.7109L10.7998 12.7109C10.7071 12.6175 10.6338 12.5067 10.584 12.3849C10.5342 12.263 10.509 12.1326 10.5098 12.0009C10.509 11.8693 10.5342 11.7389 10.584 11.617C10.6338 11.4952 10.7071 11.3844 10.7998 11.2909L16.7998 5.29095C16.8894 5.18627 16.9997 5.10125 17.1238 5.04122C17.2479 4.9812 17.383 4.94747 17.5207 4.94215C17.6584 4.93683 17.7958 4.96004 17.9241 5.01031C18.0524 5.06059 18.169 5.13684 18.2664 5.2343C18.3639 5.33175 18.4401 5.4483 18.4904 5.57663C18.5407 5.70495 18.5639 5.84228 18.5586 5.98C18.5533 6.11772 18.5195 6.25285 18.4595 6.37692C18.3995 6.50098 18.3145 6.6113 18.2098 6.70095L12.9998 12.0009L18.2598 17.261C18.446 17.4483 18.5506 17.7018 18.5506 17.966C18.5506 18.2301 18.446 18.4836 18.2598 18.6709C18.164 18.7771 18.0467 18.8614 17.9156 18.9184C17.7845 18.9753 17.6427 19.0035 17.4998 19.0009Z"
+                    fill="#78829D" />
+                </svg>
+              </a>
+
+              <!-- Page numbers -->
+              <div class="flex gap-2 flex-row">
+                <% for (let i=1; i <=totalPages; i++) { %>
+                  <a href="<%= baseUrl %>?<%= queryString ? queryString + '&' : '' %>page=<%= i %>"
+                    class="py-2 px-4 rounded-full border <%= currentPage === i ? 'bg-[#005340] text-white' : 'hover:bg-gray-100' %>">
+                    <%= i %>
+                  </a>
+                  <% } %>
+              </div>
+
+              <!-- Last page -->
+              <a href="<%= baseUrl %>?<%= queryString ? queryString + '&' : '' %>page=<%= totalPages %>"
+                class="p-2 rounded-full border <%= currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100' %>"
+                <%=currentPage===totalPages ? 'aria-disabled="true"' : '' %>>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.7109 18.8116C11.5793 18.8124 11.4488 18.7871 11.327 18.7374C11.2051 18.6876 11.0943 18.6143 11.0009 18.5216C10.9071 18.4286 10.8328 18.318 10.782 18.1962C10.7312 18.0743 10.7051 17.9436 10.7051 17.8116C10.7051 17.6796 10.7312 17.5489 10.782 17.427C10.8328 17.3052 10.9071 17.1946 11.0009 17.1016L16.1109 12.0016L11.0009 6.90159C10.8126 6.71329 10.7068 6.45789 10.7068 6.19159C10.7068 6.05973 10.7328 5.92916 10.7832 5.80734C10.8337 5.68552 10.9076 5.57483 11.0009 5.48159C11.0941 5.38835 11.2048 5.31439 11.3266 5.26393C11.4484 5.21347 11.579 5.1875 11.7109 5.1875C11.9772 5.1875 12.2326 5.29329 12.4209 5.48159L18.2309 11.2916C18.3236 11.385 18.3969 11.4958 18.4466 11.6177C18.4964 11.7395 18.5216 11.87 18.5209 12.0016C18.5216 12.1332 18.4964 12.2637 18.4466 12.3855C18.3969 12.5073 18.3236 12.6182 18.2309 12.7116L12.4209 18.5216C12.3274 18.6143 12.2166 18.6876 12.0948 18.7374C11.9729 18.7871 11.8425 18.8124 11.7109 18.8116Z"
+                    fill="#005340" />
+                  <path opacity="0.3"
+                    d="M6.48041 18.8116C6.3488 18.8124 6.21834 18.7871 6.0965 18.7374C5.97466 18.6876 5.86385 18.6143 5.77041 18.5216C5.67668 18.4286 5.60228 18.318 5.55152 18.1962C5.50075 18.0743 5.47461 17.9436 5.47461 17.8116C5.47461 17.6796 5.50075 17.5489 5.55152 17.427C5.60228 17.3052 5.67668 17.1946 5.77041 17.1016L10.8704 12.0016L5.77041 6.90159C5.5821 6.71329 5.47632 6.45789 5.47632 6.19159C5.47632 5.92529 5.5821 5.6699 5.77041 5.48159C5.95871 5.29329 6.21411 5.1875 6.48041 5.1875C6.74671 5.1875 7.0021 5.29329 7.19041 5.48159L13.0004 11.2916C13.0931 11.385 13.1664 11.4958 13.2162 11.6177C13.2659 11.7395 13.2912 11.87 13.2904 12.0016C13.2867 12.2664 13.1831 12.52 13.0004 12.7116L7.19041 18.5216C7.09697 18.6143 6.98615 18.6876 6.86431 18.7374C6.74248 18.7871 6.61201 18.8124 6.48041 18.8116Z"
+                    fill="#005340" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <% } %>
+      </div>
+
+      <div class="px-10 py-16 mt-16 bg-[#FFF8F6]">
+        <div class="grid grid-cols-6 gap-8 mb-28">
+          <div class="col-span-2 text-[#204B42]">
+            <li class="font-semibold">Latest articles</li>
+          </div>
+          <div class="col-span-4">
+            <p class="ruby text-5xl font-bold leading-[130%]">
+              <span class="inline-block min-w-[300px]"></span>
+              <span> Vous cherchez bien plus qu'une location ? Découvrez nos services supplémentaires pour trouver la
+                solution idéale à vos besoins immobiliers.</span>
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-white">
+          <div class="col-span-1">
+            <div class="rounded-3xl p-6 bg-[#204B42]">
+              <div class="grid grid-rows-3 grid-cols-3">
+                <div class="col-span-2 row-span-2">
+                  <p>
+                    "Le bien de vos rêves n'est pas encore disponible ? Décrivez-nous vos critères, et nous irons à
+                    votre recherche.
+                  </p>
+                </div>
+                <div class="col-span-2 row-start-3 col-start-1 items-end flex">
+                  <a href="/requete"
+                    class="px-10 py-4 bg-[#FFA200] hover:bg-opacity-75 cursor-pointer text-white rounded-xl">
+                    Confier ma recherche
+                  </a>
+                </div>
+                <div class="col-span-1 row-span-3 col-start-3">
+                  <img src="assets/images/26.png" alt="images" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-1">
+            <div class="rounded-3xl p-6 bg-[#204B42]">
+              <div class="grid grid-rows-3 grid-cols-3">
+                <div class="col-span-2 row-span-2">
+                  <p>
+                    Simplifiez-vous la vie ! Déléguez la gestion de votre bien immobilier et bénéficiez d'une gestion
+                    locative professionnelle
+                  </p>
+                </div>
+                <div class="col-span-2 row-start-3 col-start-1 items-end flex">
+                  <a href="/requete"
+                    class="px-10 py-4 bg-[#FFA200] hover:bg-opacity-75 cursor-pointer text-white rounded-xl">
+                    Confier votre bien
+                  </a>
+                </div>
+                <div class="col-span-1 row-span-3 col-start-3">
+                  <img src="assets/images/27.png" alt="images" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include('./partials/footer') %>
+  </div>
+</body>
+<script src="assets/js/app/script.js"></script>
+
+</html>

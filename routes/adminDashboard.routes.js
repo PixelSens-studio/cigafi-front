@@ -27,18 +27,27 @@ const upload = multer({ storage });
 const router = express.Router();
 
 
-router.post(
-  '/add-new-property',
+router.post('/add-new-location',
   upload.fields([
     { name: 'mainImage', maxCount: 1 },
     { name: 'otherImages', maxCount: 9 }
   ]), authAdmin,
-  adminDashboardController.addNewPropertyPost
+  adminDashboardController.addNewLocationPost
+);
+
+
+
+router.post('/add-new-vente',
+  upload.fields([
+    { name: 'mainImage', maxCount: 1 },
+    { name: 'otherImages', maxCount: 9 }
+  ]), authAdmin,
+  adminDashboardController.addNewVentePost
 );
 
 router.get('/dashboard', authAdmin, adminDashboardController.dashboardGet); 
-router.get('/add-new-property', authAdmin, adminDashboardController.addNewPropertyGet); 
-
+router.get('/add-new-location', authAdmin, adminDashboardController.addNewLocationGet); 
+router.get('/add-new-vente', authAdmin, adminDashboardController.addNewVenteGet); 
 router.get('/utilisateurs', authAdmin, adminDashboardController.usersListGet);
 router.get('/details-utilisateurs', authAdmin, adminDashboardController.userDetailsGet);
 router.get('/liste-annonces', authAdmin, (req, res, next) => {
