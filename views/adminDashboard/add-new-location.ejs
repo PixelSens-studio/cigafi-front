@@ -71,41 +71,34 @@
                           </div>
                         </div>
                       </div>
-                      <!-- For Type de bien select -->
-                      <div class="w-full" id="usage_type">
-                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                          <label class="form-label flex items-center gap-1 max-w-56"
-                            for="usage_type">Type d'usage</label>
-                          <div class="flex flex-col w-full">
-                            <select class="select" name="usage_type" id="usage_type_select">
-                              <option value="">Sélectionner</option>
-                              <option value="Habitation">Habitation</option>
-                              <option value="Bureaux ou Magasin">Bureaux ou Magasin</option>
-                              <option value="Appartement meublé">Appartement meublé</option> 
-                              <option value="Agricole">Agricole</option>
-                              <option value="Constructible">Constructible</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
+                    <!-- Select "Type d'usage" -->
+<div class="w-full" id="usage_type">
+  <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+    <label class="form-label flex items-center gap-1 max-w-56" for="usage_type">Type d'usage</label>
+    <div class="flex flex-col w-full">
+      <select class="select" name="usage_type" id="usage_type_select">
+        <option value="">Sélectionner</option>
+        <option value="Habitation">Habitation</option>
+        <option value="Bureaux ou Magasin">Bureaux ou Magasin</option>
+        <option value="Appartement meublé">Appartement meublé</option>  
+      </select>
+    </div>
+  </div>
+</div>
 
+<!-- Select "Type de bien" -->
+<div class="w-full" id="type_bien">
+  <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+    <label class="form-label flex items-center gap-1 max-w-56" for="type_bien_select">Type de bien</label>
+    <div class="flex flex-col w-full">
+      <select class="select" name="type_bien" id="type_bien_select">
+        <option value="">Sélectionner</option>
+        <!-- Options générées dynamiquement -->
+      </select>
+    </div>
+  </div>
+</div>
 
-                      <div class="w-full" id="type_bien">
-                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                          <label class="form-label flex items-center gap-1 max-w-56" for="type_bien_select">Type de
-                            bien</label>
-                          <div class="flex flex-col w-full">
-                            <select class="select" name="type_bien" id="type_bien_select">
-                              <option value="">Sélectionner</option>
-                              <% listingMetadata.propertiesType.data.forEach(type=> { %>
-                                <option value="<%= type %>">
-                                  <%= type %>
-                                </option>
-                                <% }); %>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
 
                       <div class="w-full">
                         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
@@ -211,8 +204,8 @@
                                 <label class="form-label text-gray-900" for="type_usage_select">Type d’usage</label>
                                 <select class="select" name="caracteristique_type_usage" id="type_usage_select">
                                   <option value="">Sélectionner</option>
-                                  <option value="Terrain agricole">Terrain agricole</option>
-                                  <option value="Terrain constructible">Terrain constructible</option>
+                                  <option value="Agricole">Terrain agricole</option>
+                                  <option value="Constructible">Terrain constructible</option>
                                 </select>
                               </div>
                             </div>
@@ -1133,6 +1126,45 @@
     </div>
   </div>
   <!-- End of Page -->
+<script>
+  // Données injectées depuis le serveur (doivent être des tableaux)
+  const typeBienData = {
+    default: <%- JSON.stringify(listingMetadata.propertiesTypeHabitation?.data || []) %>,
+    meuble: <%- JSON.stringify(listingMetadata.propertiesTypeMeuble?.data || []) %>
+  };
+
+  const usageSelect = document.getElementById("usage_type_select");
+  const typeBienSelect = document.getElementById("type_bien_select");
+
+  function updateTypeBienOptions() {
+    const selectedUsage = usageSelect.value;
+    let options = typeBienData.default;
+
+    if (selectedUsage === "Appartement meublé") {
+      options = typeBienData.meuble;
+    }
+
+    // Réinitialiser les options
+    typeBienSelect.innerHTML = '<option value="">Sélectionner</option>';
+
+    // Remplir les nouvelles options (si tableau valide)
+    if (Array.isArray(options)) {
+      options.forEach(type => {
+        const opt = document.createElement("option");
+        opt.value = type;
+        opt.textContent = type;
+        typeBienSelect.appendChild(opt);
+      });
+    }
+  }
+
+  usageSelect.addEventListener("change", updateTypeBienOptions);
+
+  document.addEventListener("DOMContentLoaded", updateTypeBienOptions);
+</script>
+
+
+
   <!-- Scripts -->
   <script src="assets/js/app/addPropertyRent.js"></script>
   <script src="assets/js/core.bundle.js"> 

@@ -37,10 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
       commoditesHabitations, 
       commoditesTerrain, 
       rules, 
+      usageType
     } = elements;
     
     const cat = categorieSelect.value;
     const typeBien = typeBienSelect.value.toLowerCase();
+    const usage = usageType.querySelector('#usage_type_select').value;
 
     // Default visibility
     const visibility = {
@@ -53,12 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
       commoditesHabitations: true,
       commoditesTerrain: false,
       rules: true, 
+      usageType: true
     };
 
-    if (cat === 'habitations-bureaux') {
-      visibility.prixBienMeuble = typeBien.includes('meubl');
-      visibility.prixNonMeuble = !typeBien.includes('meubl'); 
-    } else if (cat === 'terrains-urbain' || cat === 'terrains-ruraux') {
+    if (cat === 'terrains-urbain' || cat === 'terrains-ruraux') {
       Object.assign(visibility, {
         typeBienDiv: false,
         prixNonMeuble: false,
@@ -69,11 +69,27 @@ document.addEventListener('DOMContentLoaded', () => {
         rules: false,
         caracteristiquesTerrain: true,
         commoditesTerrain: true, 
+        usageType: false
       });
+    } else if (usage === 'Appartement meublé') {
+      Object.assign(visibility, {
+        prixNonMeuble: false,
+        prixBienMeuble: true,
+        prixTerrain: false,
+        usageType: true
+      });
+    } else if (cat === 'habitations-bureaux') {
+      visibility.usageType = true;
+      visibility.prixNonMeuble = true;
+      visibility.prixBienMeuble = false;
+      visibility.prixTerrain = false;
     } else {
       visibility.commoditesTerrain = false;
       visibility.caracteristiquesTerrain = false;
       visibility.prixTerrain = false; 
+      visibility.prixNonMeuble = true;
+      visibility.prixBienMeuble = false;
+      usageType: true;
     }
 
     Object.entries(visibility).forEach(([key, isVisible]) => {
@@ -83,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elements.categorieSelect.addEventListener('change', updateDynamicFields);
   elements.typeBienSelect.addEventListener('change', updateDynamicFields);
+  elements.usageType.querySelector('#usage_type_select').addEventListener('change', updateDynamicFields);
 
   // Call once on page load to set initial state
   updateDynamicFields();
@@ -101,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Always place error directly under the input for caracteristiques
     let errorContainer;
     if (inCaracteristiques) {
       errorContainer = input.parentElement;
@@ -161,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       if (allFilled) {
-        // Insert new input just after the last input (not after the button)
         const lastInputDiv = inputs[inputs.length - 1].parentElement;
         const newDiv = document.createElement('div');
         newDiv.className = 'flex flex-col w-full';
@@ -189,13 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- 5. Step 2 Image Upload Logic ---
-  // Elements for step 2
   const mainImageInput = document.getElementById('mainImage');
   const otherImagesInput = document.getElementById('otherImages');
   const mainImageInputState = mainImageInput?.closest('.input-group')?.querySelector('.input-state');
   const otherImagesInputState = otherImagesInput?.closest('.input-group')?.querySelector('.input-state');
 
-  // Helper to switch state
   function switchState(inputState, state) {
     inputState.querySelectorAll('.default-state, .progress-state, .preview-state, .error-state').forEach(el => {
       el.classList.add('hidden');
@@ -204,11 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (el) el.classList.remove('hidden');
   }
 
-  // Helper to show preview
   function showPreview(inputState, file, isMultiple = false) {
     const preview = inputState.querySelector('.preview-state');
-    
-    // Helper function to format file size
     const formatFileSize = (bytes) => {
       if (bytes >= 1024 * 1024) {
         return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
@@ -222,37 +232,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const placeholder = preview.querySelector('.placeholder');
       const fileName = preview.querySelector('.file-name');
       
-      // Reset all elements
       img1.classList.add('hidden');
       img2.classList.add('hidden');
       placeholder.classList.add('hidden');
       
       if (file.length === 1) {
-        // Show only first image
         img1.src = URL.createObjectURL(file[0]);
         img1.classList.remove('hidden');
       } else if (file.length === 2) {
-        // Show both images
         img1.src = URL.createObjectURL(file[0]);
         img2.src = URL.createObjectURL(file[1]);
         img1.classList.remove('hidden');
         img2.classList.remove('hidden');
       } else if (file.length > 2) {
-        // Show first two images and placeholder with remaining count
         img1.src = URL.createObjectURL(file[0]);
         img2.src = URL.createObjectURL(file[1]);
         img1.classList.remove('hidden');
         img2.classList.remove('hidden');
-        
-        // Only show placeholder when there are more than 2 images
         placeholder.classList.remove('hidden');
-        placeholder.textContent = `+${file.length - 2}`; // Display number of remaining images
+        placeholder.textContent = `+${file.length - 2}`;
       }
 
       fileName.textContent = `${file.length} Images ajoutées`;
-      preview.querySelector('.file-size').textContent = ''; // Clear file size text
+      preview.querySelector('.file-size').textContent = '';
     } else {
-      // Single image preview logic
       const img = preview.querySelector('.preview-image');
       const fileName = preview.querySelector('.file-name');
       const fileSize = preview.querySelector('.file-size');
@@ -264,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
     switchState(inputState, 'preview');
   }
 
-  // Helper to show error
   function showErrorState(inputState, message) {
     const error = inputState.querySelector('.error-state');
     const msg = error.querySelector('.error-message');
@@ -272,7 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
     switchState(inputState, 'error');
   }
 
-  // Main Image Handler
   if (mainImageInput && mainImageInputState) {
     mainImageInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
@@ -287,15 +288,13 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
         showPreview(mainImageInputState, file);
-      }, 400); // Simulate upload
+      }, 400);
     });
-    // Delete file
     mainImageInputState.querySelector('.delete-file')?.addEventListener('click', (e) => {
       e.preventDefault();
       mainImageInput.value = '';
       switchState(mainImageInputState, 'default');
     });
-    // Close error
     mainImageInputState.querySelector('.close-error')?.addEventListener('click', (e) => {
       e.preventDefault();
       mainImageInput.value = '';
@@ -303,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Other Images Handler
   if (otherImagesInput && otherImagesInputState) {
     otherImagesInput.addEventListener('change', (e) => {
       const files = Array.from(e.target.files);
@@ -322,15 +320,13 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
         showPreview(otherImagesInputState, files, true);
-      }, 400); // Simulate upload
+      }, 400);
     });
-    // Delete files
     otherImagesInputState.querySelector('.delete-file')?.addEventListener('click', (e) => {
       e.preventDefault();
       otherImagesInput.value = '';
       switchState(otherImagesInputState, 'default');
     });
-    // Close error
     otherImagesInputState.querySelector('.close-error')?.addEventListener('click', (e) => {
       e.preventDefault();
       otherImagesInput.value = '';
@@ -342,7 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async e => {
     e.preventDefault();
 
-    // Clear any existing error messages
     const clearImageErrors = () => {
       const mainImageError = mainImageInput.closest('.input-group').querySelector('.image-error-message');
       const otherImagesError = otherImagesInput.closest('.input-group').querySelector('.image-error-message');
@@ -350,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (otherImagesError) otherImagesError.remove();
     };
 
-    // Add error message under input
     const showImageError = (input, message) => {
       const inputGroup = input.closest('.input-group');
       const existingError = inputGroup.querySelector('.image-error-message');
@@ -365,13 +359,11 @@ document.addEventListener('DOMContentLoaded', () => {
     clearImageErrors();
     let valid = true;
 
-    // Main image validation
     if (!mainImageInput.files.length) {
       showImageError(mainImageInput, "Veuillez sélectionner une image principale.");
       valid = false;
     }
 
-    // Other images validation
     if (!otherImagesInput.files.length || otherImagesInput.files.length < 2) {
       showImageError(otherImagesInput, "Veuillez sélectionner au moins 2 autres images.");
       valid = false;
@@ -382,7 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // --- Disable button and show loading spinner ---
     const submitButton = elements.btnSubmit;
     submitButton.disabled = true;
     submitButton.querySelector('.form-spinner')?.remove();
@@ -392,7 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.className = "h-[1.5rem] w-[1.5rem] ml-2 form-spinner";
     submitButton.appendChild(spinner);
 
-    // Prepare FormData
     const formData = new FormData(form);
 
     try {
@@ -400,18 +390,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json().catch(() => null);
       console.log('Server response:', data);
 
-      // Show success or error modal
       const modalId = res.ok ? 'submission_succes' : 'submission_error';
       showModal(modalId);
 
-      // Reset submit button state
       submitButton.disabled = false;
       submitButton.querySelector('.form-spinner')?.remove();
 
-      // Handle modal buttons
       const modal = document.getElementById(modalId);
       if (modal && res.ok) {
-        // For success modal with two buttons
         const closeBtn = modal.querySelector('.close-modal');
         const redirectBtn = modal.querySelector('.redirect-modal');
 
@@ -427,7 +413,6 @@ document.addEventListener('DOMContentLoaded', () => {
           };
         }
       } else if (modal) {
-        // For error modal
         const btn = modal.querySelector('button');
         if (btn) {
           btn.onclick = () => {
@@ -440,7 +425,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Submission error:', err);
       showModal('submission_error');
       
-      // Reset submit button state
       submitButton.disabled = false;
       submitButton.querySelector('.form-spinner')?.remove();
 
@@ -454,9 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Add this function to your JS
   function showModal(modalId) {
-    // Find the corresponding hidden button and trigger a click
     if (modalId === 'submission_succes') {
       document.getElementById('open-success-modal')?.click();
     } else if (modalId === 'submission_error') {
@@ -469,10 +451,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedVille = elements.villeSelect.value;
     
     if (elements.quartierWrapper) {
-      // Hide quartier section if ville is not Lomé
       elements.quartierWrapper.classList.toggle('hidden', selectedVille !== 'Lomé');
       
-      // Reset quartier selection when hiding
       if (selectedVille !== 'Lomé') {
         document.getElementById('quartier_select').value = '';
       }
@@ -481,6 +461,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elements.villeSelect.addEventListener('change', handleVilleChange);
 
-  // Initialize quartier visibility on page load
   handleVilleChange();
 });

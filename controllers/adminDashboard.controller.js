@@ -34,7 +34,8 @@ export const addNewLocationGet = async (req, res) => {
   console.log(user);
 
     const listingMetadata = {
-      propertiesType: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens`).then(res => res.json()),
+      propertiesTypeMeuble: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens-meuble`).then(res => res.json()),
+      propertiesTypeHabitation: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens-habitation`).then(res => res.json()),
       villes: await fetch(`${Backend_API}/api/listing-metadata/villes`).then(res => res.json()),
       quartiers: await fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
     };
@@ -59,6 +60,9 @@ export const addNewLocationPost = async (req, res) => {
     console.log(body)
     // Determine postedByModel
     let postedByModel = user.role === "superAdmin" ? "Admin" : user.role.charAt(0).toUpperCase() + user.role.slice(1);
+
+
+
 
     // Compose summary
     let summary = {};
@@ -89,6 +93,17 @@ export const addNewLocationPost = async (req, res) => {
         price: Number(body.prix_terrain) || 0
       };
     }
+
+
+    let usageType 
+
+     if (body.categorie_annonce === "habitations-bureaux") {
+        usageType = body.usage_type; // Use = for assignment
+      } else if (body.categorie_annonce === "terrains-ruraux" ||
+        body.categorie_annonce === "terrains-urbain") {
+        usageType = body.caracteristique_type_usage; // Use = for assignment
+      }
+  
 
     // Compose characteristics
     let characteristics = [];
@@ -129,9 +144,7 @@ export const addNewLocationPost = async (req, res) => {
           caution: Number(body.caution_meuble) || 0
         };
       }
-    }
-
-    console.log("Financial:", financial);
+    } 
 
     // Compose rules
     let rules = undefined;
@@ -156,7 +169,7 @@ export const addNewLocationPost = async (req, res) => {
     // Build payload
     const payload = {
       listingCategory: body.categorie_annonce,
-      usageType: body.usage_type,
+      usageType,
       summary,
       locationText: body.description_emplacement,
       description: body.description_bien,
@@ -182,6 +195,7 @@ export const addNewLocationPost = async (req, res) => {
     const result = await response.json();
 
     if (!response.ok) {
+      console.log('Error response from backend:', result);
       return res.status(response.status).json({
         success: false,
         message: result.message || "Une erreur s'est produite lors de l'ajout de la propriété"
@@ -219,7 +233,7 @@ export const addNewVenteGet = async (req, res) => {
   console.log(user);
 
     const listingMetadata = {
-      propertiesType: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens`).then(res => res.json()),
+      propertiesType: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens-vente`).then(res => res.json()),
       villes: await fetch(`${Backend_API}/api/listing-metadata/villes`).then(res => res.json()),
       quartiers: await fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
     };
@@ -241,13 +255,12 @@ export const addNewVentePost = async (req, res) => {
     const body = req.body;
     const mainImage = req.files?.mainImage?.[0]?.filename || body.mainImage || null;
     const otherImages = req.files?.otherImages?.map(f => f.filename) || body.otherImages || [];
-    console.log("Request Body:", body)
+   
     // Determine postedByModel
     let postedByModel = user.role === "superAdmin" ? "Admin" : user.role.charAt(0).toUpperCase() + user.role.slice(1);
 
     // Compose summary
     let summary = {
-      propertyType: body.type_bien,
       thumbnail: mainImage,
       city: body.ville,
       price: Number(body.prix) || 0
@@ -256,9 +269,17 @@ export const addNewVentePost = async (req, res) => {
       summary.area = body.quartier;
     } 
 
-    if (body.categorie_annonce === "terrains-urbain" || body.categorie_annonce === "terrains-ruraux") {
+    if (body.categorie_annonce === "Terrain rural" || body.categorie_annonce === "Terrain urbain") {
       summary.surface = body.caracteristique_superficie; 
     }
+
+
+    if (body.categorie_annonce === "Villas et autres constructions") {
+  summary.propertyType = body.type_bien; // Use = for assignment
+} else if (body.categorie_annonce === "Terrain rural" ||
+  body.categorie_annonce === "Terrain urbain") {
+  summary.propertyType = body.caracteristique_type_usage
+}
 
     // Compose characteristics
     let characteristics = [];

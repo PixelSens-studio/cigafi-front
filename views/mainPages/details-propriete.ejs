@@ -196,23 +196,23 @@
               <% if (property.usageType === 'Appartement meublé') { %>
                 <div class="flex flex-row gap-3 items-center">
                   <div class="mt-10">
-                    <span class="text-black font-bold text-4xl"><%= property.summary.price.daily.toLocaleString('de-DE') %> F</span>
+                    <span class="text-black font-bold text-4xl"><%= property.summary.price.daily.toLocaleString('de-DE') %> FCFA</span>
                     <span class="text-gray-500">/Jour</span>
                   </div>
                   <div class="mt-10 pl-6 border-l border-gray-500">
-                    <span class="text-black font-bold text-4xl"><%= property.summary.price.Monthly.toLocaleString('de-DE') %> F</span>
+                    <span class="text-black font-bold text-4xl"><%= property.summary.price.Monthly.toLocaleString('de-DE') %> FCFA</span>
                     <span class="text-gray-500">/Mois</span>
                   </div>
                 </div>
               <% } else if (property.usageType === 'Habitation' || property.usageType === 'Bureaux ou Magasin') { %>
                 <div class="mt-10">
-                  <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> F</span>
+                  <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> FCFA</span>
                   <span class="text-gray-500">/Mois</span>
                 </div>
               <% } %>
             <% } else if (property.listingCategory === 'terrains-ruraux' || property.listingCategory === 'terrains-urbain') { %>
               <div class="mt-10">
-                <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> F</span>
+                <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> FCFA</span>
               </div>
             <% } %>
             

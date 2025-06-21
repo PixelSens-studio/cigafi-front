@@ -204,15 +204,15 @@
                                 <% if (property.summary.price.daily===0) { %>
                                   Prix à discuter
                                   <% } else if (property.usageType==='Appartement meublé' ) { %>
-                                    <%= property.summary.price.daily.toLocaleString('de-DE') %> F
+                                    <%= property.summary.price.daily.toLocaleString('de-DE') %> FCFA
                                       <span class="text-gray-500">/Jour</span>
                                       <% } else { %>
-                                        <%= property.summary.price.toLocaleString('de-DE') %> F
+                                        <%= property.summary.price.toLocaleString('de-DE') %> FCFA
                                           <span class="text-gray-500">/Mois</span>
                                           <% } %>
                                             <% } else if (listingCategory==='terrains-ruraux' ||
                                               listingCategory==='terrains-urbain' ) { %>
-                                              <%= property.summary.price.toLocaleString('de-DE') %> F
+                                              <%= property.summary.price.toLocaleString('de-DE') %> FCFA
                                                 <% } %>
                           </span>
 

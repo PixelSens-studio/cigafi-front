@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       caracteristiquesTerrain, 
       commoditesHabitations, 
       commoditesTerrain, 
+      typeBienDiv,
     } = elements;
     
     const cat = categorieSelect.value;
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       caracteristiquesTerrain: false,
       commoditesHabitations: true,
       commoditesTerrain: false,
+      typeBienDiv: false, // Hide by default
     };
 
     if (cat === 'Terrain rural' || cat === 'Terrain urbain') {
@@ -45,7 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
         caracteristiquesHabitations: false,
         commoditesHabitations: false,
         caracteristiquesTerrain: true,
-        commoditesTerrain: true, 
+        commoditesTerrain: true,
+        typeBienDiv: false,
+      });
+    } else if (cat === 'Villas et autres constructions') {
+      Object.assign(visibility, {
+        typeBienDiv: true, // Show only for this category
       });
     }
 
