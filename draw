@@ -1,0 +1,24 @@
+<div class="kt-toast-container top-end">
+    <div class="kt-toast kt-alert kt-alert-solid kt-alert-md kt-toast-top-end" role="status" aria-live="polite"
+        aria-atomic="true" tabindex="0"
+        style="pointer-events: auto; top: 15px; transition: top 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1); inset-inline-end: 15px;">
+
+        <div class="kt-alert-icon ">
+            <i class="ki-filled ki-information-4 text-destructive text-xl"></i>
+        </div>
+
+        <div class="kt-alert-title ">You have checked a row</div>
+        <div class="kt-alert-toolbar ">
+            <div class="kt-alert-actions ">
+                <button data-kt-toast-dismiss="true" class="kt-alert-close">
+                    <svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="kt-toast-progress " data-kt-toast-progress="true" style="animation-duration: 4000ms;"></div>
+    </div>
+</div>

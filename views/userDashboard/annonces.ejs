@@ -1,0 +1,549 @@
+<%- include('./partials/head') %>
+  <!-- Page -->
+  <!-- Main -->
+  <div class="flex grow flex-col [[data-sticky-header=on]_&amp;]:pt-[--tw-header-height-default]">
+   <!-- Header -->
+   <%- include('./partials/navbar') %>
+   <!-- End of Header -->
+   <!-- Toolbar -->
+  
+    <!-- Container -->
+		<div class="container-fixed">
+			<div>
+							<div class="flex items-center justify-between flex-wrap gap-5 my-5">
+							<div class="flex flex-col gap-1">
+								<h1 class="font-medium text-lg text-gray-900">
+								</h1>
+								<div class="flex items-center gap-1 text-2sm">
+									<h3 class="text-lg text-gray-900 font-semibold">
+										Liste des mes annonces
+									</h3>
+								</div>
+							</div>
+							<div class="flex items-center flex-wrap">
+	
+								<div class="dropdown inline-block relative w-full lg:w-auto">
+									<button
+										class="bg-primary text-white w-full font-medium text-sm py-3 px-4 rounded-lg inline-flex items-center">
+										<i class="ki-filled ki-plus mr-2"> </i>
+										Créer une annonce
+									</button>
+									<ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
+										<li class=""><a
+												class="rounded-t text-md bg-primary-50 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap hover:font-bold hover:text-primary"
+												href="/user/add-new-location">Annonce location</a></li>
+										<li class=""><a
+												class="bg-primary-50 text-md rounded-b  py-2 px-4 block whitespace-no-wrap hover:text-primary hover:font-bold"
+												href="/user/add-new-vente">Annonce vente</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+	 
+	
+	
+						<div class="flex items-center flex-wrap md:flex-nowrap lg:items-end justify-between border-b border-b-gray-200 dark:border-b-coal-100 gap-3 lg:gap-6 mb-5 lg:mb-10">
+							<div class="flex gap-4 mb-5">
+								<a class="btn btn-primary btn-outline active"
+									href="/admin/liste-annonces?createdBy=USER_ID&listingGroup=location">
+									<i class="ki-duotone ki-calendar-tick"></i>
+									Annonces locations
+								</a>
+	
+								<a class="btn btn-primary btn-outline"
+									href="/admin/liste-annonces?createdBy=USER_ID&listingGroup=vente">
+									<i class="ki-duotone ki-archive"></i>
+									Annonces ventes
+								</a>
+	
+							</div>
+	
+							<div class="flex items-center justify-end grow lg:grow-0 gap-2.5 mb-2">
+								<div class="input-group">
+									<form action="" method="GET" id="" class="inline-block">
+										<select
+											class="select select-lg w-40 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+											name="state">
+											<option value="active">Active</option>
+											<option value="pending">Annulées</option>
+											<option value="archived">Archivée</option>
+										</select>
+										<input type="hidden" />
+									</form>
+								</div>
+							</div>
+	
+						</div>
+					</div>  
+		</div>
+    <!-- End of Container -->
+   
+   <!-- End of Toolbar -->
+   <!-- Content -->
+   <main class="grow" id="content" role="content">
+ 
+    <!-- Container -->
+    <div class="container-fixed h-full">
+     <div class="grid gap-5 lg:gap-7.5 h-full">
+      <!-- begin: grid -->
+     
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+               
+        
+
+			       <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                        <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white" aria-label="Property actions">
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true" role="menu">
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#addAdminModal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/media/uploads/cover-1750481712177-972603330.webp" alt="Thumbnail for Mini villa meublé - Bafilo" class="w-full h-full object-cover object-center" loading="lazy">
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                        Mini villa meublé -
+                      Bafilo  
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      
+                      Location Mini villa meublé à Bafilo
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                            222 F
+                          <span class="text-gray-500">/Jour</span>  
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        
+                        <a href="/a-louer/annonces/mini-villa-meuble-bafilo-68563b30443654e12e9c608e" class="text-black px-5 py-2 border border-gray-200 rounded-full" target="_blank" rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                        <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white" aria-label="Property actions">
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true" role="menu">
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#addAdminModal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/media/uploads/cover-1750467534128-759732764.jpg" alt="Thumbnail for 3 Ch Salon meublé - Bafilo" class="w-full h-full object-cover object-center" loading="lazy">
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                        3 Ch Salon meublé -
+                      Bafilo  
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      
+                      Location 3 Ch Salon meublé à Bafilo
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                            222 F
+                          <span class="text-gray-500">/Jour</span>  
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        
+                        <a href="/a-louer/annonces/3-ch-salon-meuble-bafilo-685603ced8a6c2dd9d9e0d2f" class="text-black px-5 py-2 border border-gray-200 rounded-full" target="_blank" rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                        <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white" aria-label="Property actions">
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true" role="menu">
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#addAdminModal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/media/uploads/cover-1750467434892-475431206.webp" alt="Thumbnail for  - Sotouboua" class="w-full h-full object-cover object-center" loading="lazy">
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                       
+                      11 ha - Sotouboua  
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      
+                      Location terrain 11 ha à Sotouboua
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                           Prix à discuter 
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        
+                        <a href="/a-louer/annonces/11-ha-sotouboua-6856036bd8a6c2dd9d9e0d11" class="text-black px-5 py-2 border border-gray-200 rounded-full" target="_blank" rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                        <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white" aria-label="Property actions">
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true" role="menu">
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#addAdminModal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/media/uploads/cover-1750462268668-303480349.webp" alt="Thumbnail for  - Vogan" class="w-full h-full object-cover object-center" loading="lazy">
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                       
+                      kkkkkk - Vogan  
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      
+                      Location terrain kkkkkk à Vogan
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                           Prix à discuter 
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        
+                        <a href="/a-louer/annonces/kkkkkk-vogan-6855ef3d8b1497cdff7b14e4" class="text-black px-5 py-2 border border-gray-200 rounded-full" target="_blank" rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                        <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white" aria-label="Property actions">
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true" role="menu">
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#addAdminModal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/media/uploads/cover-1750263520364-710515034.webp" alt="Thumbnail for  - Tabligbo" class="w-full h-full object-cover object-center" loading="lazy">
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                       
+                      ER - Tabligbo  
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      
+                      Location terrain ER à Tabligbo
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                           Prix à discuter 
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        
+                        <a href="/a-louer/annonces/er-tabligbo-6852e6e018ed643f758ccf3e" class="text-black px-5 py-2 border border-gray-200 rounded-full" target="_blank" rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-span-1">
+                <div class="border-3 relative h-full border-gray-200 rounded-xl overflow-hidden">
+                  <div class="-mb-4 w-full h-[200px] overflow-hidden">
+                    <div class="menu mt-2.5 mr-2.5 absolute top-0 right-0 z-10" data-menu="true">
+                      <div class="menu-item menu-item-dropdown" data-menu-item-offset="0, 10px" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
+                        <button class="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800 bg-white" aria-label="Property actions">
+                          <i class="ki-filled ki-dots-vertical"></i>
+                        </button>
+                        <div class="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true" role="menu">
+                          <div class="menu-item">
+                            <a class="menu-link" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-pencil"></i></span>
+                              <span class="menu-title">Modifier</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#share_profile_modal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-archive"></i></span>
+                              <span class="menu-title">Archiver</span>
+                            </a>
+                          </div>
+                          <div class="menu-item">
+                            <a class="menu-link" data-modal-toggle="#addAdminModal" href="#" role="menuitem">
+                              <span class="menu-icon"><i class="ki-duotone ki-trash"></i></span>
+                              <span class="menu-title">Supprimer</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/media/uploads/cover-1750254657153-799214715.jpg" alt="Thumbnail for  - Lomé" class="w-full h-full object-cover object-center" loading="lazy">
+                  </div>
+
+                  <div class="py-3 px-3 mt-8">
+                    <div class="text-base font-bold text-black mb-2">
+                       
+                      2 Lots collé - Abobokomé  
+                    </div>
+                    <div class="text-gray-500 mb-6 text-sm">
+                      
+                      Location terrain 2 Lots collé à Abobokomé
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <p>
+                        <span class="text-black text-xl font-semibold">
+                          
+                          2 F
+                          <span class="text-gray-500">/Mois</span> 
+                        </span>
+                      </p>
+                      <div class="text-black">
+                        
+                        <a href="/a-louer/annonces/2-lots-colle-abobokome-6852c44125642104278cab41" class="text-black px-5 py-2 border border-gray-200 rounded-full" target="_blank" rel="noopener noreferrer">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+               
+            </div>
+
+
+			<div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium mb-8">
+			<div class="flex items-center gap-4 order-1 md:order-2">
+				<div class="pagination">
+				<!-- Bouton précédent (désactivé en exemple) -->
+				<a href="#" class="btn nav-arrow disabled" aria-disabled="true">
+					<i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+				</a>
+
+				<!-- Liens vers les pages -->
+				<a href="#" class="btn active disabled" aria-current="page" aria-disabled="true">1</a>
+				<a href="#" class="btn">2</a>
+				<a href="#" class="btn">3</a>
+
+				<!-- Bouton suivant -->
+				<a href="#" class="btn nav-arrow">
+					<i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i>
+				</a>
+				</div>
+			</div>
+			</div>
+
+                <div class="card hidden">
+                    <div class="card-body card-body-g-100 flex flex-col items-center gap-2.5 py-7.5">
+                      <div class="flex justify-center pb-7.5 py-9">
+                        <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/33.svg">
+                      </div>
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Aucune Réservation disponible
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                         Votre liste de réservation est vide.Visitez section des annonces et réservez le bien de vos rêve .
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+     </div>
+    </div>
+    <!-- End of Container -->
+	<div class="modal open " data-modal="true" id="modaBookingCancel">
+		<div class="modal-content max-w-[600px] top-[20%]  p-6">
+		 <div class="modal-header mb-7">
+		  <h2 class="text-lg font-semibold leading-none text-kr-secondary">
+			   Demander une anulation de la réservation
+		  </h2>
+		  <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+			   <i class="ki-outline ki-cross">
+			   </i>
+		  </button>
+		 </div>
+		 <div class="modal-body  p-6">
+		  <div class=" flex gap-10 flex-col  mb-8">
+			<div class="w-full">
+			  <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+			   <label class="form-label">
+			   Motif de l'annulation
+			   </label>
+			   <select class="select" name="select">
+				<option value="1">
+				 Sélectionnez un motif
+				</option>
+				<option value="2">
+				 Option 2
+				</option>
+				<option value="3">
+				 Option 3
+				</option>
+			   </select>
+			  </div>
+			 </div>
+
+			 <div class="w-full">
+			  <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+			   <label class="form-label">
+				Expliquez la raison de votre annulation
+			   </label>
+			   <textarea class="textarea" name="memo" placeholder="Votre message" rows="6"></textarea>
+			  </div>
+			 </div>
+		  </div>
+
+		   <div class="modal-footer border-t-0 justify-end">
+			<div class="flex gap-4">
+			 <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+			  Abandonner
+			 </button>
+			 <button class="btn bg-kr-secondary text-white">
+			  Soummettre l'annulation
+			 </button>
+			</div>
+		   </div>
+		 </div>
+		</div>
+	   </div>
+   </main>
+   <!-- End of Content -->
+   <%- include('./partials/footer') %>

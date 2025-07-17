@@ -7,9 +7,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "npm run css && node --watch ./bin/www",
-    "dev": "npm run css --watch & node --watch ./bin/www",
-    "css": "postcss public/assets/stylesheets/tailwind.css -o public/assets/stylesheets/style.css"
+    "start": "node --watch ./bin/www",
+    "tailwind:main": "npx @tailwindcss/cli -i ./src/stylesheets/tailwind-main.css -o ./public/assets/stylesheets/style.css --watch",
+    "tailwind:admin": "npx @tailwindcss/cli -i ./src/stylesheets/tailwind-admin.css -o ./public/assets/css/style.css --watch",
+    "dev": "concurrently \"npm run start\" \"npm run tailwind:main\" \"npm run tailwind:admin\""
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
@@ -37,7 +38,12 @@
     "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "@types/morgan": "^1.9.9",
-    "nodemon": "^3.1.4"
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
   }
 }

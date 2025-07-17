@@ -94,7 +94,7 @@ export const homeGet = async (req, res) => {
       selectedType: 'All',
       selectedVille: 'All',
       selectedQuartier: 'All',
-      minBudget: 0,
+      minBudget: null,
       maxBudget: null,
       publicationDate: 'All'
     });
@@ -194,7 +194,7 @@ export const locationsGet = async (req, res) => {
       selectedType: 'All',
       selectedVille: 'All',
       selectedQuartier: 'All',
-      minBudget: 0,
+      minBudget: null,
       maxBudget: null,
       publicationDate: 'All'
     });
@@ -347,7 +347,7 @@ console.log("Properties:", properties);
       selectedType: 'All',
       selectedVille: 'All',
       selectedQuartier: 'All',
-      minBudget: 0,
+      minBudget: null,
       maxBudget: null,
       publicationDate: 'All'
     });

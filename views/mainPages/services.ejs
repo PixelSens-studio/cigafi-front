@@ -7,7 +7,7 @@
     <div class="w-full overflow-x-hidden">
       <div class="pb-18">
         <%- include('./partials/main_nav_bar')%>
-        <div class="px-10 pb-16 mt-1">
+        <div class="px-10 pb-8 md:pb-16 mt-1">
           <img
             src="assets/images/23.png"
             alt="image"
@@ -15,88 +15,407 @@
           />
         </div>
       </div>
+
       <div class="px-10 py-6">
-        <div class="grid grid-cols-6 gap-8 mb-28">
-          <div class="col-span-2 text-[#204B42]">
+        <div class="grid grid-cols-6 gap-4">
+          <div class="col-span-6  text-[#204B42] md:col-span-2">
             <li class="font-semibold">L’agence</li>
           </div>
-          <div class="col-span-4">
-            <p class="ruby text-5xl font-medium leading-[120%]">
-              <span class="inline-block min-w-[200px]"></span>
-              <span
-                >      CIGAFI est plus qu'une simple agence immobilière. Nous sommes une équipe de passionnée, dédiée à vous offrir un service personnalisé et de qualité. Notre priorité : votre satisfaction.
+          <div class="col-span-6 md:col-span-4">
+            <p class="ruby text-3xl font-medium leading-[120%] md:text-4xl  lg:text-5xl ">
+              <span class="inline-block md:min-w-[200px]"></span>
+              <span  >  CIGAFI est plus qu'une simple agence immobilière. Nous sommes une équipe de passionnée, dédiée à vous offrir un service personnalisé et de qualité.
               </span>
             </p>
           </div>
         </div>
-        <div class="grid grid-cols-6 my-16">
-          <div class="col-span-2 text-[#204B42]">
+        
+      </div>
+
+      <div class="px-6 py-10 md:px-10 md:py-16">
+        <div class="mb-8 text-[#204B42]">
             <li class="font-semibold">Nos services</li>
           </div>
-        </div>
-      </div>
-      <div class="px-10 py-6">
-        <div
-          class="grid grid-cols-12 grid-rows-2 gap-10 mb-28 bg-[#00534014] rounded-2xl p-6"
-        >
-          <div class="col-span-7 row-span-1 text-[#204B42]">
-            <div
-              class="flex items-center flex-start gap-4 font-semibold text-xl"
-            >
-              <div class="p-4 rounded-full bg-[#204B42]">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_664_244)">
-                    <path
-                      d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_664_244">
-                      <rect width="22" height="19" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+
+
+      <div class="grid grid-cols-1 gap-8">
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
               </div>
               <div>
-                Gestion <br />
-                immobilière
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
               </div>
             </div>
-          </div>
-          <div class="col-span-5 row-span-2">
-            <img
-              src="assets/images/24.png"
-              alt="img"
-              class="object-contain h-full items-end"
-            />
-          </div>
-          <div class="col-span-7 row-span-1">
-            <div class="text-4xl font-semibold mb-4">
-              Détendez-vous, nous nous occupons de tout !
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
             </div>
-            <p class="text-gray-400 mb-9">
-              Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
-            </p>
-            <a
-              href="#"
-              class="px-8 py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full"
-              >Confiez-nous votre bien</a
-            >
-          </div>
+
         </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
+           <div class="grid grid-cols-1 gap-8 bg-[#00534014] rounded-2xl p-6 lg:gap-0 lg:grid-cols-2">
+          
+            <div class="col-span-1 flex flex-col justify-between row-start-2 lg:row-start-1">
+              <div class=" text-[#204B42] mb-4 lg:mb-0">
+                <div class="flex items-center flex-start gap-4 font-semibold text-xl">
+                  <div class="p-4 rounded-full bg-[#204B42]">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_664_244)">
+                        <path
+                          d="M21.9925 9.48145C21.9925 10.1494 21.4195 10.6727 20.7702 10.6727H19.548L19.5747 16.6176C19.5747 16.7178 19.5671 16.818 19.5556 16.9182V17.5193C19.5556 18.3395 18.872 19.0037 18.0279 19.0037H17.4168C17.3747 19.0037 17.3327 19.0037 17.2907 19C17.2372 19.0037 17.1838 19.0037 17.1303 19.0037L15.889 19H14.9723C14.1282 19 13.4445 18.3357 13.4445 17.5156V14.25C13.4445 13.5932 12.8984 13.0625 12.2223 13.0625H9.77787C9.10182 13.0625 8.55564 13.5932 8.55564 14.25V17.5156C8.55564 18.3357 7.87196 19 7.02786 19H4.8928C4.8355 19 4.77821 18.9963 4.72092 18.9926C4.67509 18.9963 4.62925 19 4.58342 19H3.97231C3.12821 19 2.44453 18.3357 2.44453 17.5156V13.3594C2.44453 13.326 2.44453 13.2889 2.44835 13.2555V10.6689H1.22613C0.538628 10.6689 0.00390625 10.1494 0.00390625 9.47773C0.00390625 9.14375 0.11849 8.84688 0.385851 8.58711L10.1751 0.296875C10.4424 0.0371094 10.748 0 11.0154 0C11.2827 0 11.5883 0.0742188 11.8174 0.259766L21.5723 8.59082C21.8779 8.85059 22.0306 9.14746 21.9925 9.48145Z"
+                          fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_664_244">
+                          <rect width="22" height="19" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div>
+                    Gestion <br />
+                    immobilière
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="font-semibold mb-4 text-3xl lg:text-4xl ">
+                  Détendez-vous, nous nous occupons de tout !
+                </div>
+                <p class="text-gray-400 mb-5">
+                  Simplifiez la gestion de vos biens immobiliers avec notre service de gestion professionnelle. Nous nous occupons
+                  de l'administration quotidienne, incluant la perception des loyers, l’entretien des propriétés et la relation avec
+                  les locataires, pour maximiser la rentabilité de vos actifs immobiliers.
+                </p>
+                <a href="#" class="px-8 inline-block py-3 mt-3 text-gray-600 border-2 border-gray-600 rounded-full  whitespace-nowrap">Confiez-nous votre bien</a>
+              </div>
+            </div>
+
+            <div class="col-span-1  flex justify-end">
+              <div class=" lg:max-w-[80%] ">
+                <img src="assets/images/24.png" alt="img" class="object-cover size-[150px] rounded-lg w-full  md:h-[250px]  lg:size-auto" />
+              </div> 
+            </div>
+
+        </div>
+
       </div>
-      <div class="px-10 py-12">
-        <div class="grid grid-cols-2 gap-24">
+      </div>
+
+
+      <div class="px-6 py-10 md:px-10 md:py-16">
+        <div class="grid grid-cols-1 gap-8 lg:gap-24 lg:grid-cols-2">
           <div class="col-span-1">
-            <p class="ruby text-5xl font-medium leading-[120%] mb-8">
-              <span class="inline-block min-w-[150px]"></span>
+            <p class="ruby text-3xl font-medium leading-[120%] mb-8 lg:text-5xl">
+              <span class="inline-block lg:min-w-[150px]"></span>
               <span>Vous avez une question ? Nous sommes là pour vous aider.</span>
             </p>
             <p class="text-gray-400 mb-9">
@@ -110,7 +429,7 @@
           </div>
           <div class="col-span-1">
             <div
-              class="w-full bg-white flex flex-row px-6 py-4 rounded-2xl my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
+             class="w-full border-b-2 border-gray-200  flex flex-row py-4 my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
             >
               <span>Quels types de biens propose CIGAFI ?</span>
               <span>
@@ -123,7 +442,7 @@
               </span>
             </div>
             <div
-              class="w-full bg-white flex flex-row px-6 py-4 rounded-2xl my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
+              class="w-full border-b-2 border-gray-200  flex flex-row py-4 my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
             >
               <span>Quels services offrez-vous en dehors de la vente et de la location et de la vente?</span>
               <span>
@@ -136,7 +455,7 @@
               </span>
             </div>
             <div
-              class="w-full bg-white flex flex-row px-6 py-4 rounded-2xl my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
+              class="w-full border-b-2 border-gray-200  flex flex-row py-4 my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
             >
               <span> Comment se déroule une collaboration avec votre agence ?
               </span>
@@ -150,7 +469,7 @@
               </span>
             </div>
             <div
-              class="w-full bg-white flex flex-row px-6 py-4 rounded-2xl my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
+              class="w-full border-b-2 border-gray-200  flex flex-row py-4 my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
             >
               <span>
                 Comment se déroule une visite ?
@@ -165,7 +484,7 @@
               </span>
             </div>
             <div
-              class="w-full bg-white flex flex-row px-6 py-4 rounded-2xl my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
+              class="w-full border-b-2 border-gray-200  flex flex-row py-4 my-2 justify-between items-stretch leading-[2] font-semibold text-gray-500 cursor-pointer"
             >
               <span>Quels sont les délais de traitement d'un dossier de location ?</span>
               <span>
@@ -181,21 +500,21 @@
           </div>
         </div>
       </div>
-      <div class="px-10 py-16 bg-[#F2F3F7]">
-        <div class="grid grid-cols-6 gap-8 mb-28">
-          <div class="col-span-2 text-[#204B42]">
+      <div class="px-6 py-10  bg-[#F2F3F7]  md:px-10 md:py-16">
+        <div class="grid grid-cols-6 mb-10 gap-4 lg:mb-28 lg:gap-8">
+          <div class="col-span-6 text-[#204B42] lg:col-span-2 ">
             <li class="font-semibold">Ce que pensent les clients</li>
           </div>
-          <div class="col-span-4">
-            <p class="ruby text-5xl font-medium leading-[120%]">
-              <span class="inline-block min-w-[300px]"></span>
+          <div class="col-span-6 lg:col-span-4">
+            <p class="ruby text-3xl font-medium leading-[115%] lg:text-5xl">
+              <span class="inline-block lg:min-w-[300px]"></span>
               <span
                 >Ce que nos clients disent de leur expérience avec CIGAFI et la qualité de nos services</span
               >
             </p>
           </div>
         </div>
-        <div class="grid mt-18 grid-cols-3 gap-6 mb-6">
+        <div class="grid mt-18 grid-cols-1  gap-6 mb-6 md:grid-cols-2 lg:grid-cols-3">
           <div class="col-span-1 bg-white rounded-2xl p-12">
             <div class="mb-3">
               <svg
@@ -288,23 +607,16 @@
           </div>
         </div>
       </div>
-      <div
-        class="px-10 py-12 bg-[url('/assets/images/25.png')] bg-cover bg-center h-screen"
-      >
-        <div
-          class="pt-12 pb-6 flex flex-col justify-between items-center text-white h-full"
-        >
-          <div class="max-w-[700px] text-center">
-            <div class="font-bold text-6xl">
+      <div class="px-6 py-6  bg-[url('/assets/images/25.png')] bg-cover bg-center lg:h-screen  md:px-10">
+        <div class="pt-12 pb-6 flex flex-col justify-between items-center text-white lg:h-full">
+          <div class="max-w-[700px] text-center mb-32 lg:mb-0">
+            <div class="font-semibold text-4xl lg:text-6xl lg:font-medium">
               Besoin d’assistance pour trouver un bien?
             </div>
             <div class="mt-5">
               Nous sommes toujours à votre ecoute n’hésitez pas à nous contacter
             </div>
-            <a
-              href="tel:"
-              class="flex gap-3 px-6 py-3 mt-8 rounded-full bg-[#FFA200] mx-[auto] items-center max-w-fit"
-            >
+            <a href="tel:"  class="flex gap-3 px-6 py-3 mt-8 rounded-full bg-primary-orange mx-[auto] items-center max-w-fit">
               <span>
                 <svg
                   width="24"
@@ -321,11 +633,10 @@
               </span>
               <span>+228 90991070</span>
             </a>
-          </div>
-          <div
-            class="marquee flex gap-16 flex-nowrap font-semibold items-center leading-normal text-8xl w-fit"
-          >
+          </div> <div class="marquee flex gap-16 flex-nowrap font-semibold items-center leading-normal text-6xl  w-fit md:text-8xl">
+            
             <span>contact@cigafi.com</span>
+           
             <span>
               <svg
                 width="40"
@@ -344,7 +655,9 @@
                 />
               </svg>
             </span>
+           
             <span>contact@cigafi.com</span>
+          
             <span>
               <svg
                 width="40"
@@ -362,7 +675,9 @@
                 />
               </svg>
             </span>
+           
             <span>contact@cigafi.com</span>
+            
           </div>
         </div>
       </div>

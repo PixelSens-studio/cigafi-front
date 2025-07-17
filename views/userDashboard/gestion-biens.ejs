@@ -1,0 +1,148 @@
+<%- include('./partials/head') %>
+  <!-- Page -->
+  <!-- Main -->
+  <div class="flex grow flex-col [[data-sticky-header=on]_&amp;]:pt-[--tw-header-height-default]">
+   <!-- Header -->
+   <%- include('./partials/navbar') %>
+   <!-- End of Header -->
+   <!-- Toolbar -->
+   <div class="">
+    <!-- Container -->
+    <div class="container-fixed">
+ 
+     <div class="flex items-center justify-between flex-wrap gap-5 my-5">
+      <div class="flex flex-col gap-1">
+       <h1 class="font-medium text-lg text-gray-900">
+       </h1>
+       <div class="flex items-center gap-1 text-2sm">
+        <h3 class="text-lg text-gray-900 font-semibold">
+        Gestion de biens
+       </h3>
+       </div>
+      </div>
+       <div class="flex items-center flex-wrap">
+
+                <div class="dropdown inline-block relative w-full lg:w-auto">
+                  <a class="bg-primary text-white w-full font-medium text-sm py-3 px-4 rounded-lg inline-flex items-center">
+                    
+                    <i class="ki-filled ki-plus mr-2"> </i>
+                    Mettre un bien en gestion
+                  </a>
+ 
+                </div>
+              </div>
+     </div>
+     <div class="border-b border-gray-200 dark:border-coal-100 mb-5 lg:mb-7.5">
+     </div>
+    </div>
+    <!-- End of Container -->
+   </div>
+   <!-- End of Toolbar -->
+   <!-- Content -->
+   <main class="grow" id="content" role="content">
+ 
+    <!-- Container -->
+    <div class="container-fixed h-full">
+   
+     <div class="grid gap-5 lg:gap-7.5 h-full">
+      <!-- begin: grid -->
+  
+
+			<div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium hidden">
+			<div class="flex items-center gap-4 order-1 md:order-2">
+				<div class="pagination">
+				<!-- Bouton précédent (désactivé en exemple) -->
+				<a href="#" class="btn nav-arrow disabled" aria-disabled="true">
+					<i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+				</a>
+
+				<!-- Liens vers les pages -->
+				<a href="#" class="btn active disabled" aria-current="page" aria-disabled="true">1</a>
+				<a href="#" class="btn">2</a>
+				<a href="#" class="btn">3</a>
+
+				<!-- Bouton suivant -->
+				<a href="#" class="btn nav-arrow">
+					<i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i>
+				</a>
+				</div>
+			</div>
+			</div>
+
+                <div class="card h-full">
+                    <div class="card-body card-body-g-100 flex flex-col items-center gap-2.5 py-7.5">
+                      <div class="flex justify-center pb-7.5 py-9">
+                        <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/33.svg">
+                      </div>
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Aucun bien en gestion
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                        Cliquez sur le bouton "Mettre un bien en gestion" pour ajouter un nouveau bien à votre liste de gestion.
+                        </p> 
+                      </div>
+                    </div>
+                  </div>
+
+     </div>
+    </div>
+    <!-- End of Container -->
+	<div class="modal open " data-modal="true" id="modaBookingCancel">
+		<div class="modal-content max-w-[600px] top-[20%]  p-6">
+		 <div class="modal-header mb-7">
+		  <h2 class="text-lg font-semibold leading-none text-kr-secondary">
+			   Demander une anulation de la réservation
+		  </h2>
+		  <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+			   <i class="ki-outline ki-cross">
+			   </i>
+		  </button>
+		 </div>
+		 <div class="modal-body  p-6">
+		  <div class=" flex gap-10 flex-col  mb-8">
+			<div class="w-full">
+			  <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+			   <label class="form-label">
+			   Motif de l'annulation
+			   </label>
+			   <select class="select" name="select">
+				<option value="1">
+				 Sélectionnez un motif
+				</option>
+				<option value="2">
+				 Option 2
+				</option>
+				<option value="3">
+				 Option 3
+				</option>
+			   </select>
+			  </div>
+			 </div>
+
+			 <div class="w-full">
+			  <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+			   <label class="form-label">
+				Expliquez la raison de votre annulation
+			   </label>
+			   <textarea class="textarea" name="memo" placeholder="Votre message" rows="6"></textarea>
+			  </div>
+			 </div>
+		  </div>
+
+		   <div class="modal-footer border-t-0 justify-end">
+			<div class="flex gap-4">
+			 <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+			  Abandonner
+			 </button>
+			 <button class="btn bg-kr-secondary text-white">
+			  Soummettre l'annulation
+			 </button>
+			</div>
+		   </div>
+		 </div>
+		</div>
+	   </div>
+   </main>
+   <!-- End of Content -->
+   <%- include('./partials/footer') %>

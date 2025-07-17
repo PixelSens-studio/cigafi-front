@@ -16,18 +16,20 @@
        <h1 class="font-medium text-lg text-gray-900">
        </h1>
        <div class="flex items-center gap-1 text-2sm">
-        <a class="text-gray-700 hover:text-primary" href="html/demo7.html">
-        Liste de mes réservations
-        </a>
+        <h3 class="text-lg text-gray-900 font-semibold">
+        Liste des entreprises
+       </h3>
        </div>
       </div>
       <div class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
-       <a class="btn btn-sm btn-light" href="html/demo7/account/home/get-started.html">
-        <i class="ki-filled ki-exit-down !text-base">
-        </i>
-        Export
-       </a>
-    
+       <form action="" method="GET" id="" class="inline-block">
+            <select  class="select select-lg w-40 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" name="state">
+              <option value="active">Active</option>
+              <option value="pending">Annulées</option>
+              <option value="archived">Archivée</option>
+            </select>
+            <input type="hidden" /> 
+          </form>
       </div>
      </div>
      <div class="border-b border-gray-200 dark:border-coal-100 mb-5 lg:mb-7.5">
@@ -38,20 +40,17 @@
    <!-- End of Toolbar -->
    <!-- Content -->
    <main class="grow" id="content" role="content">
+ 
     <!-- Container -->
-    <div class="container-fixed" id="content_container">
-    </div>
-    <!-- End of Container -->
-    <!-- Container -->
-    <div class="container-fixed">
-     <div class="grid gap-5 lg:gap-7.5">
+    <div class="container-fixed h-full">
+     <div class="grid gap-5 lg:gap-7.5 h-full">
       <!-- begin: grid -->
      
 	  <div class="card">
 		<div class="card-body lg:py-7.5">
 		  <div class="flex flex-wrap gap-7.5">
 			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
-			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\villa2.png">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\24.png">
 			</div>
 			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
 			  <div class="flex flex-wrap items-center justify-between gap-2">
@@ -113,7 +112,7 @@
 		<div class="card-body lg:py-7.5">
 		  <div class="flex flex-wrap gap-7.5">
 			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
-			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\villa1.png">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\24.png">
 			</div>
 			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
 			  <div class="flex flex-wrap items-center justify-between gap-2">
@@ -175,7 +174,7 @@
 		<div class="card-body lg:py-7.5">
 		  <div class="flex flex-wrap gap-7.5">
 			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
-			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\villa3.png">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\24.png">
 			</div>
 			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
 			  <div class="flex flex-wrap items-center justify-between gap-2">
@@ -233,6 +232,45 @@
 		  </div>
 		</div>
 	  </div>
+
+
+			<div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
+			<div class="flex items-center gap-4 order-1 md:order-2">
+				<div class="pagination">
+				<!-- Bouton précédent (désactivé en exemple) -->
+				<a href="#" class="btn nav-arrow disabled" aria-disabled="true">
+					<i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+				</a>
+
+				<!-- Liens vers les pages -->
+				<a href="#" class="btn active disabled" aria-current="page" aria-disabled="true">1</a>
+				<a href="#" class="btn">2</a>
+				<a href="#" class="btn">3</a>
+
+				<!-- Bouton suivant -->
+				<a href="#" class="btn nav-arrow">
+					<i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i>
+				</a>
+				</div>
+			</div>
+			</div>
+
+                <div class="card hidden">
+                    <div class="card-body card-body-g-100 flex flex-col items-center gap-2.5 py-7.5">
+                      <div class="flex justify-center pb-7.5 py-9">
+                        <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/33.svg">
+                      </div>
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Aucune Réservation disponible
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                         Votre liste de réservation est vide.Visitez section des annonces et réservez le bien de vos rêve .
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
      </div>
     </div>
     <!-- End of Container -->

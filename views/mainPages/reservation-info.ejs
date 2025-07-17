@@ -4,171 +4,84 @@
     <%- include('./partials/head') %>
   </head>
   <body>
-    <div class="w-full overflow-x-hidden">
-      <div class="bg-[#F8FAFC]">
-        <%- include('./partials/main_nav_bar') %>
-        <div class="px-10 pt-16 border-b">
-          <div class="flex flex-row gap-16">
-            <a
-              href=""
-              class="flex flex-row gap-3 items-center border-b-2 border-[#204B42] max-w-fit py-5"
-            >
-              <span
-                class="border px-4 py-2 rounded-full bg-[#204B42] text-white"
-                >1</span
-              >
-              <span class="font-bold text-[#204B42]"
-                >Informations de réservation</span
-              >
-            </a>
-            <a href="" class="flex flex-row gap-3 items-center max-w-fit py-5">
-              <span class="border px-4 py-2 rounded-full text-gray-400">2</span>
-              <span class="text-gray-400 font-semibold">Paiement</span>
-            </a>
-          </div>
-        </div>
+    <div class="w-full">
+      <div class="">
+        <%- include('./partials/main_nav_bar') %> 
       </div>
-      <div class="px-10">
-        <div class="grid grid-cols-10 gap-24">
-          <form class="col-span-6 py-24 grid grid-cols-3 gap-6">
-            <div class="col-span-3">
-              <p class="font-bold text-xl">Date de séjour</p>
-            </div>
-            <div class="col-span-2 col-start-2">
-              <div class="mb-6">
-                <p class="mb-3 text-black">Date d’arrivée</p>
-                <input
-                  type="date"
-                  name=""
-                  id=""
-                  class="w-full text-gray-400 bg-gray-200 px-4 py-2 rounded-xl"
-                  placeholder="JJ/MM/YYYY"
-                />
-              </div>
-              <div class="mb-6">
-                <p class="mb-3 text-black">Date de départ</p>
-                <input
-                  type="date"
-                  name=""
-                  id=""
-                  class="w-full text-gray-400 bg-gray-200 px-4 py-2 rounded-xl"
-                  placeholder="JJ/MM/YYYY"
-                />
-              </div>
-            </div>
-            <div class="col-span-3">
-              <p class="font-bold text-xl">Coordonnées</p>
-            </div>
-            <div class="col-span-2 col-start-2">
-              <div class="mb-6">
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  class="w-full text-gray-400 bg-gray-200 px-4 py-2 rounded-xl"
-                  placeholder="Nom et prénoms"
-                />
-              </div>
-              <div class="mb-6">
-                <input
-                  type="phone"
-                  name=""
-                  id=""
-                  class="w-full text-gray-400 bg-gray-200 px-4 py-2 rounded-xl"
-                  placeholder="Téléphone"
-                />
-              </div>
-              <div class="mb-6">
-                <input
-                  type="email"
-                  name=""
-                  id=""
-                  class="w-full text-gray-400 bg-gray-200 px-4 py-2 rounded-xl"
-                  placeholder="Email"
-                />
-              </div>
-              <div class="mb-6">
-                <input
-                  type="address"
-                  name=""
-                  id=""
-                  class="w-full text-gray-400 bg-gray-200 px-4 py-2 rounded-xl"
-                  placeholder="Addresse"
-                />
-              </div>
-              <div class="mb-6 flex justify-end">
-                <a
-                  href="/reservation-payment"
-                  type="submit"
-                  class="px-24 py-2 flex gap-3 items-center justify-center maw-w-fit bg-[#FFA200] hover:bg-opacity-75 cursor-pointer text-white rounded-full"
-                >
-                  <span>Suivant</span>
-                  <span
-                    ><svg
-                      width="27"
-                      height="26"
-                      viewBox="0 0 27 26"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.0998 17.6657L21.9736 12.7919M21.9736 12.7919L17.0998 7.88281M21.9736 12.7919L6.13382 12.7919"
-                        stroke="white"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </form>
-          <div class="col-span-4">
-            <div
-              class="rounded-xl bg-[#204B42] text-white px-8 py-12 relative mt-[-12%]"
-            >
-              <p class="text-2xl mb-2">Villa meublé</p>
-              <div class="my-3 grid grid-cols-5 gap-2">
-                <img src="assets/images/28.png" alt="" class="col-span-2" />
-                <img src="assets/images/29.png" alt="" class="col-span-2" />
-                <img src="assets/images/30.png" alt="" class="col-span-1" />
-              </div>
-              <div class="my-5">
-                <p class="text-xl mb-3">Détails</p>
-                <p class="">
-                  Profitez de votre séjour dans ce logement exceptionnel.  Magnifique maison, moderne, un havre de paix très confortable.
-                </p>
-              </div>
-              <!-- <div class="mt-5 mb-8 flex flex-wrap gap-3">
-                <span class="py-2 px-4 rounded-full border border-white"
-                  >App design & dev</span
-                >
-                <span class="py-2 px-4 rounded-full border border-white"
-                  >Hosting & maintenance</span
-                >
-                <span class="py-2 px-4 rounded-full border border-white"
-                  >UI & UX Design</span
-                >
-              </div> -->
-              <div class="pt-6 border-t border-gray-300 text-gray-300">
-                <div class="flex justify-between mb-5">
-                  <span>Séjour</span>
-                  <span>400000 FCFA</span>
-                </div>
-                <div class="flex justify-between mb-5">
-                  <span>Frais d’agence</span>
-                  <span>40000 FCFA</span>
-                </div>
-                <div class="flex justify-between font-bold text-white">
-                  <span>Total</span>
-                  <span>420.000 FCFA</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          
+
+          <!-- <div id="imageSlider" class="fixed inset-0 bg-black/80 z-50 hidden"> 
+                  
+                  <div id="sliderCount" class="text-white text-md font-medium top-8 absolute left-12 top-8">
+                    1 / 12
+                  </div>
+
+                  <button id="closeSlider" class="text-gray-200 text-4xl absolute right-12 ">
+                    &times;
+                  </button> 
+
+                <button id="prevImage" class="z-50 absolute left-[3rem] top-1/2 -translate-y-1/2 text-white text-3xl inline-block cursor-pointer px-2 size-14 block  border-2 border-gray-300 rounded-full">
+                &#10094;
+                </button>
+
+               <button id="nextImage" class="z-50  absolute right-[3rem] top-1/2 -translate-y-1/2  text-white text-3xl block cursor-pointer px-2 size-14 border-2 border-gray-300 rounded-full">
+                &#10095;
+              </button> 
+
+              <img id="slider" src="./assets/images/32.png" alt="slider image"  class="mx-auto max-h-[80vh] object-contain transition-all duration-300 absolute -translate-y-1/2 translate-x-1/2  right-1/2 top-1/2" />
+
+
+          </div> -->
+
       <%- include('./partials/footer') %>
     </div>
+
+    <!-- <div class="kt-toast-container top-end">
+    <div class="kt-toast kt-alert kt-alert-solid kt-alert-md kt-toast-top-end" role="status" aria-live="polite"
+        aria-atomic="true" tabindex="0"
+        style="pointer-events: auto; top: 15px; transition: top 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1); inset-inline-end: 15px;">
+
+        <div class="kt-alert-icon ">
+            <i class="ki-filled ki-information-4 text-destructive text-xl"></i>
+        </div>
+
+        <div class="kt-alert-title ">You have checked a row</div>
+        <div class="kt-alert-toolbar ">
+            <div class="kt-alert-actions ">
+                <button data-kt-toast-dismiss="true" class="kt-alert-close">
+                    <svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="kt-toast-progress " data-kt-toast-progress="true" style="animation-duration: 4000ms;"></div>
+    </div>
+     <div class="kt-toast kt-alert kt-alert-solid kt-alert-md kt-toast-top-end" role="status" aria-live="polite"
+        aria-atomic="true" tabindex="0"
+        style="pointer-events: auto; top: 15px; transition: top 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1); inset-inline-end: 15px;">
+
+        <div class="kt-alert-icon ">
+            <i class="ki-filled ki-information-4 text-destructive text-xl"></i>
+        </div>
+
+        <div class="kt-alert-title ">You have checked a row</div>
+        <div class="kt-alert-toolbar ">
+            <div class="kt-alert-actions ">
+                <button data-kt-toast-dismiss="true" class="kt-alert-close">
+                    <svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="kt-toast-progress " data-kt-toast-progress="true" style="animation-duration: 4000ms;"></div>
+    </div>
+</div> -->
+ 
   </body>
 </html>

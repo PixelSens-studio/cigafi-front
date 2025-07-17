@@ -37,15 +37,15 @@
       </div>
       <div class="w-full px-10 py-10">
         <div class="w-full">
-          <form class="grid grid-cols-18 gap-2 py-4 border rounded-2xl bg-[#F9F9F9] px-4" method="GET"
+          <form class="grid grid-cols-1 gap-y-4 py-4 border border-gray-300 rounded-2xl bg-[#F9F9F9] px-4 md:grid-cols-2 md:gap-x-6 lg:gap-2 lg:grid-cols-18" method="GET"
             action="/a-louer/<%= listingCategory %>" id="searchForm">
             <% if (listingCategory==='habitations-bureaux' ) { %>
               <!-- Type de propriété -->
-              <div class="col-span-3">
+              <div class="col-span-1 lg:col-span-3">
                 <label for="type" class="block text-sm text-gray-500">Type de propriété</label>
                 <!-- Type de propriété select -->
                 <select id="type" name="type"
-                  class="w-full mt-2 py-2 text-gray-700 bg-[#F9F9F9] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                  class="w-full mt-2 py-2 text-gray-700 bg-[#e8eaeed4] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
                   <option value="All" <%=selectedType==='All' ? 'selected' : '' %>>Tous les types</option>
                   <% if (listingMetadata.propertiesType && listingMetadata.propertiesType.success) { %>
                     <% listingMetadata.propertiesType.data.forEach(type=> { %>
@@ -56,12 +56,12 @@
                 </select>
               </div>
               <!-- Ville -->
-              <div class="col-span-2">
+              <div class="col-span-1 lg:col-span-2">
                 <% } else { %>
                   <!-- Ville with increased col-span -->
-                  <div class="col-span-3">
+                  <div class="col-span-1  lg:col-span-3">
                     <% } %>
-                      <label for="ville" class="block text-sm text-gray-500">Ville</label>
+                      <label for="ville" class="block text-sm text-gray-500">Localité</label>
                       <!-- Ville select -->
                       <select id="ville" name="ville"
                         class="w-full mt-2 py-2 text-gray-700 bg-[#F9F9F9] rounded-md border-none focus:outline-none focus:ring-2 focus:ring-green-500">
@@ -76,10 +76,10 @@
                   </div>
 
                   <% if (listingCategory==='habitations-bureaux' ) { %>
-                    <div class="col-span-3 pl-4">
+                    <div class="col-span-1 lg:col-span-3 pl-4">
                       <% } else { %>
                         <!-- Quartier with increased col-span -->
-                        <div class="col-span-4 pl-4">
+                        <div class="col-span-1 lg:col-span-4 pl-4">
                           <% } %>
                             <label for="quartier" class="block text-sm text-gray-500">Quartier</label>
                             <!-- Quartier select -->
@@ -98,31 +98,31 @@
                         </div>
 
                         <% if (listingCategory==='habitations-bureaux' ) { %>
-                          <div class="col-span-4 pl-4">
+                          <div class="col-span-1 lg:col-span-4 pl-4">
                             <% } else { %>
                               <!-- Budget with increased col-span -->
-                              <div class="col-span-5 pl-4">
+                              <div class="col-span-1 lg:col-span-5 pl-4">
                                 <% } %>
                                   <label class="block text-sm text-gray-500">Budget</label>
                                   <!-- Budget inputs -->
                                   <div class="flex space-x-2 py-2">
-                                    <div class="flex items-center bg-gray-200 rounded-xl overflow-hidden px-2">
+                                    <div class="flex items-center bg-[#e8eaeed4]  rounded-tl-md rounded-bl-md overflow-hidden mr-0 px-2">
                                       <input type="number" name="minBudget" placeholder="Min"
-                                        value="<%= typeof minBudget !== 'undefined' ? minBudget : 0 %>"
-                                        class="w-full bg-transparent px-3 py-2 text-sm placeholder-gray-500 text-gray-700 focus:outline-none">
-                                      <span class="text-black text-sm font-medium">FCFA</span>
+                                        value="<%= typeof minBudget !== 'undefined' ? minBudget : '' %>"
+                                        class="w-full bg-transparent px-2 py-2 text-sm placeholder-gray-400 text-gray-700 focus:outline-none">
+                                      <span class="text-gray-500 text-xs font-semibold">FCFA</span>
                                     </div>
-                                    <div class="flex items-center bg-gray-200 rounded-xl overflow-hidden px-2">
+                                    <div class="flex items-center bg-[#e8eaeed4] rounded-tr-md rounded-br-md border-l-2 border-gray-300 overflow-hidden px-2">
                                       <input type="number" name="maxBudget" placeholder="Max"
                                         value="<%= typeof maxBudget !== 'undefined' ? maxBudget : '' %>"
-                                        class="w-full bg-transparent px-3 py-2 text-sm placeholder-gray-500 text-gray-700 focus:outline-none">
-                                      <span class="text-black text-sm font-medium">FCFA</span>
+                                        class="w-full bg-transparent px-2 py-2 text-sm placeholder-gray-400 text-gray-700 focus:outline-none">
+                                      <span class="text-gray-500 text-xs font-semibold">FCFA</span>
                                     </div>
                                   </div>
                               </div>
 
                               <!-- Date de publication -->
-                              <div class="col-span-3 pl-4">
+                              <div class="col-span-1 lg:col-span-3 pl-4">
                                 <label for="publicationDate" class="block text-sm text-gray-500">Date de
                                   publication</label>
                                 <!-- Date de publication select -->
@@ -140,7 +140,7 @@
                               </div>
 
                               <!-- Button -->
-                              <div class="col-span-3 flex items-end justify-end">
+                              <div class="col-span-1 lg:col-span-3 flex items-end justify-end">
                                 <button type="submit"
                                   class="px-6 py-4 bg-[#204B42] hover:bg-opacity-75 text-white rounded-xl">
                                   Rechercher
@@ -270,32 +270,32 @@
           <% } %>
       </div>
 
-      <div class="px-10 py-16 mt-16 bg-[#FFF8F6]">
-        <div class="grid grid-cols-6 gap-8 mb-28">
-          <div class="col-span-2 text-[#204B42]">
-            <li class="font-semibold">Latest articles</li>
+    <div class="px-6 py-16 mt-16 bg-[#FFF8F6] md:px-10 ">
+        <div class="grid grid-cols-6 gap-8 mb-16 lg:mb-28">
+          <div class="col-span-6 lg:col-span-2 text-[var(--cg-primary-green)]">
+            <li class="font-semibold">Nous sommes à votre écoute</li>
           </div>
-          <div class="col-span-4">
-            <p class="ruby text-5xl font-bold leading-[130%]">
-              <span class="inline-block min-w-[300px]"></span>
-              <span> Vous cherchez bien plus qu'une location ? Découvrez nos services supplémentaires pour trouver la
+          <div class=" col-span-6 lg:col-span-4 " >
+            <p class="ruby font-semibold text-2xl lg:leading-[120%] lg:text-4xl">
+              <span class="inline-block min-w-[80px] md:min-w-[300px]"></span>
+              <span> Vous cherchez bien plus qu'une location ? Découvrez nos services sur-mesure pour trouver la
                 solution idéale à vos besoins immobiliers.</span>
             </p>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4 text-white">
-          <div class="col-span-1">
-            <div class="rounded-3xl p-6 bg-[#204B42]">
+          <div class="col-span-2 md:col-span-1">
+            <div class=" h-full rounded-3xl p-6 bg-[var(--cg-accent-green)]">
               <div class="grid grid-rows-3 grid-cols-3">
-                <div class="col-span-2 row-span-2">
-                  <p>
-                    "Le bien de vos rêves n'est pas encore disponible ? Décrivez-nous vos critères, et nous irons à
+                <div class="col-span-2 row-span-2 mr-8 md:mr-12">
+                  <p class="text-1.5xl font-medium">
+                    Le bien de vos rêves n'est pas encore disponible ? <br> Décrivez-nous vos critères, et nous irons à
                     votre recherche.
                   </p>
                 </div>
-                <div class="col-span-2 row-start-3 col-start-1 items-end flex">
+                <div class="mt-2 col-span-2 row-start-3 col-start-1 items-end flex lg:mt-0">
                   <a href="/requete"
-                    class="px-10 py-4 bg-[#FFA200] hover:bg-opacity-75 cursor-pointer text-white rounded-xl">
+                    class="px-10 py-4 bg-primary-orange whitespace-nowrap hover:bg-opacity-75 cursor-pointer text-white rounded-xl">
                     Confier ma recherche
                   </a>
                 </div>
@@ -305,18 +305,18 @@
               </div>
             </div>
           </div>
-          <div class="col-span-1">
-            <div class="rounded-3xl p-6 bg-[#204B42]">
+          <div class="col-span-2 md:col-span-1">
+            <div class="h-full rounded-3xl p-6 bg-[var(--cg-accent-green)]">
               <div class="grid grid-rows-3 grid-cols-3">
-                <div class="col-span-2 row-span-2">
-                  <p>
-                    Simplifiez-vous la vie ! Déléguez la gestion de votre bien immobilier et bénéficiez d'une gestion
+                <div class="col-span-2 row-span-2 mr-8 md:mr-12">
+                  <p class="text-1.5xl font-medium">
+                    Simplifiez-vous la vie ! <br> Déléguez la gestion de votre bien immobilier et bénéficiez d'une gestion
                     locative professionnelle
                   </p>
                 </div>
-                <div class="col-span-2 row-start-3 col-start-1 items-end flex">
+                <div class="mt-2 col-span-2 row-start-3 col-start-1 items-end flex lg:mt-0 ">
                   <a href="/requete"
-                    class="px-10 py-4 bg-[#FFA200] hover:bg-opacity-75 cursor-pointer text-white rounded-xl">
+                    class="px-10 py-4 whitespace-nowrap bg-primary-orange hover:bg-opacity-75 cursor-pointer text-white rounded-xl">
                     Confier votre bien
                   </a>
                 </div>

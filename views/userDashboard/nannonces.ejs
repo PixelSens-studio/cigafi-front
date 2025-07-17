@@ -1,0 +1,375 @@
+<%- include('./partials/head') %>
+	<!-- Page -->
+	<!-- Main -->
+	<div class="flex grow flex-col [[data-sticky-header=on]_&amp;]:pt-[--tw-header-height-default]">
+		<!-- Header -->
+		<%- include('./partials/navbar') %>
+			<!-- End of Header -->
+			 
+			<!-- Content -->
+			<main class="grow" id="content" role="content">
+
+				<!-- Container -->
+				<div class="container-fixed h-full"> 
+					<div>
+							<div class="flex items-center justify-between flex-wrap gap-5 my-5">
+							<div class="flex flex-col gap-1">
+								<h1 class="font-medium text-lg text-gray-900">
+								</h1>
+								<div class="flex items-center gap-1 text-2sm">
+									<h3 class="text-lg text-gray-900 font-semibold">
+										Liste des mes annpnces
+									</h3>
+								</div>
+							</div>
+							<div class="flex items-center flex-wrap">
+	
+								<div class="dropdown inline-block relative w-full lg:w-auto">
+									<button
+										class="bg-primary text-white w-full font-medium text-sm py-3 px-4 rounded-lg inline-flex items-center">
+										<i class="ki-filled ki-plus mr-2"> </i>
+										Créer une annonce
+									</button>
+									<ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
+										<li class=""><a
+												class="rounded-t text-md bg-primary-50 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap hover:font-bold hover:text-primary"
+												href="/user/add-new-location">Annonce location</a></li>
+										<li class=""><a
+												class="bg-primary-50 text-md rounded-b  py-2 px-4 block whitespace-no-wrap hover:text-primary hover:font-bold"
+												href="/user/add-new-vente">Annonce vente</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+	
+						<div class="border-b border-gray-200 dark:border-coal-100 mb-5 lg:mb-7.5">
+						</div>
+	
+	
+						<div class="flex items-center flex-wrap md:flex-nowrap lg:items-end justify-between border-b border-b-gray-200 dark:border-b-coal-100 gap-3 lg:gap-6 mb-5 lg:mb-10">
+							<div class="flex gap-4 mb-5" data-tabs="true">
+								<a class="btn btn-primary btn-outline active"
+									href="/admin/liste-annonces?createdBy=USER_ID&listingGroup=location">
+									<i class="ki-duotone ki-calendar-tick"></i>
+									Annonces locations
+								</a>
+	
+								<a class="btn btn-primary btn-outline"
+									href="/admin/liste-annonces?createdBy=USER_ID&listingGroup=vente">
+									<i class="ki-duotone ki-archive"></i>
+									Annonces ventes
+								</a>
+	
+							</div>
+	
+							<div class="flex items-center justify-end grow lg:grow-0 gap-2.5 mb-2">
+								<div class="input-group">
+									<form action="" method="GET" id="" class="inline-block">
+										<select
+											class="select select-lg w-40 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+											name="state">
+											<option value="active">Active</option>
+											<option value="pending">Annulées</option>
+											<option value="archived">Archivée</option>
+										</select>
+										<input type="hidden" />
+									</form>
+								</div>
+							</div>
+	
+						</div>
+					</div>  
+				</div>
+
+				  <div class="container-fixed h-full">
+     <div class="grid gap-5 lg:gap-7.5 h-full">
+      <!-- begin: grid -->
+     
+	  <div class="card">
+		<div class="card-body lg:py-7.5">
+		  <div class="flex flex-wrap gap-7.5">
+			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\24.png">
+			</div>
+			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
+			  <div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-col gap-1">
+				  <div class="flex items-center gap-2.5">
+					<h2 class="text-2xl font-semibold text-gray-900">
+					 Apprtement meublé - Résidence Amadeuse
+					</h2>
+				  </div>
+				  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+					Effectué le <span class="text-gray-800"> 12 Sep 2024</span>
+				  </p>
+				</div>
+				<div class="flex items-center gap-2.5">
+				  <button class="btn btn-md bg-kr-secondary text-white" data-modal-toggle="#modaBookingCancel">
+					Annuler la réservation
+				  </button>
+				  <a class="btn btn-md bg-kr-primary text-white" href="#">
+					<i class="ki-filled ki-arrow-down"></i>
+					Facture
+				  </a>
+				</div>
+			  </div>
+			  <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+		
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-calendar text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Période de réservation</span>
+					<span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-time text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Montant</span>
+					<span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-people text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Personnes attendu</span>
+					<span class="text-sm font-medium text-gray-800"> Personne(s)</span>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body lg:py-7.5">
+		  <div class="flex flex-wrap gap-7.5">
+			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\24.png">
+			</div>
+			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
+			  <div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-col gap-1">
+				  <div class="flex items-center gap-2.5">
+					<h2 class="text-2xl font-semibold text-gray-900">
+					 Apprtement meublé - Résidence Amadeuse
+					</h2>
+				  </div>
+				  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+					Effectué le <span class="text-gray-800"> 12 Sep 2024</span>
+				  </p>
+				</div>
+				<div class="flex items-center gap-2.5">
+				  <button class="btn btn-md bg-kr-secondary text-white" data-modal-toggle="#modaBookingCancel">
+					Annuler la réservation
+				  </button>
+				  <a class="btn btn-md bg-kr-primary text-white" href="#">
+					<i class="ki-filled ki-arrow-down"></i>
+					Facture
+				  </a>
+				</div>
+			  </div>
+			  <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+		
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-calendar text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Période de réservation</span>
+					<span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-time text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Montant</span>
+					<span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-people text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Personnes attendu</span>
+					<span class="text-sm font-medium text-gray-800"> Personne(s)</span>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body lg:py-7.5">
+		  <div class="flex flex-wrap gap-7.5">
+			<div class="w-auto h-full rounded-t-xl size-[140px] rounded-xl ring-1 ring-gray-200 bg-secondary-clarity">
+			  <img alt="" class="aspect-[1/1] object-cover rounded-lg" src="assets\images\24.png">
+			</div>
+			<div class="flex flex-col gap-5 lg:gap-7.5 grow">
+			  <div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-col gap-1">
+				  <div class="flex items-center gap-2.5">
+					<h2 class="text-2xl font-semibold text-gray-900">
+					 Apprtement meublé - Résidence Amadeuse
+					</h2>
+				  </div>
+				  <p class="text-sm font-medium text-gray-600 flex items-center gap-2.5">
+					Effectué le <span class="text-gray-800"> 12 Sep 2024</span>
+				  </p>
+				</div>
+				<div class="flex items-center gap-2.5">
+				  <button class="btn btn-md bg-kr-secondary text-white" data-modal-toggle="#modaBookingCancel">
+					Annuler la réservation
+				  </button>
+				  <a class="btn btn-md bg-kr-primary text-white" href="#">
+					<i class="ki-filled ki-arrow-down"></i>
+					Facture
+				  </a>
+				</div>
+			  </div>
+			  <div class="flex items-center flex-wrap gap-4 lg:gap-10">
+		
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-calendar text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Période de réservation</span>
+					<span class="text-sm font-medium text-gray-800"> 22 au 29 Sep 2024 </span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-time text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Montant</span>
+					<span class="text-sm font-medium text-gray-800"> 450.000 FCFA</span>
+				  </div>
+				</div>
+				<div class="flex align-start gap-3.5 items-center">
+				  <div class="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-100 rounded-xl border border-gray-300">
+					<i class="ki-filled ki-people text-base text-gray-600"></i>
+				  </div>
+				  <div class="flex flex-col gap-1">
+					<span class="text-xs font-medium text-gray-500">Personnes attendu</span>
+					<span class="text-sm font-medium text-gray-800"> Personne(s)</span>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+			<div class="flex justify-end flex-col md:flex-row text-gray-600 text-2sm font-medium">
+			<div class="flex items-center gap-4 order-1 md:order-2">
+				<div class="pagination">
+				<!-- Bouton précédent (désactivé en exemple) -->
+				<a href="#" class="btn nav-arrow disabled" aria-disabled="true">
+					<i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
+				</a>
+
+				<!-- Liens vers les pages -->
+				<a href="#" class="btn active disabled" aria-current="page" aria-disabled="true">1</a>
+				<a href="#" class="btn">2</a>
+				<a href="#" class="btn">3</a>
+
+				<!-- Bouton suivant -->
+				<a href="#" class="btn nav-arrow">
+					<i class="ki-outline ki-black-right rtl:transform rtl:rotate-180"></i>
+				</a>
+				</div>
+			</div>
+			</div>
+
+                <div class="card hidden">
+                    <div class="card-body card-body-g-100 flex flex-col items-center gap-2.5 py-7.5">
+                      <div class="flex justify-center pb-7.5 py-9">
+                        <img alt="empty state" class="max-h-[230px]" src="assets/media/illustrations/33.svg">
+                      </div>
+                      <div class="flex flex-col gap-3 text-center">
+                        <h2 class="text-1.5xl font-semibold text-gray-900">
+                          Aucune Réservation disponible
+                        </h2>
+                        <p class="text-sm text-gray-800">
+                         Votre liste de réservation est vide.Visitez section des annonces et réservez le bien de vos rêve .
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+     </div>
+    </div>
+				
+				<!-- End of Container -->
+				<div class="modal open " data-modal="true" id="modaBookingCancel">
+					<div class="modal-content max-w-[600px] top-[20%]  p-6">
+						<div class="modal-header mb-7">
+							<h2 class="text-lg font-semibold leading-none text-kr-secondary">
+								Demander une anulation de la réservation
+							</h2>
+							<button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+								<i class="ki-outline ki-cross">
+								</i>
+							</button>
+						</div>
+						<div class="modal-body  p-6">
+							<div class=" flex gap-10 flex-col  mb-8">
+								<div class="w-full">
+									<div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+										<label class="form-label">
+											Motif de l'annulation
+										</label>
+										<select class="select" name="select">
+											<option value="1">
+												Sélectionnez un motif
+											</option>
+											<option value="2">
+												Option 2
+											</option>
+											<option value="3">
+												Option 3
+											</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="w-full">
+									<div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
+										<label class="form-label">
+											Expliquez la raison de votre annulation
+										</label>
+										<textarea class="textarea" name="memo" placeholder="Votre message"
+											rows="6"></textarea>
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer border-t-0 justify-end">
+								<div class="flex gap-4">
+									<button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+										Abandonner
+									</button>
+									<button class="btn bg-kr-secondary text-white">
+										Soummettre l'annulation
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<!-- End of Content -->
+			<%- include('./partials/footer') %>

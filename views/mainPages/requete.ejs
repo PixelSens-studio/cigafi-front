@@ -7,53 +7,40 @@
     <div class="w-full overflow-x-hidden">
       <div class="bg-[#F7F9FF] pb-18">
         <%- include('./partials/main_nav_bar') %>
-        <div class="px-10 py-28">
-          <div class="grid grid-cols-2 grid-rows-3 items-center gap-x-12 gap-y">
-            <div
-              class="ruby col-span-1 row-span-2 text-5xl font-medium leading-[120%]"
-            >
-              <span class="inline-block min-w-[200px]"></span>
-              <span>
+         <div class="px-6  md:px-10 py-6">
+        <div class="pt-16 pb-12 lg:pt-32 lg:pb-4">
+
+
+            <h2 class="ruby text-2xl font-semibold h-fit leading-[130%] text-clip md:text-4xl lg:leading-[120%] lg:text-6xl">
+                <span class="mb-2 text-base font-normal block lg:inline-block lg:mb-0 lg:mr-16 "> 
+                  <li> 
+                  Qui sommes-nous
+                  </li> 
+                 </span>
                 Nous vous assitons pour trouver ce qu’il vous faut en quelques clics
-              </span>
-            </div>
-            <div class="col-span-1 row-span-2 overflow-hidden rounded-xl">
-              <img
-                src="/assets/images/22.png"
-                alt="images"
-                class="w-full h-full object-cover object-center"
-              />
-            </div>
-            <div class="col-span-1 row-span-1 col-start-2 items-start">
-              <p class="text-gray-500">
-                Chaque projet immobilier est unique. C'est pourquoi nous vous assistons dans vos recherches.Il vous suffit de nous indiquer vos critères essentiels : type de bien, budget, localisation, et plus encore. Nos équipes se chargeront de dénicher les annonces qui correspondent parfaitement à vos attentes, afin que vous trouviez rapidement le bien idéal
-              </p>
+                </h2> 
+          
+          <div class="flex justify-end mt-4 lg:mt-8">
+            <div class="text-gray-500 md:max-w-[75%] lg:max-w-[50%]">
+               Chaque projet immobilier est unique. C'est pourquoi nous vous assistons dans vos recherches.Il vous suffit de nous indiquer vos critères essentiels : type de bien, budget, localisation, et plus encore.
             </div>
           </div>
         </div>
+       
       </div>
-      <div class="px-10 py-28">
-        <div class="grid grid-cols-4 gap-18">
-          <div class="col-span-1">
-            <p class="text-4xl font-semibold">Nous contacter</p>
+       
+      </div>
+      <div class="px-10 py-16 lg:py-20">
+        <div class="grid grid-cols-1 gap-18 lg:grid-cols-2 gap-y-6">
+          <div class="col-span-1 flex flex-col h-fit lg:flex-row">
+             <p class="font-medium text-gray-800 mb-8 text-2xl md:text-4xl">Décrivez votre recherche:</p>
+            
           </div>
-          <div class="col-span-1">
-            <div class="mb-8">
-              <p class="text-gray-400 mb-2">Téléphone</p>
-              <p class="font-medium text-2xl">+228 93569023</p>
-            </div>
-            <div class="mb-8">
-              <p class="text-gray-400 mb-2">Addresse mail</p>
-              <p class="font-medium text-2xl">contact@cigafi.com</p>
-            </div>
-            <div class="mb-8">
-              <p class="text-gray-400 mb-2">Addresse</p>
-              <p class="font-medium text-2xl">Agoè Assiyéyé, Lomé TOGO</p>
-            </div>
-          </div>
-          <form class="col-span-2">
-            <div class="border-b-[.5px] pb-12">
-              <p class="font-medium mb-8">Que recherchez-vous?:</p>
+         
+          <form class="col-span-1">
+           
+            <div class="border-b-[1.5px] border-gray-200 pb-12">
+              <p class="font-medium text-gray-600 mb-4">Type de bien recherché</p>
               <div class="flex flex-wrap gap-3">
                 <div class="px-4 py-2 bg-gray-100 text-black rounded-lg">
                   <span>Appartement meublé</span>
@@ -75,8 +62,8 @@
                 </div>
               </div>
             </div>
-            <div class="border-b-[.5px] py-12">
-              <p class="font-medium mb-5">Zone géographique recherché</p>
+            <div class="border-b-[1.5px] border-gray-200 py-10">
+              <p class="font-medium text-gray-600 mb-2">Zone géographique recherché</p>
               <input
                 type="text"
                 name="name"
@@ -85,8 +72,8 @@
                 class="bg-transparent w-full focus:outline-none"
               />
             </div>
-            <div class="border-b-[.5px] py-12">
-              <p class="font-medium mb-5">Votre budget</p>
+            <div class="border-b-[1.5px] border-gray-200 py-10">
+              <p class="font-medium text-gray-600 mb-2">Votre budget</p>
               <input
                 type="text"
                 name="name"
@@ -95,18 +82,14 @@
                 class="bg-transparent w-full focus:outline-none"
               />
             </div>
-            <div class="border-b-[.5px] py-12">
-              <p class="font-medium mb-5">Description de votre recherche</p>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Project overview"
-                class="bg-transparent w-full focus:outline-none"
-              />
+            <div class="border-b-[1.5px] border-gray-200 py-10 pb-4">
+              <p class="font-medium text-gray-600 mb-2">Description de votre recherche</p>
+              
+              <textarea name="" id="" rows="3" class="bg-transparent w-full focus:outline-none"></textarea>
+               
             </div>
-            <div class="border-b-[.5px] py-12">
-              <p class="font-medium mb-5">Votre nom?</p>
+            <div class="border-b-[1.5px] border-gray-200 py-10">
+              <p class="font-medium text-gray-600 mb-2">Votre nom?</p>
               <input
                 type="text"
                 name="name"
@@ -115,8 +98,8 @@
                 class="bg-transparent w-full focus:outline-none"
               />
             </div>
-            <div class="border-b-[.5px] py-12">
-              <p class="font-medium mb-5">Votre numero de téléphone</p>
+            <div class="border-b-[1.5px] border-gray-200 py-10">
+              <p class="font-medium text-gray-600 mb-2">Votre numero de téléphone</p>
               <input
                 type="text"
                 name="name"
@@ -128,36 +111,9 @@
 
       
             <div class="py-5">
-              <button type="submit" class="flex flex-row gap-6 items-center">
-                <span>
-                  <svg
-                    width="61"
-                    height="61"
-                    viewBox="0 0 61 61"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M30.7804 0.75H30.7803C14.4706 0.75 1.24902 13.9716 1.24902 30.2812V30.2814C1.24902 46.591 14.4706 59.8126 30.7803 59.8126H30.7804C47.09 59.8126 60.3116 46.591 60.3116 30.2814V30.2812C60.3116 13.9716 47.09 0.75 30.7804 0.75Z"
-                      fill="#204B42"
-                      stroke="#204B42"
-                      stroke-width="0.937502"
-                    />
-                    <path
-                      d="M22.2549 29.8105H38.3681H22.2549ZM38.3681 29.8105L31.7764 23.2188L38.3681 29.8105ZM38.3681 29.8105L31.7764 36.4024L38.3681 29.8105Z"
-                      fill="#204B42"
-                    />
-                    <path
-                      d="M22.2549 29.8105H38.3681M38.3681 29.8105L31.7764 23.2188M38.3681 29.8105L31.7764 36.4024"
-                      stroke="white"
-                      stroke-width="1.64063"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-                <span>Soumettre ma recherche</span>
-              </button>
+               <button type="submit"  class="px-6 py-4 bg-[var(--cg-accent-green)] hover:bg-opacity-75 text-white rounded-xl">
+                                  Soumettre
+                                </button>
             </div>
           </form>
         </div>

@@ -6,268 +6,205 @@
   <body>
     <div class="w-full overflow-x-hidden">
       <%- include('./partials/main_nav_bar') %>
-      <div class="px-10 py-6">
-        <div class="py-32">
-          <div class="ruby text-6xl font-bold h-fit leading-normal text-clip">
-            <li class="mr-24 text-base font-normal h-full">
-              Qui sommes-nous
-            </li>
-            CIGAFI: Tout ce dont vous avez besoin pour une gestion immobilière réussie.
-          </div>
-          <div class="flex justify-end mt-16">
-            <div class="max-w-[45%] text-gray-500">
+      <div class="px-6  md:px-10 py-6">
+        <div class="pt-16 pb-12 lg:pt-32 lg:pb-16">
+
+
+            <h2 class="ruby text-2xl font-semibold h-fit leading-[130%] text-clip md:text-4xl lg:leading-[120%] lg:text-6xl">
+                <span class="mb-2 text-base font-normal block lg:inline-block lg:mb-0 lg:mr-16 "> 
+                  <li> 
+                  Qui sommes-nous
+                  </li> 
+                 </span>
+                  CIGAFI: Tout ce dont vous avez besoin pour une gestion immobilière réussie.
+                </h2> 
+          
+          <div class="flex justify-end mt-4 md:mt-8">
+            <div class="text-gray-500 md:max-w-[75%] lg:max-w-[45%]">
               CIGAFI est synonyme de qualité et de professionnalisme dans le domaine de la gestion immobilière. Notre équipe expérimentée met tout en œuvre pour vous offrir un service sur-mesure, répondant à vos attentes les plus élevées. 
             </div>
           </div>
         </div>
-        <div>
-          <img
-            src="/assets/images/10.png"
-            class="w-full object-contain object-center"
-          />
-        </div>
+       
       </div>
-      <div class="px-10 py-6">
-        <div class="my-16 grid grid-cols-3 font-bold">
-          <div class="col-span-1">
-            <div class="max-w-[260px]">
+      <div class="px-6 py-20 bg-[#F2F3F7]  md:px-10">
+         <div>
+          <img  src="/assets/images/10.png"  class="w-full object-contain object-center"/>
+        </div>
+        <div class="mb-4 pt-6  grid grid-cols-3 font-bold md:gap-4 md:pt-12 lg:pt-16 ">
+          <div class="col-span-3 md:col-span-1">
+            <div class="lg:max-w-[260px] mb-4 md:mb-0">
               La plateforme d’annonce immobilière qu’il vous faut
             </div>
           </div>
-          <div class="col-span-2">
-            <div class="max-w-[80%] text-4xl">
-              Fini les chemins de croix pour trouver un logement urbain, un bail commercial. Fini les conflits fonciers durant l'achat d'un immeuble
+          <div class="col-span-3 md:col-span-2">
+            <div class="lg:max-w-[80%] text-2xl font-semibold md:text-2xl lg:text-4xl">
+              Fini les chemins de croix pour trouver un logement urbain, un bail commercial. Fini les conflits fonciers durant
+              l'achat d'un immeuble
             </div>
             <div class="mt-16">
-              <a
-                href="/nous-contacter"
-                class="px-6 py-3 rounded-full font-normal text-white bg-[#FFA200]"
-              >
+              <a href="/nous-contacter" class=" font-normal w-full rounded-full text-center border border-primary-orange text-white px-5 py-4 whitespace-nowrap bg-primary-orange md:px-7">
                 Nous contacter
               </a>
             </div>
           </div>
         </div>
-        <div class="my-16 grid grid-cols-12 grid-rows-4 gap-6">
-          <div class="col-span-4 row-span-2">
-            <div class="font-bold text-xl">Au coeur de notre approche</div>
-            <div class="mt-2">
-              La mission de CIGAFI est de mettre à votre disposition une
-              plateforme fiable et sécurisée pour vos besoin de location, achat
-              et vente de bien immobiliers
+      
+      </div>
+      
+      <div class="px-6 py-6  md:px-10 ">
+        <div class="mt-8 grid grid-cols-2 gap-6 lg:mt-20 ">
+          
+          <div class="col-span-2 flex flex-col h-full justify-between lg:col-span-1 ">
+            <div class=" mb-6 lg:mb-0">
+              <div class="font-bold text-2xl">Au coeur de notre approche</div>
+              <div class="mt-2 md:max-w-[70%] text-gray-600">
+                La mission de CIGAFI est de mettre à votre disposition une
+                plateforme fiable et sécurisée pour vos besoin de location, achat
+                et vente de bien immobiliers
+              </div>
+            </div>
+            <div class="">
+              <div class="my-3 text-gray-500 italic">
+                Des dizaines d’annonces chaque jours
+              </div>
+              <div class="flex">
+                <img src="/assets/images/user1.png" class="mr-[-5%] md:mr-[-3%] w-[60px]" />
+                <img src="/assets/images/user2.png" class="mr-[-5%] md:mr-[-3%] w-[60px]" />
+                <img src="/assets/images/user3.png" class="mr-[-5%] md:mr-[-3%] w-[60px]" />
+                <img src="/assets/images/more-users.png" class="mr-[-5%] md:mr-[-3%] w-[60px]" />
+              </div>
             </div>
           </div>
-          <div class="col-span-2 row-span-2">
-            <div class="bg-black rounded-lg pt-8 px-4 pb-0">
-              <img src="/assets/images/11.png" class="" />
-            </div>
-            <div class="mt-3 text-gray-500 italic">
-              Trouvez votre prochain bien sur CIGAFI
-            </div>
+      
+          <div class="col-span-2 flex flex-col lg:col-span-1 ">
+            <img src="/assets/images/13.png" class="w-full h-full object-cover object-center" />
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class=" col-span-2 p-5 bg-[#d3eae58f] rounded-lg flex flex-col justify-center md:col-span-1 ">
+                  <span class="mb-4 block w-fit p-3 rounded-full overflow-hidden border border-[#005340] lg:mb-8">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M17.5089 26.9973C17 28.1503 17 29.4618 17 32.0847V40.2741C17 43.9188 17 45.7402 18.0883 46.8701C19.0744 47.8976 20.6084 47.9903 23.5 48V38.3427C23.5 37.3182 23.8913 36.3356 24.5879 35.6112C25.2845 34.8867 26.2292 34.4798 27.2143 34.4798H32.7857C33.7708 34.4798 34.7155 34.8867 35.4121 35.6112C36.1087 36.3356 36.5 37.3182 36.5 38.3427V48C39.3916 47.9903 40.9256 47.8957 41.9117 46.8682C43 45.7363 43 43.9169 43 40.2741V32.0847C43 29.4618 43 28.1503 42.4911 26.9973C41.9804 25.8442 41.024 24.9924 39.1093 23.285L37.2521 21.6297C33.7886 18.5452 32.0614 17 30 17C27.9386 17 26.2096 18.5432 22.7479 21.6278L20.8907 23.2831C18.9779 24.9905 18.0196 25.8422 17.5107 26.9953M32.7857 48V38.3427H27.2143V48H32.7857Z"
+                        fill="#005340" />
+                    </svg>
+                  </span>
+                  <div class="font-semibold text-[#4B4B5A]">
+                    Une plateforme fiable pour sécuriser vos démarches
+                  </div>
+                </div>
+                <div class="col-span-2 p-5 bg-[#d3eae58f] rounded-lg flex flex-col justify-center md:col-span-1 ">
+                  <span class="mb-4 block w-fit p-3 rounded-full overflow-hidden border border-[#005340] lg:mb-8">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M17.5089 26.9973C17 28.1503 17 29.4618 17 32.0847V40.2741C17 43.9188 17 45.7402 18.0883 46.8701C19.0744 47.8976 20.6084 47.9903 23.5 48V38.3427C23.5 37.3182 23.8913 36.3356 24.5879 35.6112C25.2845 34.8867 26.2292 34.4798 27.2143 34.4798H32.7857C33.7708 34.4798 34.7155 34.8867 35.4121 35.6112C36.1087 36.3356 36.5 37.3182 36.5 38.3427V48C39.3916 47.9903 40.9256 47.8957 41.9117 46.8682C43 45.7363 43 43.9169 43 40.2741V32.0847C43 29.4618 43 28.1503 42.4911 26.9973C41.9804 25.8442 41.024 24.9924 39.1093 23.285L37.2521 21.6297C33.7886 18.5452 32.0614 17 30 17C27.9386 17 26.2096 18.5432 22.7479 21.6278L20.8907 23.2831C18.9779 24.9905 18.0196 25.8422 17.5107 26.9953M32.7857 48V38.3427H27.2143V48H32.7857Z"
+                        fill="#005340" />
+                    </svg>
+                  </span>
+                  <div class="font-semibold text-[#4B4B5A]">
+                    Simplicité: Quelques clics suffisent pour trouver votre bonnheur
+                  </div>
+                </div>
+              </div>
           </div>
-          <div class="col-span-6 row-span-2">
-            <img
-              src="/assets/images/13.png"
-              class="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div class="row-span-2 row-start-4 col-span-2">
-            <div class="my-3 text-gray-500 italic">
-              Des dizaines d’annonces chaque jours
-            </div>
-            <div class="flex">
-              <img src="/assets/images/1.png" class="mr-[-10%] w-[60px]" />
-              <img src="/assets/images/2.png" class="mr-[-10%] w-[60px]" />
-              <img src="/assets/images/3.png" class="mr-[-10%] w-[60px]" />
-            </div>
-          </div>
-          <div
-            class="row-span-2 col-start-7 col-span-3 py-5 px-10 bg-[#F2F2F2] rounded-lg flex flex-col justify-center"
-          >
-            <span
-              class="mb-8 block w-fit p-3 rounded-full overflow-hidden border"
-            >
-              <svg
-                width="60"
-                height="60"
-                viewBox="0 0 60 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M17.5089 26.9973C17 28.1503 17 29.4618 17 32.0847V40.2741C17 43.9188 17 45.7402 18.0883 46.8701C19.0744 47.8976 20.6084 47.9903 23.5 48V38.3427C23.5 37.3182 23.8913 36.3356 24.5879 35.6112C25.2845 34.8867 26.2292 34.4798 27.2143 34.4798H32.7857C33.7708 34.4798 34.7155 34.8867 35.4121 35.6112C36.1087 36.3356 36.5 37.3182 36.5 38.3427V48C39.3916 47.9903 40.9256 47.8957 41.9117 46.8682C43 45.7363 43 43.9169 43 40.2741V32.0847C43 29.4618 43 28.1503 42.4911 26.9973C41.9804 25.8442 41.024 24.9924 39.1093 23.285L37.2521 21.6297C33.7886 18.5452 32.0614 17 30 17C27.9386 17 26.2096 18.5432 22.7479 21.6278L20.8907 23.2831C18.9779 24.9905 18.0196 25.8422 17.5107 26.9953M32.7857 48V38.3427H27.2143V48H32.7857Z"
-                  fill="#181818"
-                />
-              </svg>
-            </span>
-            <div class="font-bold text-gray-500">
-              Une plateforme fiable pour sécuriser vos démarches
-            </div>
-          </div>
-          <div
-            class="row-span-2 col-span-3 py-5 px-10 bg-[#F2F2F2] rounded-lg flex flex-col justify-center"
-          >
-            <span
-              class="mb-8 block w-fit p-3 rounded-full overflow-hidden border"
-            >
-              <svg
-                width="60"
-                height="60"
-                viewBox="0 0 60 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M17.5089 26.9973C17 28.1503 17 29.4618 17 32.0847V40.2741C17 43.9188 17 45.7402 18.0883 46.8701C19.0744 47.8976 20.6084 47.9903 23.5 48V38.3427C23.5 37.3182 23.8913 36.3356 24.5879 35.6112C25.2845 34.8867 26.2292 34.4798 27.2143 34.4798H32.7857C33.7708 34.4798 34.7155 34.8867 35.4121 35.6112C36.1087 36.3356 36.5 37.3182 36.5 38.3427V48C39.3916 47.9903 40.9256 47.8957 41.9117 46.8682C43 45.7363 43 43.9169 43 40.2741V32.0847C43 29.4618 43 28.1503 42.4911 26.9973C41.9804 25.8442 41.024 24.9924 39.1093 23.285L37.2521 21.6297C33.7886 18.5452 32.0614 17 30 17C27.9386 17 26.2096 18.5432 22.7479 21.6278L20.8907 23.2831C18.9779 24.9905 18.0196 25.8422 17.5107 26.9953M32.7857 48V38.3427H27.2143V48H32.7857Z"
-                  fill="#181818"
-                />
-              </svg>
-            </span>
-            <div class="font-bold text-gray-500">
-              Simplicité: Quelques clics suffisent pour trouver votre bonnheur
-            </div>
-          </div>
+
         </div>
       </div>
-      <div class="px-10 py-6">
-        <div class="my-16 grid grid-cols-2">
-          <div
-            class="bg-black text-white col-span-1 grid grid-rows-2 gap-6 grid-cols-2 p-8 rounded-tl-2xl rounded-bl-2xl"
-          >
-            <div class="row-span-1 col-span-2 mb-12">
-              <div class="text-4xl font-bold">
+
+      <div class="px-6 py-6 md:px-10">
+        <div class="mt-16 grid grid-cols-2 md:my-16">
+          
+          <div class="bg-black text-white col-span-2 grid grid-rows-2 gap-6 grid-cols-2 p-8 rounded-2xl lg:rounded-br-none  lg:rounded-tr-none  lg:col-span-1">
+            <div class="row-span-2 col-span-2 mb-12">
+              <div class="text-2xl font-normal lg:text-4xl">
                 Plus qu'un simple prestataire, nous sommes un partenaire de confiance
               </div>
               <div class="text-gray-500 mt-6">
                 CIGAFI vous garantit une gestion immobilière de qualité, conforme aux normes les plus exigeantes. Bénéficiez d'un service personnalisé, d'une réactivité optimale et d'une sécurité juridique maximale.
               </div>
             </div>
-            <div class="row-span-1 col-span-1">
-              <div>
-                <svg
-                  width="95"
-                  height="95"
-                  viewBox="0 0 95 95"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="47.5"
-                    cy="47.5"
-                    r="46.5"
-                    stroke="white"
-                    stroke-width="2"
-                  />
-                </svg>
-              </div>
-              <div class="font-bold text-2xl mt-8">Notre Vision</div>
-              <div class="mt-2 text-gray-500">
+            <div class="row-span-2 col-span-2 mb-4 md:col-span-1 lg:mb-0">
+             <img src="assets/images/icons/ellipse20.svg" alt="" srcset="" class="w-[80px]">
+              <div class="font-bold text-xl mt-8 lg:text-2xl">Notre Vision</div>
+              <div class="mt-1 text-gray-500 md:text-sm lg:mt-2">
                 Nous souhaitons bâtir une relation de confiance durable avec chacun de nos basé sur l'éthique et le professionnalisme
               </div>
             </div>
-            <div class="row-span-1 col-span-1">
+            <div class="row-span-2 col-span-2 md:col-span-1 ">
               <div>
-                <svg
-                  width="95"
-                  height="95"
-                  viewBox="0 0 95 95"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="47.5"
-                    cy="47.5"
-                    r="46.5"
-                    stroke="white"
-                    stroke-width="2"
-                  />
-                </svg>
+                <img src="assets/images/icons/ellipse20.svg" alt="" srcset="" class="w-[80px]">
               </div>
-              <div class="font-bold text-2xl mt-8">Notre mission</div>
-              <div class="mt-2 text-gray-500">
+              <div class="font-bold text-xl mt-8 lg:text-2xl">Notre mission</div>
+              <div class="mt-1 md:text-sm text-gray-500 lg:mt-2">
                 La mission de CIGAFI est de mettre à votre disposition une plateforme fiable et sécurisée vos transactions immobilières
               </div>
             </div>
           </div>
-          <div class="col-span-1 overflow-hidden rounded-tr-2xl rounded-br-2xl">
+
+          <div class="overflow-hidden rounded-tr-2xl rounded-br-2xl hidden lg:block  lg:col-span-1">
             <img
               src="/assets/images/14.png"
               class="w-full h-full object-center object-cover"
             />
           </div>
+
         </div>
       </div>
-      <div class="px-10 py-6 border-b border-gray-400">
-        <div class="my-24">
-          <div class="ruby text-6xl font-bold h-fit leading-normal text-clip">
-            <li class="mr-24 text-base font-normal h-full">
-              Nous joindre
-            </li>
-            Notre équipe est à votre écoute pour vous offrir un accompagnement personnalisé.
-          </div>
+
+      <div class="px-6 py-6 border-b-2 border-gray-200 md:px-10">
+        <div class="mt-4 mb-6 md:mb-12">
+           <h2 class="ruby text-2xl font-semibold h-fit leading-[130%] text-clip md:text-4xl lg:leading-[120%] lg:text-6xl">
+                <span class="mb-2 text-base font-normal block lg:inline-block lg:mb-0 lg:mr-16 "> 
+                  <li> 
+                     Nous joindre
+                  </li> 
+                 </span>
+                  
+                 Notre équipe est à votre écoute pour vous offrir un accompagnement sur-mesure.
+                </h2> 
         </div>
       </div>
-      <div class="px-10 py-6 border-t border-gray-400">
-        <div
-          class="my-24 grid grid-rows-3 grid-cols-2 mx-[auto] gap-16 max-w-[800px]"
-        >
-          <div class="row-span-3 col-span-1">
+      <div class="px-6 py-6 md:px-10">
+        <div class="mb-24 mt-6 grid grid-cols-2 mx-[auto] gap-8 max-w-[70%] md:gap-16 md:mt-12 md:max-w-[60%] lg:mt-16">
+          <div class="col-span-2 lg:col-span-1 ">
             <div class="text-gray-500">
-              Notre équipe expérimentée met tout en œuvre pour vous offrir un service sur-mesure, répondant à vos attentes les plus élevées. Pour tous besoins, n’hésitez pas à nous contacter
+              Notre équipe expérimentée met tout en œuvre pour vous offrir un service sur-mesure, répondant à vos attentes les
+              plus élevées. Pour tous besoins, n’hésitez pas à nous contacter
             </div>
           </div>
-          <div>
-            <p class="text-sm text-gray-500 mb-3">Téléphone</p>
-            <a href="tel:" class="text-black font-bold text-3xl">
-              +228 90991070 | 93794929
-            </a>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 mb-3">Addresse mail</p>
-            <a href="mail:" class="text-black font-bold text-3xl">
-              contact@cigafi.com
-            </a>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 mb-3">Localisation</p>
-            <a href="map:" class="text-black font-bold text-3xl">
-              Agoè Nyivé, Lomé TOGO
-            </a>
+          <div class="col-span-2 grid grid-rows-3 gap-10 lg:col-span-1 ">
+            <div class="row-span-1">
+              <p class="text-sm text-gray-500 md:mb-3">Téléphone</p>
+              <a href="tel:" class="text-black font-bold text-xl md:text-3xl">
+                +228 90991070 | 93794929
+              </a>
+            </div>
+            <div class="row-span-1">
+              <p class="text-sm text-gray-500 md:mb-3">Addresse mail</p>
+              <a href="mail:" class="text-black font-bold text-xl md:text-3xl">
+                contact@cigafi.com
+              </a>
+            </div>
+            <div class="row-span-1">
+              <p class="text-sm text-gray-500 md:mb-3">Adresses</p>
+              <a href="map:" class="text-black font-bold text-xl md:text-3xl">
+                Agoè Nyivé, Lomé TOGO
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <div
-        class="w-full min-h-[40vh] flex flex-col justify-end bg-[url('/assets/images/15.png')] bg-[#0000005e] bg-cover bg-center bg-no-repeat overflow-hidden relative z-[2] pb-5"
-      >
-        <div
-          class="marquee text-white flex gap-16 flex-nowrap font-semibold items-center leading-normal text-8xl w-fit"
-        >
+        class="w-full min-h-[25vh] flex flex-col justify-end bg-[url('/assets/images/15.png')] bg-[#0000005e] bg-cover bg-center bg-no-repeat overflow-hidden relative z-[2] pb-5 lg:min-h-[40vh] ">
+        <div class="marquee text-white flex gap-16 flex-nowrap font-semibold items-center leading-normal text-8xl w-fit">
           <span>contact@cigafi.com</span>
           <span>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-full"
-            >
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
               <circle cx="20" cy="20" r="17" stroke="white" stroke-width="6" />
             </svg>
           </span>
           <span>contact@cigafi.com</span>
           <span>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="20" cy="20" r="17" stroke="white" stroke-width="6" />
             </svg>
           </span>
