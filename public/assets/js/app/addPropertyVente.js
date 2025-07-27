@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Elements ---
   const form = document.getElementById('add-property-form');
+   const user = document.getElementById('user_role').value.toLowerCase(); 
   const elements = {
     step1: document.getElementById('step-1'),
     step2: document.getElementById('step-2'),
@@ -349,12 +350,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('/admin/add-new-vente', { method: 'POST', body: formData });
+       const res = await fetch(`/${user}/add-new-vente`, { method: 'POST', body: formData });
       const data = await res.json().catch(() => null);
-      console.log('Server response:', data);
 
       // Show success or error modal
-      const modalId = res.ok ? 'submission_succes' : 'submission_error';
+      const modalId = data.success ? 'submission_succes' : 'submission_error';
       showModal(modalId);
 
       // Reset submit button state
@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Handle modal buttons
       const modal = document.getElementById(modalId);
-      if (modal && res.ok) {
+      if (modal && data.success) {
         // For success modal with two buttons
         const closeBtn = modal.querySelector('.close-modal');
         const redirectBtn = modal.querySelector('.redirect-modal');
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (redirectBtn) {
           redirectBtn.onclick = () => {
-            window.location.href = '/admin/liste-annonces?createdBy=Admin&listingGroup=vente';
+            window.location.href = '/user/annonces';
           };
         }
       } else if (modal) {

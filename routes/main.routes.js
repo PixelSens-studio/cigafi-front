@@ -1,5 +1,6 @@
 import express from "express";
 import * as mainController from "../controllers/mainPages.controller.js";
+import auth from "../utils/auth.js";
 
 const router = express.Router();
 
@@ -14,13 +15,14 @@ router.get('/sign-up', mainController.signUpGet);
 router.get('/a-louer/annonces/:slug', mainController.locationsByIdGet); 
 router.get('/a-vendre/annonces/:slug', mainController.annonceVenteByIdGet); 
 router.get('/requete', mainController.requeteGet);
-router.get('/reservation-info', mainController.reservationInfoGet);
-router.get('/ressource-details', mainController.ressourceDetailsGet);
-router.get('/reservation-pay', mainController.reservationPayGet);
+router.get('/reservation/:propertyId', mainController.reservationGet);
+router.get('/ressource-details', mainController.ressourceDetailsGet); 
 
 router.get('/admin', (req, res) => {
   res.redirect('/admin/dashboard');
 });
+
+router.post('/fedapay/webhook', mainController.fedapayWebhook)
 
 
 export default router;

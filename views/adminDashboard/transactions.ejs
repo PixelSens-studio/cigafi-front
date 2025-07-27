@@ -1,3 +1,4 @@
+
 <%- include('./partials/head') %>
    <!-- End of Header -->
    <!-- Wrapper -->
@@ -9,17 +10,26 @@
     <!-- Main -->
     <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
      <!-- Toolbar -->
-     <div class="pb-5">
-      <!-- Container -->
-      <%- include('./partials/content_header') %>
-    
-      <!-- End of Container -->
-     </div>
+       <div class="pb-5">
+          <!-- Container -->
+          <div class="container-fixed mb-10">
+            <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
+
+               <%- include('./partials/content_header') %>
+              <div class="flex items-center flex-wrap">
+ 
+              </div>
+            </div>
+          </div>
+
+          <!-- End of Container -->
+        </div>
      <!-- End of Toolbar -->
      <!-- Container -->
-     <div class="container-fixed" id="content_container">
+     <div class="container-fixed">
       <div class="container-fixed">
-        <div class="grid gap-5 lg:gap-7.5 mb-12">
+ 
+         <div class="grid gap-5 lg:gap-7.5 mb-12">
             <div class="card card-grid min-w-full">
               <div class="card-header py-5 flex-wrap">
                 <h3 class="card-title font-medium text-sm">
@@ -89,9 +99,9 @@
                     </td>
                     <td>
                       <div class="flex items-center gap-1.5">
-                        <i class="ki-duotone ki-files text-lg text-gray-600">
+                        <i class="ki-filled ki-cheque text-lg text-gray-600">
                         </i>
-                        <span class="leading-none font-semibold text-gray-700">
+                        <span class="leading-none text-2sm font-semibold text-gray-600">
                           TXN-2024-01-04T23:59:59Z
                         </span>
                        </div>
@@ -120,9 +130,10 @@
                          <span class="leading-none font-semibold text-gray-700">
                           25000 FCFA
                          </span>
-                        <span class="text-2sm text-violet-600 font-normal py-1">
-                         Enrégistrement podcast
-                        </span>
+                        <a href="" class="flex gap-1 items-center text-2sm text-primary font-normal py-1">
+                           Voir la réservation
+                           <i class="ki-filled ki-arrow-up-right"></i>
+                        </a>
                        </div>
                       </div>
                      </div>
@@ -153,8 +164,7 @@
                     </td>
                     <td>
                      <a class="btn btn-icon btn-light btn-clear btn-sm" href="#">
-                      <i class="ki-filled ki-notepad">
-                      </i>
+                    <i class="ki-filled ki-document"></i>
                      </a>
                     </td>
                    </tr>
@@ -334,9 +344,10 @@
             </div>
            </div>
        </div>
+   
+     </div>
 
-       </div>
-  </div>
+     </div>
      <!-- End of Container -->
      <%- include('./partials/footer') %>
     </main>
@@ -345,13 +356,11 @@
    <!-- End of Wrapper -->
   </div>
   <!-- End of Base -->
-
-  
-  <div class="modal" data-modal="true" id="addAdminModal">
-    <div class="modal-content modal-center max-w-[600px] py-3 px-8">
+  <div class="modal" data-modal="true" id="delete_confirmation">
+    <div class="modal-content modal-center max-w-[600px]">
      <div class="modal-header">
-      <h3 class="text-lg font-semibold leading-none text-kr-primary">
-       Créer un compte admin
+      <h3 class="modal-title">
+       Confirmer l'annulation
       </h3>
       <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
        <i class="ki-outline ki-cross">
@@ -359,79 +368,237 @@
       </button>
      </div>
      <div class="modal-body">
-       <div class=" flex gap-6 flex-col  mb-8 mt-5">
-                 <div class="w-full">
-                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                    <label class="form-label">
-                    Nom & Prénom
-                    </label>
-                    <input class="input" placeholder="" type="text" value=""/>
-                   </div>
-                  </div>
- 
-                  <div class="w-full">
-                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                    <label class="form-label">
-                    Email
-                    </label>
-                    <input class="input" placeholder="" type="text" value=""/>
-                   </div>
-                  </div>
-                  <div class="w-full">
-                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                    <label class="form-label">
-                    Mot de pass
-                    </label>
-                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
-                     <input placeholder="" type="password"/>
-                     <div class="btn btn-icon" data-toggle-password-trigger="true">
-                      <i class="ki-outline ki-eye toggle-password-active:hidden">
-                      </i>
-                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
-                      </i>
-                     </div>
-                    </div>
-                   </div>
-                  </div>
-                  <div class="w-full">
-                   <div class="flex items-baseline flex-col flex-wrap lg:flex-nowrap gap-2.5">
-                    <label class="form-label">
-                    Confirmez le mot de pass
-                    </label>
-                   <div class="input" data-toggle-password="true" data-toggle-password-permanent="true">
-                     <input placeholder="" type="password"/>
-                     <div class="btn btn-icon" data-toggle-password-trigger="true">
-                      <i class="ki-outline ki-eye toggle-password-active:hidden">
-                      </i>
-                      <i class="ki-outline ki-eye-slash hidden toggle-password-active:block">
-                      </i>
-                     </div>
-                    </div>
-                   </div>
-                  </div>
- 
-               </div>
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
      </div>
      <div class="modal-footer justify-end">
       <div class="flex gap-4">
        <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
-        Créer le compte
+        Abandonner
        </button>
- 
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Poursuivre l'annulation
+       </button>
       </div>
      </div>
     </div>
    </div>
-*
+
+<div class="modal" data-modal="true" id="cancelation_approuve">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer la validation de l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      Modal components are commonly used for various purposes such as displaying login forms, confirming actions, presenting multimedia content.
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+           Poursuivre l'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+</div>
+
+
+   <div class="modal" data-modal="true" id="cancelation_reject">
+    <div class="modal-content modal-center max-w-[600px]">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Confirmer le rejet de l'annulation
+      </h3>
+      <button class="btn btn-xs btn-icon btn-light" data-modal-dismiss="true">
+       <i class="ki-outline ki-cross">
+       </i>
+      </button>
+     </div>
+     <div class="modal-body">
+      <div class="flex flex-col">
+        <h3 class="card-title mb-3">
+          Motif du rejet de la demande de l'annulation
+         </h3>
+         <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+             <span class="text-2sm text-gray-700">
+                 I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+
+                 I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+            </span>
+         </div>
+    </div>
+     </div>
+     <div class="modal-footer justify-end">
+      <div class="flex gap-4">
+       <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+        Abandonner
+       </button>
+       <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+       Valider le refus d'annulation
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="drawer drawer-bottom kr-md-drawer-bottom flex flex-col max-h-[90%] h-[65vh]" data-drawer="true" id="booking_details">
+    <div class="flex items-center justify-between p-5 border-b">
+     <h3 class="text-base font-semibold text-gray-900">
+      Demande d'annulation de la réservation
+     </h3>
+ 
+     <button class="btn btn-xs btn-icon btn-icon-xl btn-light" data-drawer-dismiss="true">
+      <i class="ki-outline ki-cross">
+      </i>
+     </button>
+    </div>
+    <div class="p-5">
+ 
+               <div class="flex flex-col lg:px-7.5 px-5 mb-4.5">
+                    <h3 class="card-title mb-3">
+                      Motif
+                     </h3>
+                     <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+                         <span class="text-2sm text-gray-700">
+                         Pursuing opportunities, earning zero
+                        </span>
+                     </div>
+                </div>
+ 
+                <div class="flex flex-col lg:px-7.5 p-5">
+                    <h3 class="card-title mb-3">
+                      Message
+                     </h3>
+                     <div class="card shadow-none p-3.5 bg-[#1b84ff]">
+                         <span class="text-2sm text-gray-700">
+                             I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+ 
+                             I have an old project that was built using the Metronic Theme for its frontend and Laravel PHP for the backend. Unfortunately, we lost the complete source code for the frontend, but we still have the .vue files.We need to rebuild the frontend using these .vue files.
+                        </span>
+                     </div>
+                </div>
+ 
+               <div class="modal-footer justify-end">
+                  <div class="flex gap-4">
+                   <button class="btn bg-kr-primary text-white" data-modal-dismiss="true">
+                    Approver l'annulation
+                   </button>
+                   <button class="btn bg-kr-secondary text-white" data-modal-toggle="#modal_6_2">
+                      Rejeter l'annulation
+                       </button>
+                      </div>
+         </div>
+ 
+    </div>
+   </div>
+ 
+ <button type="button" data-modal-toggle="#submission_succes" style="display:none" id="open-success-modal"></button>
+  <button type="button" data-modal-toggle="#submission_error" style="display:none" id="open-error-modal"></button>
+  <!-- End of Base -->
+  <div class="modal" data-modal="true" id="submission_succes">
+    <div class="modal-content modal-center max-w-[400px] p-4">
+
+      <div class="modal-body  flex flex-col items-center gap-2.5">
+        <div class="flex justify-center pt-5">
+          <svg width="101" height="100" viewBox="0 0 101 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" width="100" height="100" rx="50" fill="#00D095" fill-opacity="0.12" />
+            <rect x="11.7422" y="11.2422" width="77.5148" height="77.5148" rx="38.7574" fill="#00D095"
+              fill-opacity="0.13" />
+            <rect x="24.7598" y="24.2578" width="51.4793" height="51.4793" rx="25.7396" fill="#00D095" />
+            <path
+              d="M58.7101 45.4386L47.7634 56.3853L42.7461 51.3681L44.0323 50.0818L47.7634 53.8037L57.4239 44.1523L58.7101 45.4386Z"
+              fill="white" />
+          </svg>
+
+
+        </div>
+        <div class="flex flex-col gap-5 lg:gap-7.5">
+          <div class="flex flex-col gap-3 text-center">
+            <h2 class="text-1.5xl font-semibold text-gray-900">
+              Succès
+            </h2>
+            <p class="text-sm text-gray-800">
+              Votre annonce a été créée avec succès. Vous pouvez la consulter dans votre tableau de bord.
+            </p>
+          </div>
+          <div class="flex justify-center mb-5 gap-2.5">
+              <button class="btn bg-kr-primary justify-center btn-lg text-white w-1/2 grow close-modal" data-modal-dismiss="true">Fermer</button>
+               <button class="btn bg-danger justify-center btn-lg text-white w-1/2 grow redirect-modal" data-modal-dismiss="true">Voir l'annonce</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" data-modal="true" id="submission_error">
+    <div class="modal-content modal-center max-w-[400px] p-4">
+
+      <div class="modal-body  flex flex-col items-center gap-2.5">
+        <div class="flex justify-center pt-5">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="50" fill="#DF3004" fill-opacity="0.12" />
+            <rect x="11.2441" y="11.2422" width="77.5148" height="77.5148" rx="38.7574" fill="#DF3004"
+              fill-opacity="0.13" />
+            <rect x="24.2598" y="24.2617" width="51.4793" height="51.4793" rx="25.7396" fill="#DF3004" />
+            <path
+              d="M56.0659 57.3064L50.5009 51.7327L44.9359 57.3064L43.6934 56.0639L49.2671 50.4989L43.6934 44.9339L44.9359 43.6914L50.5009 49.2652L56.0659 43.7002L57.2996 44.9339L51.7346 50.4989L57.2996 56.0639L56.0659 57.3064Z"
+              fill="white" />
+          </svg>
+
+        </div>
+        <div class="flex flex-col gap-5 lg:gap-7.5">
+          <div class="flex flex-col gap-3 text-center">
+            <h2 class="text-1.5xl font-semibold text-gray-900">
+              Echec
+            </h2>
+            <p class="text-sm text-gray-800">
+              La création de l'annonce a échoué. Veuillez vérifier les informations saisies et réessayer.
+            </p>
+          </div>
+          <div class="flex justify-center mb-5">
+            <button class="btn bg-danger justify-center btn-lg text-white grow" data-modal-dismiss="true">
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  
+        <div class="kt-drawer max-w-[90%] w-[450px] top-5 bottom-5 end-5 open">
+
+        <div>
+          <div class="flex items-center justify-between gap-2.5 text-sm text-mono font-semibold px-5 py-3.5">
+            Chat
+            <button class="kt-btn kt-btn-sm kt-btn-icon kt-btn-dim shrink-0" data-kt-drawer-dismiss="true">
+            <i class="ki-filled ki-cross">
+            </i>
+            </button>
+          </div>
+          <div class="border-b border-b-border">
+            
+          </div> 
+        </div>
+        
+        <!--End of Chat Footer-->
+       </div>
   <!-- End of Page -->
-  <!-- Scripts -->
+  <!-- Scripts --> 
   <script src="assets/js/core.bundle.js">
-  </script>
-  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  </script> 
   </script>
   <script src="assets/js/widgets/general.js">
   </script>
-   <script src="/assets/js/app/admin_session.js"></script>
+  <script src="/assets/js/app/admin_session.js"></script>
   <!-- End of Scripts -->
- </body>
-</html>
+  </body>
+</html> 

@@ -35,8 +35,6 @@ router.post('/add-new-location',
   adminDashboardController.addNewLocationPost
 );
 
-
-
 router.post('/add-new-vente',
   upload.fields([
     { name: 'mainImage', maxCount: 1 },
@@ -50,7 +48,7 @@ router.get('/add-new-location', authAdmin, adminDashboardController.addNewLocati
 router.get('/add-new-vente', authAdmin, adminDashboardController.addNewVenteGet); 
 router.get('/utilisateurs', authAdmin, adminDashboardController.usersListGet);
 router.get('/details-utilisateurs', authAdmin, adminDashboardController.userDetailsGet);
-router.get('/liste-annonces', authAdmin, (req, res, next) => {
+router.get('/annonces', authAdmin, (req, res, next) => {
   // Define allowed query parameters and their values
   const allowedFilters = {
     createdBy: ['Admin', 'User'],
@@ -87,6 +85,7 @@ router.get('/liste-annonces', authAdmin, (req, res, next) => {
     });
   }
 }, adminDashboardController.propertiesListGet);
+
 router.get('/reservations', authAdmin, adminDashboardController.reservationsListGet);
 router.get('/messagess-contact', authAdmin, adminDashboardController.contactMessagesListGet);
 router.get('/demande-recherche', authAdmin, adminDashboardController.demndeRechercheListGet);
@@ -99,5 +98,8 @@ router.get('/gestion-biens', authAdmin, adminDashboardController.gestionBiensGet
 // router.get('/transactions', auth, adminDashboardController.transactionsGet);
 // router.get('/user-details', auth, adminDashboardController.userDetailsGet);
 // router.get('/projet-details', auth, adminDashboardController.userDetailsProjectGet);
+
+
+ 
 
 export default router;

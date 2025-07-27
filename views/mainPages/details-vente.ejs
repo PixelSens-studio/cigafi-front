@@ -7,18 +7,18 @@
   <body>
     <div class="w-full overflow-x-hidden">
       <%- include('./partials/main_nav_bar') %>
-      <div class="px-10 py-6 mt-24">
-        <div class="flex justify-between">
-          <div>
-            <div class="flex gap-6 items-center mb-8">
-              <div class="text-3xl font-bold text-black"> 
+      <div class="px-6 py-6 md:px-10 mt-12 lg:mt-24">
+        <div class="flex justify-between flex-col lg:flex-row">
+          <div class="mb-2 lg:mb-0">
+            <div class="flex gap-3 mb-4 flex-col md:flex-row lg:mb-8 lg:items-center">
+              <div class="text-lg font-semibold text-gray-900 md:text-xl lg:text-3xl"> 
               <% if (property.summary.surface) { %>
                 Vente de <%= property.summary.surface %> - <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
               <% } else { %>
                 Vente de <%= property.summary.propertyType %> - <%= property.summary.city === 'Lomé' ? property.summary.area : property.summary.city %>
               <% } %>
             </div>
-              <div class="text-[#FFA200] items-center flex gap-4 pl-6 border-l border-gray-500">
+              <div class="text-[#FFA200] text-sm items-center flex gap-4 lg:pl-6 lg:border-l lg:border-gray-500 md:text-base">
                 <span>
                   <svg
                     width="22"
@@ -43,7 +43,7 @@
                     />
                   </svg>
                 </span>
-                <span>Publiée <span class="font-bold">
+                <span>Publiée <span class="font-semibold">
                   <%
                     const createdDate = new Date(property.metadata.created_at);
                     const now = new Date();
@@ -75,7 +75,7 @@
               </div>
             </div>
             
-            <div class="flex <%= (  property.listingCategory  === 'habitations-bureaux' ) ? 'gap-16' : '' %> text-gray-500">
+            <div class="flex text-gray-500">
 
               <div>
                 <% if (property.usageType === 'Appartement meublé') { %>
@@ -114,12 +114,12 @@
                       />
                     </svg>
                     </span>
-                    <span><%= property.financial.deposit %> Mois d'avance + <%= property.financial.caution %> Mois de caution</span>
+                    <span class="text-sm md:text-base"><%= property.financial.deposit %> Mois d'avance + <%= property.financial.caution %> Mois de caution</span>
                   </div>
                 <% } %>
               </div>
               <div>
-                <span class="font-bold">Emplacement</span>
+                <span class="font-semibold">Emplacement</span>
                 <div class="flex mt-3 items-center gap-3">
                   <span>
                     <svg
@@ -135,75 +135,68 @@
                       />
                     </svg>
                   </span>
-                  <span><%= property.locationText %></span>
+                  <span class="text-sm md:text-base"><%= property.locationText %></span>
                 </div>
               </div>
             </div>
 
           </div>
-          <div>
-            <div class="flex gap-8 items-center text-gray-500">
-              <a href="#" class="flex flex-row gap-3 items-center">
-                <span>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+          <div class="grid grid-rows-2 gap-y-3 lg:block mt-6">
+            <div class="row-start-2 flex gap-8 items-center text-gray-500 lg:justify-end">
+              <div class="flex flex-row gap-3 items-center">
+                <span class="relative">
+                  <div class="hidden top-[-250%] left-[-260%] flex gap-3 p-4 absolute bg-[#f2f2f2] rounded-full max-w-fit text-gray-400">
+                    <a href="#" class="bg-white border border-gray-200 size-12 flex justify-center items-center rounded-full"><i class="ki-filled font-normal ki-whatsapp text-2xl"></i></a>
+                    <a href="#" class="bg-white border border-gray-200 size-12 flex justify-center items-center rounded-full"><i class="ki-filled font-normal ki-facebook text-2xl"></i></a>
+                    <a href="#" class="bg-white border border-gray-200 size-12 flex justify-center items-center rounded-full">
+                      <svg aria-hidden="true" class="size-[20px]" viewBox="0 0 24 24">
+                        <g>
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor">
+                          </path>
+                        </g>
+                      </svg>
+                      </a>
+                    <a href="#" class="bg-white border border-gray-200 size-12 flex justify-center items-center rounded-full"><i class="ki-filled font-normal ki-copy text-2xl"></i></a>
+                 </div>
+                  <svg class="w-8" width="40"  height="40" viewBox="0 0 40 40"  fill="none"  xmlns="http://www.w3.org/2000/svg" >
                     <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                    <path
-                      d="M22.9934 11.7766C23.4793 11.4961 24.0342 11.3576 24.595 11.3767C25.1557 11.3959 25.6999 11.5718 26.1656 11.8847C26.6313 12.1976 27 12.6348 27.2298 13.1467C27.4595 13.6586 27.5411 14.2246 27.4652 14.7805C27.3894 15.3365 27.1591 15.86 26.8007 16.2916C26.4422 16.7233 25.9699 17.0457 25.4374 17.2224C24.9049 17.3991 24.3334 17.4229 23.7881 17.2911C23.2427 17.1593 22.7452 16.8772 22.3521 16.4768L17.6421 19.1963C17.7156 19.4628 17.7519 19.7308 17.7509 20.0003C17.7509 20.2688 17.7156 20.5396 17.6421 20.8043L22.3521 23.5238C22.8643 23.0045 23.548 22.6894 24.2755 22.6374C25.0031 22.5855 25.7247 22.8002 26.3054 23.2416C26.8861 23.6829 27.2863 24.3206 27.4311 25.0355C27.5759 25.7504 27.4554 26.4936 27.0921 27.1261C26.7277 27.7597 26.1444 28.2384 25.452 28.4724C24.7595 28.7064 24.0054 28.6795 23.3313 28.3968C22.6573 28.1141 22.1096 27.595 21.7912 26.9371C21.4728 26.2792 21.4056 25.5276 21.6021 24.8236L16.8921 22.1033C16.4745 22.5285 15.9399 22.8198 15.3561 22.9401C14.7724 23.0603 14.1661 23.0041 13.6145 22.7785C13.0629 22.553 12.5909 22.1683 12.2587 21.6735C11.9264 21.1788 11.749 20.5963 11.749 20.0003C11.749 19.4044 11.9264 18.8219 12.2587 18.3271C12.5909 17.8323 13.0629 17.4477 13.6145 17.2221C14.1661 16.9965 14.7724 16.9403 15.3561 17.0606C15.9399 17.1808 16.4745 17.4721 16.8921 17.8973L21.6021 15.1778C21.4241 14.5369 21.4642 13.8549 21.716 13.2392C21.9679 12.6236 22.4172 12.109 22.9934 11.7766ZM25.7924 13.6253C25.6946 13.4534 25.5638 13.3024 25.4074 13.1812C25.2511 13.06 25.0723 12.9709 24.8814 12.9191C24.6905 12.8673 24.4912 12.8537 24.295 12.8792C24.0989 12.9047 23.9097 12.9688 23.7384 13.0677C23.5671 13.1666 23.417 13.2984 23.2968 13.4556C23.1767 13.6127 23.0888 13.7921 23.0382 13.9833C22.9876 14.1746 22.9754 14.3739 23.0022 14.5699C23.029 14.7659 23.0943 14.9547 23.1944 15.1253C23.3947 15.467 23.722 15.7156 24.105 15.8169C24.4879 15.9181 24.8954 15.8638 25.2384 15.6657C25.5814 15.4677 25.8322 15.142 25.936 14.7597C26.0398 14.3775 25.9881 13.9697 25.7924 13.6253ZM13.3034 20.3956C13.3642 20.6168 13.4748 20.8211 13.6269 20.9928C13.7789 21.1646 13.9683 21.2993 14.1805 21.3864C14.3926 21.4736 14.622 21.511 14.8509 21.4958C15.0798 21.4806 15.3021 21.4131 15.5009 21.2986C15.7435 21.1583 15.942 20.9529 16.0739 20.7056C16.2057 20.4583 16.2656 20.179 16.2469 19.8993C16.2281 19.6197 16.1313 19.3509 15.9676 19.1235C15.8038 18.896 15.5796 18.719 15.3204 18.6125C15.0611 18.5059 14.7772 18.4742 14.5009 18.5208C14.2245 18.5674 13.9667 18.6905 13.7567 18.8761C13.5468 19.0617 13.393 19.3025 13.3129 19.571C13.2327 19.8396 13.2294 20.1252 13.3034 20.3956ZM25.2434 24.3271C25.0727 24.227 24.8839 24.1617 24.6879 24.1349C24.492 24.1081 24.2926 24.1204 24.1013 24.1709C23.9101 24.2215 23.7307 24.3094 23.5736 24.4295C23.4164 24.5497 23.2846 24.6998 23.1857 24.8711C23.0868 25.0424 23.0228 25.2316 22.9973 25.4278C22.9718 25.6239 22.9853 25.8232 23.0371 26.0141C23.089 26.205 23.1781 26.3838 23.2993 26.5401C23.4205 26.6965 23.5714 26.8273 23.7434 26.9251C24.0877 27.1208 24.4955 27.1725 24.8778 27.0687C25.26 26.9649 25.5857 26.7141 25.7838 26.3711C25.9818 26.0281 26.0362 25.6206 25.9349 25.2377C25.8337 24.8548 25.5851 24.5274 25.2434 24.3271Z"
-                      fill="#929393"
-                    />
+                    <path  d="M22.9934 11.7766C23.4793 11.4961 24.0342 11.3576 24.595 11.3767C25.1557 11.3959 25.6999 11.5718 26.1656 11.8847C26.6313 12.1976 27 12.6348 27.2298 13.1467C27.4595 13.6586 27.5411 14.2246 27.4652 14.7805C27.3894 15.3365 27.1591 15.86 26.8007 16.2916C26.4422 16.7233 25.9699 17.0457 25.4374 17.2224C24.9049 17.3991 24.3334 17.4229 23.7881 17.2911C23.2427 17.1593 22.7452 16.8772 22.3521 16.4768L17.6421 19.1963C17.7156 19.4628 17.7519 19.7308 17.7509 20.0003C17.7509 20.2688 17.7156 20.5396 17.6421 20.8043L22.3521 23.5238C22.8643 23.0045 23.548 22.6894 24.2755 22.6374C25.0031 22.5855 25.7247 22.8002 26.3054 23.2416C26.8861 23.6829 27.2863 24.3206 27.4311 25.0355C27.5759 25.7504 27.4554 26.4936 27.0921 27.1261C26.7277 27.7597 26.1444 28.2384 25.452 28.4724C24.7595 28.7064 24.0054 28.6795 23.3313 28.3968C22.6573 28.1141 22.1096 27.595 21.7912 26.9371C21.4728 26.2792 21.4056 25.5276 21.6021 24.8236L16.8921 22.1033C16.4745 22.5285 15.9399 22.8198 15.3561 22.9401C14.7724 23.0603 14.1661 23.0041 13.6145 22.7785C13.0629 22.553 12.5909 22.1683 12.2587 21.6735C11.9264 21.1788 11.749 20.5963 11.749 20.0003C11.749 19.4044 11.9264 18.8219 12.2587 18.3271C12.5909 17.8323 13.0629 17.4477 13.6145 17.2221C14.1661 16.9965 14.7724 16.9403 15.3561 17.0606C15.9399 17.1808 16.4745 17.4721 16.8921 17.8973L21.6021 15.1778C21.4241 14.5369 21.4642 13.8549 21.716 13.2392C21.9679 12.6236 22.4172 12.109 22.9934 11.7766ZM25.7924 13.6253C25.6946 13.4534 25.5638 13.3024 25.4074 13.1812C25.2511 13.06 25.0723 12.9709 24.8814 12.9191C24.6905 12.8673 24.4912 12.8537 24.295 12.8792C24.0989 12.9047 23.9097 12.9688 23.7384 13.0677C23.5671 13.1666 23.417 13.2984 23.2968 13.4556C23.1767 13.6127 23.0888 13.7921 23.0382 13.9833C22.9876 14.1746 22.9754 14.3739 23.0022 14.5699C23.029 14.7659 23.0943 14.9547 23.1944 15.1253C23.3947 15.467 23.722 15.7156 24.105 15.8169C24.4879 15.9181 24.8954 15.8638 25.2384 15.6657C25.5814 15.4677 25.8322 15.142 25.936 14.7597C26.0398 14.3775 25.9881 13.9697 25.7924 13.6253ZM13.3034 20.3956C13.3642 20.6168 13.4748 20.8211 13.6269 20.9928C13.7789 21.1646 13.9683 21.2993 14.1805 21.3864C14.3926 21.4736 14.622 21.511 14.8509 21.4958C15.0798 21.4806 15.3021 21.4131 15.5009 21.2986C15.7435 21.1583 15.942 20.9529 16.0739 20.7056C16.2057 20.4583 16.2656 20.179 16.2469 19.8993C16.2281 19.6197 16.1313 19.3509 15.9676 19.1235C15.8038 18.896 15.5796 18.719 15.3204 18.6125C15.0611 18.5059 14.7772 18.4742 14.5009 18.5208C14.2245 18.5674 13.9667 18.6905 13.7567 18.8761C13.5468 19.0617 13.393 19.3025 13.3129 19.571C13.2327 19.8396 13.2294 20.1252 13.3034 20.3956ZM25.2434 24.3271C25.0727 24.227 24.8839 24.1617 24.6879 24.1349C24.492 24.1081 24.2926 24.1204 24.1013 24.1709C23.9101 24.2215 23.7307 24.3094 23.5736 24.4295C23.4164 24.5497 23.2846 24.6998 23.1857 24.8711C23.0868 25.0424 23.0228 25.2316 22.9973 25.4278C22.9718 25.6239 22.9853 25.8232 23.0371 26.0141C23.089 26.205 23.1781 26.3838 23.2993 26.5401C23.4205 26.6965 23.5714 26.8273 23.7434 26.9251C24.0877 27.1208 24.4955 27.1725 24.8778 27.0687C25.26 26.9649 25.5857 26.7141 25.7838 26.3711C25.9818 26.0281 26.0362 25.6206 25.9349 25.2377C25.8337 24.8548 25.5851 24.5274 25.2434 24.3271Z" fill="#929393"/>
                   </svg>
                 </span>
                 <span>Partager</span>
-              </a>
+              </div>
               <a href="#" class="flex flex-row gap-3 items-center">
-                <span>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect width="40" height="40" rx="20" fill="#F2F3F7" />
-                    <path
-                      d="M26.7996 14.1675C25.9162 13.2818 24.7453 12.7412 23.4982 12.6434C22.2511 12.5456 21.0102 12.897 19.9996 13.6341C18.9393 12.8455 17.6196 12.4879 16.3062 12.6333C14.9928 12.7788 13.7833 13.4164 12.9212 14.4179C12.0592 15.4194 11.6086 16.7104 11.6602 18.0308C11.7119 19.3512 12.2619 20.603 13.1996 21.5341L18.3746 26.7175C18.8079 27.1439 19.3916 27.383 19.9996 27.383C20.6076 27.383 21.1912 27.1439 21.6246 26.7175L26.7996 21.5341C27.7726 20.5552 28.3187 19.231 28.3187 17.8508C28.3187 16.4706 27.7726 15.1464 26.7996 14.1675ZM25.6246 20.3841L20.4496 25.5591C20.3907 25.6186 20.3206 25.6658 20.2434 25.698C20.1661 25.7302 20.0833 25.7468 19.9996 25.7468C19.9159 25.7468 19.833 25.7302 19.7558 25.698C19.6786 25.6658 19.6085 25.6186 19.5496 25.5591L14.3746 20.3591C13.721 19.6911 13.3551 18.7937 13.3551 17.8591C13.3551 16.9246 13.721 16.0272 14.3746 15.3591C15.0405 14.7016 15.9387 14.3329 16.8746 14.3329C17.8104 14.3329 18.7086 14.7016 19.3746 15.3591C19.452 15.4372 19.5442 15.4992 19.6458 15.5415C19.7473 15.5838 19.8562 15.6056 19.9662 15.6056C20.0763 15.6056 20.1852 15.5838 20.2867 15.5415C20.3883 15.4992 20.4804 15.4372 20.5579 15.3591C21.2239 14.7016 22.1221 14.3329 23.0579 14.3329C23.9938 14.3329 24.8919 14.7016 25.5579 15.3591C26.2204 16.0184 26.5984 16.9109 26.6109 17.8455C26.6233 18.7801 26.2693 19.6824 25.6246 20.3591V20.3841Z"
-                      fill="#929393"
-                    />
-                  </svg>
+                <span class="bg-gray-100 border border-gray-200 size-8 flex justify-center items-center rounded-full md:size-10">
+                  <i class="ki-filled font-normal ki-heart text-lg lg:text-xl"></i>
                 </span>
-                <span>Enrégistrer</span>
+                <span>Favoris</span>
               </a>
             </div>
             <% if (property.summary.price === 0) { %>
-              <div class="mt-10">
-                <span class="text-black font-bold text-4xl">Prix à discuter</span>
+              <div class="lg:text-right lg:mt-10">
+                <span class="text-gray-900 font-semibold text-sm md:text-lg lg:text-3xl">Prix à discuter</span>
               </div>
            
            <% } else { %>
-              <div class="mt-10">
-                <span class="text-black font-bold text-4xl"><%= property.summary.price.toLocaleString('de-DE') %> FCFA</span>
+              <div class="lg:text-right lg:mt-10">
+                <span class="text-gray-900 font-semibold text-sm md:text-lg lg:text-3xl"><%= property.summary.price.toLocaleString('de-DE') %> FCFA</span>
               </div>
            <% } %>
           </div>
         </div>
      
-        <% if (property.media.photos && property.media.photos.length >= 2) { %>
-          <div class="grid grid-cols-4 grid-rows-2 gap-5 my-12 max-h-[50vh]">
+       <% if (property.media.photos && property.media.photos.length >= 2) { %>
+          <div class="grid grid-rows-2 gap-5 my-6 max-h-[50vh] lg:my-12 lg:grid-cols-4">
             <% if (property.media.photos.length === 2) { %>
               <!-- 2 Images Layout -->
               <div class="col-span-3 row-span-2 h-full">
                 <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
               </div>
-              <div class="col-start-4 row-span-1 h-full">
+
+              <div class="col-start-4 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
               </div>
-              <div class="col-start-4 row-start-2 row-span-1 h-full">
+              <div class="col-start-4 row-start-2 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
               </div>
         
@@ -212,13 +205,13 @@
               <div class="col-span-2 row-span-2 h-full">
                 <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
               </div>
-              <div class="col-start-3 row-span-2 h-full">
+              <div class="col-start-3 row-span-2 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
               </div>
-              <div class="col-start-4 row-span-1 h-full">
+              <div class="col-start-4 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
               </div>
-              <div class="col-start-4 row-start-2 row-span-1 h-full">
+              <div class="col-start-4 row-start-2 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[2] %>" class="w-full h-full object-cover rounded-md" alt="Image 3" />
               </div>
         
@@ -227,16 +220,16 @@
               <div class="col-span-2 row-span-2 h-full">
                 <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
               </div>
-              <div class="col-start-3 row-start-1 row-span-1 h-full">
+              <div class="col-start-3 row-start-1 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
               </div>
-              <div class="col-start-3 row-start-2 row-span-1 h-full">
+              <div class="col-start-3 row-start-2 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
               </div>
-              <div class="col-start-4 row-start-1 row-span-1 h-full">
+              <div class="col-start-4 row-start-1 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[2] %>" class="w-full h-full object-cover rounded-md" alt="Image 3" />
               </div>
-              <div class="col-start-4 row-start-2 row-span-1 h-full">
+              <div class="col-start-4 row-start-2 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[3] %>" class="w-full h-full object-cover rounded-md" alt="Image 4" />
               </div>
         
@@ -245,16 +238,16 @@
               <div class="col-span-2 row-span-2 h-full">
                 <img src="assets/media/uploads/<%= property.summary.thumbnail %>" class="w-full h-full object-cover rounded-md" alt="Thumbnail" />
               </div>
-              <div class="col-start-3 row-start-1 row-span-1 h-full">
+              <div class="col-start-3 row-start-1 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[0] %>" class="w-full h-full object-cover rounded-md" alt="Image 1" />
               </div>
-              <div class="col-start-3 row-start-2 row-span-1 h-full">
+              <div class="col-start-3 row-start-2 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[1] %>" class="w-full h-full object-cover rounded-md" alt="Image 2" />
               </div>
-              <div class="col-start-4 row-start-1 row-span-1 h-full">
+              <div class="col-start-4 row-start-1 row-span-1 h-full hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[2] %>" class="w-full h-full object-cover rounded-md" alt="Image 3" />
               </div>
-              <div class="col-start-4 row-start-2 row-span-1 h-full relative overflow-hidden">
+              <div class="col-start-4 row-start-2 row-span-1 h-full relative overflow-hidden hidden lg:block">
                 <img src="assets/media/uploads/<%= property.media.photos[3] %>" class="w-full h-full object-cover rounded-md" alt="Image 4" />
                 <div class="absolute top-0 left-0 w-full h-full bg-[#0000008c] flex items-center justify-center">
                   <span class="p-5 bg-[#FFA200] text-white rounded-full">
@@ -274,15 +267,15 @@
         <% } %>
         
       </div>
-      <div class="px-10 py-6 mb-24">
-        <div class="grid grid-cols-4 gap-9 px-40">
-          <div class="col-span-3">
-            <div class="border-b pb-10">
-              <div class="text-2xl font-bold mb-6">
+      <div class="px-6 py-6 mb-12 md:mb-16 lg:mb-24 md:px-10 ">
+        <div class="grid grid-cols-1 lg:px-30 gap-y-12 lg:grid-cols-4 lg:gap-y-9 lg:gap-x-9">
+          <div class="col-span-3 grid grid-cols-1 gap-4">
+             <div class="p-5 border border-gray-200 bg-[#fafafc] rounded-3xl rounded-xl lg:rounded-3xl  lg:p-10">
+              <div class="text-lg font-semibold text-gray-900 pb-4 mb-6 border-b border-gray-200 lg:text-2xl lg:mb-10">
                 Caractéristiques du bien
               </div>
               
-              <div class="grid grid-cols-3 grid-rows-1 gap-8">
+              <div class="grid grid-cols-1 grid-rows-1 gap-4 lg:grid-cols-3 lg:gap-8">
 
 
                 <% function normalizeIconName(str) { 
@@ -297,30 +290,33 @@
                           const iconName = normalizeIconName(characteristic.nom); 
                       %>
                         <div class="col-span-1 row-span-1 flex gap-3 items-center">
-                          <div class="p-4 rounded-2xl border">
-                            <img class="size-[30px]" src="assets/images/icons/<%= iconName %>.svg" alt="<%= characteristic.nom %>">
+                          <div class="p-3 rounded-2xl border border-gray-300">
+                            <img class="size-[26px]" src="assets/images/icons/<%= iconName %>.svg" alt="<%= characteristic.nom %>">
                           </div>
                           <div>
-                            <div class="text-gray-500 mb-2"><%= characteristic.nom %></div>
-                            <div class="text-xl font-bold"><%= characteristic.valeur %></div>
-                          </div>
+                            <div class="text-gray-500 text-sm"><%= characteristic.nom %></div>
+                            <div class="text-base text-gray-900 font-medium lg:text-lg"><%= characteristic.valeur %></div>
+                          </div> 
                         </div>
                       <% }); %>
+
+
+             
               </div> 
                 
             </div>
-            <div class="my-7 border-b py-10">
-              <div class="text-2xl font-bold mb-6">Description du bien</div>
+          <div class="p-5 border border-gray-200 bg-[#fafafc] rounded-3xl rounded-xl lg:rounded-3xl lg:p-10">
+             <div class="text-lg font-semibold text-gray-900 pb-4 mb-6 border-b border-gray-200 lg:text-2xl lg:mb-10">Description du bien</div>
               <p class="text-gray-500 leading-[35px]">
                 <%= property.description %>
               </p>
             </div>
             
-            <div class="my-7 border-b py-10">
-              <div class="text-2xl font-bold mb-6">
+        <div class="p-5 border border-gray-200 bg-[#fafafc] rounded-xl lg:rounded-3xl  lg:p-10">
+             <div class="text-lg font-semibold text-gray-900 pb-4 mb-6 border-b border-gray-200 lg:text-2xl lg:mb-10">
                 Commodités
               </div>
-              <div class="grid grid-cols-3 gap-4 text-gray-400">
+              <div class="grid grid-cols-1 gap-y-6 gap-x-4 text-gray-400 rounded-xl lg:rounded-3xl lg:grid-cols-3">
                 <% property.amenities.forEach(commodity => { 
                   // Transform the text: lowercase, remove diacritics, replace spaces with dashes
                   const transformedText = commodity
@@ -331,89 +327,61 @@
                     .replace(/['']/g, ''); 
                 %>
                   <div class="col-span-1 flex gap-2 items-center">
-                    <div class="flex items-center justify-center uppercase rounded-full size-[50px] shrink-0 bg-[#F2F3F7] text-primary">
-                      <img class="size-[22px]" src="assets/images/icons/<%= transformedText %>.svg" alt="<%= commodity %>" srcset="">
+                    <div class="flex items-center justify-center uppercase rounded-full size-[40px] shrink-0 bg-[#ececec] text-primary lg:size-[50px]">
+                      <img class="size-[18px] lg:size-[22px]" src="assets/images/icons/<%= transformedText %>.svg" alt="<%= commodity %>" srcset="">
                     </div>
-                    <div><%= commodity %></div>
+                    <div class="text-sm"><%= commodity %></div>
                   </div>
                 <% }); %>
               </div>
             </div>
            
           </div>
-          <div class="col-span-1">
-            <div class="border bg-[#F7F9FF] px-3 py-6 rounded-xl">
-              <div class="text-sm font-bold mb-5">A propos de l'annonceur</div>
-              <div class="flex gap-2 items-center">
-                <div>
-                  <img src="/assets/images/user.png" class="w-[73px] h-[73px]" />
+           <div class="col-span-1">
+            <div class="border border-gray-200 bg-[#F7F9FF] px-6 py-6 rounded-xl"> 
+              <div class="flex gap-2 items-center flex-col">
+                <div class="size-15 border-2 avatar-3 rounded-full avatar flex items-center justify-center">
+                  
+                 <i class="ki-filled ki-user text-2xl"></i>
                 </div>
-                <div>
-                  <div class="font-bold mb-2">Arlene McCoy</div>
-                  <div class="flex gap-1 items-center max-w-fit text-sm">
-                    <span>
-                      <svg
-                        width="23"
-                        height="23"
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6.22102 2.15625C5.84511 2.15625 5.47424 2.29137 5.16518 2.53791L5.12061 2.56019L5.09833 2.58319L2.85224 4.89684L2.87452 4.91841C2.54463 5.21744 2.3109 5.60763 2.20291 6.03958C2.09492 6.47153 2.11754 6.92582 2.26789 7.34491C2.27077 7.35066 2.26502 7.36144 2.26789 7.36719C2.87739 9.11087 4.43564 12.4775 7.47883 15.5207C10.5335 18.5754 13.9447 20.0718 15.6323 20.7316H15.6546C16.0775 20.8714 16.5295 20.8994 16.9664 20.8127C17.4033 20.726 17.8104 20.5278 18.148 20.2371L20.4163 17.9687C21.0115 17.3736 21.0115 16.3401 20.4163 15.7449L17.4968 12.8254L17.4738 12.7801C16.8786 12.185 15.8235 12.185 15.2277 12.7801L13.7902 14.2176C12.7115 13.6991 11.7192 13.0174 10.8483 12.1965C9.67174 11.0731 9.07086 9.78147 8.84949 9.27619L10.287 7.83869C10.8907 7.23494 10.9015 6.23012 10.264 5.63787L10.2863 5.61487L10.2194 5.54803L7.34443 2.58319L7.32214 2.56091L7.27686 2.53791C6.97844 2.29453 6.60609 2.15993 6.22102 2.15625ZM6.22102 3.59375C6.27978 3.59716 6.33548 3.62107 6.37843 3.66131L9.25343 6.60316L9.32099 6.67072C9.31524 6.66497 9.36268 6.74116 9.27571 6.82812L7.47883 8.625L7.14174 8.93981L7.29986 9.38831C7.29986 9.38831 8.12499 11.5985 9.86005 13.2523L10.0175 13.3867C11.6871 14.9112 13.6558 15.7449 13.6558 15.7449L14.105 15.9476L16.239 13.8129C16.3626 13.69 16.3396 13.69 16.4632 13.8129L19.4058 16.7569C19.5294 16.8798 19.5294 16.8353 19.4058 16.9582L17.2042 19.1597C16.8736 19.4436 16.5221 19.5026 16.1045 19.3624C14.4759 18.722 11.3112 17.3319 8.48939 14.5108C5.6453 11.666 4.16036 8.44028 3.61627 6.87412C3.5063 6.58159 3.58464 6.14963 3.84052 5.93041L3.88508 5.88512L6.06433 3.66203C6.1068 3.62183 6.16195 3.59769 6.2203 3.59375H6.22102Z"
-                          fill="#6D7280"
-                        />
-                      </svg>
-                    </span>
-                    <span>+228 93438751</span>
-                  </div>
+                <div class="text-center">
+                  <div class="font-semibold leading-none"><%= propertyOwner?.firstName || 'CIGAFI' %> <%= propertyOwner?.lastName || '' %> </div>
+                   
+                                        
+                    <% if (propertyOwner?.role === 'Admin') { %>
+                      <span class="text-xs text-gray-400" >Equipe CIGAFI</span>
+                    <% } else if (propertyOwner?.role === 'User') { %>
+                      <span class="text-xs text-gray-400" >Agent certifié</span>
+                    <% } %>
                 </div>
               </div>
               <div class="text-sm">
-                <a
-                  href="tel:"
-                  class="border border-black flex gap-1 items-center justify-center w-full rounded-full py-1 mt-4 mb-3"
-                >
+                <a href="tel:"class="text-gray-600 border border-gray-400 flex gap-2 items-center justify-center w-full rounded-full py-3.5 px-2 mt-4 mb-2">
                   <span>Contacter l’agent</span>
-                  <span>
-                    <svg
-                      width="37"
-                      height="37"
-                      viewBox="0 0 37 37"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M24.1236 18.9537L24.1236 12.0611M24.1236 12.0611L17.2061 12.0361M24.1236 12.0611L12.9232 23.2616"
-                        stroke="#204B42"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                  <span> 
+                      <i class="ki-filled ki-arrow-up-right text-lg"></i>
                   </span>
                 </a>
-                <a
-                  href="/reservation-infos"
-                  class="bg-[#FFA200] border border-[#FFA200] text-white flex gap-1 items-center justify-center w-full rounded-full py-1 "
-                >
-                  <span>Faire une réservation</span>
-                  <span>
-                    <svg
-                      width="37"
-                      height="37"
-                      viewBox="0 0 37 37"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M24.1236 18.9537L24.1236 12.0611M24.1236 12.0611L17.2061 12.0361M24.1236 12.0611L12.9232 23.2616"
-                        stroke="#fff"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+               <%  let buttonHref;
+                   let buttonText;
+
+                  if (property.usageType && property.usageType === 'Appartement meublé') {
+                    buttonHref = `/reservation/${property.id}`;
+                    buttonText = 'Réservation';
+                  } else {
+                    buttonHref = `https://wa.me/228${propertyOwner?.phone || '90991070'}`;
+                    buttonText = 'Je veux visiter';
+                  }
+                %>
+
+            <a href="<%= buttonHref %>" class="bg-[#FFA200] border border-[#FFA200] text-white flex gap-2 items-center justify-center w-full rounded-full py-3.5 px-2">
+              <span><%= buttonText %></span>
+              <span>
+                <span> 
+                      <i class="ki-filled ki-arrow-up-right text-lg"></i>
                   </span>
-                </a>
+              </span>
+              </a>
               </div>
             </div>
           </div>

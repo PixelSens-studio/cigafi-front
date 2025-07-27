@@ -19,24 +19,31 @@
         </div>
         <div class="">
           <div class="max-w-fit mx-[auto] flex bg-black rounded-full p-3 text-white">
-            <a class="category-nav py-3 px-6 <%= (!listingCategory || listingCategory === 'habitations-bureaux') ? 'active' : '' %>"
-              href="/a-louer/habitations-bureaux">
-              <p>Habibation et bureaux</p>
+            <a class="category-nav py-2 px-6 text-sm md:py-3 md:text-base <%= (!listingCategory || listingCategory === 'habitations-bureaux') ? 'active' : '' %>"
+              href="/a-louer/habitations-bureaux">Habibation et bureaux
             </a>
-            <a class="category-nav py-3 px-6 <%= listingCategory === 'terrains-urbain' ? 'active' : '' %>"
-              href="/a-louer/terrains-urbain">
-              <p>Terrain urbain</p>
+            <a class="category-nav py-2 px-6 text-sm md:py-3 md:text-base <%= listingCategory === 'terrains-urbain' ? 'active' : '' %>"
+              href="/a-louer/terrains-urbain">Terrain urbain 
             </a>
-            <a class="category-nav py-3 px-6 <%= listingCategory === 'terrains-ruraux' ? 'active' : '' %>"
-              href="/a-louer/terrains-ruraux">
-              <p>Terrain ruraux</p>
+            <a class="category-nav py-2 px-6 text-sm md:py-3 md:text-base <%= listingCategory === 'terrains-ruraux' ? 'active' : '' %>"
+              href="/a-louer/terrains-ruraux"> Terrain ruraux 
             </a>
           </div>
         </div>
       </div>
       <div class="w-full py-4 px-6 md:px-10 lg:py-10">
         <div class="w-full">
-          <form class="grid grid-cols-1 gap-y-4 py-4 border border-gray-300 rounded-2xl bg-[#F9F9F9] px-4 md:grid-cols-2 md:gap-x-6 lg:gap-2 lg:grid-cols-18" method="GET"
+          <div class="hidden flex justify-between px-3 py-3 bg-[#f7f7fa] border border-gray-200 rounded-2xl items-center">
+            <span class="text-gray-500 font-medium">
+              Filter les annonces
+            </span>
+
+            <span class="size-10 bg-gray-200 rounded-lg flex justify-center items-center">
+              <i class="ki-filled font-normal ki-facebook text-xl"></i>
+            </span>
+
+          </div>
+          <form class=" grid grid-cols-1 gap-y-4 py-4 border border-gray-300 rounded-2xl bg-[#F9F9F9] px-4 md:grid-cols-2 md:gap-x-6 lg:gap-2 lg:grid-cols-18" method="GET"
             action="/a-louer/<%= listingCategory %>" id="searchForm">
             <% if (listingCategory==='habitations-bureaux' ) { %>
               <!-- Type de propriété -->
@@ -149,8 +156,8 @@
         </div>
       </div>
    
-      <div class="px-10 py-9 lg:py-12">
-        <div class="grid grid-cols-2 gap-6 lg:grid-cols-4 md:grid-cols-2">
+      <div class="py-4 px-6 md:px-10 lg:py-10">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 md:grid-cols-2">
           <% if (properties.length> 0) { %>
             <% properties.forEach(property=> { %>
               <div class="col-span-1">
@@ -159,22 +166,27 @@
                     <img src="assets/media/uploads/<%= property.summary.thumbnail %>"
                       alt="<%= property.summary.propertyType %>" class="w-full h-full object-cover object-center" />
                   </div>
-                  <div class="py-3 px-3 mt-8">
+                  <div class="py-3 px-3 mt-8 flex flex-col gap-3 justify-between">
+                   <div>
+                                        
                     <div class="text-base font-bold text-black mb-2">
-                      <% if (listingCategory==='habitations-bureaux' ) { %>
-                        <% if (property.summary.city==='Lomé' ) { %>
-                          <%= property.summary.propertyType %> - <%= property.summary.area %>
-                              <% } else { %>
-                                <%= property.summary.propertyType %> - <%= property.summary.city %>
-                                    <% } %>
-                                      <% } else if (listingCategory==='terrains-ruraux' ||
-                                        listingCategory==='terrains-urbain' ) { %>
-                                        <% if (property.summary.city==='Lomé' ) { %>
-                                          <%= property.summary.surface %> - <%= property.summary.area %>
-                                              <% } else { %>
-                                                <%= property.summary.surface %> - <%= property.summary.city %>
-                                                    <% } %>
-                                                      <% } %>
+                      <% if (listingCategory === 'habitations-bureaux') { %>
+                        <% if (property.usageType === 'Appartement meublé' && property.summary.hostName) { %>
+                          <%= property.summary.propertyType %> - <%= property.summary.hostName %>
+                        <% } else { %>
+                          <% if (property.summary.city === 'Lomé') { %>
+                            <%= property.summary.propertyType %> - <%= property.summary.area %>
+                          <% } else { %>
+                            <%= property.summary.propertyType %> - <%= property.summary.city %>
+                          <% } %>
+                        <% } %>
+                      <% } else if (listingCategory === 'terrains-ruraux' || listingCategory === 'terrains-urbain') { %>
+                        <% if (property.summary.city === 'Lomé') { %>
+                          <%= property.summary.surface %> - <%= property.summary.area %>
+                        <% } else { %>
+                          <%= property.summary.surface %> - <%= property.summary.city %>
+                        <% } %>
+                      <% } %>
                     </div>
                     <% let shortDescription='' ; if (listingCategory==='habitations-bureaux' ) { if
                       (property.summary.city==='Lomé' ) { shortDescription=`Location ${property.summary.propertyType} à
@@ -185,30 +197,20 @@
                       if (property.summary.city==='Lomé' ) { shortDescription=`Baille de terrain ${usageTypeDescription}
                       à ${property.summary.area}`; } else { shortDescription=`Baille de terrain ${usageTypeDescription}
                       à ${property.summary.city}`; } } %>
-                      <div class="text-gray-500 mb-6 text-sm">
+                      <div class="text-gray-500 mb-2 text-sm">
                         <%= shortDescription %>
                       </div>
+                   </div>
 
 
                       <div class="flex justify-between items-center">
                         <p>
                           <span class="text-black text-xl font-semibold">
-                            <% if (property.summary.price===0) { %>
+                           <% if (property.summary.price === 0) { %>
                               Prix à discuter
-                              <% } else if (listingCategory==='habitations-bureaux' ) { %>
-                                <% if (property.summary.price.daily===0) { %>
-                                  Prix à discuter
-                                  <% } else if (property.usageType==='Appartement meublé' ) { %>
-                                    <%= property.summary.price.daily.toLocaleString('de-DE') %> FCFA
-                                      <span class="text-gray-500">/Jour</span>
-                                      <% } else { %>
-                                        <%= property.summary.price.toLocaleString('de-DE') %> FCFA
-                                          <span class="text-gray-500">/Mois</span>
-                                          <% } %>
-                                            <% } else if (listingCategory==='terrains-ruraux' ||
-                                              listingCategory==='terrains-urbain' ) { %>
-                                              <%= property.summary.price.toLocaleString('de-DE') %> FCFA
-                                                <% } %>
+                            <% } else { %>
+                              <%= property.summary.price.toLocaleString('de-DE') %> FCFA
+                            <% } %>
                           </span>
 
                         </p>
@@ -380,10 +382,5 @@
  
 </body>
 <script src="assets/js/app/script.js"></script>
- <div class="bg-white flex gap-3 p-4 absolute rounded-full relative max-w-fit hidden">
-                    <a href="#" class="bg-gray-100 size-12 flex justify-center items-center rounded-full"><i class="ki-duotone ki-whatsapp text-2xl"></i></a>
-                    <a href="#" class="bg-gray-100 size-12 flex justify-center items-center rounded-full"><i class="ki-duotone ki-facebook text-2xl"></i></a>
-                    <a href="#" class="bg-gray-100 size-12 flex justify-center items-center rounded-full"><i class="ki-duotone ki-twitter text- 2xl"></i></a>
-                    <a href="#" class="bg-gray-100 size-12 flex justify-center items-center rounded-full"><i class="ki-duotone ki-copy text-2xl"></i></a>
-                 </div>
+ 
 </html>

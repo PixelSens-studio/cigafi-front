@@ -30,8 +30,7 @@ export const addNewLocationGet = async (req, res) => {
 
 
   const userData = req.user;
-  const user = userData.user;
-  console.log(user);
+  const user = userData.user; 
 
     const listingMetadata = {
       propertiesTypeMeuble: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens-meuble`).then(res => res.json()),
@@ -39,6 +38,7 @@ export const addNewLocationGet = async (req, res) => {
       villes: await fetch(`${Backend_API}/api/listing-metadata/villes`).then(res => res.json()),
       quartiers: await fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
     };
+    console.log("Listing Metadata:", listingMetadata);
 
   res.render('adminDashboard/add-new-location', { title: "Krypton - S'enrégistrer", user, listingMetadata, metadata  });
 };
@@ -48,36 +48,32 @@ export const addNewLocationPost = async (req, res) => {
   try {
     const userData = req.user;
     const user = userData.user;
-
+ const body = req.body;
+ console.log("Request body:", body);
     // Check user status
     if (!user.status || user.status !== "active") {
       return res.status(403).json({ success: false, message: "Votre compte n'est pas actif. Veuillez contacter l'administrateur." });
     }
-
-    const body = req.body;
+  
     const mainImage = req.files?.mainImage?.[0]?.filename || body.mainImage || null;
     const otherImages = req.files?.otherImages?.map(f => f.filename) || body.otherImages || [];
-    console.log(body)
+
     // Determine postedByModel
-    let postedByModel = user.role === "superAdmin" ? "Admin" : user.role.charAt(0).toUpperCase() + user.role.slice(1);
-
-
-
+    let postedByModel = body.user_role === "superAdmin" ? "Admin" : user.role.charAt(0).toUpperCase() + user.role.slice(1);
 
     // Compose summary
     let summary = {};
+
     if (body.categorie_annonce === "habitations-bureaux") {
       summary = {
-        propertyType: body.type_bien,
+        propertyType: body.usage_type === 'Habitation' || body.usage_type === 'Bureaux ou Magasin' ? body.type_bien_habitations : body.type_bien_meuble,
         thumbnail: mainImage,
         area: body.quartier,
         city: body.ville,
       };
       if (body.usage_type === "Appartement meublé") {
-        summary.price = {
-          daily: Number(body.prix_journalier) || 0,
-          Monthly: Number(body.prix_mensuel) || 0
-        };
+        summary.price = Number(body.prix_journalier)
+        summary.hostName = body.hostName;
       } else {
         summary.price = Number(body.loyer_mensuel) || 0;
       }
@@ -94,16 +90,16 @@ export const addNewLocationPost = async (req, res) => {
       };
     }
 
+    let usageType;
 
-    let usageType 
-
-     if (body.categorie_annonce === "habitations-bureaux") {
-        usageType = body.usage_type; // Use = for assignment
-      } else if (body.categorie_annonce === "terrains-ruraux" ||
-        body.categorie_annonce === "terrains-urbain") {
-        usageType = body.caracteristique_type_usage; // Use = for assignment
-      }
-  
+    if (body.categorie_annonce === "habitations-bureaux") {
+      usageType = body.usage_type;
+    } else if (
+      body.categorie_annonce === "terrains-ruraux" ||
+      body.categorie_annonce === "terrains-urbain"
+    ) {
+      usageType = body.caracteristique_type_usage;
+    }
 
     // Compose characteristics
     let characteristics = [];
@@ -144,7 +140,7 @@ export const addNewLocationPost = async (req, res) => {
           caution: Number(body.caution_meuble) || 0
         };
       }
-    } 
+    }
 
     // Compose rules
     let rules = undefined;
@@ -187,12 +183,13 @@ export const addNewLocationPost = async (req, res) => {
     const response = await fetch(`${Backend_API}/api/create-annonce-location`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload)
     });
 
     const result = await response.json();
+    console.log("Font from server", result);
 
     if (!response.ok) {
       console.log('Error response from backend:', result);
@@ -229,8 +226,7 @@ export const addNewVenteGet = async (req, res) => {
 
 
   const userData = req.user;
-  const user = userData.user;
-  console.log(user);
+  const user = userData.user; 
 
     const listingMetadata = {
       propertiesType: await fetch(`${Backend_API}/api/listing-metadata/type-de-biens-vente`).then(res => res.json()),
@@ -238,7 +234,7 @@ export const addNewVenteGet = async (req, res) => {
       quartiers: await fetch(`${Backend_API}/api/listing-metadata/quartiers`).then(res => res.json())
     };
 
-  res.render('adminDashboard/add-new-vente', { title: "Krypton - S'enrégistrer", user, listingMetadata, metadata  });
+  res.render('adminDashboard/add-new-vente', { user, listingMetadata, metadata  });
 };
 
 
@@ -380,15 +376,16 @@ export const addNewVentePost = async (req, res) => {
 
 
 export const usersListGet = (req, res) => {
-  // const userData = req.user;
-  // const user = userData.user;
-  const user = {
-  firstName: 'kokoutse',
-  lastName: 'nagbe',
-  phone: '92035070',
-  email: 'nagbekokoutse@gmail.comv'
-};
-  res.render('adminDashboard/users-list', { title: "Krypton - S'enrégistrer", user });
+    const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Création d'annonce",
+    pageSubtitle: "Créez une nouvelle annonce de location",
+  };
+
+
+  const userData = req.user;
+  const user = userData.user;
+  res.render('adminDashboard/users-list', {metadata, user });
 };
 
 
@@ -484,15 +481,14 @@ export const propertiesListGet = async (req, res) => {
 };
 
 export const reservationsListGet = (req, res) => {
-  // const userData = req.user;
-  // const user = userData.user;
-  const user = {
-  firstName: 'kokoutse',
-  lastName: 'nagbe',
-  phone: '92035070',
-  email: 'nagbekokoutse@gmail.comv'
-};
-  res.render('adminDashboard/reservations', { title: "Krypton - S'enrégistrer", user });
+  const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Tableau de bord",
+    pageSubtitle: "Bienvenue dans votre tableau de bord administrateur",
+  };
+  const userData = req.user || {};
+  const user = userData ? userData.user : null;
+  res.render('adminDashboard/reservations', {user, metadata });
 };
 
 export const contactMessagesListGet = (req, res) => {
@@ -521,15 +517,17 @@ export const demndeRechercheListGet = (req, res) => {
 };
 
 export const parametresGet = (req, res) => {
-  // const userData = req.user;
-  // const user = userData.user;
-  const user = {
-  firstName: 'kokoutse',
-  lastName: 'nagbe',
-  phone: '92035070',
-  email: 'nagbekokoutse@gmail.comv'
-};
-  res.render('adminDashboard/parametres', { title: "Krypton - S'enrégistrer", user });
+
+    const userData = req.user || {};
+    const user = userData ? userData.user : null;
+
+    const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Tableau de bord",
+    pageSubtitle: "Bienvenue dans votre tableau de bord administrateur",
+  };
+
+  res.render('adminDashboard/parametres', {metadata, user });
 };
 
 
@@ -546,28 +544,29 @@ export const comptesAdminGet = (req, res) => {
 };
 
 export const transactionsGet = (req, res) => {
-  // const userData = req.user;
-  // const user = userData.user;
-  const user = {
-  firstName: 'kokoutse',
-  lastName: 'nagbe',
-  phone: '92035070',
-  email: 'nagbekokoutse@gmail.comv'
-};
-  res.render('adminDashboard/transactions', { title: "Krypton - S'enrégistrer", user });
+ const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Liste des transactions",
+    pageSubtitle: "Bienvenue dans votre tableau de bord administrateur",
+  };
+  const userData = req.user || {};
+  const user = userData ? userData.user : null;
+  res.render('adminDashboard/transactions', {metadata, user });
 };
 
 
 export const userDetailsGet = (req, res) => {
-  // const userData = req.user;
-  // const user = userData.user;
-  const user = {
-  firstName: 'kokoutse',
-  lastName: 'nagbe',
-  phone: '92035070',
-  email: 'nagbekokoutse@gmail.comv'
-};
-  res.render('adminDashboard/user-profile-details', { title: "Krypton - S'enrégistrer", user });
+   const metadata = { 
+    title: "Espace admin | CIGAFI",
+    pageTitle: "Création d'annonce",
+    pageSubtitle: "Créez une nouvelle annonce de location",
+  };
+
+
+  const userData = req.user;
+  const user = userData.user;;
+
+  res.render('adminDashboard/user-profile-details', {metadata, user });
 };
 
 export const gestionBiensGet = (req, res) => {

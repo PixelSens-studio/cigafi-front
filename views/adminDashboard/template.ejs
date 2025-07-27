@@ -10,12 +10,20 @@
     <!-- Main -->
     <main class="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]" data-scrollable="true" data-scrollable-height="false|lg:auto" data-scrollable-offset="40px" role="content">
      <!-- Toolbar -->
-     <div class="pb-5">
-      <!-- Container -->
-      <%- include('./partials/content_header') %>
-    
-      <!-- End of Container -->
-     </div>
+       <div class="pb-5">
+          <!-- Container -->
+          <div class="container-fixed mb-10">
+            <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
+
+               <%- include('./partials/content_header') %>
+              <div class="flex items-center flex-wrap">
+ 
+              </div>
+            </div>
+          </div>
+
+          <!-- End of Container -->
+        </div>
      <!-- End of Toolbar -->
      <!-- Container -->
      <div class="container-fixed">

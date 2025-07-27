@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-
+import { FedaPay, Transaction } from 'fedapay';
+import crypto from 'crypto';
 dotenv.config();
 const Backend_API = process.env.BACKEND_API_ROOT;
 
@@ -45,7 +46,7 @@ export const homeGet = async (req, res) => {
     const properties = result?.data || [];
     const currentPage = result?.currentPage || 1;
     const totalPages = result?.totalPages || 1;
-
+console.log("Properties:", properties);
     // Fetch metadata
     const [propertiesType, villes, quartiers] = await Promise.all([
       fetch(`${Backend_API}/api/listing-metadata/type-de-biens`).then(res => res.json()),
@@ -205,11 +206,8 @@ export const locationsGet = async (req, res) => {
 export const locationsByIdGet = async (req, res) => {
   try {
     // Get both listingCategory and slug from URL
-    const { slug } = req.params;
-
-    // Extract the ID from the slug (last part after the last dash)
-    const propertyId = slug.split('-').pop();
-    console.log("Property ID:", propertyId);
+    const { slug } = req.params; 
+    const propertyId = slug.split('-').pop(); 
 
     // Fetch property details
     const propertyResponse = await fetch(`${Backend_API}/api/locations/${propertyId}`, {
@@ -224,14 +222,13 @@ export const locationsByIdGet = async (req, res) => {
     }
 
     const propertyResult = await propertyResponse.json();
-    const property = propertyResult?.data || null;
-    console.log("Property Details:", property);
-
-    
+    const property = propertyResult?.data?.annonce || null;
+    const propertyOwner = propertyResult?.data?.owner || null; 
 
     res.render('mainPages/details-propriete', {
       title: "CIGAFI - Détail propriété",
       property,
+      propertyOwner
      
     });
 
@@ -252,7 +249,7 @@ export const getAllAnnoncesVentes = async (req, res) => {
   // Category conversion mapping
   const categoryMap = {
     'terrain-urbain': 'Terrain urbain',
-    'terrain-rural': 'Terrain rural', // Adjusted for correct spelling (was 'terrain-ruraul')
+    'terrain-rural': 'Terrain rural', 
     'maison-et-immeuble': 'Villas et autres constructions'
   };
 
@@ -377,14 +374,17 @@ export const annonceVenteByIdGet = async (req, res) => {
     }
 
     const propertyResult = await propertyResponse.json();
-    const property = propertyResult?.data || null;
-    console.log("Property Details:", property);
+    const property = propertyResult?.data?.annonce || null;
+    const propertyOwner = propertyResult?.data?.owner || null;
+  
+
 
     
 
     res.render('mainPages/details-vente', {
       title: "CIGAFI - Détail propriété",
-      property,
+       property,
+      propertyOwner
      
     });
 
@@ -505,25 +505,102 @@ export const signUpGet = async (req, res) => {
   }
 };
 
-
-
 export const requeteGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/requete', { title: "CIGAFI - Nos productions" });
 };
 
-export const reservationInfoGet = (req, res) => {
-  console.log(req.body)
-  res.render('mainPages/reservation-info', { title: "CIGAFI - Nos productions" });
+export const reservationGet = async (req, res) => {
+  const { propertyId } = req.params; 
+  try {
+    const response = await fetch(`${Backend_API}/api/annonce/${propertyId}/summary`);
+    if (!response.ok) {
+      throw new Error(`Erreur API: ${response.statusText}`);
+    }
+    const propertyResult = await response.json();
+    const listingSummary = propertyResult?.data|| null; 
+    console.log(listingSummary)
+
+
+    res.render('mainPages/reservation', {
+      title: "CIGAFI - Nos productions",
+      listingSummary
+    });
+  } catch (error) {
+    console.error('Erreur lors du chargement des infos réservation:', error.message);
+    res.status(500).render('error', {
+      message: 'Erreur serveur. Veuillez réessayer plus tard.',
+      error: { status: 500 }
+    });
+  }
 };
 
-export const reservationPayGet = (req, res) => {
-  console.log(req.body)
-  res.render('mainPages/reservation-pay-mm', { title: "CIGAFI - Nos productions" });
-};
 
 export const ressourceDetailsGet = (req, res) => {
   console.log(req.body)
   res.render('mainPages/ressource-details', { title: "CIGAFI - Nos productions" });
 };
+
+
+export const fedapayWebhook = async (req, res) => {
+    const endpointSecret = process.env.FEDAPAY_WEBHOOK_SECRET;
+    const signature = req.headers['x-fedapay-signature'];
+    const payload = JSON.stringify(req.body);
+
+    try {
+  
+        const computedSignature = crypto
+            .createHmac('sha256', endpointSecret)
+            .update(payload)
+            .digest('hex');
+
+        if (signature !== computedSignature) {
+            console.error('Invalid webhook signature');
+            return res.status(400).json({ success: false, message: 'Invalid webhook signature' });
+        }
+
+        const event = req.body;
+        console.log('webhook: Response Event:', event)
+        // switch (event.name) {
+        //     case 'transaction.approved':
+        //         const transactionId = event.entity.id;
+        //         const bookingId = event.entity.metadata?.booking_id;
+
+        //         const reservation = await Reservation.findByIdAndUpdate(
+        //             bookingId,
+        //             { status: 'confirmed', fedapayTransactionStatus: 'approved' },
+        //             { new: true }
+        //         );
+
+        //         if (!reservation) {
+        //             console.error(`Reservation not found for booking ID: ${bookingId}`);
+        //             return res.status(404).json({ success: false, message: 'Reservation not found' });
+        //         }
+
+        //         console.log(`Transaction ${transactionId} approved for booking ${bookingId}`);
+        //         break;
+
+        //     case 'transaction.declined':
+        //     case 'transaction.canceled':
+        //         const failedBookingId = event.entity.metadata?.booking_id;
+        //         await Reservation.findByIdAndUpdate(
+        //             failedBookingId,
+        //             { status: 'failed', fedapayTransactionStatus: event.entity.status },
+        //             { new: true }
+        //         );
+        //         console.log(`Transaction ${event.entity.id} ${event.entity.status} for booking ${failedBookingId}`);
+        //         break;
+
+        //     default:
+        //         console.log(`Unhandled event: ${event.name}`);
+        // }
+
+        res.status(200).json({ success: true, message: 'Webhook processed' });
+    } catch (error) {
+        console.error('Webhook error:', error.message);
+        res.status(400).json({ success: false, message: 'Invalid webhook signature or data' });
+    }
+};
+
+
 

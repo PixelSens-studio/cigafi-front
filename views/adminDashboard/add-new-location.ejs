@@ -49,7 +49,7 @@
               <i class="ki-outline ki-black-left rtl:transform rtl:rotate-180"></i>
               Retours aux annonces
             </a>
-         <div class="flex grow gap-5 lg:gap-7.5">
+             <div class="flex grow gap-5 lg:gap-7.5">
               <form class="flex grow gap-5 lg:gap-7.5" id="add-property-form" action="#" method="post" enctype="multipart/form-data">
                 <div class="flex flex-col items-stretch grow gap-5 lg:gap-7.5 " id="step-1">
                   <div class="card pb-2.5">
@@ -87,18 +87,51 @@
 </div>
 
 <!-- Select "Type de bien" -->
-<div class="w-full" id="type_bien">
+<div class="w-full" id="type_bien_meuble_div">
   <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-    <label class="form-label flex items-center gap-1 max-w-56" for="type_bien_select">Type de bien</label>
+    <label class="form-label flex items-center gap-1 max-w-56" for="type_bien_meuble_select">Type de bien</label>
     <div class="flex flex-col w-full">
-      <select class="select" name="type_bien" id="type_bien_select">
+      <select class="select" name="type_bien_meuble" id="type_bien_meuble_select">
         <option value="">Sélectionner</option>
-        <!-- Options générées dynamiquement -->
+         <% listingMetadata.propertiesTypeMeuble.data.forEach(propertiesTypeMeuble=> { %>
+                                <option value="<%= propertiesTypeMeuble %>">
+                                  <%= propertiesTypeMeuble %>
+                                </option>
+                                <% }); %>
       </select>
     </div>
   </div>
 </div>
 
+
+<!-- Select "Type de bien" -->
+<div class="w-full" id="type_bien_habitations_div">
+  <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+    <label class="form-label flex items-center gap-1 max-w-56" for="type_bien_habitations_select">Type de bien</label>
+    <div class="flex flex-col w-full">
+      <select class="select" name="type_bien_habitations" id="type_bien_habitations_select">
+        <option value="">Sélectionner</option>
+         <% listingMetadata.propertiesTypeHabitation.data.forEach(propertiesTypeHabitation=> { %>
+                                <option value="<%= propertiesTypeHabitation %>">
+                                  <%= propertiesTypeHabitation %>
+                                </option>
+                                <% }); %>
+      </select>
+    </div>
+  </div>
+</div>
+  
+
+
+
+                      <div class="w-full" id="hostName_wrapper">
+                      <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                        <label class="form-label flex items-center gap-1 max-w-56" for="hostName">Nom de l'établissement/Résidence</label>
+                        <div class="flex flex-col w-full">
+                          <input class="input" id="hostName" name="hostName" placeholder="" type="text" />
+                        </div>
+                      </div>
+                    </div>
 
                       <div class="w-full">
                         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
@@ -112,6 +145,10 @@
                           </div>
                         </div>
                       </div>
+
+                 
+
+
                     </div>
                   </div>
                   <div class="card">
@@ -663,19 +700,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-                        <span class="form-label max-w-56 w-full">Prix mensuel</span>
-                        <div class="grow min-w-48">
-                          <div class="flex flex-col w-full input-wraper">
-                            <div class="input-group">
-                              <input class="input" name="prix_mensuel" placeholder="0" type="number" min="0" step="1">
-                              <span
-                                class="btn bg-gray-300 text-gray-700 border-gray-400 rounded-l-none disabled">FCFA</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      </div> 
                       <div class="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
                         <span class="form-label max-w-56 w-full">Caution</span>
                         <div class="grow min-w-48">
@@ -891,6 +916,7 @@
                     </div>
                   </div>
                 </div> 
+                <input id="user_role" class="hidden" name="user_role" placeholder="0" type="text" value="<%=user.role %>">
               </form>
 
             </div>
@@ -1083,8 +1109,8 @@
             </p>
           </div>
           <div class="flex justify-center mb-5 gap-2.5">
-              <button class="btn bg-kr-primary justify-center btn-lg text-white w-1/2 grow close-modal" data-modal-dismiss="true">Fermer</button>
-               <button class="btn bg-danger justify-center btn-lg text-white w-1/2 grow redirect-modal" data-modal-dismiss="true">Voir l'annonce</button>
+              <button class="btn bg-kr-primary justify-center btn-lg text-white w-1/2 grow close-btn" data-modal-dismiss="true">Fermer</button>
+               <button class="btn bg-danger justify-center btn-lg text-white w-1/2 grow redirect-btn" data-modal-dismiss="true">Voir l'annonce</button>
           </div>
         </div>
       </div>
@@ -1117,7 +1143,7 @@
             </p>
           </div>
           <div class="flex justify-center mb-5">
-            <button class="btn bg-danger justify-center btn-lg text-white grow" data-modal-dismiss="true">
+            <button class="btn error-close-btn bg-danger justify-center btn-lg text-white grow" data-modal-dismiss="true">
               Fermer
             </button>
           </div>
@@ -1125,43 +1151,7 @@
       </div>
     </div>
   </div>
-  <!-- End of Page -->
-<script>
-  // Données injectées depuis le serveur (doivent être des tableaux)
-  const typeBienData = {
-    default: <%- JSON.stringify(listingMetadata.propertiesTypeHabitation?.data || []) %>,
-    meuble: <%- JSON.stringify(listingMetadata.propertiesTypeMeuble?.data || []) %>
-  };
 
-  const usageSelect = document.getElementById("usage_type_select");
-  const typeBienSelect = document.getElementById("type_bien_select");
-
-  function updateTypeBienOptions() {
-    const selectedUsage = usageSelect.value;
-    let options = typeBienData.default;
-
-    if (selectedUsage === "Appartement meublé") {
-      options = typeBienData.meuble;
-    }
-
-    // Réinitialiser les options
-    typeBienSelect.innerHTML = '<option value="">Sélectionner</option>';
-
-    // Remplir les nouvelles options (si tableau valide)
-    if (Array.isArray(options)) {
-      options.forEach(type => {
-        const opt = document.createElement("option");
-        opt.value = type;
-        opt.textContent = type;
-        typeBienSelect.appendChild(opt);
-      });
-    }
-  }
-
-  usageSelect.addEventListener("change", updateTypeBienOptions);
-
-  document.addEventListener("DOMContentLoaded", updateTypeBienOptions);
-</script>
 
 
 

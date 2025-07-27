@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
+import { FedaPay } from "fedapay";
 import fs from 'fs';
 
 import mainRoutes from "./routes/main.routes.js";

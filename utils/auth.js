@@ -31,7 +31,7 @@ export default async function auth(req, res, next) {
 
         if (!userData.user.isVerified) {
             return res.status(401).redirect('/auth/registration-validation');
-        }
+        } 
 
         req.user = userData;
         next();

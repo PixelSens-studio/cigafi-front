@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- Elements ---
   const form = document.getElementById('add-property-form');
+  const userRoleSelect = document.getElementById('user_role').value;
+  const userRole = userRoleSelect === "superAdmin" ? "admin" : userRoleSelect.toLowerCase();
+  console.log(`User role: ${userRole}`);
   const elements = {
     step1: document.getElementById('step-1'),
     step2: document.getElementById('step-2'),
     btnNext: document.getElementById('btnNext'),
     btnPrevious: document.getElementById('previous'),
     btnSubmit: document.getElementById('submit'),
-    typeBienDiv: document.getElementById('type_bien'),
-    typeBienSelect: document.getElementById('type_bien_select'),
+    typeBienMeubleDiv: document.getElementById('type_bien_meuble_div'),
+    typeBienHabitationsDiv: document.getElementById('type_bien_habitations_div'),
+    typeBienMeubleSelect: document.getElementById('type_bien_meuble_select'),
+    typeBienHabitationsSelect: document.getElementById('type_bien_habitations_select'),
+    hostNameWrapper: document.getElementById('hostName_wrapper'),
     prixNonMeuble: document.getElementById('prix_nonMeuble'),
     prixBienMeuble: document.getElementById('prix_bienMeuble'),
     prixTerrain: document.getElementById('prix_terrain'),
@@ -23,12 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     quartierWrapper: document.getElementById('quartier'),
   };
 
-  // --- 1. Dynamic Inputs Display ---
+  // --- Dynamic Inputs Display ---
   const updateDynamicFields = () => {
     const { 
       categorieSelect, 
-      typeBienSelect, 
-      typeBienDiv, 
+      usageType, 
+      typeBienMeubleDiv, 
+      typeBienHabitationsDiv, 
+      hostNameWrapper, 
       prixNonMeuble, 
       prixBienMeuble, 
       prixTerrain, 
@@ -37,72 +45,84 @@ document.addEventListener('DOMContentLoaded', () => {
       commoditesHabitations, 
       commoditesTerrain, 
       rules, 
-      usageType
+      villeSelect, 
+      quartierWrapper 
     } = elements;
-    
-    const cat = categorieSelect.value;
-    const typeBien = typeBienSelect.value.toLowerCase();
-    const usage = usageType.querySelector('#usage_type_select').value;
 
-    // Default visibility
+    const cat = categorieSelect.value;
+    const usage = usageType.querySelector('#usage_type_select').value;
+    const selectedVille = villeSelect.value;
+
+    // Default visibility (all hidden initially)
     const visibility = {
-      typeBienDiv: true,
-      prixNonMeuble: true,
-      prixBienMeuble: false,
-      prixTerrain: false,
-      caracteristiquesHabitations: true,
+      usageType: false,
+      typeBienHabitationsDiv: false,
+      typeBienMeubleDiv: false,
+      hostNameWrapper: false,
+      quartierWrapper: true,
       caracteristiquesTerrain: false,
-      commoditesHabitations: true,
       commoditesTerrain: false,
-      rules: true, 
-      usageType: true
+      prixTerrain: false,
+      prixBienMeuble: false,
+      caracteristiquesHabitations: true,
+      commoditesHabitations: true,
+      prixNonMeuble: true,
+      rules: true,
     };
 
-    if (cat === 'terrains-urbain' || cat === 'terrains-ruraux') {
-      Object.assign(visibility, {
-        typeBienDiv: false,
-        prixNonMeuble: false,
-        prixBienMeuble: false,
-        prixTerrain: true,
-        caracteristiquesHabitations: false,
-        commoditesHabitations: false,
-        rules: false,
-        caracteristiquesTerrain: true,
-        commoditesTerrain: true, 
-        usageType: false
-      });
-    } else if (usage === 'Appartement meublé') {
-      Object.assign(visibility, {
-        prixNonMeuble: false,
-        prixBienMeuble: true,
-        prixTerrain: false,
-        usageType: true
-      });
-    } else if (cat === 'habitations-bureaux') {
+    // Logic for showing/hiding fields
+    if (cat === 'habitations-bureaux') {
       visibility.usageType = true;
-      visibility.prixNonMeuble = true;
+      
+      if (usage === 'Appartement meublé') {
+        visibility.typeBienMeubleDiv = true;
+        visibility.hostNameWrapper = true;
+        visibility.prixBienMeuble = true;
+        visibility.prixNonMeuble = false;
+        visibility.caracteristiquesHabitations = true;
+        visibility.commoditesHabitations = true;
+        visibility.rules = true;
+      } else if (usage === 'Habitation' || usage === 'Bureaux ou Magasin') {
+        visibility.typeBienHabitationsDiv = true;
+        visibility.prixNonMeuble = true;
+        visibility.prixBienMeuble = false;
+        visibility.caracteristiquesHabitations = true;
+        visibility.commoditesHabitations = true;
+        visibility.rules = true;
+      }
+    } else if (cat === 'terrains-urbain' || cat === 'terrains-ruraux') {
+      visibility.usageType = false;
+      visibility.typeBienHabitationsDiv = false;
+      visibility.typeBienMeubleDiv = false;
+      visibility.hostNameWrapper = false;
       visibility.prixBienMeuble = false;
-      visibility.prixTerrain = false;
-    } else {
-      visibility.commoditesTerrain = false;
-      visibility.caracteristiquesTerrain = false;
-      visibility.prixTerrain = false; 
-      visibility.prixNonMeuble = true;
-      visibility.prixBienMeuble = false;
-      usageType: true;
+      visibility.prixNonMeuble = false;
+      visibility.caracteristiquesHabitations = false;
+      visibility.commoditesHabitations = false;
+      visibility.prixTerrain = true;
+      visibility.caracteristiquesTerrain = true;
+      visibility.commoditesTerrain = true;
+      visibility.rules = false;
     }
 
+    // Hide quartierWrapper if ville is not Lomé
+    if (selectedVille !== 'Lomé') {
+      visibility.quartierWrapper = false;
+    }
+
+    // Apply visibility
     Object.entries(visibility).forEach(([key, isVisible]) => {
       elements[key].classList.toggle('hidden', !isVisible);
     });
   };
 
+  // Event listeners
   elements.categorieSelect.addEventListener('change', updateDynamicFields);
-  elements.typeBienSelect.addEventListener('change', updateDynamicFields);
   elements.usageType.querySelector('#usage_type_select').addEventListener('change', updateDynamicFields);
+  elements.villeSelect.addEventListener('change', updateDynamicFields);
 
-  // Call once on page load to set initial state
-  updateDynamicFields();
+  // Initial call
+  updateDynamicFields(); 
 
   // --- 2. Step 1 Validation ---
   const showError = (input, message, groupWrap = false) => {
@@ -143,14 +163,44 @@ document.addEventListener('DOMContentLoaded', () => {
     clearErrors();
     let valid = true;
 
+    // General validation for all inputs except specific cases
     elements.step1.querySelectorAll('input, select, textarea').forEach(input => {
-      if (!isVisible(input) || input.closest('#rules') || (input.type === 'checkbox' && input.closest('#commodites_terrain, #commodites_habitations'))) return;
+      if (!isVisible(input) || input.closest('#rules') || input.id === 'hostName' || (input.type === 'checkbox' && input.closest('#commodites_terrain, #commodites_habitations'))) return;
       if ((input.type === 'checkbox' && !input.checked) || (input.type !== 'checkbox' && !input.value.trim())) {
         showError(input, 'Ce champ est requis');
         valid = false;
       }
     });
 
+    // Specific validation for prix_nonMeuble inputs
+    if (isVisible(elements.prixNonMeuble)) {
+      ['loyer_mensuel', 'avance', 'caution'].forEach(name => {
+        const input = elements.prixNonMeuble.querySelector(`input[name="${name}"]`);
+        if (input && isVisible(input)) {
+          const value = input.value.trim();
+          if (!value || parseFloat(value) === 0) {
+            showError(input, 'Ce champ ne peut pas être vide ou égal à 0');
+            valid = false;
+          }
+        }
+      });
+    }
+
+    // Specific validation for prix_bienMeuble inputs
+    if (isVisible(elements.prixBienMeuble)) {
+      ['prix_journalier', 'caution_meuble'].forEach(name => {
+        const input = elements.prixBienMeuble.querySelector(`input[name="${name}"]`);
+        if (input && isVisible(input)) {
+          const value = input.value.trim();
+          if (!value || parseFloat(value) === 0) {
+            showError(input, 'Ce champ ne peut pas être vide ou égal à 0');
+            valid = false;
+          }
+        }
+      });
+    }
+
+    // Validation for commodites groups
     [elements.commoditesHabitations, elements.commoditesTerrain].forEach(group => {
       if (isVisible(group) && !group.querySelectorAll('input[type="checkbox"]:checked').length) {
         showError(group.querySelector('input[type="checkbox"]'), 'Veuillez sélectionner au moins une commodité');
@@ -386,20 +436,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch('/admin/add-new-location', { method: 'POST', body: formData });
-      const data = await res.json().catch(() => null);
-      console.log('Server response:', data);
-
-      const modalId = res.ok ? 'submission_succes' : 'submission_error';
+      const res = await fetch(`/${userRole}/add-new-location`, { method: 'POST', body: formData });
+      const data = await res.json().catch(() => null);  
+      console.log('Submission response:', data);
+      const modalId = data.success? 'submission_succes' : 'submission_error';
       showModal(modalId);
 
       submitButton.disabled = false;
       submitButton.querySelector('.form-spinner')?.remove();
 
       const modal = document.getElementById(modalId);
-      if (modal && res.ok) {
-        const closeBtn = modal.querySelector('.close-modal');
-        const redirectBtn = modal.querySelector('.redirect-modal');
+      if (modal && data.success) {
+        const closeBtn = modal.querySelector('.close-btn');
+        const redirectBtn = modal.querySelector('.redirect-btn');
 
         if (closeBtn) {
             closeBtn.onclick = () => {
@@ -409,11 +458,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (redirectBtn) {
           redirectBtn.onclick = () => {
-            window.location.href = '/admin/liste-annonces';
+            window.location.href = `/${userRole}/annonces`;
           };
         }
       } else if (modal) {
-        const btn = modal.querySelector('button');
+        const btn = modal.querySelector('.error-close-btn');
         if (btn) {
           btn.onclick = () => {
             window.location.reload();

@@ -689,12 +689,34 @@ input[type=number] {
   background-color: var(--bg-dark-light);
 }
 
-/* Menu related custom classes */
-.sm-menu {
-   
+
+/* Default styles for sm-menu - hidden on small/medium screens */
+#sm-menu {
+  display: none;
 }
 
-.menu-opened {
+/* For large screens and up, sm-menu should always be flex (as per your current setup) */
+@media (min-width: 1024px) { /* This corresponds to Tailwind's 'lg' breakpoint */
+  #sm-menu {
+    display: flex !important; /* Use !important to override the display: none for smaller screens */
+  }
+}
+
+/* When menu-opened class is added to navbar */
+#navbar.menu-opened #sm-menu {
+  display: flex; /* Show the menu when navbar has menu-opened class */
+  flex-direction: column; /* Your current flex-col for mobile menu */
+  align-items: center; /* Your current items-center for mobile menu */
+  justify-content: space-between; /* Your current justify-between for mobile menu */
+  background-color: white; /* Your current bg-white for mobile menu */
+  border-radius: 0.75rem; /* Your current rounded-lg for mobile menu */
+  padding: 2rem; /* Your current p-8 for mobile menu */
+  margin-top: 1rem; /* Your current mt-4 for mobile menu */
+  width: 100%; /* Ensure it takes full width within its container */
+}
+
+/* Styling for the overlay when the menu is open */
+#navbar.menu-opened {
   position: fixed;
   height: 100%;
   top: 0;
@@ -702,27 +724,40 @@ input[type=number] {
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.78);
+  z-index: 99999;
+  display: flex; /* Make the navbar itself a flex container to center the menu content if needed, or simply ensure it's visible */
+  flex-direction: column; /* Stack logo and menu vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Align content to the start (top) */
+  padding: 1rem; /* Add some padding if the content overflows slightly */
+  box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
-.menu-opened.sm-menu {
-  display: flex;
+/* Ensure the inner container of the navbar remains properly styled within the overlay */
+#navbar.menu-opened > div { /* This targets the .bg-[#F2F3F7] div */
+    width: 100%; /* Take full width */
+    max-width: 600px; /* Optional: Constrain width for better appearance on very wide screens */
+    margin-top: 20px; /* Adjust spacing from the top */
 }
 
-.menu-opened.menu-button.bar1 {
-  transform: rotate(45deg) translateY(10px); /* Combined transforms */
-  width: 2rem;
+
+/* Burger icon transformations */
+.menu-opened #menu-button .bar1 {
+  transform: rotate(45deg) translateX(3px) translateY(5px);
+  width: 24px;
 }
 
-.menu-opened.menu-button.bar2 {
-  transform: rotate(-45deg) translateY(-1px); /* Combined transforms */
-  width: 2rem;
+.menu-opened #menu-button .bar2 {
+  transform: rotate(-45deg) translateX(0px) translateY(-2px);
+  width: 24px;
 }
 
-.menu-opened.menu-button.label {
+.menu-opened #menu-button .label {
   display: none;
 }
 
-.menu-opened.body {
+/* Prevent body scroll when menu is open */
+body.menu-opened {
   height: 100vh;
   overflow: hidden;
 }
@@ -1006,8 +1041,20 @@ input[type=number] {
   @layer components {
   .kt-toast-container {
     position: fixed;
-    z-index: 9999;
+    z-index: 9999; 
+    top: 15px;
   }
+
+
+   .kt-toast { 
+    transition: top 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    inset-inline-end: 15px;
+    padding: 15px 10px; 
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
   .kt-toast {
     pointer-events: auto;
     position: fixed;
@@ -1025,36 +1072,8 @@ input[type=number] {
       top: calc(var(--spacing) * 0);
       bottom: auto;
     }
-    &.kt-toast-top-center {
-      inset-inline-start: calc(1/2 * 100%);
-      top: calc(var(--spacing) * 0);
-      bottom: auto;
-      --tw-translate-x: calc(calc(1/2 * 100%) * -1);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-    &.kt-toast-top-start {
-      inset-inline-start: calc(var(--spacing) * 0);
-      top: calc(var(--spacing) * 0);
-      bottom: auto;
-    }
-    &.kt-toast-bottom-end {
-      inset-inline-end: calc(var(--spacing) * 0);
-      top: auto;
-      bottom: calc(var(--spacing) * 0);
-    }
-    &.kt-toast-bottom-center {
-      inset-inline-start: calc(1/2 * 100%);
-      top: auto;
-      bottom: calc(var(--spacing) * 0);
-      --tw-translate-x: calc(calc(1/2 * 100%) * -1);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-    &.kt-toast-bottom-start {
-      inset-inline-start: calc(var(--spacing) * 0);
-      top: auto;
-      bottom: calc(var(--spacing) * 0);
-    }
-  }
+ }
+
   .kt-toast-progress {
     position: fixed;
     inset-inline-start: calc(var(--spacing) * 0);
@@ -1066,6 +1085,36 @@ input[type=number] {
     animation: kt-toast-progress-line linear forwards;
   }
 }
+
+ .kt-toast.kt-success{
+  background-color: #e7e8eb;
+ }
+
+.kt-toast .close-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .5rem;
+  width: 30px;
+  height: 30px;
+}
+
+.kt-toast.kt-success .close-btn{
+border: 1.5px solid var(--gray-light) ;
+color: var(--tw-gray-400);
+
+
+}
+
+.kt-toast .content{
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+align-items: center;
+font-size: 14px;
+}
+ 
+
 @layer components {
   [dir='rtl'] .kt-toast-progress {
     transform-origin: right;
@@ -1098,4 +1147,207 @@ input[type=number] {
       transform: scaleX(0);
     }
   }
+}
+
+
+
+  .kt-drawer-backdrop {
+    position: fixed;
+    inset: calc(var(--spacing) * 0);
+    background-color: color-mix(in srgb, #000 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 30%, transparent);
+    }
+    backdrop-filter: blur(4px);
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+.avatar-1 {
+  border-color: #00BCD4; /* Cyan */
+  color: #00BCD4;
+  background: rgba(0, 188, 212, 0.15); /* Transparent Cyan */
+}
+
+.avatar-2 {
+  border-color: #4CAF50; /* Green */
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.15); /* Transparent Green */
+}
+
+.avatar-3 {
+  border-color: #9C27B0; /* Purple */
+  color: #9C27B0;
+  background: rgba(156, 39, 176, 0.15); /* Transparent Purple */
+}
+
+.avatar-4 {
+  border-color: #FF9800; /* Orange */
+  color: #FF9800;
+  background: rgba(255, 152, 0, 0.15); /* Transparent Orange */
+}
+
+.avatar-5 {
+  border-color: #F44336; /* Red */
+  color: #F44336;
+  background: rgba(244, 67, 54, 0.15); /* Transparent Red */
+}
+
+.avatar-6 {
+  border-color: #009688; /* Teal */
+  color: #009688;
+  background: rgba(0, 150, 136, 0.15); /* Transparent Teal */
+}
+
+.avatar-7 {
+  border-color: #3F51B5; /* Indigo */
+  color: #3F51B5;
+  background: rgba(63, 81, 181, 0.15); /* Transparent Indigo */
+}
+
+.avatar-8 {
+  border-color: #E91E63; /* Pink */
+  color: #E91E63;
+  background: rgba(233, 30, 99, 0.15); /* Transparent Pink */
+}
+
+.avatar-9 {
+  border-color: #FF5722; /* Deep Orange */
+  color: #FF5722;
+  background: rgba(255, 87, 34, 0.15); /* Transparent Deep Orange */
+}
+
+.avatar-10 {
+  border-color: #CDDC39; /* Lime */
+  color: #CDDC39;
+  background: rgba(205, 220, 57, 0.15); /* Transparent Lime */
+}
+
+.avatar-11 {
+  border-color: #607D8B; /* Blue Grey */
+  color: #607D8B;
+  background: rgba(96, 125, 139, 0.15); /* Transparent Blue Grey */
+}
+
+.avatar-12 {
+  border-color: #FFC107; /* Amber */
+  color: #FFC107;
+  background: rgba(255, 193, 7, 0.15); /* Transparent Amber */
+}
+
+
+.\!modal {
+  width: 100% !important;
+  display: none !important;
+  opacity: 0 !important;
+  position: fixed !important;
+  overflow: auto !important;
+  inset: 0 !important;
+  padding: 1.25rem !important;
+  transition: opacity 300ms ease !important;
+}
+
+.modal {
+  width: 100%;
+  display: none;
+  opacity: 0;
+  position: fixed;
+  overflow: auto;
+  inset: 0;
+  padding: 1.25rem;
+  transition: opacity 300ms ease;
+}
+
+.\!modal.open {
+  opacity: 1 !important;
+  transition: opacity 300ms ease !important;
+    display: block;
+}
+
+.modal.open {
+  opacity: 1;
+  transition: opacity 300ms ease;
+  display: block;
+  z-index: 99;
+}
+
+.modal-content {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.75rem;
+  box-shadow: var(--tw-modal-box-shadow);
+  background-color: var(--tw-modal-background-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.modal-title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--tw-gray-900);
+}
+
+.modal-body {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--tw-gray-200);
+  padding-left: 1.25rem; /* theme('spacing.5') */
+  padding-right: 1.25rem; /* theme('spacing.5') */
+  padding-top: 0.625rem; /* theme('spacing.2.5') */
+  padding-bottom: 0.625rem; /* theme('spacing.2.5') */
+}
+
+.modal-table .table th:first-child, .modal-table .table td:first-child {
+  padding-left: 1.25rem;
+}
+
+.modal-table .table th:last-child, .modal-table .table td:last-child {
+  padding-right: 1.25rem;
+}
+
+    
+
+.modal {
+                  -webkit-backdrop-filter: blur(4px);
+                  backdrop-filter: blur(4px);
+                  transition-property: all;
+                  transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));
+                  transition-duration: var(--tw-duration,var(--default-transition-duration));
+                  --tw-duration: .3s;
+                  transition-duration: .3s;
+      position: fixed;
+  inset: 0;
+ background-color: rgba(0, 0, 0, 0.3)
+    }
+
+.modal-center {
+  left: 50%;
+  top: 50%;
+  margin-left: 0;
+  margin-right: 0;
+  transform: translate(-50%, -50%);
+}
+
+.modal-rounded-t {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }

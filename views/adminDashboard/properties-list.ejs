@@ -53,7 +53,7 @@
             >
               <a
                 class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
-                href="/admin/liste-annonces?createdBy=Admin"
+                href="/admin/annonces?createdBy=Admin"
               >
                 <span
                   class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
@@ -68,7 +68,7 @@
             >
               <a
                 class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
-                href="/admin/liste-annonces?createdBy=User"
+                href="/admin/annonces?createdBy=User"
               >
                 <span
                   class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
@@ -83,7 +83,7 @@
 
       <div class="flex items-center justify-end grow lg:grow-0 gap-2.5 mb-2">
           <div class="input-group">
-          <form action="/admin/liste-annonces" method="GET" id="stateFilterForm" class="inline-block">
+          <form action="/admin/annonces" method="GET" id="stateFilterForm" class="inline-block">
             <select
               class="select select-lg w-40 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               name="state"
@@ -115,14 +115,14 @@
       <div class="flex gap-4 mb-5" data-tabs="true">
         <a
           class="btn btn-primary btn-outline btn-primary <%= currentQuery.listingGroup === 'location' || !currentQuery.listingGroup ? 'active' : '' %>"
-          href="/admin/liste-annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=location"
+          href="/admin/annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=location"
         >
           <i class="ki-duotone ki-calendar-tick"></i>
           Annonces locations
         </a>
         <a
           class="btn btn-primary btn-outline btn-primary <%= currentQuery.listingGroup === 'vente' ? 'active' : '' %>"
-          href="/admin/liste-annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=vente"
+          href="/admin/annonces?createdBy=<%= currentQuery.createdBy %>&listingGroup=vente"
         >
           <i class="ki-duotone ki-archive"></i>
           Annonces ventes
@@ -347,7 +347,7 @@
             %>
 
             <a
-              href="/admin/liste-annonces?page=<%= pagination.currentPage - 1 %>&<%= queryStringWithoutPage %>"
+              href="/admin/annonces?page=<%= pagination.currentPage - 1 %>&<%= queryStringWithoutPage %>"
               class="btn nav-arrow <%= pagination.currentPage === 1 ? 'disabled' : '' %>"
               <%= pagination.currentPage === 1 ? 'aria-disabled="true"' : '' %>
             >
@@ -356,7 +356,7 @@
 
             <% for(let i = 1; i <= pagination.totalPages; i++) { %>
             <a
-              href="/admin/liste-annonces?page=<%= i %>&<%= queryStringWithoutPage %>"
+              href="/admin/annonces?page=<%= i %>&<%= queryStringWithoutPage %>"
               class="btn <%= pagination.currentPage === i ? 'active disabled' : '' %>"
               <%= pagination.currentPage === i ? 'aria-current="page" aria-disabled="true"' : '' %>
             >
@@ -365,7 +365,7 @@
             <% } %>
 
             <a
-              href="/admin/liste-annonces?page=<%= pagination.currentPage + 1 %>&<%= queryStringWithoutPage %>"
+              href="/admin/annonces?page=<%= pagination.currentPage + 1 %>&<%= queryStringWithoutPage %>"
               class="btn nav-arrow <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>"
               <%= pagination.currentPage === pagination.totalPages ? 'aria-disabled="true"' : '' %>
             >
