@@ -1,13 +1,15 @@
 import express from 'express'; 
 import { nanoid } from 'nanoid';
 import {FedaPay, Transaction} from 'fedapay'
+const Backend_API = process.env.BACKEND_API_ROOT;
+
 
 const generateBookingId = () => {
     const randomPart = nanoid(16); // Generates a 16-character unique string
     return `TXN_CGF-${randomPart.toUpperCase()}`; // Prefix + random part (uppercase for consistency)
 };
 
-const Backend_API = process.env.BACKEND_API_ROOT;
+
 
 export const reservationsGet = async (req, res) => {
     let bookings = [];

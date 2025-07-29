@@ -2,17 +2,15 @@
         <!-- Sidebar Header -->
         <div id="sidebar_header">
          <div class="flex items-center gap-2.5 px-3.5 h-[70px]">
-          <a href="html/demo6/index.html">
-           <img class="dark h-[42px]" src="assets/media/app/mini-logo-circle.svg"/>
-           <img class="hidden dark:inline-block h-[42px]" src="assets/media/app/mini-logo-circle-dark.svg"/>
+          <a href="/admin/dashboard">
+           <img src="assets/images/logo.svg" alt="Logo" srcset="" class="w-25 lg:w-25" />
           </a>
           <div class="menu menu-default grow" data-menu="true">
            <div class="menu-item grow" data-menu-item-offset="0px, 15px" data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown" data-menu-item-trigger="hover">
             <div class="menu-label cursor-pointer text-gray-900 font-medium grow justify-between">
              <span class="text-base font-medium text-gray-900 grow justify-start">
-              CIGAFI | ADMIN
+               | ADMIN
              </span>
-            
             </div>
             
            </div>
@@ -26,12 +24,9 @@
         <!-- Sidebar menu -->
         <div class="flex items-stretch grow shrink-0 justify-center my-5" id="sidebar_menu">
          <div class="scrollable-y-auto light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] grow" data-scrollable="true" data-scrollable-dependencies="#sidebar_header, #sidebar_footer" data-scrollable-height="auto" data-scrollable-offset="0px" data-scrollable-wrappers="#sidebar_menu">
-         
-          
           <!-- Secondary Menu -->
           <div class="menu flex flex-col w-full gap-1.5 px-3.5">
            <div class="menu-item show">
-           
             <div class="menu-accordion flex flex-col gap-2">
              <div class="menu-item">
               <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="/admin/dashboard">
@@ -160,7 +155,7 @@
       <div class="menu-item" data-menu-item-offset="-10px, 15px" data-menu-item-placement="right-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
        <div class="menu-toggle cursor-pointer">
          <div class="flex items-center gap-2">
-          <img alt="" class="size-9 rounded-full border-2 border-success" src="assets/media/avatars/300-2.png">
+          <img alt="" class="size-9 rounded-full border-2 border-success" src="assets/media/avatars/blank.png">
            <div class="flex flex-col gap-1.5">
             <span class="text-sm text-gray-800 font-semibold leading-none">
               <%= user.firstName %> <%= user.lastName %>
@@ -175,7 +170,7 @@
        <div class="menu-dropdown menu-default light:border-gray-300 w-screen max-w-[250px]">
         <div class="flex items-center justify-between px-5 py-1.5 gap-1.5">
          <div class="flex items-center gap-2">
-          <img alt="" class="size-9 rounded-full border-2 border-success" src="assets/media/avatars/300-2.png">
+          <img alt="" class="size-9 rounded-full border-2 border-success" src="assets/media/avatars/blank.png">
            <div class="flex flex-col gap-1.5">
             <span class="text-sm text-gray-800 font-semibold leading-none">
               <%= user.firstName %> <%= user.lastName %>
